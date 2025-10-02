@@ -1,0 +1,15 @@
+.navbar {
+  display: flex;
+  background-color: var(--bh-colors-brand-secondary);
+  padding: var(--bh-size-spacing-xs) var(--bh-size-spacing-zero);
+  padding-right: var(--bh-size-spacing-s);
+}
+
+.navbarNav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--bh-size-spacing-zore) var(--bh-size-spacing-s);
+  width: 100%;
+}

@@ -1,0 +1,7 @@
+# .stylelintignore
+
+/public
+/node_modules
+/build
+/dist
+/lib

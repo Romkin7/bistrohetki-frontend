@@ -1,0 +1,11 @@
+{
+    "size": {
+        "breakpoint": {
+            "xs": { "value": "0", "type": "breakpoint" },
+            "sm": { "value": "37.5", "type": "breakpoint" },
+            "md": { "value": "60", "type": "breakpoint" },
+            "lg": { "value": "80", "type": "breakpoint" },
+            "xl": { "value": "120", "type": "breakpoint" }
+        }
+    }
+}

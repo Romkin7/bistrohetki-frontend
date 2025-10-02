@@ -1,0 +1,30 @@
+.paragraph {
+  display: block;
+}
+
+.paragraph--body {
+  font: var(--bh-typography-body);
+  line-height: var(--bh-size-line-height-body);
+}
+
+.paragraph--small {
+  font: var(--bh-typography-small);
+  line-height: var(--bh-size-line-height-small);
+}
+
+.paragraph--preamble {
+  font: var(--bh-typography-preamble);
+  line-height: var(--bh-size-line-height-preamble);
+}
+
+.paragraph--dark {
+  color: var(--bh-colors-paragraph-dark);
+}
+
+.paragraph--light {
+  color: var(--bh-colors-paragraph-light);
+}
+
+.paragraph--medium {
+  color: var(--bh-colors-paragraph-medium);
+}

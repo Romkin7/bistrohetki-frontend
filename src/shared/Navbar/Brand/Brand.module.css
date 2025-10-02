@@ -1,0 +1,16 @@
+.brand {
+  display: block;
+  width: calc(
+    var(--bh-size-spacing-s) + var(--bh-size-spacing-m) +
+      var(--bh-size-spacing-3-xl)
+  );
+  height: calc(
+    var(--bh-size-spacing-s) + var(--bh-size-spacing-m) +
+      var(--bh-size-spacing-3-xl)
+  );
+  text-decoration: none;
+}
+
+.brand img {
+  max-width: 100%;
+}

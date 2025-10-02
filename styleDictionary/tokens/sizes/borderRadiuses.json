@@ -1,0 +1,20 @@
+{
+    "size": {
+        "dimension": {
+            "border-radius-rounded-0": { "value": "0", "type": "dimension" },
+            "border-radius-rounded-1": {
+                "value": "0.125",
+                "type": "dimension"
+            },
+            "border-radius-rounded-2": { "value": "0.25", "type": "dimension" },
+            "border-radius-rounded-3": { "value": "0.5", "type": "dimension" },
+            "border-radius-rounded-4": { "value": "1", "type": "dimension" },
+            "border-radius-rounded-5": { "value": "2", "type": "dimension" },
+            "border-radius-rounded-circle": {
+                "value": "50",
+                "type": "dimension"
+            },
+            "border-radius-rounded-pill": { "value": "50", "type": "dimension" }
+        }
+    }
+}

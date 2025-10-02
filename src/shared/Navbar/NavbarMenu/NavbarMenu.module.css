@@ -1,0 +1,15 @@
+.navbarMenu {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.navbarMenuItem {
+  margin-left: 0 var(--bh-size-spacing-m);
+  padding: var(--bh-size-spacing-s) var(--bh-size-spacing-m);
+  font: var(--bh-typography-title3);
+  color: var(--bh-colors-text-dark);
+  text-decoration: none;
+}

@@ -1,0 +1,33 @@
+.link {
+  margin: var(--bh-size-spacing-zero);
+  padding: var(--bh-size-spacing-zero);
+}
+
+.link-standalone {
+  display: block;
+  font: var(--bh-typography-link);
+  line-height: var(--bh-size-line-height-link);
+}
+
+.link-inline {
+  font: var(--bh-typography-link);
+  line-height: var(--bh-size-line-height-link);
+  text-decoration: underline;
+}
+
+.link-navigation {
+  font: var(--bh-typography-link);
+  line-height: var(--bh-size-line-height-link);
+}
+
+.link-dark {
+  color: var(--bh-colors-link-dark);
+}
+
+.link-light {
+  color: var(--bh-colors-link-light);
+}
+
+.link-medium {
+  color: var(--bh-colors-link-medium);
+}

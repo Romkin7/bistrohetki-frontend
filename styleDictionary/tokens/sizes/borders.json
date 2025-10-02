@@ -1,0 +1,13 @@
+{
+    "size": {
+        "dimension": {
+            "border-0": { "value": "0", "type": "dimension" },
+            "border-1": { "value": "0.0625", "type": "dimension" },
+            "border-2": { "value": "0.125", "type": "dimension" },
+            "border-3": { "value": "0.1875", "type": "dimension" },
+            "border-4": { "value": "0.25", "type": "dimension" },
+            "border-5": { "value": "0.375", "type": "dimension" },
+            "border-6": { "value": "0.5", "type": "dimension" }
+        }
+    }
+}
