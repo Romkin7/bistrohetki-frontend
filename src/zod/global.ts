@@ -1,7 +1,7 @@
 import z from "zod";
-import { Locale } from "./locale";
+import { localeSchema } from "./locale";
 import { navBarSchema } from "./navbar";
-import { seoSchema } from "./seo";
+import { seoSchema } from "./global/seoModel";
 
 const contactInfoSchema = z.object({
   email: z.string().email(),
@@ -38,7 +38,7 @@ export const globalSchema = z.object({
   keywords: z.array(z.string()).optional(),
   canonicalUrl: z.string().url().optional(),
   robots: z.string().optional(),
-  locale: Locale,
+  locale: localeSchema,
   defaultSeo: seoSchema,
   navbar: navBarSchema,
   footer: footerSchema,

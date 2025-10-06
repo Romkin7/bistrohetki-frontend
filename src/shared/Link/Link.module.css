@@ -16,18 +16,18 @@
 }
 
 .link-navigation {
-  font: var(--bh-typography-link);
-  line-height: var(--bh-size-line-height-link);
+  font: var(--bh-typography-link-navigation);
+  font-stretch: var(--bh-stretch-font-link-navigation);
 }
 
 .link-dark {
-  color: var(--bh-colors-link-dark);
+  color: var(--bh-color-link-dark);
 }
 
 .link-light {
-  color: var(--bh-colors-link-light);
+  color: var(--bh-color-link-light);
 }
 
 .link-medium {
-  color: var(--bh-colors-link-medium);
+  color: var(--bh-color-link-medium);
 }

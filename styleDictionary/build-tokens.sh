@@ -13,4 +13,6 @@ echo "🛠️ 📏 Running Style Dictionary build sizes..."
 npm run style-dictionary-build-sizes
 echo "🛠️ 📐 Running Style Dictionary build layouts..."
 npm run style-dictionary-build-layouts
+echo "🛠️ 📐 Running Style Dictionary build typography..."
+npm run style-dictionary-build-typography
 echo "🎉 Design tokens built successfully."

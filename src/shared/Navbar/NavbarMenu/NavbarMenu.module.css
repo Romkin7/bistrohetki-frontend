@@ -7,9 +7,9 @@
 }
 
 .navbarMenuItem {
-  margin-left: 0 var(--bh-size-spacing-m);
-  padding: var(--bh-size-spacing-s) var(--bh-size-spacing-m);
+  margin-left: 0 var(--bh-size-dimension-spacing-4);
+  padding: var(--bh-size-dimension-spacing-3) var(--bh-size-dimension-spacing-4);
   font: var(--bh-typography-title3);
-  color: var(--bh-colors-text-dark);
+  color: var(--bh-color-text-dark);
   text-decoration: none;
 }

@@ -1,12 +1,12 @@
 .brand {
   display: block;
   width: calc(
-    var(--bh-size-spacing-s) + var(--bh-size-spacing-m) +
-      var(--bh-size-spacing-3-xl)
+    var(--bh-size-dimension-spacing-3) + var(--bh-size-dimension-spacing-4) +
+      var(--bh-size-dimension-spacing-8)
   );
   height: calc(
-    var(--bh-size-spacing-s) + var(--bh-size-spacing-m) +
-      var(--bh-size-spacing-3-xl)
+    var(--bh-size-dimension-spacing-3) + var(--bh-size-dimension-spacing-4) +
+      var(--bh-size-dimension-spacing-8)
   );
   text-decoration: none;
 }

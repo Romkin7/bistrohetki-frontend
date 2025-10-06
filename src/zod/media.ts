@@ -1,10 +1,17 @@
 import z from "zod";
 
+export const mimeSchema = z.enum([
+  "image/vnd.microsoft.icon",
+  "image/jpeg",
+  "image/png",
+]);
+export const extSchema = z.enum([".ico", ".jpeg", ".png"]);
+
 export const formatSchema = z.object({
-  ext: z.string(),
+  ext: extSchema,
   url: z.string(),
   hash: z.string(),
-  mime: z.string(),
+  mime: mimeSchema,
   name: z.string(),
   path: z.null(),
   size: z.number(),
@@ -30,8 +37,8 @@ export const mediaSchema = z.object({
   height: z.number(),
   formats: formatsSchema,
   hash: z.string(),
-  ext: z.string(),
-  mime: z.string(),
+  ext: extSchema,
+  mime: mimeSchema,
   size: z.number(),
   url: z.string(),
   previewUrl: z.null(),

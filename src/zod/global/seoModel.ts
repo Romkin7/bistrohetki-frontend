@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { mediaSchema } from "./media";
+import { mediaSchema } from "../media";
 
 export const seoSchema = z.object({
   id: z.number().int().positive(),

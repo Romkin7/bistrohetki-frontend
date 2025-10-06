@@ -1,41 +1,44 @@
 {
-    "color": {
-        "brand": {
-            "primary": {
-                "value": "rgb(4, 119, 113)"
-            },
-            "secondary": {
-                "value": "rgb(246, 247, 249)"
-            }
-        },
-        "text": {
-            "dark": { "value": "rgb(23, 24, 28)" },
-            "medium": { "value": "rgb(4, 119, 113)" },
-            "light": { "value": "rgb(246, 247, 249)" }
-        },
-        "background": {
-            "dark": { "value": "rgb(4, 119, 113)" },
-            "medium": { "value": "rgb(246, 247, 249)" },
-            "light": { "value": "rgb(255, 255, 255)" }
-        },
-        "border": {
-            "primary": { "value": "rgb(4, 119, 113)" },
-            "secondary": { "value": "rgb(246, 247, 249)" }
-        },
-        "button": {
-            "dark": { "value": "rgb(4, 119, 113)" },
-            "medium": { "value": "rgb(246, 247, 249)" },
-            "light": { "value": "rgb(255, 255, 255)" }
-        },
-        "link": {
-            "dark": { "value": "rgb(4, 119, 113)" },
-            "medium": { "value": "rgb(75, 0, 130)" },
-            "light": { "value": "rgb(255, 255, 255)" }
-        },
-        "semantic": {
-            "success": { "value": "rgb(117, 186, 117)" },
-            "error": { "value": "rgb(255, 99, 71)" },
-            "warning": { "value": "rgb(255, 165, 0)" }
-        }
+  "color": {
+    "brand": {
+      "primary": {
+        "value": "rgb(247, 245, 190)"
+      },
+      "secondary": {
+        "value": "rgb(246, 247, 249)"
+      },
+      "tertiary": {
+        "value": "rgb(3, 1, 0)"
+      }
+    },
+    "text": {
+      "dark": { "value": "rgb(23, 24, 28)" },
+      "medium": { "value": "rgb(4, 119, 113)" },
+      "light": { "value": "rgb(246, 247, 249)" }
+    },
+    "background": {
+      "dark": { "value": "rgb(4, 119, 113)" },
+      "medium": { "value": "rgb(246, 247, 249)" },
+      "light": { "value": "rgb(255, 255, 255)" }
+    },
+    "border": {
+      "primary": { "value": "rgb(4, 119, 113)" },
+      "secondary": { "value": "rgb(246, 247, 249)" }
+    },
+    "button": {
+      "dark": { "value": "rgb(4, 119, 113)" },
+      "medium": { "value": "rgb(246, 247, 249)" },
+      "light": { "value": "rgb(255, 255, 255)" }
+    },
+    "link": {
+      "dark": { "value": "rgb(4, 119, 113)" },
+      "medium": { "value": "rgb(75, 0, 130)" },
+      "light": { "value": "rgb(255, 255, 255)" }
+    },
+    "semantic": {
+      "success": { "value": "rgb(117, 186, 117)" },
+      "error": { "value": "rgb(255, 99, 71)" },
+      "warning": { "value": "rgb(255, 165, 0)" }
     }
+  }
 }

@@ -1,5 +1,6 @@
 .footer {
-  background-color: var(--bh-colors-brand-primary);
+  background-color: var(--bh-color-brand-tertiary);
+  color: var(--bh-color-text-light);
   height: var(--bh-size-spacing-5xl);
   display: flex;
 }

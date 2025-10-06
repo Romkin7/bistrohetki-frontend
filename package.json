@@ -9,7 +9,11 @@
     "lint": "eslint src --ext .js,.jsx,.ts,.tsx && stylelint '**/*.css'",
     "lint:fix": "eslint src --ext .js,.jsx,.ts,.tsx --fix && stylelint '**/*.css' --fix",
     "preview": "vite preview",
-    "build:tokens": "sh scripts/build-tokens.sh"
+    "build-tokens": "sh ./styleDictionary/build-tokens.sh",
+    "style-dictionary-build-colors": "node ./styleDictionary/build-colors.js",
+    "style-dictionary-build-sizes": "node ./styleDictionary/build-sizes.js",
+    "style-dictionary-build-layouts": "node ./styleDictionary/build-layouts.js",
+    "style-dictionary-build-typography": "node ./styleDictionary/build-typography.js"
   },
   "dependencies": {
     "@chakra-ui/react": "^3.20.0",
@@ -36,6 +40,7 @@
     "eslint-plugin-react-refresh": "^0.4.19",
     "globals": "^16.0.0",
     "postcss-lit": "^1.2.0",
+    "rimraf": "^6.0.1",
     "style-dictionary": "^5.0.4",
     "stylelint": "^16.20.0",
     "stylelint-config-alphabetical-order": "^1.0.0",

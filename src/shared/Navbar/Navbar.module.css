@@ -1,8 +1,9 @@
 .navbar {
   display: flex;
-  background-color: var(--bh-colors-brand-secondary);
-  padding: var(--bh-size-spacing-xs) var(--bh-size-spacing-zero);
-  padding-right: var(--bh-size-spacing-s);
+  background-color: var(--bh-color-brand-primary);
+  padding: var(--bh-size-dimension-spacing-xs)
+    var(--bh-size-dimension-spacing-zero);
+  padding-right: var(--bh-size-dimension-spacing-s);
 }
 
 .navbarNav {
@@ -10,6 +11,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  padding: var(--bh-size-spacing-zore) var(--bh-size-spacing-s);
+  padding: var(--bh-size-dimension-spacing-s)
+    var(--bh-size-dimension-spacing-zero);
   width: 100%;
 }

@@ -1,0 +1,94 @@
+{
+  "asset": {
+    "font": {
+      "link": {
+        "navigation": {
+          "$value": {
+            "name": "Roboto, sans-serif",
+            "style": "normal",
+            "weight": "500",
+            "ttf": {
+              "value": "styleDictionary/tokens/typography/assets/Roboto-Medium.ttf"
+            }
+          },
+          "$type": "fontFamily"
+        }
+      }
+    }
+  },
+  "stretch": {
+    "font": {
+      "link": {
+        "navigation": {
+          "$value": {
+            "fontStretch": "100%"
+          },
+          "$type": "fontStretch"
+        }
+      }
+    }
+  },
+  "weight": {
+    "font": {
+      "link": {
+        "navigation": {
+          "$value": {
+            "fontWeight": "500"
+          },
+          "$type": "fontWeight"
+        }
+      }
+    }
+  },
+  "size": {
+    "font": {
+      "link": {
+        "navigation": {
+          "$value": { "fontSize": "1rem" },
+          "$type": "fontSize"
+        }
+      }
+    }
+  },
+  "lineHeight": {
+    "font": {
+      "link": {
+        "navigation": {
+          "$value": {
+            "lineHeight": "1.1875rem"
+          },
+          "$type": "lineHeight"
+        }
+      }
+    }
+  },
+  "typography": {
+    "link": {
+      "navigation": {
+        "$value": {
+          "fontStyle": {
+            "$value": "{asset.font.link.navigation}",
+            "$type": "style"
+          },
+          "fontWeight": {
+            "$value": "{weight.font.link.navigation}",
+            "$type": "fontWeight"
+          },
+          "fontSize": {
+            "$value": "{size.font.link.navigation}",
+            "$type": "fontSize"
+          },
+          "lineHeight": {
+            "$value": "{lineHeight.font.link.navigation}",
+            "$type": "lineHeight"
+          },
+          "fontFamily": {
+            "$value": "{asset.font.link.navigation}",
+            "$type": "fontFamily"
+          }
+        },
+        "type": "typography"
+      }
+    }
+  }
+}

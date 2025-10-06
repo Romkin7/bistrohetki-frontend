@@ -1,0 +1,26 @@
+/**
+ * Do not edit directly, this file was auto-generated.
+ */
+
+:root {
+  --bh-color-brand-primary: rgb(247, 245, 190);
+  --bh-color-brand-secondary: rgb(246, 247, 249);
+  --bh-color-brand-tertiary: rgb(3, 1, 0);
+  --bh-color-text-dark: rgb(23, 24, 28);
+  --bh-color-text-medium: rgb(4, 119, 113);
+  --bh-color-text-light: rgb(246, 247, 249);
+  --bh-color-background-dark: rgb(4, 119, 113);
+  --bh-color-background-medium: rgb(246, 247, 249);
+  --bh-color-background-light: rgb(255, 255, 255);
+  --bh-color-border-primary: rgb(4, 119, 113);
+  --bh-color-border-secondary: rgb(246, 247, 249);
+  --bh-color-button-dark: rgb(4, 119, 113);
+  --bh-color-button-medium: rgb(246, 247, 249);
+  --bh-color-button-light: rgb(255, 255, 255);
+  --bh-color-link-dark: rgb(4, 119, 113);
+  --bh-color-link-medium: rgb(75, 0, 130);
+  --bh-color-link-light: rgb(255, 255, 255);
+  --bh-color-semantic-success: rgb(117, 186, 117);
+  --bh-color-semantic-error: rgb(255, 99, 71);
+  --bh-color-semantic-warning: rgb(255, 165, 0);
+}

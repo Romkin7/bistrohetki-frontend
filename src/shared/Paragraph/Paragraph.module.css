@@ -18,13 +18,13 @@
 }
 
 .paragraph--dark {
-  color: var(--bh-colors-paragraph-dark);
+  color: var(--bh-color-text-dark);
 }
 
 .paragraph--light {
-  color: var(--bh-colors-paragraph-light);
+  color: var(--bh-color-text-light);
 }
 
 .paragraph--medium {
-  color: var(--bh-colors-paragraph-medium);
+  color: var(--bh-color-text-medium);
 }

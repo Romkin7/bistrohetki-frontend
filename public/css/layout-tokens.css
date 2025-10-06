@@ -1,0 +1,27 @@
+/**
+ * Do not edit directly, this file was auto-generated.
+ */
+
+:root {
+  --bh-layout-flex-direction-row: row;
+  --bh-layout-flex-direction-column: column;
+  --bh-layout-flex-direction-row-reverse: row-reverse;
+  --bh-layout-flex-direction-column-reverse: column-reverse;
+  --bh-layout-flex-wrap-nowrap: nowrap;
+  --bh-layout-flex-wrap-wrap: wrap;
+  --bh-layout-flex-wrap-wrap-reverse: wrap-reverse;
+  --bh-layout-flex-align-start: flex-start;
+  --bh-layout-flex-align-center: center;
+  --bh-layout-flex-align-end: flex-end;
+  --bh-layout-flex-align-stretch: stretch;
+  --bh-layout-flex-align-baseline: baseline;
+  --bh-layout-flex-align-space-between: space-between;
+  --bh-layout-flex-align-space-around: space-around;
+  --bh-layout-flex-align-space-evenly: space-evenly;
+  --bh-layout-flex-justify-start: flex-start;
+  --bh-layout-flex-justify-center: center;
+  --bh-layout-flex-justify-end: flex-end;
+  --bh-layout-flex-justify-space-between: space-between;
+  --bh-layout-flex-justify-space-around: space-around;
+  --bh-layout-flex-justify-space-evenly: space-evenly;
+}

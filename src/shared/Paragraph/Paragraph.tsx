@@ -6,8 +6,8 @@ import type { ParagraphProps } from "@/zod/paragraphProps";
 const Paragraph: FC<ParagraphProps> = ({ variant, color, children }) => {
   const paragraphStyles = clsx({
     [styles.paragraph]: true,
-    [styles[`paragraph-${variant}`]]: variant,
-    [styles[`paragraph-${color}`]]: color,
+    [styles[`paragraph--${variant}`]]: variant,
+    [styles[`paragraph--${color}`]]: color,
   });
   return <p className={paragraphStyles}>{children}</p>;
 };
