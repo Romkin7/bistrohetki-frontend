@@ -1,20 +1,8 @@
 import z from "zod";
-import { localeSchema } from "./locale";
-import { navBarSchema } from "./navbar";
-import { seoSchema } from "./global/seoModel";
-
-const contactInfoSchema = z.object({
-  email: z.string().email(),
-  phone: z.string().optional(),
-  address: z.string().optional(),
-  socialLinks: z.array(
-    z.object({
-      platform: z.string(),
-      url: z.string().url(),
-      icon: z.string(), // Optional icon URL or class name
-    })
-  ),
-});
+import { localeSchema } from "../locale";
+import { navBarSchema } from "../navbar";
+import { seoSchema } from "./seoModel";
+import { contactInfoModelSchema } from "../collections/contactInfoModel";
 
 const madeBySchema = z.object({
   startText: z.string(),
@@ -25,9 +13,15 @@ const madeBySchema = z.object({
   endText: z.string(),
 });
 
+const sectionSchema = z.object({
+  id: z.number().int().positive(),
+  section_title: z.string(),
+  contact_infos: z.array(contactInfoModelSchema),
+});
+
 const footerSchema = z.object({
-  title: z.string(),
-  contactInfo: contactInfoSchema,
+  siteTitle: z.string(),
+  sections: z.array(sectionSchema),
   madeBy: madeBySchema,
 });
 

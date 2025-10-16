@@ -7,9 +7,9 @@ import {
 export default {
   log: {
     warnings: logWarningLevels.warn, // 'warn' | 'error' | 'disabled'
-    verbosity: logVerbosityLevels.silent, // 'default' | 'silent' | 'verbose'
+    verbosity: logVerbosityLevels.verbose, // 'default' | 'silent' | 'verbose'
     errors: {
-      brokenReferences: logBrokenReferenceLevels.throw, // 'throw' | 'console'
+      brokenReferences: logBrokenReferenceLevels.console, // 'throw' | 'console'
     },
   },
   source: ["styleDictionary/tokens/typography/*.json"],
@@ -31,6 +31,10 @@ export default {
           destination: "typography-tokens.css",
           format: "css/variables",
           filter: "exclude/asset",
+        },
+        {
+          destination: "fonts.css",
+          format: "css/fonts.css",
         },
       ],
     },

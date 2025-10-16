@@ -1,8 +1,8 @@
 import { z } from "zod";
-import { contactInfoModelSchema } from "../collections/contactInfoModel";
 import { localeSchema } from "../locale";
+import { mediaSchema } from "../media";
 
-export const contactInfoPageDataSchema = z.object({
+export const galleryPageDataSchema = z.object({
   id: z.number().int().positive(),
   documentId: z.string(), // Changed from literal to string for flexibility
   createdAt: z.string().datetime(), // ISO datetime string
@@ -10,10 +10,8 @@ export const contactInfoPageDataSchema = z.object({
   publishedAt: z.string().datetime(), // ISO datetime string
   locale: localeSchema,
   mainTitle: z.string(),
-  contact_infos: z.array(contactInfoModelSchema),
-  social_links: z.array(contactInfoModelSchema),
-  content: z.string().nullable(),
+  images: z.array(mediaSchema),
 });
 
 // Infer the TypeScript type from the Zod schema
-export type ContactInfoPageData = z.infer<typeof contactInfoPageDataSchema>;
+export type GalleryPageData = z.infer<typeof galleryPageDataSchema>;
