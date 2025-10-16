@@ -6,11 +6,16 @@
 html {
   font-family: Roboto, sans-serif;
   font-size: 16px;
+  letter-spacing: 1.1px;
 }
 
 body {
   margin: 0;
   padding: 0;
+}
+
+section {
+  min-height: 100vh;
 }
 
 a {

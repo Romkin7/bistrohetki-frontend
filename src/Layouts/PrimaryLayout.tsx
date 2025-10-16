@@ -2,25 +2,28 @@ import { useCallback, useEffect, type FC } from "react";
 import { useDispatch } from "react-redux";
 import { Outlet } from "react-router";
 import { fetchStrapiData } from "@/api/fetchStrapiData";
-import { setGlobal } from "@/store/slices/globalSlice";
+import { useLocale } from "@/hooks/useLocale";
 import Footer from "@/shared/Footer/Footer";
 import Navbar from "@/shared/Navbar/Navbar";
+import { setGlobal } from "@/store/slices/globalSlice";
 
 const PrimaryLayout: FC = () => {
   const dispatch = useDispatch();
+  const { appLocale } = useLocale();
+  const locale = appLocale; // Use the appLocale from the useLocale hook
   const fetchData = useCallback(async () => {
     try {
       const data = await fetchStrapiData(
-        "api/global?populate=defaultSeo&populate=navbar&populate[1]=navbar.brandImage&populate=navbar.navbarLinks&populate=navbar.languageSelectLinks&populate=defaultSeo.favicons"
+        `api/global?populate=defaultSeo&populate=navbar&populate[1]=navbar.brandImage&populate=navbar.navbarLinks&populate=navbar.languageSelectLinks&populate=defaultSeo.favicons&populate=footer&populate[2]=footer.sections&populate[3]=footer.sections.contact_infos&locale=${locale}`
       );
-      console.log(data.data); // Log the fetched data for debugging
+      console.log("Global data", data.data); // Log the fetched data for debugging
       dispatch(setGlobal(data.data));
       // handle data
     } catch (error) {
       // handle error
       console.error("Error fetching data:", error);
     }
-  }, [dispatch]);
+  }, [dispatch, locale]);
   useEffect(() => {
     fetchData();
   }, [fetchData]);

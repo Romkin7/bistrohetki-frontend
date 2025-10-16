@@ -14,8 +14,8 @@
 }
 
 .heading-title-1 {
-  font: var(--bh-typography-title1);
-  line-height: var(--bh-size-line-height-title1);
+  font: var(--bh-typography-heading-title1);
+  line-height: var(--bh-line-height-font-heading-title1);
 }
 
 .heading-title-2 {

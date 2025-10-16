@@ -4,11 +4,46 @@
       "link": {
         "navigation": {
           "$value": {
-            "name": "Roboto, sans-serif",
+            "name": "Nunito Sans, sans-serif",
             "style": "normal",
             "weight": "500",
             "ttf": {
-              "value": "styleDictionary/tokens/typography/assets/Roboto-Medium.ttf"
+              "value": "styleDictionary/tokens/typography/assets/NunitoSans-VariableFont_YTLC.ttf"
+            }
+          },
+          "$type": "fontFamily"
+        }
+      },
+      "heading": {
+        "title1": {
+          "$value": {
+            "name": "Nunito Sans, sans-serif",
+            "style": "bold",
+            "weight": "700",
+            "ttf": {
+              "value": "styleDictionary/tokens/typography/assets/NunitoSans-VariableFont_YTLC.ttf"
+            }
+          },
+          "$type": "fontFamily"
+        },
+        "title2": {
+          "$value": {
+            "name": "Nunito Sans, sans-serif",
+            "style": "bold",
+            "weight": "700",
+            "ttf": {
+              "value": "styleDictionary/tokens/typography/assets/NunitoSans-VariableFont_YTLC.ttf"
+            }
+          },
+          "$type": "fontFamily"
+        },
+        "title3": {
+          "$value": {
+            "name": "Nunito Sans, sans-serif",
+            "style": "bold",
+            "weight": "700",
+            "ttf": {
+              "value": "styleDictionary/tokens/typography/assets/NunitoSans-VariableFont_YTLC.ttf"
             }
           },
           "$type": "fontFamily"
@@ -20,6 +55,26 @@
     "font": {
       "link": {
         "navigation": {
+          "$value": {
+            "fontStretch": "100%"
+          },
+          "$type": "fontStretch"
+        }
+      },
+      "heading": {
+        "title1": {
+          "$value": {
+            "fontStretch": "100%"
+          },
+          "$type": "fontStretch"
+        },
+        "title2": {
+          "$value": {
+            "fontStretch": "100%"
+          },
+          "$type": "fontStretch"
+        },
+        "title3": {
           "$value": {
             "fontStretch": "100%"
           },
@@ -37,6 +92,26 @@
           },
           "$type": "fontWeight"
         }
+      },
+      "heading": {
+        "title1": {
+          "$value": {
+            "fontWeight": "700"
+          },
+          "$type": "fontWeight"
+        },
+        "title2": {
+          "$value": {
+            "fontWeight": "700"
+          },
+          "$type": "fontWeight"
+        },
+        "title3": {
+          "$value": {
+            "fontWeight": "700"
+          },
+          "$type": "fontWeight"
+        }
       }
     }
   },
@@ -45,6 +120,20 @@
       "link": {
         "navigation": {
           "$value": { "fontSize": "1rem" },
+          "$type": "fontSize"
+        }
+      },
+      "heading": {
+        "title1": {
+          "$value": { "fontSize": "2.25rem" },
+          "$type": "fontSize"
+        },
+        "title2": {
+          "$value": { "fontSize": "1.5rem" },
+          "$type": "fontSize"
+        },
+        "title3": {
+          "$value": { "fontSize": "1.25rem" },
           "$type": "fontSize"
         }
       }
@@ -56,6 +145,26 @@
         "navigation": {
           "$value": {
             "lineHeight": "1.1875rem"
+          },
+          "$type": "lineHeight"
+        }
+      },
+      "heading": {
+        "title1": {
+          "$value": {
+            "lineHeight": "2.625rem"
+          },
+          "$type": "lineHeight"
+        },
+        "title2": {
+          "$value": {
+            "lineHeight": "1.75rem"
+          },
+          "$type": "lineHeight"
+        },
+        "title3": {
+          "$value": {
+            "lineHeight": "1.5rem"
           },
           "$type": "lineHeight"
         }
@@ -89,6 +198,83 @@
         },
         "type": "typography"
       }
+    },
+    "heading": {
+      "title1": {
+        "$value": {
+          "fontStyle": {
+            "$value": "{asset.font.heading.title1}",
+            "$type": "style"
+          },
+          "fontWeight": {
+            "$value": "{weight.font.heading.title1}",
+            "$type": "fontWeight"
+          },
+          "fontSize": {
+            "$value": "{size.font.heading.title1}",
+            "$type": "fontSize"
+          },
+          "lineHeight": {
+            "$value": "{lineHeight.font.heading.title1}",
+            "$type": "lineHeight"
+          },
+          "fontFamily": {
+            "$value": "{asset.font.heading.title1}",
+            "$type": "fontFamily"
+          }
+        },
+        "type": "typography"
+      },
+      "title2": {
+        "$value": {
+          "fontStyle": {
+            "$value": "{asset.font.heading.title2}",
+            "$type": "style"
+          },
+          "fontWeight": {
+            "$value": "{weight.font.heading.title2}",
+            "$type": "fontWeight"
+          },
+          "fontSize": {
+            "$value": "{size.font.heading.title2}",
+            "$type": "fontSize"
+          },
+          "lineHeight": {
+            "$value": "{lineHeight.font.heading.title2}",
+            "$type": "lineHeight"
+          },
+          "fontFamily": {
+            "$value": "{asset.font.heading.title2}",
+            "$type": "fontFamily"
+          }
+        },
+        "type": "typography"
+      },
+      "title3": {
+        "$value": {
+          "fontStyle": {
+            "$value": "{asset.font.heading.title3}",
+            "$type": "style"
+          },
+          "fontWeight": {
+            "$value": "{weight.font.heading.title3}",
+            "$type": "fontWeight"
+          },
+          "fontSize": {
+            "$value": "{size.font.heading.title3}",
+            "$type": "fontSize"
+          },
+          "lineHeight": {
+            "$value": "{lineHeight.font.heading.title3}",
+            "$type": "lineHeight"
+          },
+          "fontFamily": {
+            "$value": "{asset.font.heading.title3}",
+            "$type": "fontFamily"
+          }
+        }
+      },
+      "type": "typography"
     }
   }
 }

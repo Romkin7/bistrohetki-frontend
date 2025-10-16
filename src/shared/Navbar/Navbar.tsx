@@ -7,6 +7,7 @@ import styles from "./Navbar.module.css";
 import NavbarMenu from "./NavbarMenu/NavbarMenu";
 import NavbarMenuItem from "./NavbarMenu/NavbarMenuItem";
 import type { RootState } from "@/store/store";
+import toUpperCase from "../utils/toUpperCase";
 
 const Navbar: FC = () => {
   const global = useSelector((state: RootState) => state.global);
@@ -15,6 +16,7 @@ const Navbar: FC = () => {
   });
   const navbarNavStyles = clsx({
     [styles.navbarNav]: true, // Example of a modifier class
+    "px-3": true, // Example of a utility class
   });
   return (
     <nav className={navbarStyles}>
@@ -36,7 +38,7 @@ const Navbar: FC = () => {
               href={link.href}
               isExternal={link.isExternal}
               locale={link.locale}
-              textContent={link.textContent}
+              textContent={toUpperCase(link.textContent)}
               id={link.id}
             />
           ))}

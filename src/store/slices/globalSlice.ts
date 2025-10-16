@@ -1,5 +1,5 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
-import type { Global } from "@/zod/global";
+import type { Global } from "@/zod/global/global";
 
 function setInitialState(): Global | null {
   return null;
