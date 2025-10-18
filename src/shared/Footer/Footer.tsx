@@ -34,7 +34,7 @@ const Footer: FC = () => {
           ))}
         </Box>
       </Flex>
-      <Flex direction="column" justify="center" align="center">
+      <Flex direction="column" justify="center" align="center" mt={4}>
         <Paragraph variant="body" color="light">
           &copy; {new Date().getFullYear()} BistroHetki. All rights reserved.
         </Paragraph>

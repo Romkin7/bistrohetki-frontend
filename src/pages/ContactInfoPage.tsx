@@ -24,7 +24,10 @@ const ContactInfoPage: FC = () => {
           {contactData?.mainTitle}
         </Heading>
       </Flex>
-      <Grid templateColumns="repeat(2, 1fr)" gap={4}>
+      <Grid
+        templateColumns={{ base: "repeat(1, 1fr)", md: "repeat(2, 1fr)" }}
+        gap={4}
+      >
         <GridItem>
           <Markdown>{contactData?.content}</Markdown>
         </GridItem>
