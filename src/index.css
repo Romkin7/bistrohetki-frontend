@@ -18,6 +18,12 @@ section {
   min-height: 100vh;
 }
 
+section,
+footer {
+  padding: var(--bh-size-dimension-spacing-9)
+    calc(var(--bh-size-dimension-spacing-9) * 2);
+}
+
 a {
   color: inherit;
   text-decoration: none;
