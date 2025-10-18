@@ -8,6 +8,7 @@ import ContactInfoPage from "@/pages/ContactInfoPage";
 import GalleryPage from "@/pages/GalleryPage";
 import HomePage from "@/pages/HomePage";
 import MenuPage from "@/pages/MenuPage";
+import { SupportedLocalesArray, type SupportedLocale } from "@/zod/locale";
 
 const router = createBrowserRouter([
   {
@@ -19,25 +20,18 @@ const router = createBrowserRouter([
         path: ":locale",
         loader: ({ params }) => {
           // Validate locale parameter
-          const validLocales = ["en", "sv", "es"];
-          if (!validLocales.includes(params.locale || "")) {
+          const validLocales = SupportedLocalesArray.parse([]);
+          if (!validLocales.includes(params.locale as SupportedLocale)) {
             throw new Response("Invalid locale", { status: 404 });
           }
-          return { locale: params.locale };
+          return { locale: params.locale as SupportedLocale };
         },
         children: [
           {
             index: true,
             loader: ({ params }) =>
               homePageLoader({
-                locale:
-                  params.locale === "en"
-                    ? "en"
-                    : params.locale === "sv"
-                      ? "sv-SE"
-                      : params.locale === "es"
-                        ? "es-ES"
-                        : "fi-FI",
+                locale: params.locale as SupportedLocale,
               }),
             element: <HomePage />,
           },
@@ -45,14 +39,7 @@ const router = createBrowserRouter([
             path: "gallery",
             loader: ({ params }) =>
               galleryPageLoader({
-                locale:
-                  params.locale === "en"
-                    ? "en"
-                    : params.locale === "sv"
-                      ? "sv-SE"
-                      : params.locale === "es"
-                        ? "es-ES"
-                        : "fi-FI",
+                locale: params.locale as SupportedLocale,
               }),
             element: <GalleryPage />,
           },
@@ -60,14 +47,7 @@ const router = createBrowserRouter([
             path: "menu",
             loader: ({ params }) =>
               menuPageLoader({
-                locale:
-                  params.locale === "en"
-                    ? "en"
-                    : params.locale === "sv"
-                      ? "sv-SE"
-                      : params.locale === "es"
-                        ? "es-ES"
-                        : "fi-FI",
+                locale: params.locale as SupportedLocale,
               }),
             element: <MenuPage />,
           },
@@ -75,18 +55,44 @@ const router = createBrowserRouter([
             path: "contact",
             loader: ({ params }) =>
               contactInfoPageLoader({
-                locale:
-                  params.locale === "en"
-                    ? "en"
-                    : params.locale === "sv"
-                      ? "sv-SE"
-                      : params.locale === "es"
-                        ? "es-ES"
-                        : "fi-FI",
+                locale: params.locale as SupportedLocale,
               }),
             element: <ContactInfoPage />,
           },
         ],
+      },
+      // Default routes without locale parameter (assumed 'fi-FI')
+      {
+        index: true,
+        loader: () =>
+          homePageLoader({
+            locale: "fi-FI",
+          }),
+        element: <HomePage />,
+      },
+      {
+        path: "gallery",
+        loader: () =>
+          galleryPageLoader({
+            locale: "fi-FI",
+          }),
+        element: <GalleryPage />,
+      },
+      {
+        path: "menu",
+        loader: () =>
+          menuPageLoader({
+            locale: "fi-FI",
+          }),
+        element: <MenuPage />,
+      },
+      {
+        path: "contact",
+        loader: () =>
+          contactInfoPageLoader({
+            locale: "fi-FI",
+          }),
+        element: <ContactInfoPage />,
       },
     ],
   },

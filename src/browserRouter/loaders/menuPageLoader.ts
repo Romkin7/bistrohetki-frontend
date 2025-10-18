@@ -1,7 +1,7 @@
 import { fetchStrapiData } from "../../api/fetchStrapiData";
 import type { LoaderProps } from "./loaderProps";
 
-const menuPageLoader = async ({ locale = "fi-FI" }: LoaderProps) => {
+const menuPageLoader = async ({ locale }: LoaderProps) => {
   try {
     const { data } = await fetchStrapiData(
       `api/menu-page?populate=menus&locale=${locale}`

@@ -1,7 +1,7 @@
 import { fetchStrapiData } from "../../api/fetchStrapiData";
 import type { LoaderProps } from "./loaderProps";
 
-const contactInfoPageLoader = async ({ locale = "fi-FI" }: LoaderProps) => {
+const contactInfoPageLoader = async ({ locale }: LoaderProps) => {
   try {
     const { data } = await fetchStrapiData(
       `api/contact-info-page?populate=contact_infos&locale=${locale}`

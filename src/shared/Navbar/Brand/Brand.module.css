@@ -1,5 +1,7 @@
 .brand {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: calc(
     var(--bh-size-dimension-spacing-3) + var(--bh-size-dimension-spacing-4) +
       var(--bh-size-dimension-spacing-8)

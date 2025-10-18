@@ -1,7 +1,7 @@
 import { fetchStrapiData } from "../../api/fetchStrapiData";
 import type { LoaderProps } from "./loaderProps";
 
-const galleryPageLoader = async ({ locale = "fi-FI" }: LoaderProps) => {
+const galleryPageLoader = async ({ locale }: LoaderProps) => {
   try {
     const { data } = await fetchStrapiData(
       `api/galleria-page?populate=images&locale=${locale}`

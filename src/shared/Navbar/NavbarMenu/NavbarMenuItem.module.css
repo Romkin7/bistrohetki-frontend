@@ -1,0 +1,7 @@
+.navbarMenuItem {
+  margin-right: var(--bh-size-dimension-spacing-4);
+}
+
+.navbarMenuItem:first-child {
+  margin-left: var(--bh-size-dimension-spacing-4);
+}

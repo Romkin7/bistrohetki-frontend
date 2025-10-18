@@ -1,7 +1,7 @@
 import { fetchStrapiData } from "../../api/fetchStrapiData";
 import type { LoaderProps } from "./loaderProps";
 
-const homePageLoader = async ({ locale = "fi-FI" }: LoaderProps) => {
+const homePageLoader = async ({ locale }: LoaderProps) => {
   try {
     const { data } = await fetchStrapiData(`api/home-page?locale=${locale}`);
     console.log("Home Page Data:", data); // Log the fetched data for debugging

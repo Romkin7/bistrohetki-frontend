@@ -16,7 +16,6 @@ const PrimaryLayout: FC = () => {
       const data = await fetchStrapiData(
         `api/global?populate=defaultSeo&populate=navbar&populate[1]=navbar.brandImage&populate=navbar.navbarLinks&populate=navbar.languageSelectLinks&populate=defaultSeo.favicons&populate=footer&populate[2]=footer.sections&populate[3]=footer.sections.contact_infos&locale=${locale}`
       );
-      console.log("Global data", data.data); // Log the fetched data for debugging
       dispatch(setGlobal(data.data));
       // handle data
     } catch (error) {

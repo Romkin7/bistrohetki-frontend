@@ -1,17 +1,3 @@
 .navbar {
-  display: flex;
   background-color: var(--bh-color-brand-primary);
-  padding: var(--bh-size-dimension-spacing-xs)
-    var(--bh-size-dimension-spacing-zero);
-  padding-right: var(--bh-size-dimension-spacing-s);
-}
-
-.navbarNav {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  padding: var(--bh-size-dimension-spacing-s)
-    var(--bh-size-dimension-spacing-zero);
-  width: 100%;
 }

@@ -6,6 +6,7 @@ import type { GalleryPageData } from "@/zod/pages/galleryPageData";
 
 const GalleryPage: FC = () => {
   const galleryPageData: GalleryPageData = useLoaderData();
+  console.log("Gallery Page Data on gallery page:", galleryPageData); // Debugging line
   return (
     <section>
       <div className="container mx-auto px-4 py-8">
