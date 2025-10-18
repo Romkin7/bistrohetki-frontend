@@ -1,5 +1,9 @@
 import { useParams } from "react-router";
-import { LocaleMap, type Locale } from "@/zod/locale";
+import {
+  LocaleMap,
+  // SUPPORTED_LOCALES,
+  type Locale,
+} from "@/zod/locale";
 
 /**
  * Hook to detect the current locale from the URL
@@ -28,17 +32,24 @@ export const useLocale = () => {
 export const useLocalizedUrl = () => {
   const { urlLocale } = useLocale();
 
-  const buildUrl = (path: string, locale?: string): string => {
-    const targetLocale = locale || urlLocale;
+  function cleanpath(path: string): string {
+    return path.replace(/^\/(fi-FI|fi|en|en-GB|en-US|es|es-ES)(\/|$)/, "/");
+  }
 
-    // Don't add locale prefix for default Finnish
-    if (targetLocale === "fi" || !targetLocale) {
-      return path.startsWith("/") ? path : `/${path}`;
+  const buildUrl = (path: string, locale?: string): string => {
+    // const supportedLocales = SUPPORTED_LOCALES;
+    const targetLocale = locale || urlLocale;
+    if (path.includes("fi-FI") || targetLocale === "fi-FI") {
+      // Default locale, no prefix
+      return `${cleanpath(path)}`;
     }
 
     // Add locale prefix for other languages
-    const cleanPath = path.startsWith("/") ? path.slice(1) : path;
-    return `/${targetLocale}${cleanPath ? `/${cleanPath}` : ""}`;
+    // remove old locale from path if present
+    console.log("past if:", path);
+    const cleanedPath = cleanpath(path);
+    console.log("cleanedPath:", cleanedPath);
+    return `/${targetLocale}${cleanedPath.startsWith("/") ? "" : "/"}${cleanedPath}`;
   };
 
   return { buildUrl, currentLocale: urlLocale };

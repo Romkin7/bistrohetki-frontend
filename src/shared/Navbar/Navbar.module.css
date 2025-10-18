@@ -1,3 +1,4 @@
 .navbar {
   background-color: var(--bh-color-brand-primary);
+  padding-right: var(--bh-size-dimension-spacing-4);
 }

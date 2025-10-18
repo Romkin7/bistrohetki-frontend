@@ -1,1 +1,18 @@
-{"name":"eclair-icons","description":"Eclair DS - Icons package that includes react wrapper svg icon components and their types.","version":"2.0.0","repository":{"type":"git","url":"https://github.com/DevDesignRT/eclair-icons"},"author":{"email":"devdesign@devdesign.fi","name":"DevDesign","url":"https://www.devdesign.fi"},"license":"MIT","main":"commonjs/index.js","module":"esm/index.js","types":"esm/index.d.ts","peerDependencies":{"react":">=18.2.0","react-dom":">=18.2.0"}}
+{
+  "name": "eclair-icons",
+  "description": "Eclair DS - Icons package that includes react wrapper svg icon components and their types.",
+  "version": "2.0.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DevDesignRT/eclair-icons"
+  },
+  "author": {
+    "email": "devdesign@devdesign.fi",
+    "name": "DevDesign",
+    "url": "https://www.devdesign.fi"
+  },
+  "license": "MIT",
+  "main": "esm/index.js",
+  "module": "esm/index.js",
+  "types": "esm/index.d.ts"
+}

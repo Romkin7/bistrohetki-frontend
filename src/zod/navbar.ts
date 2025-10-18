@@ -1,5 +1,7 @@
 import z from "zod";
 import { mediaSchema } from "./media";
+import { languageSelectModelSchema } from "./collections/languageSelect";
+import { socialLinkModelSchema } from "./collections/socialLinkModel";
 
 export const nvabarLinkSchema = z.object({
   id: z.number(),
@@ -17,6 +19,8 @@ export const navBarSchema = z.object({
   brandImage: mediaSchema,
   title: z.string(),
   navbarLinks: z.array(nvabarLinkSchema).default([]),
+  languageSelectLinks: z.array(languageSelectModelSchema).default([]),
+  socialLinks: z.array(socialLinkModelSchema).default([]),
 });
 
 export type Navbar = z.infer<typeof navBarSchema>;

@@ -1,7 +1,9 @@
-import { Flex } from "@chakra-ui/react";
+import { Flex, Group, Icon } from "@chakra-ui/react";
 import { type FC } from "react";
 import { useSelector } from "react-redux";
 import LanguageSelect from "../LanguageSelect/LanguageSelect";
+import ExternalLink from "../Link/ExternalLink";
+import { IconFacebook, IconInstagram } from "../iconLibrary/esm";
 import toUpperCase from "../utils/toUpperCase";
 import Brand from "./Brand/Barnd";
 import styles from "./Navbar.module.css";
@@ -34,7 +36,23 @@ const Navbar: FC = () => {
             />
           ))}
         </NavbarMenu>
-        <Flex alignItems="center">
+        <Group ml="auto">
+          {global?.navbar.socialLinks.map((link) => (
+            <ExternalLink
+              key={link.id}
+              href={link.href}
+              external={true}
+              variant="inline"
+              color="dark"
+            >
+              <Icon size="lg" aria-label={link.textContent}>
+                {link.icon === "facebook" && <IconFacebook />}
+                {link.icon === "instagram" && <IconInstagram />}
+              </Icon>
+            </ExternalLink>
+          ))}
+        </Group>
+        <Flex alignItems="center" ml="4">
           <LanguageSelect />
         </Flex>
       </Flex>
