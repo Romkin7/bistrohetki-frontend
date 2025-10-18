@@ -1,11 +1,13 @@
+import { GridItem } from "@chakra-ui/react";
 import { type FC } from "react";
+import styles from "./NavbarMenuItem.module.css";
 import ExternalLink from "@/shared/Link/ExternalLink";
 import Link from "@/shared/Link/Link";
 import type { NavbarLink } from "@/zod/navbar";
 
 const NavbarMenuItem: FC<NavbarLink> = (link) => {
   return (
-    <li key={link.id}>
+    <GridItem colSpan={1} className={styles.navbarMenuItem}>
       {link.isExternal ? (
         <ExternalLink variant="navigation" color="dark" href={link.href}>
           {link.textContent}
@@ -15,7 +17,7 @@ const NavbarMenuItem: FC<NavbarLink> = (link) => {
           {link.textContent}
         </Link>
       )}
-    </li>
+    </GridItem>
   );
 };
 

@@ -1,36 +1,27 @@
-import clsx from "clsx";
+import { Flex } from "@chakra-ui/react";
 import { type FC } from "react";
 import { useSelector } from "react-redux";
-import { Link as RouterLink } from "react-router";
-import Brand from "./Brand/Brand";
+import LanguageSelect from "../LanguageSelect/LanguageSelect";
+import toUpperCase from "../utils/toUpperCase";
+import Brand from "./Brand/Barnd";
 import styles from "./Navbar.module.css";
 import NavbarMenu from "./NavbarMenu/NavbarMenu";
 import NavbarMenuItem from "./NavbarMenu/NavbarMenuItem";
 import type { RootState } from "@/store/store";
-import toUpperCase from "../utils/toUpperCase";
 
 const Navbar: FC = () => {
   const global = useSelector((state: RootState) => state.global);
-  const navbarStyles = clsx(styles.navbar, {
-    [styles.navbar]: true, // Example of a modifier class
-  });
-  const navbarNavStyles = clsx({
-    [styles.navbarNav]: true, // Example of a modifier class
-    "px-3": true, // Example of a utility class
-  });
   return (
-    <nav className={navbarStyles}>
-      <RouterLink to="/">
+    <nav className={styles.navbar}>
+      <Flex>
         <Brand
           image={{
             src: global?.navbar.brandImage.url as string,
             alt: global?.navbar.brandImage.name as string,
             title: global?.navbar.brandImage.name as string,
           }}
-          ariaLabel="BistroHetki logo"
+          ariaLabel={global?.navbar.brandImage.name as string}
         />
-      </RouterLink>
-      <div className={navbarNavStyles}>
         <NavbarMenu>
           {global?.navbar.navbarLinks.map((link) => (
             <NavbarMenuItem
@@ -43,7 +34,10 @@ const Navbar: FC = () => {
             />
           ))}
         </NavbarMenu>
-      </div>
+        <Flex alignItems="center">
+          <LanguageSelect />
+        </Flex>
+      </Flex>
     </nav>
   );
 };

@@ -1,7 +1,8 @@
 import z from "zod";
+import { supportedLocales } from "@/zod/locale";
 
 export const loaderPropsSchema = z.object({
-  locale: z.enum(["fi-FI", "sv-SE", "en", "es-ES"]).default("fi-FI"),
+  locale: supportedLocales,
 });
 
 export type LoaderProps = z.infer<typeof loaderPropsSchema>;
