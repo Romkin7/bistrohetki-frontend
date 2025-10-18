@@ -19,7 +19,10 @@ const GalleryPage: FC = () => {
           {galleryPageData?.mainTitle}
         </Heading>
       </Flex>
-      <Grid templateColumns="repeat(4, 1fr)" gap={4}>
+      <Grid
+        templateColumns={{ base: "repeat(1, 1fr)", md: "repeat(4, 1fr)" }}
+        gap={4}
+      >
         {galleryPageData.images.map((image) => (
           <GridItem key={image.id}>
             <Box key={image.id}>

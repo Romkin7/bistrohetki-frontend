@@ -31,7 +31,10 @@ const MenuPage: FC = () => {
           {menuPageData?.subTitle}
         </Paragraph>
       </Flex>
-      <Grid templateColumns="repeat(3, 1fr)" gap={4}>
+      <Grid
+        templateColumns={{ base: "repeat(1, 1fr)", md: "repeat(3, 1fr)" }}
+        gap={4}
+      >
         {menuPageData.menus.map((menu) => (
           <GridItem key={menu.id}>
             <Box
