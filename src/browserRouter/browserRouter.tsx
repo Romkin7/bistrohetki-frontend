@@ -8,7 +8,7 @@ import ContactInfoPage from "@/pages/ContactInfoPage";
 import GalleryPage from "@/pages/GalleryPage";
 import HomePage from "@/pages/HomePage";
 import MenuPage from "@/pages/MenuPage";
-import { SupportedLocalesArray, type SupportedLocale } from "@/zod/locale";
+import { SUPPORTED_LOCALES, type SupportedLocale } from "@/zod/locale";
 
 const router = createBrowserRouter([
   {
@@ -19,8 +19,8 @@ const router = createBrowserRouter([
       {
         path: ":locale",
         loader: ({ params }) => {
-          // Validate locale parameter
-          const validLocales = SupportedLocalesArray.parse([]);
+          // Validate locale parameter using the enum values
+          const validLocales = SUPPORTED_LOCALES; // Use the plain array for includes check
           if (!validLocales.includes(params.locale as SupportedLocale)) {
             throw new Response("Invalid locale", { status: 404 });
           }

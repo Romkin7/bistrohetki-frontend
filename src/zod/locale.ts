@@ -1,8 +1,19 @@
 import z from "zod";
 
-export const supportedLocales = z
-  .enum(["fi", "fi-FI", "sv", "sv-SE", "en", "en-US", "en-GB", "es", "es-ES"])
-  .default("fi-FI");
+// Define the supported locales as a const array first
+export const SUPPORTED_LOCALES = [
+  "fi",
+  "fi-FI",
+  "sv",
+  "sv-SE",
+  "en",
+  "en-US",
+  "en-GB",
+  "es",
+  "es-ES",
+] as const;
+
+export const supportedLocales = z.enum(SUPPORTED_LOCALES).default("fi-FI");
 
 export type SupportedLocale = z.infer<typeof supportedLocales>;
 export const SupportedLocalesArray = supportedLocales.array();
@@ -26,9 +37,3 @@ export const LocaleMap = {
 };
 
 export type LocaleMapType = Record<SupportedLocale, Locale>;
-
-export const localeStateSchema = z.object({
-  locale: localeSchema,
-});
-
-export type LocaleState = z.infer<typeof localeStateSchema>;
