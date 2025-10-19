@@ -5,12 +5,8 @@ import StyleDictionary from "style-dictionary";
 function stringifyTypography(typography) {
   const { fontSize, fontWeight, fontStyle, fontFamily, lineHeight } =
     typography;
-  console.log("fontWeight:", fontWeight);
-  console.log("fontSize:", fontSize);
-  console.log("lineHeight:", lineHeight);
-  console.log("fontFamily:", fontFamily);
-  return `${fontStyle["$value"].style} ${fontWeight["$value"]} ${fontSize["$value"]}/${lineHeight["$value"]} ${JSON.stringify(
-    fontFamily["$value"].name
+  return `${fontStyle["$value"]} ${fontWeight["$value"]} ${fontSize["$value"]}/${lineHeight["$value"]} ${JSON.stringify(
+    fontFamily["$value"]
   )}`;
 }
 

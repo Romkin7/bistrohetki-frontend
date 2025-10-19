@@ -1,8 +1,9 @@
 import z from "zod";
 import { localeSchema } from "../locale";
-import { navBarSchema } from "../navbar";
+import { navBarSchema } from "../components/navbar";
 import { seoSchema } from "./seoModel";
 import { contactInfoModelSchema } from "../collections/contactInfoModel";
+import { socialLinkModelSchema } from "../collections/socialLinkModel";
 
 const madeBySchema = z.object({
   startText: z.string(),
@@ -15,8 +16,9 @@ const madeBySchema = z.object({
 
 const sectionSchema = z.object({
   id: z.number().int().positive(),
-  section_title: z.string(),
-  contact_infos: z.array(contactInfoModelSchema),
+  sectionTitle: z.string(),
+  contactInfos: z.array(contactInfoModelSchema),
+  socialLinks: z.array(socialLinkModelSchema),
 });
 
 const footerSchema = z.object({

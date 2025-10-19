@@ -3,50 +3,78 @@
     "font": {
       "link": {
         "navigation": {
-          "$value": {
-            "name": "Nunito Sans, sans-serif",
-            "style": "normal",
-            "weight": "500",
-            "ttf": {
-              "value": "styleDictionary/tokens/typography/assets/NunitoSans-VariableFont_YTLC.ttf"
-            }
+          "name": {
+            "value": "Nunito Sans, sans-serif",
+            "type": "fontFamily"
           },
-          "$type": "fontFamily"
+          "style": {
+            "value": "normal",
+            "type": "fontStyle"
+          },
+          "weight": {
+            "value": "500",
+            "type": "fontWeight"
+          },
+          "ttf": {
+            "value": "styleDictionary/tokens/typography/assets/NunitoSans-VariableFont_YTLC.ttf",
+            "type": "asset"
+          }
         }
       },
       "heading": {
         "title1": {
-          "$value": {
-            "name": "Nunito Sans, sans-serif",
-            "style": "bold",
-            "weight": "700",
-            "ttf": {
-              "value": "styleDictionary/tokens/typography/assets/NunitoSans-VariableFont_YTLC.ttf"
-            }
+          "name": {
+            "value": "Nunito Sans, sans-serif",
+            "type": "fontFamily"
           },
-          "$type": "fontFamily"
+          "style": {
+            "value": "bold",
+            "type": "fontStyle"
+          },
+          "weight": {
+            "value": "700",
+            "type": "fontWeight"
+          },
+          "ttf": {
+            "value": "styleDictionary/tokens/typography/assets/NunitoSans-VariableFont_YTLC.ttf",
+            "type": "asset"
+          }
         },
         "title2": {
-          "$value": {
-            "name": "Nunito Sans, sans-serif",
-            "style": "bold",
-            "weight": "700",
-            "ttf": {
-              "value": "styleDictionary/tokens/typography/assets/NunitoSans-VariableFont_YTLC.ttf"
-            }
+          "name": {
+            "value": "Nunito Sans, sans-serif",
+            "type": "fontFamily"
           },
-          "$type": "fontFamily"
+          "style": {
+            "value": "bold",
+            "type": "fontStyle"
+          },
+          "weight": {
+            "value": "700",
+            "type": "fontWeight"
+          },
+          "ttf": {
+            "value": "styleDictionary/tokens/typography/assets/NunitoSans-VariableFont_YTLC.ttf",
+            "type": "asset"
+          }
         },
         "title3": {
-          "$value": {
-            "name": "Nunito Sans, sans-serif",
-            "style": "bold",
-            "weight": "700",
-            "ttf": {
-              "value": "styleDictionary/tokens/typography/assets/NunitoSans-VariableFont_YTLC.ttf"
-            }
+          "name": {
+            "value": "Nunito Sans, sans-serif",
+            "type": "fontFamily"
           },
-          "$type": "fontFamily"
+          "style": {
+            "value": "bold",
+            "type": "fontStyle"
+          },
+          "weight": {
+            "value": "700",
+            "type": "fontWeight"
+          },
+          "ttf": {
+            "value": "styleDictionary/tokens/typography/assets/NunitoSans-VariableFont_YTLC.ttf",
+            "type": "asset"
+          }
         }
       }
     }
@@ -176,23 +204,23 @@
       "navigation": {
         "$value": {
           "fontStyle": {
-            "$value": "{asset.font.link.navigation}",
+            "$value": "normal",
             "$type": "style"
           },
           "fontWeight": {
-            "$value": "{weight.font.link.navigation}",
+            "$value": "500",
             "$type": "fontWeight"
           },
           "fontSize": {
-            "$value": "{size.font.link.navigation}",
+            "$value": "1rem",
             "$type": "fontSize"
           },
           "lineHeight": {
-            "$value": "{lineHeight.font.link.navigation}",
+            "$value": "1.1875rem",
             "$type": "lineHeight"
           },
           "fontFamily": {
-            "$value": "{asset.font.link.navigation}",
+            "$value": "Nunito Sans, sans-serif",
             "$type": "fontFamily"
           }
         },
@@ -203,23 +231,23 @@
       "title1": {
         "$value": {
           "fontStyle": {
-            "$value": "{asset.font.heading.title1}",
+            "$value": "normal",
             "$type": "style"
           },
           "fontWeight": {
-            "$value": "{weight.font.heading.title1}",
+            "$value": "700",
             "$type": "fontWeight"
           },
           "fontSize": {
-            "$value": "{size.font.heading.title1}",
+            "$value": "2.25rem",
             "$type": "fontSize"
           },
           "lineHeight": {
-            "$value": "{lineHeight.font.heading.title1}",
+            "$value": "2.625rem",
             "$type": "lineHeight"
           },
           "fontFamily": {
-            "$value": "{asset.font.heading.title1}",
+            "$value": "Nunito Sans, sans-serif",
             "$type": "fontFamily"
           }
         },
@@ -228,23 +256,23 @@
       "title2": {
         "$value": {
           "fontStyle": {
-            "$value": "{asset.font.heading.title2}",
+            "$value": "normal",
             "$type": "style"
           },
           "fontWeight": {
-            "$value": "{weight.font.heading.title2}",
+            "$value": "600",
             "$type": "fontWeight"
           },
           "fontSize": {
-            "$value": "{size.font.heading.title2}",
+            "$value": "1.5rem",
             "$type": "fontSize"
           },
           "lineHeight": {
-            "$value": "{lineHeight.font.heading.title2}",
+            "$value": "1.75rem",
             "$type": "lineHeight"
           },
           "fontFamily": {
-            "$value": "{asset.font.heading.title2}",
+            "$value": "Nunito Sans, sans-serif",
             "$type": "fontFamily"
           }
         },
@@ -253,23 +281,23 @@
       "title3": {
         "$value": {
           "fontStyle": {
-            "$value": "{asset.font.heading.title3}",
+            "$value": "normal",
             "$type": "style"
           },
           "fontWeight": {
-            "$value": "{weight.font.heading.title3}",
+            "$value": "600",
             "$type": "fontWeight"
           },
           "fontSize": {
-            "$value": "{size.font.heading.title3}",
+            "$value": "1.25rem",
             "$type": "fontSize"
           },
           "lineHeight": {
-            "$value": "{lineHeight.font.heading.title3}",
+            "$value": "1.5rem",
             "$type": "lineHeight"
           },
           "fontFamily": {
-            "$value": "{asset.font.heading.title3}",
+            "$value": "Nunito Sans, sans-serif",
             "$type": "fontFamily"
           }
         }

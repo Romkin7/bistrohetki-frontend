@@ -14,7 +14,7 @@ const PrimaryLayout: FC = () => {
   const fetchData = useCallback(async () => {
     try {
       const data = await fetchStrapiData(
-        `api/global?populate=defaultSeo&populate=navbar&populate[1]=navbar.brandImage&populate=navbar.navbarLinks&populate=navbar.languageSelectLinks&populate=navbar.socialLinks&populate=defaultSeo.favicons&populate=footer&populate[2]=footer.sections&populate[3]=footer.sections.contact_infos&locale=${locale}`
+        `api/global?populate=defaultSeo&populate=navbar&populate[1]=navbar.brandImage&populate=navbar.navbarLinks&populate=navbar.languageSelectLinks&populate=navbar.socialLinks&populate=defaultSeo.favicons&populate=footer&populate[2]=footer.sections&populate[3]=footer.sections.contactInfos&populate[4]=footer.sections.socialLinks&locale=${locale}`
       );
       dispatch(setGlobal(data.data));
       // handle data

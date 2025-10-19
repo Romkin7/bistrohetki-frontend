@@ -3,7 +3,7 @@ import type { FC } from "react";
 import { Link as RouterLink } from "react-router";
 import type z from "zod";
 import styles from "./Link.module.css";
-import type { linkPropsSchema } from "@/zod/linkProps";
+import type { linkPropsSchema } from "@/zod/components/linkProps";
 
 type LinkPropsSchema = z.infer<typeof linkPropsSchema>;
 type LinkProps = LinkPropsSchema &

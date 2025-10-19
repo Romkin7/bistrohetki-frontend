@@ -1,12 +1,13 @@
 .link {
-  margin: var(--bh-size-spacing-zero);
-  padding: var(--bh-size-spacing-zero);
+  margin: var(--bh-size-dimencion-spacing-0);
+  padding: var(--bh-size-dimencion-spacing-0);
 }
 
 .link-standalone {
   display: block;
   font: var(--bh-typography-link);
   line-height: var(--bh-size-line-height-link);
+  margin-bottom: var(--bh-size-dimencion-spacing-4);
 }
 
 .link-inline {
