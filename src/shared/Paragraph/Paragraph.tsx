@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import { type FC } from "react";
 import styles from "./Paragraph.module.css";
-import type { ParagraphProps } from "@/zod/paragraphProps";
+import type { ParagraphProps } from "@/zod/components/paragraphProps";
 
 const Paragraph: FC<ParagraphProps> = ({ variant, color, children }) => {
   const paragraphStyles = clsx({

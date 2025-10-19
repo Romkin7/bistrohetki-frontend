@@ -2,8 +2,7 @@ import clsx from "clsx";
 import type { FC } from "react";
 import type { z } from "zod";
 import styles from "./Heading.module.css";
-
-import type { headingPropsSchema } from "@/zod/headingProps";
+import type { headingPropsSchema } from "@/zod/components/headingProps";
 
 type HeadingProps = z.infer<typeof headingPropsSchema>;
 

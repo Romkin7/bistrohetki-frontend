@@ -2,7 +2,7 @@ import { Image } from "@chakra-ui/react";
 import clsx from "clsx";
 import { type FC } from "react";
 import styles from "./Brand.module.css";
-import type { BrandProps } from "@/zod/brandProps";
+import type { BrandProps } from "@/zod/components/brandProps";
 
 const Brand: FC<BrandProps> = ({ image, ariaLabel }) => {
   const brandStyles = clsx({

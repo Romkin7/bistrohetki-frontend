@@ -1,5 +1,10 @@
 import z from "zod";
-import { pictureSchema } from "./pictureProps";
+
+export const pictureSchema = z.object({
+  src: z.url(),
+  alt: z.string(),
+  title: z.string(),
+});
 
 export const brandPropsSchema = z.object({
   image: pictureSchema,
@@ -7,3 +12,4 @@ export const brandPropsSchema = z.object({
 });
 
 export type BrandProps = z.infer<typeof brandPropsSchema>;
+export type Picture = z.infer<typeof pictureSchema>;

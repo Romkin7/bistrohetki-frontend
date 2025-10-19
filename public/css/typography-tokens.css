@@ -1,0 +1,26 @@
+/**
+ * Do not edit directly, this file was auto-generated.
+ */
+
+:root {
+  --bh-stretch-font-link-navigation: 100%;
+  --bh-stretch-font-heading-title1: 100%;
+  --bh-stretch-font-heading-title2: 100%;
+  --bh-stretch-font-heading-title3: 100%;
+  --bh-weight-font-link-navigation: 500;
+  --bh-weight-font-heading-title1: 700;
+  --bh-weight-font-heading-title2: 700;
+  --bh-weight-font-heading-title3: 700;
+  --bh-size-font-link-navigation: 1rem;
+  --bh-size-font-heading-title1: 2.25rem;
+  --bh-size-font-heading-title2: 1.5rem;
+  --bh-size-font-heading-title3: 1.25rem;
+  --bh-line-height-font-link-navigation: 1.1875rem;
+  --bh-line-height-font-heading-title1: 2.625rem;
+  --bh-line-height-font-heading-title2: 1.75rem;
+  --bh-line-height-font-heading-title3: 1.5rem;
+  --bh-typography-link-navigation: normal 500 1rem/1.1875rem "Nunito Sans, sans-serif";
+  --bh-typography-heading-title1: normal 700 2.25rem/2.625rem "Nunito Sans, sans-serif";
+  --bh-typography-heading-title2: normal 600 1.5rem/1.75rem "Nunito Sans, sans-serif";
+  --bh-typography-heading-title3: normal 600 1.25rem/1.5rem "Nunito Sans, sans-serif";
+}

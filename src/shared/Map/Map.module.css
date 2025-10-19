@@ -1,3 +1,6 @@
+.map {
+  margin-top: var(--bh-size-dimension-spacing-6);
+}
 .map,
 .map * {
   width: 100%;

@@ -6,13 +6,20 @@ import ExternalLink from "../Link/ExternalLink";
 import { IconFacebook, IconInstagram } from "../iconLibrary/esm";
 import toUpperCase from "../utils/toUpperCase";
 import Brand from "./Brand/Barnd";
+import MobileNavbarMenu from "./MobileNavbarMenu/MobileNavbarMenu";
 import styles from "./Navbar.module.css";
 import NavbarMenu from "./NavbarMenu/NavbarMenu";
 import NavbarMenuItem from "./NavbarMenu/NavbarMenuItem";
+import { useLocalizedUrl } from "@/hooks/useLocale";
 import type { RootState } from "@/store/store";
+import type { SlimLanguageSelectModel } from "@/zod/collections/languageSelect";
 
 const Navbar: FC = () => {
   const global = useSelector((state: RootState) => state.global);
+  const selectedLanguage = useSelector(
+    (state: RootState) => state.selectedLanguage as SlimLanguageSelectModel
+  );
+  const { buildUrl } = useLocalizedUrl();
   return (
     <nav className={styles.navbar}>
       <Flex>
@@ -24,11 +31,11 @@ const Navbar: FC = () => {
           }}
           ariaLabel={global?.navbar.brandImage.name as string}
         />
-        <NavbarMenu>
+        <NavbarMenu display={{ base: "none", md: "flex" }}>
           {global?.navbar.navbarLinks.map((link) => (
             <NavbarMenuItem
               key={link.id}
-              href={link.href}
+              href={buildUrl(link.href, selectedLanguage.locale)}
               isExternal={link.isExternal}
               locale={link.locale}
               textContent={toUpperCase(link.textContent)}
@@ -36,8 +43,9 @@ const Navbar: FC = () => {
             />
           ))}
         </NavbarMenu>
+        <MobileNavbarMenu links={global?.navbar.navbarLinks} />
         <Group ml="auto">
-          {global?.navbar.socialLinks.map((link) => (
+          {global?.navbar?.socialLinks?.map((link) => (
             <ExternalLink
               key={link.id}
               href={link.href}

@@ -1,6 +1,6 @@
 import type { FC } from "react";
 import Heading from "../Heading/Heading";
-import type { HeroProps } from "@/zod/heroProps";
+import type { HeroProps } from "@/zod/components/heroProps";
 
 const Hero: FC<HeroProps> = ({ backgroundImageUrl, ariaLabel }) => {
   return (

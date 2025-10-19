@@ -38,6 +38,7 @@ export const useLocalizedUrl = () => {
 
   const buildUrl = (path: string, locale?: string): string => {
     // const supportedLocales = SUPPORTED_LOCALES;
+    console.log("buildUrl called with path:", path, "and locale:", locale);
     const targetLocale = locale || urlLocale;
     if (path.includes("fi-FI") || targetLocale === "fi-FI") {
       // Default locale, no prefix
@@ -46,9 +47,7 @@ export const useLocalizedUrl = () => {
 
     // Add locale prefix for other languages
     // remove old locale from path if present
-    console.log("past if:", path);
     const cleanedPath = cleanpath(path);
-    console.log("cleanedPath:", cleanedPath);
     return `/${targetLocale}${cleanedPath.startsWith("/") ? "" : "/"}${cleanedPath}`;
   };
 

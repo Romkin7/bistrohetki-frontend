@@ -19,28 +19,28 @@
 }
 
 .heading-title-2 {
-  font: var(--bh-typography-title2);
-  line-height: var(--bh-size-line-height-title2);
+  font: var(--bh-typography-heading-title2);
+  line-height: var(--bh-line-height-font-heading-title2);
 }
 
 .heading-title-3 {
-  font: var(--bh-typography-title3);
-  line-height: var(--bh-size-line-height-title3);
+  font: var(--bh-typography-heading-title3);
+  line-height: var(--bh-line-height-font-heading-title3);
 }
 
 .heading-title-4 {
-  font: var(--bh-typography-title4);
-  line-height: var(--bh-size-line-height-title4);
+  font: var(--bh-typography-heading-title4);
+  line-height: var(--bh-line-height-font-heading-title4);
 }
 
 .heading-title-5 {
-  font: var(--bh-typography-title5);
-  line-height: var(--bh-size-line-height-title5);
+  font: var(--bh-typography-heading-title5);
+  line-height: var(--bh-line-height-font-heading-title5);
 }
 
 .heading-title-6 {
-  font: var(--bh-typography-title6);
-  line-height: var(--bh-size-line-height-title6);
+  font: var(--bh-typography-heading-title6);
+  line-height: var(--bh-line-height-font-heading-title6);
 }
 
 .heading-dark {

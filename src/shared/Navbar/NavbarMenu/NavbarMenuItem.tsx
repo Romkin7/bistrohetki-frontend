@@ -3,7 +3,7 @@ import { type FC } from "react";
 import styles from "./NavbarMenuItem.module.css";
 import ExternalLink from "@/shared/Link/ExternalLink";
 import Link from "@/shared/Link/Link";
-import type { NavbarLink } from "@/zod/navbar";
+import type { NavbarLink } from "@/zod/components/navbar";
 
 const NavbarMenuItem: FC<NavbarLink> = (link) => {
   return (
