@@ -45,15 +45,12 @@ const MenuPage: FC = () => {
               borderWidth="1px"
               borderRadius="lg"
             >
-              <Heading
-                tag="h2"
-                variant="title-2"
-                color="dark"
-                ariaLabel={menu.alternativeText}
-              >
-                {menu.alternativeText}
-              </Heading>
-              <Image src={menu.url} alt={menu.alternativeText} fit="contain" />
+              <Image
+                src={menu.url}
+                alt={menu.alternativeText}
+                fit="contain"
+                aria-label={menu.alternativeText}
+              />
             </Box>
           </GridItem>
         ))}
