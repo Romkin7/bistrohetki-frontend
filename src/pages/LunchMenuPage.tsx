@@ -19,21 +19,23 @@ const LunchMenuPage: FC = () => {
           {lunchMenuPageData?.mainTitle}
         </Heading>
       </Flex>
-      <Grid
-        templateColumns={{ base: "repeat(1, 1fr)", md: "repeat(4, 1fr)" }}
-        gap={4}
-      >
-        <GridItem key={lunchMenuPageData?.menu.id}>
-          <Box key={lunchMenuPageData?.menu.id}>
-            <Image
-              key={lunchMenuPageData?.menu.id}
-              src={lunchMenuPageData?.menu.url}
-              alt={lunchMenuPageData?.menu.alternativeText}
-              className="rounded-lg"
-            />
-          </Box>
-        </GridItem>
-      </Grid>
+      {lunchMenuPageData.menu && (
+        <Grid
+          templateColumns={{ base: "repeat(1, 1fr)", md: "repeat(4, 1fr)" }}
+          gap={4}
+        >
+          <GridItem key={lunchMenuPageData?.menu.id}>
+            <Box key={lunchMenuPageData?.menu.id}>
+              <Image
+                key={lunchMenuPageData?.menu.id}
+                src={lunchMenuPageData?.menu.url}
+                alt={lunchMenuPageData?.menu.alternativeText}
+                className="rounded-lg"
+              />
+            </Box>
+          </GridItem>
+        </Grid>
+      )}
     </section>
   );
 };
