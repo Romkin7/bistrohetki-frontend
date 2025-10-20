@@ -18,4 +18,6 @@ Run production build:
 
 `npm start`
 
+For support contact devdesign@devdesign.fi
+
 Designed and developed by [devdesign.fi](https://www.devdesign.fi) 2025.
