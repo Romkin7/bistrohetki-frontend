@@ -90,9 +90,9 @@ const router = createBrowserRouter([
       },
       {
         path: "lunch-menu",
-        loader: ({ params }) =>
+        loader: () =>
           lunchMenuPageLoader({
-            locale: params.locale as SupportedLocale,
+            locale: "fi-FI",
           }),
         element: <LunchMenuPage />,
       },
