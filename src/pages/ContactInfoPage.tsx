@@ -14,7 +14,7 @@ const ContactInfoPage: FC = () => {
 
   return (
     <section>
-      <Flex direction="column" align="center" justify="center">
+      <Flex direction="column" align="center" justify="center" mb={8}>
         <Heading
           tag="h1"
           variant="title-1"

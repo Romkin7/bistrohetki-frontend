@@ -68,6 +68,7 @@ import { IconShowerSolid } from './Icon-shower-solid.icon';
 import { IconSignOut } from './Icon-sign-out.icon';
 import { IconSignup } from './Icon-signup.icon';
 import { IconStarList } from './Icon-star-list.icon';
+import { IconTiktok } from './Icon-tiktok.icon';
 import { IconTracklist } from './Icon-tracklist.icon';
 import { IconTrash } from './Icon-trash.icon';
 import { IconTruck } from './Icon-truck.icon';
@@ -149,6 +150,7 @@ export const icons = [
     IconSignOut,
     IconSignup,
     IconStarList,
+    IconTiktok,
     IconTracklist,
     IconTrash,
     IconTruck,

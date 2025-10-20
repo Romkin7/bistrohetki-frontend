@@ -6,10 +6,10 @@ import type { GalleryPageData } from "@/zod/pages/galleryPageData";
 
 const GalleryPage: FC = () => {
   const galleryPageData: GalleryPageData = useLoaderData();
-  console.log("Gallery Page Data on gallery page:", galleryPageData); // Debugging line
+
   return (
     <section>
-      <Flex direction="column" align="center" justify="center">
+      <Flex direction="column" align="center" justify="center" mb={8}>
         <Heading
           tag="h1"
           variant="title-1"

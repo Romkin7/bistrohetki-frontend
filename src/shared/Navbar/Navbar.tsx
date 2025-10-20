@@ -3,7 +3,7 @@ import { type FC } from "react";
 import { useSelector } from "react-redux";
 import LanguageSelect from "../LanguageSelect/LanguageSelect";
 import ExternalLink from "../Link/ExternalLink";
-import { IconFacebook, IconInstagram } from "../iconLibrary/esm";
+import { IconFacebook, IconInstagram, IconTiktok } from "../iconLibrary/esm";
 import toUpperCase from "../utils/toUpperCase";
 import Brand from "./Brand/Barnd";
 import MobileNavbarMenu from "./MobileNavbarMenu/MobileNavbarMenu";
@@ -56,6 +56,7 @@ const Navbar: FC = () => {
               <Icon size="lg" aria-label={link.textContent}>
                 {link.icon === "facebook" && <IconFacebook />}
                 {link.icon === "instagram" && <IconInstagram />}
+                {link.icon === "tiktok" && <IconTiktok />}
               </Icon>
             </ExternalLink>
           ))}

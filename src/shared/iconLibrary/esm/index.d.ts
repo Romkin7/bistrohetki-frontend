@@ -68,6 +68,7 @@ export * from './build/Icon-shower-solid.icon';
 export * from './build/Icon-sign-out.icon';
 export * from './build/Icon-signup.icon';
 export * from './build/Icon-star-list.icon';
+export * from './build/Icon-tiktok.icon';
 export * from './build/Icon-tracklist.icon';
 export * from './build/Icon-trash.icon';
 export * from './build/Icon-truck.icon';

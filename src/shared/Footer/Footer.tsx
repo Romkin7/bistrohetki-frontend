@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import Heading from "../Heading/Heading";
 import ExternalLink from "../Link/ExternalLink";
 import Paragraph from "../Paragraph/Paragraph";
-import { IconFacebook, IconInstagram } from "../iconLibrary/esm";
+import { IconFacebook, IconInstagram, IconTiktok } from "../iconLibrary/esm";
 import styles from "./Footer.module.css";
 import type { RootState } from "@/store/store";
 
@@ -12,9 +12,13 @@ const Footer: FC = () => {
   const global = useSelector((state: RootState) => state.global);
   return (
     <footer className={styles.footer}>
-      <Flex direction="row" justify="space-between" mb={4}>
+      <Flex
+        direction={{ base: "column", md: "row" }}
+        justify="space-between"
+        mb={{ base: 4, md: 0 }}
+      >
         {global?.footer.sections.map((section) => (
-          <Box key={section.id}>
+          <Box key={section.id} mb={{ base: 4, md: 0 }}>
             <Heading
               tag="h3"
               variant="title-3"
@@ -48,6 +52,7 @@ const Footer: FC = () => {
                 <Icon size="lg" aria-label={link.textContent}>
                   {link.icon === "facebook" && <IconFacebook />}
                   {link.icon === "instagram" && <IconInstagram />}
+                  {link.icon === "tiktok" && <IconTiktok />}
                 </Icon>
                 <span>{link.textContent}</span>
               </ExternalLink>
@@ -55,7 +60,12 @@ const Footer: FC = () => {
           </Box>
         ))}
       </Flex>
-      <Flex direction="column" justify="center" align="center" mt={4}>
+      <Flex
+        direction="column"
+        justify="center"
+        align="center"
+        mt={{ base: 8, md: 5 }}
+      >
         <Paragraph variant="body" color="light">
           &copy; {new Date().getFullYear()} BistroHetki. All rights reserved.
         </Paragraph>
