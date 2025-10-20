@@ -20,7 +20,6 @@ export const useLocale = () => {
   const appLocale = localeMap[urlLocale] || "fi-FI";
 
   return {
-    urlLocale, // 'en', 'sv', 'es', 'fi' - for URL building
     appLocale, // 'en-US', 'sv-SE', 'es-ES', 'fi-FI' - for your app
     isDefault: !params.locale, // true if using default (no locale in URL)
   };
@@ -30,7 +29,7 @@ export const useLocale = () => {
  * Hook to build localized URLs
  */
 export const useLocalizedUrl = () => {
-  const { urlLocale } = useLocale();
+  const { appLocale } = useLocale();
 
   function cleanpath(path: string): string {
     return path.replace(/^\/(fi-FI|fi|en|en-GB|en-US|es|es-ES)(\/|$)/, "/");
@@ -38,8 +37,7 @@ export const useLocalizedUrl = () => {
 
   const buildUrl = (path: string, locale?: string): string => {
     // const supportedLocales = SUPPORTED_LOCALES;
-    console.log("buildUrl called with path:", path, "and locale:", locale);
-    const targetLocale = locale || urlLocale;
+    const targetLocale = locale || appLocale;
     if (path.includes("fi-FI") || targetLocale === "fi-FI") {
       // Default locale, no prefix
       return `${cleanpath(path)}`;
@@ -51,5 +49,5 @@ export const useLocalizedUrl = () => {
     return `/${targetLocale}${cleanedPath.startsWith("/") ? "" : "/"}${cleanedPath}`;
   };
 
-  return { buildUrl, currentLocale: urlLocale };
+  return { buildUrl, currentLocale: appLocale };
 };

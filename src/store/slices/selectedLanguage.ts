@@ -3,6 +3,7 @@ import type { SlimLanguageSelectModel } from "@/zod/collections/languageSelect";
 
 function setInitialState(): SlimLanguageSelectModel | null {
   return {
+    id: 0,
     href: "fi-FI",
     flagIcon: "fi",
     locale: "fi-FI",

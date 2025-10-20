@@ -4,6 +4,7 @@ import { localeSchema } from "../locale";
 const iconNameSchema = z.enum(["fi", "en", "es"]);
 
 export const slimLanguageSelectModelSchema = z.object({
+  id: z.number().int().positive(),
   href: z.string(),
   flagIcon: iconNameSchema,
   locale: localeSchema,
@@ -11,7 +12,6 @@ export const slimLanguageSelectModelSchema = z.object({
 
 export const languageSelectModelSchema = z
   .object({
-    id: z.number().int().positive(),
     textContent: z.string(),
     documentId: z.string(),
     createdAt: z.date(),

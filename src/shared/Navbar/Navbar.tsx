@@ -1,6 +1,7 @@
 import { Flex, Group, Icon } from "@chakra-ui/react";
-import { type FC } from "react";
-import { useSelector } from "react-redux";
+import { useEffect, type FC } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useLocation } from "react-router";
 import LanguageSelect from "../LanguageSelect/LanguageSelect";
 import ExternalLink from "../Link/ExternalLink";
 import { IconFacebook, IconInstagram, IconTiktok } from "../iconLibrary/esm";
@@ -11,14 +12,39 @@ import styles from "./Navbar.module.css";
 import NavbarMenu from "./NavbarMenu/NavbarMenu";
 import NavbarMenuItem from "./NavbarMenu/NavbarMenuItem";
 import { useLocalizedUrl } from "@/hooks/useLocale";
+import { setSelectedLanguage } from "@/store/slices/selectedLanguage";
 import type { RootState } from "@/store/store";
 import type { SlimLanguageSelectModel } from "@/zod/collections/languageSelect";
+import type { Global } from "@/zod/global/global";
+import type { Locale } from "@/zod/locale";
 
 const Navbar: FC = () => {
-  const global = useSelector((state: RootState) => state.global);
+  const global = useSelector((state: RootState) => state.global as Global);
   const selectedLanguage = useSelector(
     (state: RootState) => state.selectedLanguage as SlimLanguageSelectModel
   );
+  const dispatch = useDispatch();
+  const path = useLocation().pathname;
+  const locale = !["fi-FI", "es-ES", "en"].includes(path.split("/")[1])
+    ? "fi-FI"
+    : path.split("/")[1];
+  useEffect(() => {
+    if (selectedLanguage.locale !== locale) {
+      dispatch(
+        setSelectedLanguage({
+          locale: locale as Locale,
+          href:
+            locale === "fi-FI"
+              ? "/fi-FI"
+              : locale === "es-ES"
+                ? "/es-ES"
+                : "/en",
+          flagIcon:
+            locale === "fi-FI" ? "fi" : locale === "es-ES" ? "es" : "en",
+        })
+      );
+    }
+  }, [dispatch, locale, path, selectedLanguage]);
   const { buildUrl } = useLocalizedUrl();
   return (
     <nav className={styles.navbar}>

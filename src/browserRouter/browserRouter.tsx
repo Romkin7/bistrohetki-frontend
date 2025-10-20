@@ -24,7 +24,7 @@ const router = createBrowserRouter([
           // Validate locale parameter using the enum values
           const validLocales = SUPPORTED_LOCALES; // Use the plain array for includes check
           if (!validLocales.includes(params.locale as SupportedLocale)) {
-            throw new Response("Invalid locale", { status: 404 });
+            return { locale: "fi-FI" }; // Default locale
           }
           return { locale: params.locale as SupportedLocale };
         },
