@@ -1,10 +1,10 @@
 import { fetchStrapiData } from "../../api/fetchStrapiData";
 import type { LoaderProps } from "./loaderProps";
 
-const menuPageLoader = async ({ locale }: LoaderProps) => {
+const lunchMenuPageLoader = async ({ locale }: LoaderProps) => {
   try {
     const { data } = await fetchStrapiData(
-      `api/menu-page?populate=menus&locale=${locale}`
+      `api/lunch-menu-page?populate=menu&locale=${locale}`
     );
     return data;
   } catch (error) {
@@ -13,4 +13,4 @@ const menuPageLoader = async ({ locale }: LoaderProps) => {
   }
 };
 
-export default menuPageLoader;
+export default lunchMenuPageLoader;

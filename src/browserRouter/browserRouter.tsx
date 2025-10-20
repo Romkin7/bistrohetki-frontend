@@ -2,11 +2,13 @@ import { createBrowserRouter } from "react-router";
 import contactInfoPageLoader from "./loaders/contactInfoPageLoader";
 import galleryPageLoader from "./loaders/galleryPageLoader";
 import homePageLoader from "./loaders/homePageLoader";
+import lunchMenuPageLoader from "./loaders/lunchMenuPageLoader";
 import menuPageLoader from "./loaders/menuPageLoader";
 import PrimaryLayout from "@/Layouts/PrimaryLayout";
 import ContactInfoPage from "@/pages/ContactInfoPage";
 import GalleryPage from "@/pages/GalleryPage";
 import HomePage from "@/pages/HomePage";
+import LunchMenuPage from "@/pages/LunchMenuPage";
 import MenuPage from "@/pages/MenuPage";
 import { SUPPORTED_LOCALES, type SupportedLocale } from "@/zod/locale";
 
@@ -44,6 +46,14 @@ const router = createBrowserRouter([
             element: <GalleryPage />,
           },
           {
+            path: "lunch-menu",
+            loader: ({ params }) =>
+              lunchMenuPageLoader({
+                locale: params.locale as SupportedLocale,
+              }),
+            element: <LunchMenuPage />,
+          },
+          {
             path: "menu",
             loader: ({ params }) =>
               menuPageLoader({
@@ -77,6 +87,14 @@ const router = createBrowserRouter([
             locale: "fi-FI",
           }),
         element: <GalleryPage />,
+      },
+      {
+        path: "lunch-menu",
+        loader: ({ params }) =>
+          lunchMenuPageLoader({
+            locale: params.locale as SupportedLocale,
+          }),
+        element: <LunchMenuPage />,
       },
       {
         path: "menu",

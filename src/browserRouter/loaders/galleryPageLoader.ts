@@ -6,7 +6,6 @@ const galleryPageLoader = async ({ locale }: LoaderProps) => {
     const { data } = await fetchStrapiData(
       `api/galleria-page?populate=images&locale=${locale}`
     );
-    console.log("Gallery Page Data:", data); // Log the fetched data for debugging
     return data;
   } catch (error) {
     console.error("Error fetching gallery page data:", error);

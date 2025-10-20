@@ -6,7 +6,6 @@ const contactInfoPageLoader = async ({ locale }: LoaderProps) => {
     const { data } = await fetchStrapiData(
       `api/contact-info-page?populate=contact_infos&locale=${locale}`
     );
-    console.log("Contact Info Page Data:", data); // Log the fetched data for debugging
     return data;
   } catch (error) {
     console.error("Error fetching contact info data:", error);
