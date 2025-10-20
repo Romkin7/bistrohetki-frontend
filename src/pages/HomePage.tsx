@@ -25,24 +25,28 @@ const HomePage: FC = () => {
         templateColumns={{ base: "repeat(1, 1fr)", md: "repeat(3, 1fr)" }}
         gap={4}
       >
-        {homePageData.leftColumnImages.map((image) => (
-          <Box key={image.id}>
-            <Image
-              src={image.url}
-              alt={image.alternativeText}
-              title={image.alternativeText}
-            />
-          </Box>
-        ))}
-        {homePageData.centerColumnImages.map((image) => (
-          <Box key={image.id}>
-            <Image
-              src={image.url}
-              alt={image.alternativeText}
-              title={image.alternativeText}
-            />
-          </Box>
-        ))}
+        <Box>
+          {homePageData.leftColumnImages.map((image) => (
+            <Box key={image.id} mb={4}>
+              <Image
+                src={image.url}
+                alt={image.alternativeText}
+                title={image.alternativeText}
+              />
+            </Box>
+          ))}
+        </Box>
+        <Box>
+          {homePageData.centerColumnImages.map((image) => (
+            <Box key={image.id} mb={4}>
+              <Image
+                src={image.url}
+                alt={image.alternativeText}
+                title={image.alternativeText}
+              />
+            </Box>
+          ))}
+        </Box>
         <Box>
           <Box mb={6}>
             <Heading
