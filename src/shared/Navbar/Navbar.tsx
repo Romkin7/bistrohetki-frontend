@@ -41,6 +41,7 @@ const Navbar: FC = () => {
                 : "/en",
           flagIcon:
             locale === "fi-FI" ? "fi" : locale === "es-ES" ? "es" : "en",
+          id: 99,
         })
       );
     }
