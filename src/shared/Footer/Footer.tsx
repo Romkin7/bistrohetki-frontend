@@ -28,34 +28,37 @@ const Footer: FC = () => {
               {section.sectionTitle}
             </Heading>
             {section.contactInfos?.map((info) => (
-              <Paragraph variant="body" color="light">
-                {info.linkText}{" "}
-                <ExternalLink
-                  href={info.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  variant="inline"
-                  color="light"
-                >
-                  {info.textContent}
-                </ExternalLink>
-              </Paragraph>
+              <Box key={info.id} mt={2}>
+                <Paragraph variant="body" color="light">
+                  {info.linkText}{" "}
+                  <ExternalLink
+                    href={info.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    variant="inline"
+                    color="light"
+                  >
+                    {info.textContent}
+                  </ExternalLink>
+                </Paragraph>
+              </Box>
             ))}
             {section.socialLinks?.map((link) => (
-              <ExternalLink
-                key={link.id}
-                href={link.href}
-                external={true}
-                variant="standalone"
-                color="light"
-              >
-                <Icon size="lg" aria-label={link.textContent}>
-                  {link.icon === "facebook" && <IconFacebook />}
-                  {link.icon === "instagram" && <IconInstagram />}
-                  {link.icon === "tiktok" && <IconTiktok />}
-                </Icon>
-                <span>{link.textContent}</span>
-              </ExternalLink>
+              <Box key={link.id} mt={2}>
+                <ExternalLink
+                  href={link.href}
+                  external={true}
+                  variant="standalone"
+                  color="light"
+                >
+                  <Icon size="lg" aria-label={link.textContent}>
+                    {link.icon === "facebook" && <IconFacebook />}
+                    {link.icon === "instagram" && <IconInstagram />}
+                    {link.icon === "tiktok" && <IconTiktok />}
+                  </Icon>
+                  <span>{link.textContent}</span>
+                </ExternalLink>
+              </Box>
             ))}
           </Box>
         ))}

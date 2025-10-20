@@ -1,5 +1,7 @@
 import { z } from "zod";
+import { partnerModelSchema } from "../collections/partnerModel";
 import { localeSchema } from "../locale";
+import { mediaSchema } from "../media";
 
 export const homePageDataSchema = z.object({
   id: z.number().int().positive(),
@@ -10,6 +12,12 @@ export const homePageDataSchema = z.object({
   locale: localeSchema,
   mainTitle: z.string(),
   content: z.string(),
+  partnersTitle: z.string(),
+  partners: z.array(partnerModelSchema),
+  centerColumnTitle: z.string().optional(),
+  leftColumnTitle: z.string().optional(),
+  centerColumnImages: z.array(mediaSchema),
+  leftColumnImages: z.array(mediaSchema),
 });
 
 // Infer the TypeScript type from the Zod schema

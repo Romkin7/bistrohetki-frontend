@@ -1,12 +1,13 @@
-import { Flex } from "@chakra-ui/react";
+import { Box, Card, Flex, Grid, Image } from "@chakra-ui/react";
 import { type FC } from "react";
 import Markdown from "react-markdown";
 import { useLoaderData } from "react-router";
 import rehypeRaw from "rehype-raw";
 import Heading from "@/shared/Heading/Heading";
+import type { HomePageData } from "@/zod/pages/homePageData";
 
 const HomePage: FC = () => {
-  const homePageData = useLoaderData();
+  const homePageData: HomePageData = useLoaderData();
   return (
     <section>
       <Flex direction="column" align="center" justify="center" mb={8}>
@@ -20,6 +21,76 @@ const HomePage: FC = () => {
         </Heading>
         <Markdown rehypePlugins={[rehypeRaw]}>{homePageData?.content}</Markdown>
       </Flex>
+      <Grid
+        templateColumns={{ base: "repeat(1, 1fr)", md: "repeat(3, 1fr)" }}
+        gap={4}
+      >
+        {homePageData.leftColumnImages.map((image) => (
+          <Box key={image.id}>
+            <Image
+              src={image.url}
+              alt={image.alternativeText}
+              title={image.alternativeText}
+            />
+          </Box>
+        ))}
+        {homePageData.centerColumnImages.map((image) => (
+          <Box key={image.id}>
+            <Image
+              src={image.url}
+              alt={image.alternativeText}
+              title={image.alternativeText}
+            />
+          </Box>
+        ))}
+        <Box>
+          <Box mb={6}>
+            <Heading
+              tag="h3"
+              variant="title-3"
+              color="dark"
+              ariaLabel={homePageData.partnersTitle}
+            >
+              {homePageData.partnersTitle}
+            </Heading>
+          </Box>
+          {homePageData?.partners.map((partner) => (
+            <a
+              href={partner.href}
+              key={partner.id}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Card.Root
+                flexDirection="row"
+                overflow="hidden"
+                maxW="xl"
+                key={partner.id}
+                mb="4"
+              >
+                <Image
+                  objectFit="contain"
+                  maxW="200px"
+                  src={partner.logo.url}
+                  alt="Caffe Latte"
+                />
+                <Box>
+                  <Card.Body>
+                    <Flex
+                      direction="column"
+                      justifyContent="center"
+                      alignItems="center"
+                      height="100%"
+                    >
+                      <Card.Title mb="2">{partner.name}</Card.Title>
+                    </Flex>
+                  </Card.Body>
+                </Box>
+              </Card.Root>
+            </a>
+          ))}
+        </Box>
+      </Grid>
     </section>
   );
 };
