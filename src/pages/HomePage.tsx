@@ -9,12 +9,7 @@ const HomePage: FC = () => {
   const homePageData = useLoaderData();
   return (
     <section>
-      <Flex
-        direction="column"
-        align="center"
-        justify="center"
-        className="container mx-auto px-4 py-8"
-      >
+      <Flex direction="column" align="center" justify="center" mb={8}>
         <Heading
           tag="h1"
           variant="title-1"

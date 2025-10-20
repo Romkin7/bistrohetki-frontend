@@ -1,24 +1,16 @@
 import { Box, Flex, Image, Grid, GridItem } from "@chakra-ui/react";
 import { type FC } from "react";
 import { useLoaderData } from "react-router";
-import { useLocale, useLocalizedUrl } from "@/hooks/useLocale";
 import Heading from "@/shared/Heading/Heading";
 import Paragraph from "@/shared/Paragraph/Paragraph";
 import type { MenuPageData } from "@/zod/pages/menuPageData";
 
 const MenuPage: FC = () => {
   const menuPageData: MenuPageData = useLoaderData();
-  const { urlLocale, appLocale } = useLocale();
-  const { buildUrl } = useLocalizedUrl();
-
-  // Example: Log current locale info
-  console.log("Current URL locale:", urlLocale); // 'en', 'sv', 'es', or 'fi'
-  console.log("App locale:", appLocale); // 'en-US', 'sv-SE', 'es-ES', or 'fi-FI'
-  console.log("Gallery URL:", buildUrl("gallery")); // '/en/gallery' or '/gallery'
 
   return (
     <section>
-      <Flex direction="column" align="center" justify="center">
+      <Flex direction="column" align="center" justify="center" mb={8}>
         <Heading
           tag="h1"
           variant="title-1"
