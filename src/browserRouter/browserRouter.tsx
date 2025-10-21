@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { createBrowserRouter } from "react-router";
 import contactInfoPageLoader from "./loaders/contactInfoPageLoader";
 import galleryPageLoader from "./loaders/galleryPageLoader";
@@ -5,12 +6,35 @@ import homePageLoader from "./loaders/homePageLoader";
 import lunchMenuPageLoader from "./loaders/lunchMenuPageLoader";
 import menuPageLoader from "./loaders/menuPageLoader";
 import PrimaryLayout from "@/Layouts/PrimaryLayout";
-import ContactInfoPage from "@/pages/ContactInfoPage";
-import GalleryPage from "@/pages/GalleryPage";
-import HomePage from "@/pages/HomePage";
-import LunchMenuPage from "@/pages/LunchMenuPage";
-import MenuPage from "@/pages/MenuPage";
+import {
+  HomePage,
+  MenuPage,
+  LunchMenuPage,
+  GalleryPage,
+  ContactInfoPage,
+} from "@/browserRouter/lazyloadedComponents/LazyLoadedPages";
 import { SUPPORTED_LOCALES, type SupportedLocale } from "@/zod/locale";
+
+// Loading fallback component
+const PageLoader = () => (
+  <div
+    style={{
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      height: "200px",
+      fontSize: "16px",
+      color: "#666",
+    }}
+  >
+    Loading...
+  </div>
+);
+
+// Wrapper component with Suspense
+const SuspenseWrapper = ({ children }: { children: React.ReactNode }) => (
+  <Suspense fallback={<PageLoader />}>{children}</Suspense>
+);
 
 const router = createBrowserRouter([
   {
@@ -35,7 +59,11 @@ const router = createBrowserRouter([
               homePageLoader({
                 locale: params.locale as SupportedLocale,
               }),
-            element: <HomePage />,
+            element: (
+              <SuspenseWrapper>
+                <HomePage />
+              </SuspenseWrapper>
+            ),
           },
           {
             path: "gallery",
@@ -43,7 +71,11 @@ const router = createBrowserRouter([
               galleryPageLoader({
                 locale: params.locale as SupportedLocale,
               }),
-            element: <GalleryPage />,
+            element: (
+              <SuspenseWrapper>
+                <GalleryPage />
+              </SuspenseWrapper>
+            ),
           },
           {
             path: "lunch-menu",
@@ -51,7 +83,11 @@ const router = createBrowserRouter([
               lunchMenuPageLoader({
                 locale: params.locale as SupportedLocale,
               }),
-            element: <LunchMenuPage />,
+            element: (
+              <SuspenseWrapper>
+                <LunchMenuPage />
+              </SuspenseWrapper>
+            ),
           },
           {
             path: "menu",
@@ -59,7 +95,11 @@ const router = createBrowserRouter([
               menuPageLoader({
                 locale: params.locale as SupportedLocale,
               }),
-            element: <MenuPage />,
+            element: (
+              <SuspenseWrapper>
+                <MenuPage />
+              </SuspenseWrapper>
+            ),
           },
           {
             path: "contact",
@@ -67,7 +107,11 @@ const router = createBrowserRouter([
               contactInfoPageLoader({
                 locale: params.locale as SupportedLocale,
               }),
-            element: <ContactInfoPage />,
+            element: (
+              <SuspenseWrapper>
+                <ContactInfoPage />
+              </SuspenseWrapper>
+            ),
           },
         ],
       },
@@ -78,7 +122,11 @@ const router = createBrowserRouter([
           homePageLoader({
             locale: "fi-FI",
           }),
-        element: <HomePage />,
+        element: (
+          <SuspenseWrapper>
+            <HomePage />
+          </SuspenseWrapper>
+        ),
       },
       {
         path: "gallery",
@@ -86,7 +134,11 @@ const router = createBrowserRouter([
           galleryPageLoader({
             locale: "fi-FI",
           }),
-        element: <GalleryPage />,
+        element: (
+          <SuspenseWrapper>
+            <GalleryPage />
+          </SuspenseWrapper>
+        ),
       },
       {
         path: "lunch-menu",
@@ -94,7 +146,11 @@ const router = createBrowserRouter([
           lunchMenuPageLoader({
             locale: "fi-FI",
           }),
-        element: <LunchMenuPage />,
+        element: (
+          <SuspenseWrapper>
+            <LunchMenuPage />
+          </SuspenseWrapper>
+        ),
       },
       {
         path: "menu",
@@ -102,7 +158,11 @@ const router = createBrowserRouter([
           menuPageLoader({
             locale: "fi-FI",
           }),
-        element: <MenuPage />,
+        element: (
+          <SuspenseWrapper>
+            <MenuPage />
+          </SuspenseWrapper>
+        ),
       },
       {
         path: "contact",
@@ -110,7 +170,11 @@ const router = createBrowserRouter([
           contactInfoPageLoader({
             locale: "fi-FI",
           }),
-        element: <ContactInfoPage />,
+        element: (
+          <SuspenseWrapper>
+            <ContactInfoPage />
+          </SuspenseWrapper>
+        ),
       },
     ],
   },
