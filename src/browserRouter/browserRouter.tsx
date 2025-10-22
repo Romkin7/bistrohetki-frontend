@@ -1,21 +1,28 @@
+import { Suspense } from "react";
 import { createBrowserRouter } from "react-router";
 import contactInfoPageLoader from "./loaders/contactInfoPageLoader";
 import galleryPageLoader from "./loaders/galleryPageLoader";
 import homePageLoader from "./loaders/homePageLoader";
 import lunchMenuPageLoader from "./loaders/lunchMenuPageLoader";
 import menuPageLoader from "./loaders/menuPageLoader";
-import PrimaryLayout from "@/Layouts/PrimaryLayout";
-import ContactInfoPage from "@/pages/ContactInfoPage";
-import GalleryPage from "@/pages/GalleryPage";
-import HomePage from "@/pages/HomePage";
-import LunchMenuPage from "@/pages/LunchMenuPage";
-import MenuPage from "@/pages/MenuPage";
+import { PrimaryLayout } from "@/Layouts";
+import {
+  ContactInfoPage,
+  GalleryPage,
+  HomePage,
+  LunchMenuPage,
+  MenuPage,
+} from "@/pages";
 import { SUPPORTED_LOCALES, type SupportedLocale } from "@/zod/locale";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <PrimaryLayout />,
+    element: (
+      <Suspense fallback={<div>Loading...</div>}>
+        <PrimaryLayout />
+      </Suspense>
+    ),
     children: [
       // Internationalized routes with locale parameter (:locale/page)
       {
@@ -35,7 +42,11 @@ const router = createBrowserRouter([
               homePageLoader({
                 locale: params.locale as SupportedLocale,
               }),
-            element: <HomePage />,
+            element: (
+              <Suspense fallback={<div>Loading...</div>}>
+                <HomePage />
+              </Suspense>
+            ),
           },
           {
             path: "gallery",
@@ -43,7 +54,11 @@ const router = createBrowserRouter([
               galleryPageLoader({
                 locale: params.locale as SupportedLocale,
               }),
-            element: <GalleryPage />,
+            element: (
+              <Suspense fallback={<div>Loading...</div>}>
+                <GalleryPage />
+              </Suspense>
+            ),
           },
           {
             path: "lunch-menu",
@@ -51,7 +66,11 @@ const router = createBrowserRouter([
               lunchMenuPageLoader({
                 locale: params.locale as SupportedLocale,
               }),
-            element: <LunchMenuPage />,
+            element: (
+              <Suspense fallback={<div>Loading...</div>}>
+                <LunchMenuPage />
+              </Suspense>
+            ),
           },
           {
             path: "menu",
@@ -59,7 +78,11 @@ const router = createBrowserRouter([
               menuPageLoader({
                 locale: params.locale as SupportedLocale,
               }),
-            element: <MenuPage />,
+            element: (
+              <Suspense fallback={<div>Loading...</div>}>
+                <MenuPage />
+              </Suspense>
+            ),
           },
           {
             path: "contact",
@@ -67,7 +90,11 @@ const router = createBrowserRouter([
               contactInfoPageLoader({
                 locale: params.locale as SupportedLocale,
               }),
-            element: <ContactInfoPage />,
+            element: (
+              <Suspense fallback={<div>Loading...</div>}>
+                <ContactInfoPage />
+              </Suspense>
+            ),
           },
         ],
       },
@@ -78,7 +105,11 @@ const router = createBrowserRouter([
           homePageLoader({
             locale: "fi-FI",
           }),
-        element: <HomePage />,
+        element: (
+          <Suspense fallback={<div>Loading...</div>}>
+            <HomePage />
+          </Suspense>
+        ),
       },
       {
         path: "gallery",
@@ -86,7 +117,11 @@ const router = createBrowserRouter([
           galleryPageLoader({
             locale: "fi-FI",
           }),
-        element: <GalleryPage />,
+        element: (
+          <Suspense fallback={<div>Loading...</div>}>
+            <GalleryPage />
+          </Suspense>
+        ),
       },
       {
         path: "lunch-menu",
@@ -94,7 +129,11 @@ const router = createBrowserRouter([
           lunchMenuPageLoader({
             locale: "fi-FI",
           }),
-        element: <LunchMenuPage />,
+        element: (
+          <Suspense fallback={<div>Loading...</div>}>
+            <LunchMenuPage />
+          </Suspense>
+        ),
       },
       {
         path: "menu",
@@ -102,7 +141,11 @@ const router = createBrowserRouter([
           menuPageLoader({
             locale: "fi-FI",
           }),
-        element: <MenuPage />,
+        element: (
+          <Suspense fallback={<div>Loading...</div>}>
+            <MenuPage />
+          </Suspense>
+        ),
       },
       {
         path: "contact",
@@ -110,7 +153,11 @@ const router = createBrowserRouter([
           contactInfoPageLoader({
             locale: "fi-FI",
           }),
-        element: <ContactInfoPage />,
+        element: (
+          <Suspense fallback={<div>Loading...</div>}>
+            <ContactInfoPage />
+          </Suspense>
+        ),
       },
     ],
   },

@@ -2,7 +2,7 @@ import { Button, Icon, Menu, Portal } from "@chakra-ui/react";
 import { type FC } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useLocation } from "react-router";
-import { IconEn, IconEs, IconFi } from "../iconLibrary/esm";
+import { IconEn, IconEs, IconFi } from "../../../iconLibrary/esm";
 import { useLocalizedUrl } from "@/hooks/useLocale";
 import { setSelectedLanguage } from "@/store/slices/selectedLanguage";
 import type { RootState } from "@/store/store";
