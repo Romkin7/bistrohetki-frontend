@@ -4,7 +4,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router";
 import LanguageSelect from "../LanguageSelect/LanguageSelect";
 import ExternalLink from "../Link/ExternalLink";
-import { IconFacebook, IconInstagram, IconTiktok } from "../iconLibrary/esm";
+import {
+  IconFacebook,
+  IconInstagram,
+  IconTiktok,
+} from "../../../iconLibrary/esm";
 import toUpperCase from "../utils/toUpperCase";
 import Brand from "./Brand/Barnd";
 import MobileNavbarMenu from "./MobileNavbarMenu/MobileNavbarMenu";
