@@ -54,9 +54,9 @@ const HomePage: FC = () => {
                 tag="h3"
                 variant="title-3"
                 color="dark"
-                ariaLabel={homePageData.partnersTitle}
+                ariaLabel={homePageData?.partnersTitle}
               >
-                {homePageData.partnersTitle}
+                {homePageData?.partnersTitle}
               </Heading>
             </Box>
             {homePageData?.partners?.map((partner) => (
