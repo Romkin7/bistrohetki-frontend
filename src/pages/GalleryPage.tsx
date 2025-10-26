@@ -23,7 +23,7 @@ const GalleryPage: FC = () => {
         templateColumns={{ base: "repeat(1, 1fr)", md: "repeat(4, 1fr)" }}
         gap={4}
       >
-        {galleryPageData.images.map((image) => (
+        {galleryPageData?.images?.map((image) => (
           <GridItem key={image.id}>
             <Box key={image.id}>
               <Image

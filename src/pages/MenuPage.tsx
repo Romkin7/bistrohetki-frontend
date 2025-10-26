@@ -27,7 +27,7 @@ const MenuPage: FC = () => {
         templateColumns={{ base: "repeat(1, 1fr)", md: "repeat(3, 1fr)" }}
         gap={4}
       >
-        {menuPageData.menus.map((menu) => (
+        {menuPageData?.menus?.map((menu) => (
           <GridItem key={menu.id}>
             <Box
               key={menu.id}

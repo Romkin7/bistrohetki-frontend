@@ -27,7 +27,7 @@ const HomePage: FC = () => {
           gap={4}
         >
           <Box>
-            {homePageData.leftColumnImages.map((image) => (
+            {homePageData?.leftColumnImages?.map((image) => (
               <Box key={image.id} mb={4}>
                 <Image
                   src={image.url}
@@ -38,7 +38,7 @@ const HomePage: FC = () => {
             ))}
           </Box>
           <Box>
-            {homePageData.centerColumnImages.map((image) => (
+            {homePageData?.centerColumnImages?.map((image) => (
               <Box key={image.id} mb={4}>
                 <Image
                   src={image.url}
@@ -59,7 +59,7 @@ const HomePage: FC = () => {
                 {homePageData.partnersTitle}
               </Heading>
             </Box>
-            {homePageData?.partners.map((partner) => (
+            {homePageData?.partners?.map((partner) => (
               <a
                 href={partner.href}
                 key={partner.id}

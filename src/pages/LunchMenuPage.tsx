@@ -19,7 +19,7 @@ const LunchMenuPage: FC = () => {
           {lunchMenuPageData?.mainTitle}
         </Heading>
       </Flex>
-      {lunchMenuPageData.menu && (
+      {lunchMenuPageData?.menu && (
         <Flex justifyContent="center" alignItems="center" mt={8} mb={8}>
           <Box maxW="600px" w="100%">
             <Image
