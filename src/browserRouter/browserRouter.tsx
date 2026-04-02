@@ -5,6 +5,7 @@ import galleryPageLoader from "./loaders/galleryPageLoader";
 import homePageLoader from "./loaders/homePageLoader";
 import lunchMenuPageLoader from "./loaders/lunchMenuPageLoader";
 import menuPageLoader from "./loaders/menuPageLoader";
+import tableBookingPageLoader from "./loaders/tableBookingPageLoader";
 import { PrimaryLayout } from "@/Layouts";
 import {
   ContactInfoPage,
@@ -12,12 +13,14 @@ import {
   HomePage,
   LunchMenuPage,
   MenuPage,
+  TableBookingPage,
 } from "@/pages";
 import { SUPPORTED_LOCALES, type SupportedLocale } from "@/zod/locale";
 
 const router = createBrowserRouter([
   {
     path: "/",
+    hydrateFallbackElement: <div>Loading...</div>,
     element: (
       <Suspense fallback={<div>Loading...</div>}>
         <PrimaryLayout />
@@ -81,6 +84,18 @@ const router = createBrowserRouter([
             element: (
               <Suspense fallback={<div>Loading...</div>}>
                 <MenuPage />
+              </Suspense>
+            ),
+          },
+          {
+            path: "table-booking",
+            loader: ({ params }) =>
+              tableBookingPageLoader({
+                locale: params.locale as SupportedLocale,
+              }),
+            element: (
+              <Suspense fallback={<div>Loading...</div>}>
+                <TableBookingPage />
               </Suspense>
             ),
           },
