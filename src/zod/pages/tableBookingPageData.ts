@@ -8,6 +8,7 @@ export const tableBookingPageDataSchema = z.object({
   updatedAt: z.iso.datetime(), // ISO datetime string
   publishedAt: z.iso.datetime(), // ISO datetime string
   mainTitle: z.string(),
+  numberOfGuestsTitle: z.string(),
   image: mediaSchema,
 });
 

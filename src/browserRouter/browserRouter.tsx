@@ -163,6 +163,19 @@ const router = createBrowserRouter([
         ),
       },
       {
+        path: "table-booking",
+        loader: () =>
+          tableBookingPageLoader({
+            locale: "fi-FI",
+          }),
+        element: (
+          <Suspense fallback={<div>Loading...</div>}>
+            <TableBookingPage />
+          </Suspense>
+        ),
+      },
+
+      {
         path: "contact",
         loader: () =>
           contactInfoPageLoader({
