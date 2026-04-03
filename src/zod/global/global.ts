@@ -1,9 +1,9 @@
 import z from "zod";
-import { localeSchema } from "../locale";
-import { navBarSchema } from "../components/navbar";
-import { seoSchema } from "./seoModel";
 import { contactInfoModelSchema } from "../collections/contactInfoModel";
 import { socialLinkModelSchema } from "../collections/socialLinkModel";
+import { navBarSchema } from "../components/navbar";
+import { localeSchema } from "../locale";
+import { seoSchema } from "./seoModel";
 
 const madeBySchema = z.object({
   startText: z.string(),

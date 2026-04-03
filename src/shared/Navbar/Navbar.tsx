@@ -2,13 +2,13 @@ import { Flex, Group, Icon } from "@chakra-ui/react";
 import { useEffect, type FC } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router";
-import LanguageSelect from "../LanguageSelect/LanguageSelect";
-import ExternalLink from "../Link/ExternalLink";
 import {
   IconFacebook,
   IconInstagram,
   IconTiktok,
 } from "../../../iconLibrary/esm";
+import LanguageSelect from "../LanguageSelect/LanguageSelect";
+import ExternalLink from "../Link/ExternalLink";
 import toUpperCase from "../utils/toUpperCase";
 import Brand from "./Brand/Barnd";
 import MobileNavbarMenu from "./MobileNavbarMenu/MobileNavbarMenu";
@@ -25,7 +25,7 @@ import type { Locale } from "@/zod/locale";
 const Navbar: FC = () => {
   const global = useSelector((state: RootState) => state.global as Global);
   const selectedLanguage = useSelector(
-    (state: RootState) => state.selectedLanguage as SlimLanguageSelectModel
+    (state: RootState) => state.selectedLanguage as SlimLanguageSelectModel,
   );
   const dispatch = useDispatch();
   const path = useLocation().pathname;
@@ -46,7 +46,7 @@ const Navbar: FC = () => {
           flagIcon:
             locale === "fi-FI" ? "fi" : locale === "es-ES" ? "es" : "en",
           id: 99,
-        })
+        }),
       );
     }
   }, [dispatch, locale, path, selectedLanguage]);
