@@ -13,6 +13,10 @@ export const tableBookingPageDataSchema = z.object({
   gestSingular: z.string().optional(),
   gestPlural: z.string().optional(),
   labelAction: z.string().optional(),
+  infoText: z.string().optional(),
+  arrivalInstructionsLink: z.string().optional(),
+  arrivalInstructionsLabel: z.string().optional(),
+  logo: mediaSchema,
 });
 
 // Infer the TypeScript type from the Zod schema

@@ -15,7 +15,12 @@ const TableBookingPage: FC = () => {
     gestSingular,
     gestPlural,
     labelAction,
+    infoText,
+    arrivalInstructionsLabel,
+    arrivalInstructionsLink,
+    logo,
   } = tableBookingPageData;
+  console.log("logo", logo);
   const [guests, setGuests] = useState(1);
   return (
     <section>
@@ -36,7 +41,7 @@ const TableBookingPage: FC = () => {
             bg="rgb(247, 245, 190)"
           >
             <Flex direction="column" align="center" h="100%">
-              <Box mb={4}>
+              <Box mb={6} mt={12}>
                 <Heading
                   tag="h2"
                   variant="title-2"
@@ -54,7 +59,7 @@ const TableBookingPage: FC = () => {
                 display="flex"
                 alignItems="center"
                 justifyContent="space-between"
-                maxW="200px"
+                maxW="250px"
                 w="100%"
                 bg="rgb(245, 222, 179)"
               >
@@ -62,8 +67,8 @@ const TableBookingPage: FC = () => {
                   as="button"
                   borderRadius="50%"
                   borderWidth="1px"
-                  w="40px"
-                  h="40px"
+                  w="50px"
+                  h="50px"
                   display="flex"
                   alignItems="center"
                   justifyContent="center"
@@ -93,8 +98,8 @@ const TableBookingPage: FC = () => {
                   as="button"
                   borderRadius="50%"
                   borderWidth="1px"
-                  w="40px"
-                  h="40px"
+                  w="50px"
+                  h="50px"
                   display="flex"
                   alignItems="center"
                   justifyContent="center"
@@ -115,20 +120,58 @@ const TableBookingPage: FC = () => {
                 display="flex"
                 alignItems="center"
                 justifyContent="center"
-                maxW="200px"
+                maxW="250px"
                 w="100%"
-                h="40px"
+                h="50px"
                 fontWeight="bold"
                 fontSize="lg"
                 color="white"
                 bg="rgb(101, 67, 33)"
-                onClick={() => alert("Action button clicked!")}
+                onClick={() => console.log("Action button clicked!")}
               >
                 {labelAction || "Next"}
               </Box>
+              {/* Info text from Strapi */}
+              {infoText && (
+                <Box mt={8} color="gray.700" fontSize="xs" textAlign="center">
+                  {infoText.split(/\n\s*\n/).map((part, idx) => (
+                    <Box as="p" key={idx} mb={2}>
+                      {part}
+                    </Box>
+                  ))}
+                  {arrivalInstructionsLink && (
+                    <Box mt={3}>
+                      <a
+                        href={arrivalInstructionsLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{
+                          color: "#2B6CB0",
+                          textDecoration: "underline",
+                          fontWeight: 500,
+                        }}
+                      >
+                        {arrivalInstructionsLabel || arrivalInstructionsLink}
+                      </a>
+                    </Box>
+                  )}
+                  {logo?.url && (
+                    <Box mt={16} display="flex" justifyContent="center">
+                      <Image
+                        src={logo?.url}
+                        alt={logo?.alternativeText || "Hetki logo"}
+                        fit="contain"
+                        aria-label={logo?.alternativeText || "Hetki logo"}
+                        maxH="200px"
+                      />
+                    </Box>
+                  )}
+                </Box>
+              )}
             </Flex>
           </Box>
         </GridItem>
+
         <GridItem h="100%">
           <Box mx={4} p={4} borderWidth="1px" borderRadius="lg" h="100%">
             <Image
