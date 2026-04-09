@@ -10,13 +10,67 @@ export const tableBookingPageDataSchema = z.object({
   mainTitle: z.string(),
   numberOfGuestsTitle: z.string(),
   image: mediaSchema,
-  gestSingular: z.string().optional(),
-  gestPlural: z.string().optional(),
-  labelAction: z.string().optional(),
+
   infoText: z.string().optional(),
   arrivalInstructionsLink: z.string().optional(),
   arrivalInstructionsLabel: z.string().optional(),
   logo: mediaSchema,
+  // keep: form components only inside numberOfGuestsForm
+
+  // keep: add numberOfGuestsForm as nested object
+  numberOfGuestsForm: z
+    .object({
+      action: z.string().optional(),
+      method: z.string().optional(),
+      enctype: z.string().optional(),
+      novalidate: z.boolean().optional(),
+      target: z.string().optional(),
+      ariaLabel: z.string().optional(),
+      submitButton: z
+        .object({
+          id: z.number().optional(),
+          value: z.string().optional(),
+          type: z.string().optional(),
+          disabled: z.boolean().optional(),
+        })
+        .optional(),
+      // keep: add ariaLabel to plusButton and minusButton, ariaLabel and min to numberOfGuestsInput
+      plusButton: z
+        .object({
+          id: z.number().optional(),
+          value: z.string().optional(),
+          type: z.string().optional(),
+          disabled: z.boolean().optional(),
+          ariaLabel: z.string().optional(),
+        })
+        .optional(),
+      minusButton: z
+        .object({
+          id: z.number().optional(),
+          value: z.string().optional(),
+          type: z.string().optional(),
+          disabled: z.boolean().optional(),
+          ariaLabel: z.string().optional(),
+        })
+        .optional(),
+      numberOfGuestsInput: z
+        .object({
+          id: z.number().optional(),
+          placeholder: z.string().optional(),
+          name: z.string().optional(),
+          maxlength: z.number().optional(),
+          minlength: z.number().optional(),
+          readonly: z.boolean().optional(),
+          required: z.boolean().optional(),
+          disabled: z.boolean().optional(),
+          autofocus: z.boolean().optional(),
+          type: z.string().optional(),
+          ariaLabel: z.string().optional(),
+          min: z.number().optional(),
+        })
+        .optional(),
+    })
+    .optional(),
 });
 
 // Infer the TypeScript type from the Zod schema

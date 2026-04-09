@@ -1,7 +1,16 @@
-import { Box, Image, Flex, Grid, GridItem } from "@chakra-ui/react";
+import {
+  Box,
+  Image,
+  Flex,
+  Grid,
+  GridItem,
+  Button,
+  Input,
+} from "@chakra-ui/react";
 import { useState } from "react";
 import type { FC } from "react";
 import { useLoaderData } from "react-router";
+import { useLocale } from "@/hooks/useLocale";
 import Heading from "@/shared/Heading/Heading";
 import type { TableBookingPageData } from "@/zod/pages/tableBookingPageData";
 
@@ -12,16 +21,43 @@ const TableBookingPage: FC = () => {
     image,
     mainTitle,
     numberOfGuestsTitle,
-    gestSingular,
-    gestPlural,
-    labelAction,
+    // labelAction removed,
     infoText,
     arrivalInstructionsLabel,
     arrivalInstructionsLink,
     logo,
+    numberOfGuestsForm,
   } = tableBookingPageData;
+
+  // keep: get form components from numberOfGuestsForm
+  const { submitButton, plusButton, minusButton, numberOfGuestsInput } =
+    numberOfGuestsForm || {};
+  const { appLocale } = useLocale();
+
+  // Helper for guest label by locale
+  const getGuestLabel = (count: number) => {
+    switch (appLocale) {
+      case "en":
+        return count === 1 ? "guest" : "guests";
+      case "es-ES":
+        return count === 1 ? "invitado" : "invitados";
+      case "fi-FI":
+      default:
+        return count === 1 ? "vieras" : "vieraat";
+    }
+  };
   console.log("logo", logo);
   const [guests, setGuests] = useState(1);
+  // For accessibility and form handling
+  // Async submit handler using fetch to send guests and locale as JSON
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    await fetch("/api/table-booking-page", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ guests, locale: appLocale }),
+    });
+  };
   return (
     <section>
       <Flex direction="column" align="center" justify="center" mb={8}>
@@ -51,86 +87,120 @@ const TableBookingPage: FC = () => {
                   {numberOfGuestsTitle}
                 </Heading>
               </Box>
-              {/* Counter button */}
-              <Box
-                mb={4}
-                borderWidth="1px"
-                borderRadius="30px"
-                display="flex"
-                alignItems="center"
-                justifyContent="space-between"
-                maxW="250px"
-                w="100%"
-                bg="rgb(245, 222, 179)"
+              {/* Guests form */}
+              <form
+                action="/api/table-booking-page"
+                method="post"
+                encType="application/x-www-form-urlencoded"
+                noValidate={false}
+                target="_self"
+                aria-label="Vieraiden määrä -lomake"
+                onSubmit={handleSubmit}
               >
                 <Box
-                  as="button"
-                  borderRadius="50%"
+                  mb={4}
                   borderWidth="1px"
-                  w="50px"
-                  h="50px"
+                  borderRadius="30px"
                   display="flex"
                   alignItems="center"
-                  justifyContent="center"
-                  fontSize="xl"
-                  color="white"
-                  bg="rgb(210, 180, 140)"
-                  onClick={() => setGuests((g) => Math.max(1, g - 1))}
+                  justifyContent="space-between"
+                  maxW="250px"
+                  w="100%"
+                  bg="rgb(245, 222, 179)"
+                  mx="auto"
                 >
-                  -
+                  <Button
+                    type="button" // keep type static
+                    aria-label={minusButton?.ariaLabel || "Vähennä vieraita"}
+                    disabled={minusButton?.disabled ?? guests <= 1}
+                    borderRadius="50%"
+                    borderWidth="1px"
+                    w="50px"
+                    h="50px"
+                    fontSize="1.25rem"
+                    color="white"
+                    bg="rgb(210, 180, 140)"
+                    border="1px solid #d2b48c"
+                    cursor={
+                      (minusButton?.disabled ?? guests <= 1)
+                        ? "not-allowed"
+                        : "pointer"
+                    }
+                    onClick={() => setGuests((g) => Math.max(1, g - 1))}
+                  >
+                    {minusButton?.value || "-"}
+                  </Button>
+                  <Input
+                    type="text" // keep type static
+                    name={numberOfGuestsInput?.name || "vieraat"}
+                    aria-label={
+                      numberOfGuestsInput?.ariaLabel || "Vieraiden määrä"
+                    }
+                    placeholder={
+                      numberOfGuestsInput?.placeholder || "Vieraiden määrä"
+                    }
+                    value={`${guests} ${getGuestLabel(guests)}`}
+                    minLength={numberOfGuestsInput?.minlength || 1}
+                    maxLength={numberOfGuestsInput?.maxlength || 12}
+                    min={numberOfGuestsInput?.min || 1}
+                    readOnly={numberOfGuestsInput?.readonly ?? true}
+                    required={numberOfGuestsInput?.required ?? true}
+                    minW="80px"
+                    h="40px"
+                    textAlign="center"
+                    fontWeight="bold"
+                    borderRadius="10px"
+                    border="none"
+                    bg="transparent"
+                    fontSize="1rem"
+                  />
+                  <Button
+                    type="button" // keep type static
+                    aria-label={plusButton?.ariaLabel || "Lisää vieraita"}
+                    disabled={plusButton?.disabled}
+                    borderRadius="50%"
+                    borderWidth="1px"
+                    w="50px"
+                    h="50px"
+                    fontSize="1.25rem"
+                    color="white"
+                    bg="rgb(101, 67, 33)"
+                    border="1px solid #654321"
+                    cursor={plusButton?.disabled ? "not-allowed" : "pointer"}
+                    onClick={() => setGuests((g) => g + 1)}
+                  >
+                    {plusButton?.value || "+"}
+                  </Button>
                 </Box>
-                <Box
-                  minW="80px"
-                  h="40px"
-                  display="flex"
-                  alignItems="center"
-                  justifyContent="center"
-                  textAlign="center"
-                  fontWeight="bold"
-                  borderRadius="10px"
-                >
-                  {guests}{" "}
-                  {guests === 1
-                    ? gestSingular || "guest"
-                    : gestPlural || "guests"}
-                </Box>
-                <Box
-                  as="button"
-                  borderRadius="50%"
-                  borderWidth="1px"
-                  w="50px"
-                  h="50px"
-                  display="flex"
-                  alignItems="center"
-                  justifyContent="center"
-                  fontSize="xl"
-                  color="white"
-                  bg="rgb(101, 67, 33)"
-                  onClick={() => setGuests((g) => g + 1)}
-                >
-                  +
-                </Box>
-              </Box>
-              {/* Action button */}
-              <Box
-                as="button"
-                mb={4}
-                borderWidth="1px"
-                borderRadius="30px"
-                display="flex"
-                alignItems="center"
-                justifyContent="center"
-                maxW="250px"
-                w="100%"
-                h="50px"
-                fontWeight="bold"
-                fontSize="lg"
-                color="white"
-                bg="rgb(101, 67, 33)"
-                onClick={() => console.log("Action button clicked!")}
-              >
-                {labelAction || "Next"}
-              </Box>
+                <Flex justify="center">
+                  <Button
+                    type="submit"
+                    aria-label={submitButton?.value || "Seuraava"}
+                    disabled={submitButton?.disabled ?? guests < 1}
+                    mb="1rem"
+                    borderWidth="1px"
+                    borderRadius="30px"
+                    display="flex"
+                    alignItems="center"
+                    justifyContent="center"
+                    maxW="250px"
+                    w="100%"
+                    h="50px"
+                    fontWeight="bold"
+                    fontSize="1.125rem"
+                    color="white"
+                    bg="rgb(101, 67, 33)"
+                    border="1px solid #654321"
+                    cursor={
+                      (submitButton?.disabled ?? guests < 1)
+                        ? "not-allowed"
+                        : "pointer"
+                    }
+                  >
+                    {submitButton?.value || "Seuraava"}
+                  </Button>
+                </Flex>
+              </form>
               {/* Info text from Strapi */}
               {infoText && (
                 <Box mt={8} color="gray.700" fontSize="xs" textAlign="center">
