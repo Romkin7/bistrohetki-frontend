@@ -50,12 +50,13 @@ const TableBookingPage: FC = () => {
   const [guests, setGuests] = useState(1);
   // For accessibility and form handling
   // Async submit handler using fetch to send guests and locale as JSON
+  // Стандартен handleSubmit: изпраща guests и locale (или други нужни полета)
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    await fetch("/api/table-booking-page", {
+    await fetch("/api/reservations", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ guests, locale: appLocale }),
+      body: JSON.stringify({ data: { guests, language: appLocale } }),
     });
   };
   return (
@@ -89,13 +90,8 @@ const TableBookingPage: FC = () => {
               </Box>
               {/* Guests form */}
               <form
-                action="/api/table-booking-page"
-                method="post"
-                encType="application/x-www-form-urlencoded"
-                noValidate={false}
-                target="_self"
-                aria-label="Vieraiden määrä -lomake"
                 onSubmit={handleSubmit}
+                aria-label="Vieraiden määrä -lomake"
               >
                 <Box
                   mb={4}
@@ -243,12 +239,24 @@ const TableBookingPage: FC = () => {
         </GridItem>
 
         <GridItem h="100%">
-          <Box mx={4} p={4} borderWidth="1px" borderRadius="lg" h="100%">
+          <Box
+            mx={4}
+            p={4}
+            borderWidth="1px"
+            borderRadius="lg"
+            h="100%"
+            display="flex"
+            alignItems="center"
+            justifyContent="center"
+          >
             <Image
               src={image?.url}
               alt={image?.alternativeText}
               fit="contain"
               aria-label={image?.alternativeText}
+              maxW="600px"
+              w="600px"
+              h="auto"
             />
           </Box>
         </GridItem>

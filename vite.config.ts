@@ -9,7 +9,15 @@ export default defineConfig({
   server: {
     port: 3000,
     host: true,
+    proxy: {
+      '/api': {
+        target: 'http://localhost:1337',
+        changeOrigin: true,
+        secure: false,
+      },
+    },
   },
+  // ...останалата конфигурация
   build: {
     // Optimize bundle splitting, goes into rollupOptions
     rollupOptions: {
