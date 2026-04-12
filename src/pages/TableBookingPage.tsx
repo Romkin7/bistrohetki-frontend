@@ -1,17 +1,11 @@
-import {
-  Box,
-  Image,
-  Flex,
-  Grid,
-  GridItem,
-  Button,
-  Input,
-} from "@chakra-ui/react";
+import { Box, Image, Flex, Grid, GridItem } from "@chakra-ui/react";
+
 import { useState } from "react";
 import type { FC } from "react";
 import { useLoaderData } from "react-router";
 import { useLocale } from "@/hooks/useLocale";
 import Heading from "@/shared/Heading/Heading";
+import NumberOfGuestsForm from "@/shared/NumberOfGuestsForm";
 import type { TableBookingPageData } from "@/zod/pages/tableBookingPageData";
 
 const TableBookingPage: FC = () => {
@@ -26,12 +20,9 @@ const TableBookingPage: FC = () => {
     arrivalInstructionsLabel,
     arrivalInstructionsLink,
     logo,
-    numberOfGuestsForm,
+    // numberOfGuestsForm,
   } = tableBookingPageData;
 
-  // keep: get form components from numberOfGuestsForm
-  const { submitButton, plusButton, minusButton, numberOfGuestsInput } =
-    numberOfGuestsForm || {};
   const { appLocale } = useLocale();
 
   // Helper for guest label by locale
@@ -88,115 +79,13 @@ const TableBookingPage: FC = () => {
                   {numberOfGuestsTitle}
                 </Heading>
               </Box>
-              {/* Guests form */}
-              <form
-                onSubmit={handleSubmit}
-                aria-label="Vieraiden määrä -lomake"
-              >
-                <Box
-                  mb={4}
-                  borderWidth="1px"
-                  borderRadius="30px"
-                  display="flex"
-                  alignItems="center"
-                  justifyContent="space-between"
-                  maxW="250px"
-                  w="100%"
-                  bg="rgb(245, 222, 179)"
-                  mx="auto"
-                >
-                  <Button
-                    type="button" // keep type static
-                    aria-label={minusButton?.ariaLabel || "Vähennä vieraita"}
-                    disabled={minusButton?.disabled ?? guests <= 1}
-                    borderRadius="50%"
-                    borderWidth="1px"
-                    w="50px"
-                    h="50px"
-                    fontSize="1.25rem"
-                    color="white"
-                    bg="rgb(210, 180, 140)"
-                    border="1px solid #d2b48c"
-                    cursor={
-                      (minusButton?.disabled ?? guests <= 1)
-                        ? "not-allowed"
-                        : "pointer"
-                    }
-                    onClick={() => setGuests((g) => Math.max(1, g - 1))}
-                  >
-                    {minusButton?.value || "-"}
-                  </Button>
-                  <Input
-                    type="text" // keep type static
-                    name={numberOfGuestsInput?.name || "vieraat"}
-                    aria-label={
-                      numberOfGuestsInput?.ariaLabel || "Vieraiden määrä"
-                    }
-                    placeholder={
-                      numberOfGuestsInput?.placeholder || "Vieraiden määrä"
-                    }
-                    value={`${guests} ${getGuestLabel(guests)}`}
-                    minLength={numberOfGuestsInput?.minlength || 1}
-                    maxLength={numberOfGuestsInput?.maxlength || 12}
-                    min={numberOfGuestsInput?.min || 1}
-                    readOnly={numberOfGuestsInput?.readonly ?? true}
-                    required={numberOfGuestsInput?.required ?? true}
-                    minW="80px"
-                    h="40px"
-                    textAlign="center"
-                    fontWeight="bold"
-                    borderRadius="10px"
-                    border="none"
-                    bg="transparent"
-                    fontSize="1rem"
-                  />
-                  <Button
-                    type="button" // keep type static
-                    aria-label={plusButton?.ariaLabel || "Lisää vieraita"}
-                    disabled={plusButton?.disabled}
-                    borderRadius="50%"
-                    borderWidth="1px"
-                    w="50px"
-                    h="50px"
-                    fontSize="1.25rem"
-                    color="white"
-                    bg="rgb(101, 67, 33)"
-                    border="1px solid #654321"
-                    cursor={plusButton?.disabled ? "not-allowed" : "pointer"}
-                    onClick={() => setGuests((g) => g + 1)}
-                  >
-                    {plusButton?.value || "+"}
-                  </Button>
-                </Box>
-                <Flex justify="center">
-                  <Button
-                    type="submit"
-                    aria-label={submitButton?.value || "Seuraava"}
-                    disabled={submitButton?.disabled ?? guests < 1}
-                    mb="1rem"
-                    borderWidth="1px"
-                    borderRadius="30px"
-                    display="flex"
-                    alignItems="center"
-                    justifyContent="center"
-                    maxW="250px"
-                    w="100%"
-                    h="50px"
-                    fontWeight="bold"
-                    fontSize="1.125rem"
-                    color="white"
-                    bg="rgb(101, 67, 33)"
-                    border="1px solid #654321"
-                    cursor={
-                      (submitButton?.disabled ?? guests < 1)
-                        ? "not-allowed"
-                        : "pointer"
-                    }
-                  >
-                    {submitButton?.value || "Seuraava"}
-                  </Button>
-                </Flex>
-              </form>
+              <NumberOfGuestsForm
+                guests={guests}
+                setGuests={setGuests}
+                handleSubmit={handleSubmit}
+                getGuestLabel={getGuestLabel}
+                // keep: custom бутони могат да се подадат тук, ако са нужни
+              />
               {/* Info text from Strapi */}
               {infoText && (
                 <Box mt={8} color="gray.700" fontSize="xs" textAlign="center">
