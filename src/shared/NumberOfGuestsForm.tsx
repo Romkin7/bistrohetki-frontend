@@ -44,13 +44,15 @@ const NumberOfGuestsForm: React.FC<NumberOfGuestsFormProps> = ({
           aria-label="Vähennä vieraita"
           disabled={guests <= 1}
           borderRadius="50%"
-          borderWidth="1px"
+          borderWidth="2px"
           w="50px"
           h="50px"
           fontSize="1.25rem"
           color="white"
-          bg="rgb(210, 180, 140)"
-          border="1px solid #d2b48c"
+          _hover={{ bg: "rgb(120, 80, 40)" }}
+          bg={guests > 1 ? "rgb(101, 67, 33)" : "rgb(210, 180, 140)"}
+          outline={guests >= 1 ? "2px solid #fff" : "2px solid #d2b48c"}
+          outlineOffset={guests > 1 ? "-6px" : "-6px"}
           cursor={guests <= 1 ? "not-allowed" : "pointer"}
           onClick={() => setGuests((g) => Math.max(1, g - 1))}
         >
@@ -87,13 +89,15 @@ const NumberOfGuestsForm: React.FC<NumberOfGuestsFormProps> = ({
           type="button"
           aria-label="Lisää vieraita"
           borderRadius="50%"
-          borderWidth="1px"
+          borderWidth="2px"
           w="50px"
           h="50px"
           fontSize="1.25rem"
           color="white"
           bg="rgb(101, 67, 33)"
-          border="1px solid #654321"
+          _hover={{ bg: "rgb(120, 80, 40)" }}
+          outline={guests >= 1 ? "2px solid #fff" : undefined}
+          outlineOffset={guests >= 1 ? "-6px" : undefined}
           cursor="pointer"
           onClick={() => setGuests((g) => g + 1)}
         >
@@ -123,6 +127,7 @@ const NumberOfGuestsForm: React.FC<NumberOfGuestsFormProps> = ({
           color="white"
           bg="rgb(101, 67, 33)"
           border="1px solid #654321"
+          _hover={{ bg: "rgb(120, 80, 40)" }}
           cursor={guests < 1 ? "not-allowed" : "pointer"}
         >
           Seuraava
