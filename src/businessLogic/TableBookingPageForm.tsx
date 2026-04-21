@@ -1,5 +1,7 @@
-import { Box, Button, Input, Flex } from "@chakra-ui/react";
+import { Box, Input, Flex } from "@chakra-ui/react";
 import React from "react";
+import Button from "@/shared/Button/Button";
+import TextField from "@/shared/TextField/TextField";
 
 interface NumberOfGuestsFormProps {
   guests: number;
@@ -9,7 +11,6 @@ interface NumberOfGuestsFormProps {
   plusButton?: React.ReactNode;
   minusButton?: React.ReactNode;
   numberOfGuestsInput?: React.ReactNode;
-  getGuestLabel: (count: number) => string;
 }
 
 const NumberOfGuestsForm: React.FC<NumberOfGuestsFormProps> = ({
@@ -20,9 +21,13 @@ const NumberOfGuestsForm: React.FC<NumberOfGuestsFormProps> = ({
   plusButton,
   minusButton,
   numberOfGuestsInput,
-  getGuestLabel,
 }) => (
   <form onSubmit={handleSubmit} aria-label="Vieraiden määrä -lomake">
+    <TextField type="text" />
+    <TextField type="email" />
+    <TextField type="search" />
+    <TextField type="url" />
+
     <Box
       mb={4}
       borderWidth="1px"
@@ -41,20 +46,12 @@ const NumberOfGuestsForm: React.FC<NumberOfGuestsFormProps> = ({
       ) : (
         <Button
           type="button"
+          size="square"
           aria-label="Vähennä vieraita"
-          disabled={guests <= 1}
-          borderRadius="50%"
-          borderWidth="2px"
-          w="50px"
-          h="50px"
-          fontSize="1.25rem"
-          color="white"
-          _hover={{ bg: "rgb(120, 80, 40)" }}
-          bg={guests > 1 ? "rgb(101, 67, 33)" : "rgb(210, 180, 140)"}
-          outline={guests >= 1 ? "2px solid #fff" : "2px solid #d2b48c"}
-          outlineOffset={guests > 1 ? "-6px" : "-6px"}
-          cursor={guests <= 1 ? "not-allowed" : "pointer"}
-          onClick={() => setGuests((g) => Math.max(1, g - 1))}
+          disabled={guests < 1}
+          borderRadius="circle"
+          variant="secondary"
+          onClick={() => setGuests((g) => Math.max(0, g - 1))}
         >
           -
         </Button>
@@ -68,7 +65,7 @@ const NumberOfGuestsForm: React.FC<NumberOfGuestsFormProps> = ({
           name="vieraat"
           aria-label="Vieraiden määrä"
           placeholder="Vieraiden määrä"
-          value={`${guests} ${getGuestLabel(guests)}`}
+          value={guests}
           minW="80px"
           h="40px"
           textAlign="center"
@@ -87,18 +84,11 @@ const NumberOfGuestsForm: React.FC<NumberOfGuestsFormProps> = ({
       ) : (
         <Button
           type="button"
-          aria-label="Lisää vieraita"
-          borderRadius="50%"
-          borderWidth="2px"
-          w="50px"
-          h="50px"
-          fontSize="1.25rem"
-          color="white"
-          bg="rgb(101, 67, 33)"
-          _hover={{ bg: "rgb(120, 80, 40)" }}
-          outline={guests >= 1 ? "2px solid #fff" : undefined}
-          outlineOffset={guests >= 1 ? "-6px" : undefined}
-          cursor="pointer"
+          size="square"
+          aria-label="Vähennä vieraita"
+          disabled={guests === 12}
+          borderRadius="circle"
+          variant="primary"
           onClick={() => setGuests((g) => g + 1)}
         >
           +
@@ -113,22 +103,9 @@ const NumberOfGuestsForm: React.FC<NumberOfGuestsFormProps> = ({
         <Button
           type="submit"
           aria-label="Seuraava"
-          mb="1rem"
-          borderWidth="1px"
-          borderRadius="30px"
-          display="flex"
-          alignItems="center"
-          justifyContent="center"
-          maxW="250px"
-          w="100%"
-          h="50px"
-          fontWeight="bold"
-          fontSize="1.125rem"
-          color="white"
-          bg="rgb(101, 67, 33)"
-          border="1px solid #654321"
-          _hover={{ bg: "rgb(120, 80, 40)" }}
-          cursor={guests < 1 ? "not-allowed" : "pointer"}
+          borderRadius="rounded"
+          size="l"
+          variant="primary"
         >
           Seuraava
         </Button>
