@@ -1,34 +1,33 @@
 import clsx from "clsx";
 import type { FC, PropsWithChildren } from "react";
 import styles from "./Button.module.css";
-import type { ButtonProps } from "@/zod/components/buttonProps";
+import {
+  buttonPropsSchema,
+  type ButtonProps,
+} from "@/zod/components/buttonProps";
 
 interface IButtonProps extends ButtonProps, PropsWithChildren {
   onClick?: () => void;
 }
 
-const Button: FC<IButtonProps> = ({
-  borderRadius,
-  children,
-  disabled = false,
-  onClick,
-  size,
-  type,
-  variant,
-}) => {
+const Button: FC<IButtonProps> = ({ children, onClick, ...rest }) => {
+  const { variant, size, shape, disabled, ariaLabel, type } =
+    buttonPropsSchema.parse(rest);
+
   const buttonStyles = clsx(
     styles.button,
     styles[`button--${variant}`],
-    styles[`button--${borderRadius}`],
+    styles[`button--${shape}`],
     styles[`button--${size}`],
   );
   console.log("size", size);
   return (
     <button
+      aria-label={ariaLabel}
       type={type}
       disabled={disabled}
-      onClick={onClick}
       className={buttonStyles}
+      onClick={onClick}
     >
       {children}
     </button>

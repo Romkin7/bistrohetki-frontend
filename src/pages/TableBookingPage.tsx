@@ -10,8 +10,15 @@ const TableBookingPage: FC = () => {
   const tableBookingPageData: TableBookingPageData = useLoaderData();
   const [guests, setGuests] = useState<number>(0);
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
     console.log(event);
+    console.log("submit guests:", guests);
   };
+  const handleReset = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setGuests(0); // или друга логика за нулиране на формата
+  };
+
   return (
     <section>
       <Flex direction="column" align="center" justify="center" mb={8}>
@@ -29,6 +36,7 @@ const TableBookingPage: FC = () => {
           <Box>
             <TableBookingPageForm
               handleSubmit={handleSubmit}
+              handleReset={handleReset}
               guests={guests}
               setGuests={setGuests}
             />

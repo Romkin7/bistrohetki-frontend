@@ -1,20 +1,23 @@
 import { Box, Input, Flex } from "@chakra-ui/react";
-import React from "react";
+import React, { type FormEvent } from "react";
 import Button from "@/shared/Button/Button";
-import TextField from "@/shared/TextField/TextField";
+import Form from "@/shared/Form/Form";
+// import TextField from "@/shared/TextField/TextField";
 
-interface NumberOfGuestsFormProps {
+interface TableBookingPageFormProps {
   guests: number;
   setGuests: React.Dispatch<React.SetStateAction<number>>;
-  handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
+  handleReset: (event: FormEvent<HTMLFormElement>) => void;
+  handleSubmit: (event: FormEvent<HTMLFormElement>) => void;
   submitButton?: React.ReactNode;
   plusButton?: React.ReactNode;
   minusButton?: React.ReactNode;
   numberOfGuestsInput?: React.ReactNode;
 }
 
-const NumberOfGuestsForm: React.FC<NumberOfGuestsFormProps> = ({
+const TableBookingPageForm: React.FC<TableBookingPageFormProps> = ({
   guests,
+  handleReset,
   setGuests,
   handleSubmit,
   submitButton,
@@ -22,12 +25,14 @@ const NumberOfGuestsForm: React.FC<NumberOfGuestsFormProps> = ({
   minusButton,
   numberOfGuestsInput,
 }) => (
-  <form onSubmit={handleSubmit} aria-label="Vieraiden määrä -lomake">
-    <TextField type="text" />
-    <TextField type="email" />
-    <TextField type="search" />
-    <TextField type="url" />
-
+  <Form
+    onSubmit={handleSubmit}
+    ariaLabel="Vieraiden määrä -lomake"
+    action="/api/table-booking"
+    layout="column"
+    method="post"
+    onReset={handleReset}
+  >
     <Box
       mb={4}
       borderWidth="1px"
@@ -46,10 +51,10 @@ const NumberOfGuestsForm: React.FC<NumberOfGuestsFormProps> = ({
       ) : (
         <Button
           type="button"
-          size="square"
-          aria-label="Vähennä vieraita"
+          size="l"
+          shape="circle"
+          ariaLabel="Vähennä vieraita"
           disabled={guests < 1}
-          borderRadius="circle"
           variant="secondary"
           onClick={() => setGuests((g) => Math.max(0, g - 1))}
         >
@@ -84,10 +89,10 @@ const NumberOfGuestsForm: React.FC<NumberOfGuestsFormProps> = ({
       ) : (
         <Button
           type="button"
-          size="square"
-          aria-label="Vähennä vieraita"
+          size="l"
+          ariaLabel="Lisää vieraita"
           disabled={guests === 12}
-          borderRadius="circle"
+          shape="circle"
           variant="primary"
           onClick={() => setGuests((g) => g + 1)}
         >
@@ -102,8 +107,8 @@ const NumberOfGuestsForm: React.FC<NumberOfGuestsFormProps> = ({
       ) : (
         <Button
           type="submit"
-          aria-label="Seuraava"
-          borderRadius="rounded"
+          ariaLabel="Seuraava"
+          shape="rounded"
           size="l"
           variant="primary"
         >
@@ -111,7 +116,7 @@ const NumberOfGuestsForm: React.FC<NumberOfGuestsFormProps> = ({
         </Button>
       )}
     </Flex>
-  </form>
+  </Form>
 );
 
-export default NumberOfGuestsForm;
+export default TableBookingPageForm;

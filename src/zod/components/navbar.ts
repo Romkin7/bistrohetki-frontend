@@ -1,7 +1,7 @@
 import z from "zod";
-import { mediaSchema } from "../media";
 import { languageSelectModelSchema } from "../collections/languageSelect";
 import { socialLinkModelSchema } from "../collections/socialLinkModel";
+import { mediaSchema } from "../media";
 
 export const nvabarLinkSchema = z.object({
   id: z.number(),

@@ -1,11 +1,13 @@
 import z from "zod";
 
 export const buttonPropsSchema = z.object({
-  borderRadius: z.enum(["circle", "rounded"]),
-  disabled: z.boolean().optional(),
-  size: z.enum(["s", "l", "square"]),
-  type: z.enum(["button", "submit", "reset"]),
+  shape: z.enum(["circle", "rounded", "pill", "square"]),
+  disabled: z.boolean().default(false).optional(),
+  size: z.enum(["s", "l"]),
+  type: z.enum(["button", "submit", "reset"]).default("button"),
   variant: z.enum(["primary", "secondary", "dark", "medium", "light"]),
+  className: z.string().optional(),
+  ariaLabel: z.string(),
 });
 
 export type ButtonProps = z.infer<typeof buttonPropsSchema>;

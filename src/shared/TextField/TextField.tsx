@@ -1,14 +1,58 @@
-import { Input } from "@chakra-ui/react";
+import { Field, HStack, Input } from "@chakra-ui/react";
 import clsx from "clsx";
-import type { FC } from "react";
+import type { ChangeEvent, FC } from "react";
 import styles from "./TextField.module.css";
-import type { TextFieldProps } from "@/zod/components/textFieldProps";
+import {
+  textFieldPropsSchema,
+  type TextFieldProps,
+} from "@/zod/components/textFieldProps";
 
-const TextField: FC<TextFieldProps> = ({ type }) => {
+interface ITextFieldProps extends TextFieldProps {
+  onInput?: (event: ChangeEvent<HTMLInputElement>) => void;
+}
+
+const TextField: FC<ITextFieldProps> = ({ onInput, ...rest }) => {
+  const {
+    label,
+    htmlFor,
+    name,
+    placeholder,
+    type,
+    required,
+    disabled,
+    readOnly,
+    ariaLabel,
+    className,
+    errorMessage,
+  } = textFieldPropsSchema.parse(rest);
   const textFieldStyles = clsx({
     [styles.textfield]: true,
+    className: !!className,
   });
-  return <Input type={type} className={textFieldStyles} />;
+  return (
+    <HStack gap="10" width="full">
+      <Field.Root required={required}>
+        <Field.Label htmlFor={htmlFor}>
+          {label}
+          {required && <Field.RequiredIndicator />}
+        </Field.Label>
+
+        <Input
+          id={htmlFor}
+          aria-label={ariaLabel}
+          readOnly={readOnly}
+          required={required}
+          disabled={disabled}
+          placeholder={placeholder}
+          type={type}
+          name={name}
+          className={textFieldStyles}
+          onInput={onInput}
+        />
+        {errorMessage && <Field.ErrorText>{errorMessage}</Field.ErrorText>}
+      </Field.Root>
+    </HStack>
+  );
 };
 
 export default TextField;

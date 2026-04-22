@@ -1,3 +1,31 @@
 .textfield {
   font: var(--bh-typography-body);
+  color: var(--bh-color-text-dark);
+  background-color: var(--bh-color-background-light);
+  border: 1px solid var(--bh-color-border-secondary);
+  border-radius: var(--bh-size-dimension-border-radius-rounded-2);
+  padding: var(--bh-size-dimension-spacing-2) var(--bh-size-dimension-spacing-3);
+  width: 100%;
+  box-sizing: border-box;
+  transition: border-color 0.2s;
+}
+
+.textfield:disabled,
+.textfield[readonly] {
+  background-color: var(--bh-color-background-medium);
+  color: var(--bh-color-text-disabled);
+  cursor: not-allowed;
+}
+
+.label {
+  display: block;
+  margin-bottom: var(--bh-size-dimension-spacing-2);
+  color: var(--bh-color-text-dark);
+  font: var(--bh-typography-body);
+}
+
+.errorMessage {
+  color: var(--bh-color-semantic-error);
+  font-size: var(--bh-size-dimension-spacing-3);
+  margin-top: var(--bh-size-dimension-spacing-1);
 }
