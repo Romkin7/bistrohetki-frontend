@@ -24,15 +24,13 @@ const TextField: FC<ITextFieldProps> = ({ onInput, ...rest }) => {
     ariaLabel,
     className,
     errorMessage,
+    value,
   } = textFieldPropsSchema.parse(rest);
-  const textFieldStyles = clsx({
-    [styles.textfield]: true,
-    className: !!className,
-  });
+  const textFieldStyles = clsx(styles.textfield, className);
   return (
     <HStack gap="10" width="full">
       <Field.Root required={required}>
-        <Field.Label htmlFor={htmlFor}>
+        <Field.Label className={styles.label} htmlFor={htmlFor}>
           {label}
           {required && <Field.RequiredIndicator />}
         </Field.Label>
@@ -48,6 +46,7 @@ const TextField: FC<ITextFieldProps> = ({ onInput, ...rest }) => {
           name={name}
           className={textFieldStyles}
           onInput={onInput}
+          value={value}
         />
         {errorMessage && <Field.ErrorText>{errorMessage}</Field.ErrorText>}
       </Field.Root>

@@ -5,7 +5,7 @@
   justify-content: center;
   transition: background-color 120ms;
   border-style: solid;
-  border-width: var(--bh-size-dimension-spacing-1);
+  /* border-width: var(--bh-size-dimension-spacing-1); */
   font-size: var(--bh-typography-link-navigation);
 }
 
@@ -42,7 +42,7 @@
 }
 
 .button--l {
-  padding: var(--bh-size-dimension-spacing-3, --bh-size-dimension-spacing-5);
+  padding: var(--bh-size-dimension-spacing-5, --bh-size-dimension-spacing-5);
 }
 
 .button--square {
@@ -53,6 +53,7 @@
 
 .button--rounded {
   border-radius: var(--bh-size-dimension-border-radius-rounded-5);
+  font-size: var(--bh-line-height-font-heading-title2);
 }
 
 .button--circle {

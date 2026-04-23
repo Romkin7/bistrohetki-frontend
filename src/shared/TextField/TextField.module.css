@@ -5,6 +5,7 @@
   border: 1px solid var(--bh-color-border-secondary);
   border-radius: var(--bh-size-dimension-border-radius-rounded-2);
   padding: var(--bh-size-dimension-spacing-2) var(--bh-size-dimension-spacing-3);
+  text-align: var(--bh-layout-flex-align-center);
   width: 100%;
   box-sizing: border-box;
   transition: border-color 0.2s;
@@ -12,16 +13,29 @@
 
 .textfield:disabled,
 .textfield[readonly] {
-  background-color: var(--bh-color-background-medium);
-  color: var(--bh-color-text-disabled);
+  background-color: var(--bh-color-background-primary);
+  /* color: var(--bh-color-text-disabled); */
+  min-width: var(--bh-size-dimension-spacing-1);
+  height: var(--bh-size-dimension-spacing-6);
+  text-align: var(--bh-layout-flex-align-center);
+  font-weight: var(--bh-weight-font-heading-title1);
+  border-radius: var(--bh-size-dimension-border-radius-rounded-2);
+  border: var(--bh-size-dimension-border-0);
+  margin-bottom: var(--bh-size-dimension-spacing-1);
+  /* background-color: var(--bh-color-background-transparent); */
+
+  font-size: var(--bh-size-font-heading-title2);
   cursor: not-allowed;
 }
 
 .label {
-  display: block;
-  margin-bottom: var(--bh-size-dimension-spacing-2);
+  display: flex;
+  justify-content: var(--bh-layout-flex-justify-center);
+  width: 100%;
+  margin-top: var(--bh-size-dimension-spacing-1);
   color: var(--bh-color-text-dark);
   font: var(--bh-typography-body);
+  text-align: var(--bh-layout-flex-align-center);
 }
 
 .errorMessage {

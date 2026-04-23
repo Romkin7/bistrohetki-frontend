@@ -1,3 +1,26 @@
 .tableBookingPageForm {
   background-color: var(--bh-color-brand-primary);
 }
+.tableBookingPageFormBox {
+  margin-bottom: var(--bh-size-dimension-spacing-4);
+  border-width: var(--bh-size-dimension-border-1);
+  border-radius: var(--bh-size-dimension-border-radius-rounded-5);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  background-color: var(--bh-color-brand-primary);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* .tableBookingPageFormInput {
+  min-width: var(--bh-size-dimension-spacing-1);
+  height: var(--bh-size-dimension-spacing-6);
+  text-align: var(--bh-layout-flex-align-center);
+  font-weight: var(--bh-weight-font-heading-title1);
+  border-radius: var(--bh-size-dimension-border-radius-rounded-2);
+  border: var(--bh-size-dimension-border-0);
+  
+  font-size: var(--bh-size-font-heading-title2);
+} */
