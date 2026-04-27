@@ -53,7 +53,9 @@
 
 .button--rounded {
   border-radius: var(--bh-size-dimension-border-radius-rounded-5);
-  font-size: var(--bh-line-height-font-heading-title2);
+  font-size: var(--bh-line-height-font-heading-title3);
+  min-height: var(--bh-size-dimension-spacing-7);
+  padding: 0 var(--bh-size-dimension-spacing-6);
 }
 
 .button--circle {

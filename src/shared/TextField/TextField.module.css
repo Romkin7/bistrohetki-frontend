@@ -1,7 +1,6 @@
 .textfield {
   font: var(--bh-typography-body);
   color: var(--bh-color-text-dark);
-  background-color: var(--bh-color-background-light);
   border: 1px solid var(--bh-color-border-secondary);
   border-radius: var(--bh-size-dimension-border-radius-rounded-2);
   padding: var(--bh-size-dimension-spacing-2) var(--bh-size-dimension-spacing-3);
@@ -22,7 +21,6 @@
   border-radius: var(--bh-size-dimension-border-radius-rounded-2);
   border: var(--bh-size-dimension-border-0);
   margin-bottom: var(--bh-size-dimension-spacing-1);
-  /* background-color: var(--bh-color-background-transparent); */
 
   font-size: var(--bh-size-font-heading-title2);
   cursor: not-allowed;

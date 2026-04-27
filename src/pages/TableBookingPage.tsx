@@ -1,9 +1,10 @@
-import { Box, Flex, Grid } from "@chakra-ui/react";
+import { Flex, Grid, GridItem } from "@chakra-ui/react";
 import { useState } from "react";
 import type { FC, FormEvent } from "react";
 import { useLoaderData } from "react-router";
-import TableBookingPageForm from "@/businessLogic/TableBookingPageForm";
+import TableBookingPageForm from "@/businessLogicComponents/TableBookingPageForm/TableBookingPageForm";
 import Heading from "@/shared/Heading/Heading";
+import TableBookingPageImage from "@/shared/TableBookingPageImage/TableBookingPageImage";
 import type { TableBookingPageData } from "@/zod/pages/tableBookingPageData";
 
 const TableBookingPage: FC = () => {
@@ -33,14 +34,25 @@ const TableBookingPage: FC = () => {
       </Flex>
       <Flex direction="column" align="center" justify="center" mb={8}>
         <Grid templateColumns={{ base: "1fr", md: "2fr 1fr" }} gap={4}>
-          <Box>
+          <GridItem h="100%">
+            {/* <Box> */}
             <TableBookingPageForm
               handleSubmit={handleSubmit}
               handleReset={handleReset}
               guests={guests}
               setGuests={setGuests}
             />
-          </Box>
+            {/* </Box> */}
+          </GridItem>
+          <GridItem h="100%">
+            <TableBookingPageImage
+              imageUrl={tableBookingPageData?.image?.url}
+              imageAlt={
+                tableBookingPageData?.image?.alternativeText ||
+                "Table booking image"
+              }
+            />
+          </GridItem>
         </Grid>
       </Flex>
     </section>

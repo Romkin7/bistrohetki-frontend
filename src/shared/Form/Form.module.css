@@ -1,7 +1,5 @@
 .form {
   display: flex;
-  align-items: center;
-  justify-content: center;
   color: var(--bh-color-text-dark);
   font: var(--bh-typography-link-navigation);
   gap: var(--bh-size-dimension-spacing-4);

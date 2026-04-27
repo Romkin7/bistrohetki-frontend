@@ -8,13 +8,12 @@ export const textFieldPropsSchema = z.object({
   type: z
     .enum(["text", "email", "password", "search", "url", "tel"])
     .default("text"),
-  required: z.boolean().default(false),
-  disabled: z.boolean().default(false),
-  readOnly: z.boolean().default(false),
+  required: z.boolean().default(false).optional(),
+  disabled: z.boolean().default(false).optional(),
+  readOnly: z.boolean().default(false).optional(),
   className: z.string().optional(),
   errorMessage: z.string().optional(),
   ariaLabel: z.string(),
-  value: z.union([z.string(), z.number()]),
 });
 
 export type TextFieldProps = z.infer<typeof textFieldPropsSchema>;

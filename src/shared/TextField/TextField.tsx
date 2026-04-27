@@ -9,9 +9,10 @@ import {
 
 interface ITextFieldProps extends TextFieldProps {
   onInput?: (event: ChangeEvent<HTMLInputElement>) => void;
+  value: string;
 }
 
-const TextField: FC<ITextFieldProps> = ({ onInput, ...rest }) => {
+const TextField: FC<ITextFieldProps> = ({ onInput, value, ...rest }) => {
   const {
     label,
     htmlFor,
@@ -24,7 +25,6 @@ const TextField: FC<ITextFieldProps> = ({ onInput, ...rest }) => {
     ariaLabel,
     className,
     errorMessage,
-    value,
   } = textFieldPropsSchema.parse(rest);
   const textFieldStyles = clsx(styles.textfield, className);
   return (

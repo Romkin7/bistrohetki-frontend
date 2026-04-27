@@ -3,7 +3,7 @@ import { Box, Image, Flex, Grid, GridItem } from "@chakra-ui/react";
 import { useState } from "react";
 import type { FC } from "react";
 import { useLoaderData } from "react-router";
-import NumberOfGuestsForm from "@/businessLogic/TableBookingPageForm";
+import NumberOfGuestsForm from "@/businessLogicComponents/TableBookingPageForm/TableBookingPageForm";
 import { useLocale } from "@/hooks/useLocale";
 import Heading from "@/shared/Heading/Heading";
 import type { TableBookingPageData } from "@/zod/pages/tableBookingPageData";
