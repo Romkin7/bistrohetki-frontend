@@ -32,15 +32,18 @@ export const tableBookingPageDataSchema = z.object({
           value: z.string().optional(),
           type: z.string().optional(),
           disabled: z.boolean().optional(),
+          buttonText: z.string().optional(),
+          ariaLabel: z.string().optional(),
         })
         .optional(),
-      // keep: add ariaLabel to plusButton and minusButton, ariaLabel and min to numberOfGuestsInput
+      // keep: add buttonText to plusButton and minusButton, max to numberOfGuestsInput
       plusButton: z
         .object({
           id: z.number().optional(),
           value: z.string().optional(),
           type: z.string().optional(),
           disabled: z.boolean().optional(),
+          buttonText: z.string().optional(),
           ariaLabel: z.string().optional(),
         })
         .optional(),
@@ -50,6 +53,7 @@ export const tableBookingPageDataSchema = z.object({
           value: z.string().optional(),
           type: z.string().optional(),
           disabled: z.boolean().optional(),
+          buttonText: z.string().optional(),
           ariaLabel: z.string().optional(),
         })
         .optional(),
@@ -67,6 +71,7 @@ export const tableBookingPageDataSchema = z.object({
           type: z.string().optional(),
           ariaLabel: z.string().optional(),
           min: z.number().optional(),
+          max: z.number().optional(),
         })
         .optional(),
     })

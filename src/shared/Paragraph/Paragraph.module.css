@@ -28,3 +28,6 @@
 .paragraph--medium {
   color: var(--bh-color-text-medium);
 }
+.paragraph--primary {
+  background-color: var(--bh-color-brand-primary);
+}

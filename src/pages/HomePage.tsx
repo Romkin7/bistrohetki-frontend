@@ -3,7 +3,6 @@ import { type FC } from "react";
 import Markdown from "react-markdown";
 import { useLoaderData } from "react-router";
 import rehypeRaw from "rehype-raw";
-import Button from "@/shared/Button/Button";
 import Heading from "@/shared/Heading/Heading";
 import type { HomePageData } from "@/zod/pages/homePageData";
 
@@ -20,24 +19,6 @@ const HomePage: FC = () => {
         >
           {homePageData?.mainTitle}
         </Heading>
-        <Button
-          type="button"
-          borderRadius="circle"
-          onClick={() => {}}
-          size="square"
-          variant="primary"
-        >
-          +
-        </Button>
-        <Button
-          type="button"
-          onClick={() => {}}
-          borderRadius="circle"
-          size="square"
-          variant="secondary"
-        >
-          -
-        </Button>
         <Markdown rehypePlugins={[rehypeRaw]}>{homePageData?.content}</Markdown>
       </Flex>
       <Flex direction="column" align="center" justify="center" mb={8}>
