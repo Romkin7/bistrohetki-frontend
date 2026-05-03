@@ -1,10 +1,13 @@
 import { Flex } from "@chakra-ui/react";
 import React, { type FormEvent } from "react";
+import { useLoaderData } from "react-router";
 import NumberOfGuestsSelect from "../NumberOfGuestsSelect/NumberOfGuestsSelect";
 import styles from "./TableBookingPageForm.module.css";
 import Button from "@/shared/Button/Button";
 import Form from "@/shared/Form/Form";
 import { tableBookingPageFormSchema } from "@/zod/businessLogic/tableBookingPageForm";
+import type { ButtonType } from "@/zod/components/buttonProps";
+import type { TableBookingPageData } from "@/zod/pages/tableBookingPageData";
 
 interface TableBookingPageFormProps {
   guests: number;
@@ -19,6 +22,7 @@ const TableBookingPageForm: React.FC<TableBookingPageFormProps> = ({
   setGuests,
   handleSubmit,
 }) => {
+  const tableBookingPageData: TableBookingPageData = useLoaderData();
   const { guests } = tableBookingPageFormSchema.parse({ guests: guestsValue });
 
   return (
@@ -35,23 +39,41 @@ const TableBookingPageForm: React.FC<TableBookingPageFormProps> = ({
 
       <Flex justifyContent="center" alignItems="center" direction="row" gap="3">
         <Button
-          type="reset"
-          ariaLabel="Tyhjennä"
+          type={
+            tableBookingPageData.numberOfGuestsForm?.resetButton
+              ?.type as ButtonType
+          }
+          ariaLabel={
+            tableBookingPageData.numberOfGuestsForm?.resetButton
+              ?.ariaLabel as string
+          }
           shape="rounded"
           size="l"
           variant="secondary"
+          disabled={
+            tableBookingPageData.numberOfGuestsForm?.resetButton?.disabled
+          }
         >
-          Peruuta
+          {tableBookingPageData.numberOfGuestsForm?.resetButton?.buttonText}
         </Button>
 
         <Button
-          type="submit"
-          ariaLabel="Seuraava"
+          type={
+            tableBookingPageData.numberOfGuestsForm?.submitButton
+              ?.type as ButtonType
+          }
+          ariaLabel={
+            tableBookingPageData.numberOfGuestsForm?.submitButton
+              ?.ariaLabel as string
+          }
           shape="rounded"
           size="l"
           variant="primary"
+          disabled={
+            tableBookingPageData.numberOfGuestsForm?.submitButton?.disabled
+          }
         >
-          Seuraava
+          {tableBookingPageData.numberOfGuestsForm?.submitButton?.buttonText}
         </Button>
       </Flex>
     </Form>

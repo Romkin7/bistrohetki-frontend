@@ -1,5 +1,7 @@
 import { z } from "zod";
 import { mediaSchema } from "../media";
+import { strapiButtonSchema } from "../strapiComponents/button";
+import { strapiTextFieldSchema } from "../strapiComponents/textField";
 
 export const tableBookingPageDataSchema = z.object({
   id: z.number().int().positive(),
@@ -10,72 +12,33 @@ export const tableBookingPageDataSchema = z.object({
   mainTitle: z.string(),
   numberOfGuestsTitle: z.string(),
   image: mediaSchema,
-
   infoText: z.string().optional(),
   arrivalInstructionsLink: z.string().optional(),
+  arrivalInstructionsLinkText: z.string().optional(),
   arrivalInstructionsLabel: z.string().optional(),
   logo: mediaSchema,
   // keep: form components only inside numberOfGuestsForm
 
   // keep: add numberOfGuestsForm as nested object
-  numberOfGuestsForm: z
-    .object({
-      action: z.string().optional(),
-      method: z.string().optional(),
-      enctype: z.string().optional(),
-      novalidate: z.boolean().optional(),
-      target: z.string().optional(),
-      ariaLabel: z.string().optional(),
-      submitButton: z
-        .object({
-          id: z.number().optional(),
-          value: z.string().optional(),
-          type: z.string().optional(),
-          disabled: z.boolean().optional(),
-          buttonText: z.string().optional(),
-          ariaLabel: z.string().optional(),
-        })
-        .optional(),
-      // keep: add buttonText to plusButton and minusButton, max to numberOfGuestsInput
-      plusButton: z
-        .object({
-          id: z.number().optional(),
-          value: z.string().optional(),
-          type: z.string().optional(),
-          disabled: z.boolean().optional(),
-          buttonText: z.string().optional(),
-          ariaLabel: z.string().optional(),
-        })
-        .optional(),
-      minusButton: z
-        .object({
-          id: z.number().optional(),
-          value: z.string().optional(),
-          type: z.string().optional(),
-          disabled: z.boolean().optional(),
-          buttonText: z.string().optional(),
-          ariaLabel: z.string().optional(),
-        })
-        .optional(),
-      numberOfGuestsInput: z
-        .object({
-          id: z.number().optional(),
-          placeholder: z.string().optional(),
-          name: z.string().optional(),
-          maxlength: z.number().optional(),
-          minlength: z.number().optional(),
-          readonly: z.boolean().optional(),
-          required: z.boolean().optional(),
-          disabled: z.boolean().optional(),
-          autofocus: z.boolean().optional(),
-          type: z.string().optional(),
-          ariaLabel: z.string().optional(),
-          min: z.number().optional(),
-          max: z.number().optional(),
-        })
-        .optional(),
-    })
-    .optional(),
+  numberOfGuestsForm: z.object({
+    action: z.string(),
+    method: z.string(),
+    enctype: z.string(),
+    novalidate: z.boolean().optional(),
+    target: z.string().optional(),
+    ariaLabel: z.string(),
+
+    submitButton: strapiButtonSchema,
+
+    resetButton: strapiButtonSchema,
+
+    // keep: add buttonText to plusButton and minusButton, max to numberOfGuestsInput
+    plusButton: strapiButtonSchema,
+
+    minusButton: strapiButtonSchema,
+
+    numberOfGuestsInput: strapiTextFieldSchema,
+  }),
 });
 
 // Infer the TypeScript type from the Zod schema

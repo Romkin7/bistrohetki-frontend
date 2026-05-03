@@ -20,7 +20,7 @@ const Button: FC<IButtonProps> = ({ children, onClick, ...rest }) => {
     styles[`button--${shape}`],
     styles[`button--${size}`],
   );
-  console.log("size", size);
+  console.log(styles.button);
   return (
     <button
       aria-label={ariaLabel}

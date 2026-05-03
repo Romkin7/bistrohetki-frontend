@@ -11,3 +11,4 @@ export const buttonPropsSchema = z.object({
 });
 
 export type ButtonProps = z.infer<typeof buttonPropsSchema>;
+export type ButtonType = ButtonProps["type"];

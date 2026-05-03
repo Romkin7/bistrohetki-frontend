@@ -1,0 +1,11 @@
+.yellowBackground {
+  background-color: var(--bh-color-brand-primary);
+}
+/* .logoBistroHetki {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 100%;
+  width: 700px;
+  margin: 24px auto 0;
+} */
