@@ -3,9 +3,9 @@ import type { FC } from "react";
 import { useLoaderData } from "react-router";
 import styles from "./NumberOfGuestsSelect.module.css";
 
+import { useGetGuestsValueText } from "@/hooks/useGetGuestsValueText";
 import Button from "@/shared/Button/Button";
 import TextField from "@/shared/TextField/TextField";
-import { getGuestsValueText } from "@/utils/getGuestsValueText";
 import { numberOfGuestsSelectSchema } from "@/zod/businessLogic/numberOfGuestsSelec";
 import type { TableBookingPageData } from "@/zod/pages/tableBookingPageData";
 
@@ -23,7 +23,7 @@ const NumberOfGuestsSelect: FC<NumberOfGuestsSelectProps> = ({
   const { guests } = numberOfGuestsSelectSchema.parse({
     guests: guestsValue,
   });
-
+  const guestsValueText = useGetGuestsValueText(guests);
   return (
     <Flex
       justifyContent="center"
@@ -65,7 +65,7 @@ const NumberOfGuestsSelect: FC<NumberOfGuestsSelectProps> = ({
           tableBookingPageData?.numberOfGuestsForm?.numberOfGuestsInput
             ?.placeholder
         }
-        value={getGuestsValueText(guests)}
+        value={guestsValueText}
         readOnly
       />
 
