@@ -1,6 +1,8 @@
 import { z } from "zod";
 import { mediaSchema } from "../media";
 import { strapiButtonSchema } from "../strapiComponents/button";
+// import { linkSchema } from "../strapiComponents/link";
+import { menuSchema } from "../strapiComponents/menu";
 import { strapiTextFieldSchema } from "../strapiComponents/textField";
 
 export const tableBookingPageDataSchema = z.object({
@@ -39,6 +41,8 @@ export const tableBookingPageDataSchema = z.object({
 
     numberOfGuestsInput: strapiTextFieldSchema,
   }),
+
+  Menu: menuSchema,
 });
 
 // Infer the TypeScript type from the Zod schema
