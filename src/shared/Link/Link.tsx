@@ -13,6 +13,7 @@ const Link: FC<TLinkProps> = ({ children, ...rest }) => {
     styles[`link-${variant}`],
     styles[`link-${color}`],
   );
+
   return (
     <RouterLink
       to={href}

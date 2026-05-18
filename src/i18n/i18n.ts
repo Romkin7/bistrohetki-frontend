@@ -5,11 +5,13 @@ import enTableBooking from "./locales/en/tableBooking.json";
 import esTableBooking from "./locales/es/tableBooking.json";
 import fiTableBooking from "./locales/fi/tableBooking.json";
 
+const { NODE_ENV } = import.meta.env;
+
 i18next.use(initReactI18next).init({
   lng: "fi", // if you're using a language detector, do not define the lng option
   fallbackLng: "fi",
-  supportedLngs: ["fi", "en", "es"],
-  debug: true,
+  supportedLngs: ["fi", "fi-FI", "en", "en-EN", "es", "es-ES"],
+  debug: NODE_ENV === "development" ? true : false,
   resources: {
     en: {
       tableBooking: enTableBooking,

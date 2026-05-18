@@ -8,6 +8,7 @@
   font: var(--bh-typography-link);
   line-height: var(--bh-size-line-height-link);
   margin-bottom: var(--bh-size-dimencion-spacing-4);
+  text-decoration: underline;
 }
 
 .link-inline {
