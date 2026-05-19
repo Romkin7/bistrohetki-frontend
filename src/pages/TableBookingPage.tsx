@@ -6,9 +6,13 @@ import { useLoaderData } from "react-router";
 import rehypeRaw from "rehype-raw";
 import remarkGfm from "remark-gfm";
 import styles from "../App.module.css";
+
 import TableBookingPageForm from "@/businessLogicComponents/TableBookingPageForm/TableBookingPageForm";
+import AikanButton from "@/shared/AikanButton/AikanButton";
 import Heading from "@/shared/Heading/Heading";
 import Link from "@/shared/Link/Link";
+import Calendar from "@/shared/DatepickerWithRange/Calendar/Calendar";
+
 import type { TableBookingPageData } from "@/zod/pages/tableBookingPageData";
 
 const TableBookingPage: FC = () => {
@@ -44,6 +48,14 @@ const TableBookingPage: FC = () => {
               guests={guests}
               setGuests={setGuests}
             />
+            <Flex justify="center" mt="4">
+              <AikanButton>Jatka</AikanButton>
+            </Flex>
+
+            <Flex justify="center" mt="4">
+              <Calendar />
+            </Flex>
+
             <Flex
               direction="column"
               align="center"
