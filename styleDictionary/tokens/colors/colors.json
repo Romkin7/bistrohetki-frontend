@@ -9,12 +9,16 @@
       },
       "tertiary": {
         "value": "rgb(3, 1, 0)"
+      },
+      "quaternary": {
+        "value": "rgb(244, 227, 198)"
       }
     },
     "text": {
       "dark": { "value": "rgb(23, 24, 28)" },
       "medium": { "value": "rgb(4, 119, 113)" },
-      "light": { "value": "rgb(246, 247, 249)" }
+      "light": { "value": "rgb(246, 247, 249)" },
+      "disabled": { "value": "rgb(179, 193, 215)" }
     },
     "background": {
       "dark": { "value": "rgb(4, 119, 113)" },
@@ -26,9 +30,16 @@
       "secondary": { "value": "rgb(246, 247, 249)" }
     },
     "button": {
+      "primary": { "value": "rgb(101, 67, 33)" },
+      "primary-hover": { "value": "rgb(120, 80, 40)" },
+      "primary-outline": { "value": "rgb(255, 255, 255)" },
+      "secondary": { "value": "rgb(210, 180, 140)" },
+      "secondary-hover": { "value": "rgb(210, 180, 140)" },
+      "secondary-outline": { "value": "rgb(210, 180, 140)" },
       "dark": { "value": "rgb(4, 119, 113)" },
       "medium": { "value": "rgb(246, 247, 249)" },
-      "light": { "value": "rgb(255, 255, 255)" }
+      "light": { "value": "rgb(255, 255, 255)" },
+      "disabled": { "value": "rgb(239, 239, 239)" }
     },
     "link": {
       "dark": { "value": "rgb(1, 1, 3)" },

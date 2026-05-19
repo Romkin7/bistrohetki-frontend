@@ -23,6 +23,20 @@ a {
   text-decoration: none;
 }
 
+.inlineLink {
+  color: var(--bh-color-link-medium);
+  font: var(--bh-typography-link-navigation);
+  text-decoration: underline;
+}
+.contentWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: var(--bh-size-dimension-spacing-5);
+  text-align: center;
+}
+
 h1 {
   font: var(--bh-typography-heading-title1);
   margin-bottom: var(--bh-size-dimension-spacing-5);

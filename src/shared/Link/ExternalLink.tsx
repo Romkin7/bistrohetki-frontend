@@ -17,23 +17,17 @@ const variantClasses: Record<LinkVariant, string> = {
   navigation: "navigation",
 };
 
-const ExternalLink: FC<LinkProps> = ({
-  variant,
-  href,
-  children,
-  external,
-  color,
-}) => {
+const ExternalLink: FC<LinkProps> = ({ variant, href, children, color }) => {
   const linkStyles = clsx(
     styles.link,
     styles[`link-${variantClasses[variant as LinkVariant]}`],
-    styles[`link-${color}`]
+    styles[`link-${color}`],
   );
   return (
     <a
       href={href}
       className={linkStyles}
-      target={external ? "_blank" : "_self"}
+      target={"_blank"}
       rel="noopener noreferrer"
       referrerPolicy="no-referrer"
     >
