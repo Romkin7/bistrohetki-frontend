@@ -3,89 +3,106 @@
  */
 
 :root {
-  --bh-stretch-font-link-navigation: 100%;
-  --bh-stretch-font-link-standalone: 100%;
-  --bh-stretch-font-link-inline: 100%;
-  --bh-stretch-font-heading-display1: 100%;
-  --bh-stretch-font-heading-display2: 100%;
-  --bh-stretch-font-heading-title1: 100%;
-  --bh-stretch-font-heading-title2: 100%;
-  --bh-stretch-font-heading-title3: 100%;
-  --bh-stretch-font-heading-title4: 100%;
-  --bh-stretch-font-heading-title5: 100%;
-  --bh-stretch-font-heading-title6: 100%;
-  --bh-stretch-font-button-default: 100%;
-  --bh-stretch-font-button-text: 100%;
-  --bh-stretch-font-label-text: 100%;
-  --bh-stretch-font-paragraph-body: 100%;
-  --bh-stretch-font-paragraph-small: 100%;
-  --bh-stretch-font-paragraph-preamble: 100%;
-  --bh-weight-font-link-navigation: 500;
-  --bh-weight-font-link-standalone: 600;
-  --bh-weight-font-link-inline: 400;
-  --bh-weight-font-heading-display1: 700;
-  --bh-weight-font-heading-display2: 700;
-  --bh-weight-font-heading-title1: 700;
-  --bh-weight-font-heading-title2: 700;
-  --bh-weight-font-heading-title3: 700;
-  --bh-weight-font-heading-title4: 600;
-  --bh-weight-font-heading-title5: 600;
-  --bh-weight-font-heading-title6: 600;
-  --bh-weight-font-button-default: 600;
-  --bh-weight-font-button-text: 500;
-  --bh-weight-font-label-text: 500;
-  --bh-weight-font-paragraph-body: 400;
-  --bh-weight-font-paragraph-small: 400;
-  --bh-weight-font-paragraph-preamble: 400;
-  --bh-size-font-link-navigation: 1rem;
-  --bh-size-font-link-standalone: 1rem;
-  --bh-size-font-link-inline: 1rem;
-  --bh-size-font-heading-display1: 3.75rem;
-  --bh-size-font-heading-display2: 3rem;
-  --bh-size-font-heading-title1: 2.25rem;
-  --bh-size-font-heading-title2: 1.5rem;
-  --bh-size-font-heading-title3: 1.25rem;
-  --bh-size-font-heading-title4: 1.125rem;
-  --bh-size-font-heading-title5: 1rem;
-  --bh-size-font-heading-title6: 0.875rem;
-  --bh-size-font-button-default: 1rem;
-  --bh-size-font-button-text: 0.875rem;
-  --bh-size-font-label-text: 0.875rem;
-  --bh-size-font-paragraph-body: 1rem;
-  --bh-size-font-paragraph-small: 0.875rem;
-  --bh-size-font-paragraph-preamble: 1.125rem;
-  --bh-line-height-font-link-navigation: 1.1875rem;
-  --bh-line-height-font-link-standalone: 1.5rem;
-  --bh-line-height-font-link-inline: 1.5rem;
-  --bh-line-height-font-heading-display1: 4.25rem;
-  --bh-line-height-font-heading-display2: 3.5rem;
-  --bh-line-height-font-heading-title1: 2.625rem;
-  --bh-line-height-font-heading-title2: 1.75rem;
-  --bh-line-height-font-heading-title3: 1.5rem;
-  --bh-line-height-font-heading-title4: 1.375rem;
-  --bh-line-height-font-heading-title5: 1.25rem;
-  --bh-line-height-font-heading-title6: 1.125rem;
-  --bh-line-height-font-button-default: 1.25rem;
-  --bh-line-height-font-button-text: 1.125rem;
-  --bh-line-height-font-label-text: 1.125rem;
-  --bh-line-height-font-paragraph-body: 1.5rem;
-  --bh-line-height-font-paragraph-small: 1.375rem;
-  --bh-line-height-font-paragraph-preamble: 1.75rem;
-  --bh-typography-link-navigation: normal 500 1rem/1.1875rem "Nunito Sans, sans-serif";
-  --bh-typography-link-standalone: normal 600 1rem/1.5rem "Nunito Sans, sans-serif";
-  --bh-typography-link-inline: normal 400 1rem/1.5rem "Nunito Sans, sans-serif";
-  --bh-typography-heading-display1: normal 700 3.75rem/4.25rem "Nunito Sans, sans-serif";
-  --bh-typography-heading-display2: normal 700 3rem/3.5rem "Nunito Sans, sans-serif";
-  --bh-typography-heading-title1: normal 700 2.25rem/2.625rem "Nunito Sans, sans-serif";
-  --bh-typography-heading-title2: normal 600 1.5rem/1.75rem "Nunito Sans, sans-serif";
-  --bh-typography-heading-title3: normal 600 1.25rem/1.5rem "Nunito Sans, sans-serif";
-  --bh-typography-heading-title4: normal 600 1.125rem/1.375rem "Nunito Sans, sans-serif";
-  --bh-typography-heading-title5: normal 600 1rem/1.25rem "Nunito Sans, sans-serif";
-  --bh-typography-heading-title6: normal 600 0.875rem/1.125rem "Nunito Sans, sans-serif";
-  --bh-typography-button-default: normal 600 1rem/1.25rem "Nunito Sans, sans-serif";
-  --bh-typography-button-text: normal 500 0.875rem/1.125rem "Nunito Sans, sans-serif";
-  --bh-typography-label-text: normal 500 0.875rem/1.125rem "Nunito Sans, sans-serif";
-  --bh-typography-paragraph-body: normal 400 1rem/1.5rem "Nunito Sans, sans-serif";
-  --bh-typography-paragraph-small: normal 400 0.875rem/1.375rem "Nunito Sans, sans-serif";
-  --bh-typography-paragraph-preamble: normal 400 1.125rem/1.75rem "Nunito Sans, sans-serif";
+    --bh-stretch-font-link-navigation: 100%;
+    --bh-stretch-font-link-standalone: 100%;
+    --bh-stretch-font-link-inline: 100%;
+    --bh-stretch-font-heading-display1: 100%;
+    --bh-stretch-font-heading-display2: 100%;
+    --bh-stretch-font-heading-title1: 100%;
+    --bh-stretch-font-heading-title2: 100%;
+    --bh-stretch-font-heading-title3: 100%;
+    --bh-stretch-font-heading-title4: 100%;
+    --bh-stretch-font-heading-title5: 100%;
+    --bh-stretch-font-heading-title6: 100%;
+    --bh-stretch-font-button-default: 100%;
+    --bh-stretch-font-button-text: 100%;
+    --bh-stretch-font-label-text: 100%;
+    --bh-stretch-font-paragraph-body: 100%;
+    --bh-stretch-font-paragraph-small: 100%;
+    --bh-stretch-font-paragraph-preamble: 100%;
+    --bh-weight-font-link-navigation: 500;
+    --bh-weight-font-link-standalone: 600;
+    --bh-weight-font-link-inline: 400;
+    --bh-weight-font-heading-display1: 700;
+    --bh-weight-font-heading-display2: 700;
+    --bh-weight-font-heading-title1: 700;
+    --bh-weight-font-heading-title2: 700;
+    --bh-weight-font-heading-title3: 700;
+    --bh-weight-font-heading-title4: 600;
+    --bh-weight-font-heading-title5: 600;
+    --bh-weight-font-heading-title6: 600;
+    --bh-weight-font-button-default: 600;
+    --bh-weight-font-button-text: 500;
+    --bh-weight-font-label-text: 500;
+    --bh-weight-font-paragraph-body: 400;
+    --bh-weight-font-paragraph-small: 400;
+    --bh-weight-font-paragraph-preamble: 400;
+    --bh-size-font-link-navigation: 1rem;
+    --bh-size-font-link-standalone: 1rem;
+    --bh-size-font-link-inline: 1rem;
+    --bh-size-font-heading-display1: 3.75rem;
+    --bh-size-font-heading-display2: 3rem;
+    --bh-size-font-heading-title1: 2.25rem;
+    --bh-size-font-heading-title2: 1.5rem;
+    --bh-size-font-heading-title3: 1.25rem;
+    --bh-size-font-heading-title4: 1.125rem;
+    --bh-size-font-heading-title5: 1rem;
+    --bh-size-font-heading-title6: 0.875rem;
+    --bh-size-font-button-default: 1rem;
+    --bh-size-font-button-text: 0.875rem;
+    --bh-size-font-label-text: 0.875rem;
+    --bh-size-font-paragraph-body: 1rem;
+    --bh-size-font-paragraph-small: 0.875rem;
+    --bh-size-font-paragraph-preamble: 1.125rem;
+    --bh-line-height-font-link-navigation: 1.1875rem;
+    --bh-line-height-font-link-standalone: 1.5rem;
+    --bh-line-height-font-link-inline: 1.5rem;
+    --bh-line-height-font-heading-display1: 4.25rem;
+    --bh-line-height-font-heading-display2: 3.5rem;
+    --bh-line-height-font-heading-title1: 2.625rem;
+    --bh-line-height-font-heading-title2: 1.75rem;
+    --bh-line-height-font-heading-title3: 1.5rem;
+    --bh-line-height-font-heading-title4: 1.375rem;
+    --bh-line-height-font-heading-title5: 1.25rem;
+    --bh-line-height-font-heading-title6: 1.125rem;
+    --bh-line-height-font-button-default: 1.25rem;
+    --bh-line-height-font-button-text: 1.125rem;
+    --bh-line-height-font-label-text: 1.125rem;
+    --bh-line-height-font-paragraph-body: 1.5rem;
+    --bh-line-height-font-paragraph-small: 1.375rem;
+    --bh-line-height-font-paragraph-preamble: 1.75rem;
+    --bh-typography-link-navigation: normal 500 1rem/1.1875rem
+        'Nunito Sans, sans-serif';
+    --bh-typography-link-standalone: normal 600 1rem/1.5rem
+        'Nunito Sans, sans-serif';
+    --bh-typography-link-inline: normal 400 1rem/1.5rem
+        'Nunito Sans, sans-serif';
+    --bh-typography-heading-display1: normal 700 3.75rem/4.25rem
+        'Nunito Sans, sans-serif';
+    --bh-typography-heading-display2: normal 700 3rem/3.5rem
+        'Nunito Sans, sans-serif';
+    --bh-typography-heading-title1: normal 700 2.25rem/2.625rem
+        'Nunito Sans, sans-serif';
+    --bh-typography-heading-title2: normal 600 1.5rem/1.75rem
+        'Nunito Sans, sans-serif';
+    --bh-typography-heading-title3: normal 600 1.25rem/1.5rem
+        'Nunito Sans, sans-serif';
+    --bh-typography-heading-title4: normal 600 1.125rem/1.375rem
+        'Nunito Sans, sans-serif';
+    --bh-typography-heading-title5: normal 600 1rem/1.25rem
+        'Nunito Sans, sans-serif';
+    --bh-typography-heading-title6: normal 600 0.875rem/1.125rem
+        'Nunito Sans, sans-serif';
+    --bh-typography-button-default: normal 600 1rem/1.25rem
+        'Nunito Sans, sans-serif';
+    --bh-typography-button-text: normal 500 0.875rem/1.125rem
+        'Nunito Sans, sans-serif';
+    --bh-typography-label-text: normal 500 0.875rem/1.125rem
+        'Nunito Sans, sans-serif';
+    --bh-typography-paragraph-body: normal 400 1rem/1.5rem
+        'Nunito Sans, sans-serif';
+    --bh-typography-paragraph-small: normal 400 0.875rem/1.375rem
+        'Nunito Sans, sans-serif';
+    --bh-typography-paragraph-preamble: normal 400 1.125rem/1.75rem
+        'Nunito Sans, sans-serif';
 }

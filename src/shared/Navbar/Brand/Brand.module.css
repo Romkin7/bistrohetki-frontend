@@ -1,18 +1,20 @@
 .brand {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: calc(
-    var(--bh-size-dimension-spacing-3) + var(--bh-size-dimension-spacing-4) +
-      var(--bh-size-dimension-spacing-8)
-  );
-  height: calc(
-    var(--bh-size-dimension-spacing-3) + var(--bh-size-dimension-spacing-4) +
-      var(--bh-size-dimension-spacing-8)
-  );
-  text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: calc(
+        var(--bh-size-dimension-spacing-3) +
+            var(--bh-size-dimension-spacing-4) +
+            var(--bh-size-dimension-spacing-8)
+    );
+    height: calc(
+        var(--bh-size-dimension-spacing-3) +
+            var(--bh-size-dimension-spacing-4) +
+            var(--bh-size-dimension-spacing-8)
+    );
+    text-decoration: none;
 }
 
 .brand img {
-  max-width: 100%;
+    max-width: 100%;
 }

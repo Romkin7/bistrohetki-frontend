@@ -1,4 +1,4 @@
 .numberOfGuestsSelect {
-  background-color: var(--bh-color-brand-quaternary);
-  border-radius: var(--bh-size-dimension-border-radius-rounded-5);
+    background-color: var(--bh-color-brand-quaternary);
+    border-radius: var(--bh-size-dimension-border-radius-rounded-5);
 }

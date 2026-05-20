@@ -1,5 +1,5 @@
-import { z } from "zod";
-import { mediaSchema } from "./media";
+import { z } from 'zod';
+import { mediaSchema } from './media';
 
 export const favIconSchema = mediaSchema;
 

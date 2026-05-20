@@ -1,4 +1,4 @@
 {
-  "number_of_guests_input_value": "{{guests}} vieras",
-  "number_of_guests_input_value_plural": "{{guests}} vierasta"
+    "number_of_guests_input_value": "{{guests}} vieras",
+    "number_of_guests_input_value_plural": "{{guests}} vierasta"
 }
