@@ -1,14 +1,14 @@
 import { Box, Flex, Icon } from '@chakra-ui/react';
 import { type FC } from 'react';
 import { useSelector } from 'react-redux';
-import Heading from '../Heading/Heading';
-import ExternalLink from '../Link/ExternalLink';
-import Paragraph from '../Paragraph/Paragraph';
 import {
     IconFacebook,
     IconInstagram,
     IconTiktok,
 } from '../../../iconLibrary/esm';
+import Heading from '../Heading/Heading';
+import ExternalLink from '../Link/ExternalLink';
+import Paragraph from '../Paragraph/Paragraph';
 import styles from './Footer.module.css';
 import type { RootState } from '@/store/store';
 
