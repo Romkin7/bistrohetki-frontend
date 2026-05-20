@@ -1,25 +1,25 @@
 name: Lint
 on:
-    push:
-        branches: [main]
-    pull_request:
-        branches: [main]
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
 jobs:
-    lint:
-        runs-on: ubuntu-latest
-        steps:
-            - uses: actions/checkout@v4
-            - name: Set up Node.js
-              uses: actions/setup-node@v4
-              with:
-                  node-version: "22"
-            - name: Install dependencies
-              run: npm ci
-            - name: Run ESLint
-              run: npm run lint
-            - name: Run Prettier
-              run: npm run prettier
-            - name: Run TypeScript
-              run: npm run tsc
-            - name: Complete
-              run: echo "⭐ Linting completed successfully! ⭐"
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Install dependencies
+        run: npm ci
+      - name: Run ESLint
+        run: npm run lint:eslint
+      - name: Run Prettier
+        run: npm run prettier
+      - name: Run TypeScript
+        run: npm run tsc
+      - name: Complete
+        run: echo "⭐ Linting completed successfully! ⭐"
