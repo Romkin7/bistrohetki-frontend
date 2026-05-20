@@ -10,7 +10,7 @@ import type { ContactInfoModel } from "@/zod/collections/contactInfoModel";
 import type { ContactInfoPageData } from "@/zod/pages/contactInfoPageData";
 
 const ContactInfoPage: FC = () => {
-  const contactData: ContactInfoPageData = useLoaderData(); // Gets data from contactInfoPageLoader
+  const contactInfoPageData: ContactInfoPageData = useLoaderData(); // Gets data from contactInfoPageLoader
 
   return (
     <section>
@@ -19,9 +19,9 @@ const ContactInfoPage: FC = () => {
           tag="h1"
           variant="title-1"
           color="dark"
-          ariaLabel={contactData?.mainTitle}
+          ariaLabel={contactInfoPageData?.mainTitle}
         >
-          {contactData?.mainTitle}
+          {contactInfoPageData?.mainTitle}
         </Heading>
       </Flex>
       <Grid
@@ -29,10 +29,10 @@ const ContactInfoPage: FC = () => {
         gap={4}
       >
         <GridItem>
-          <Markdown>{contactData?.content}</Markdown>
+          <Markdown>{contactInfoPageData?.content}</Markdown>
         </GridItem>
         <GridItem>
-          {contactData?.contact_infos.map((info: ContactInfoModel) => (
+          {contactInfoPageData?.contact_infos.map((info: ContactInfoModel) => (
             <div key={info.id} className="mb-4 d-flex flex-row gap-2">
               <Paragraph variant="body" color="dark">
                 {info.linkText}
