@@ -19,9 +19,81 @@
             "value": "styleDictionary/tokens/typography/assets/NunitoSans-VariableFont_YTLC.ttf",
             "type": "asset"
           }
+        },
+        "standalone": {
+          "name": {
+            "value": "Nunito Sans, sans-serif",
+            "type": "fontFamily"
+          },
+          "style": {
+            "value": "normal",
+            "type": "fontStyle"
+          },
+          "weight": {
+            "value": "600",
+            "type": "fontWeight"
+          },
+          "ttf": {
+            "value": "styleDictionary/tokens/typography/assets/NunitoSans-VariableFont_YTLC.ttf",
+            "type": "asset"
+          }
+        },
+        "inline": {
+          "name": {
+            "value": "Nunito Sans, sans-serif",
+            "type": "fontFamily"
+          },
+          "style": {
+            "value": "normal",
+            "type": "fontStyle"
+          },
+          "weight": {
+            "value": "400",
+            "type": "fontWeight"
+          },
+          "ttf": {
+            "value": "styleDictionary/tokens/typography/assets/NunitoSans-VariableFont_YTLC.ttf",
+            "type": "asset"
+          }
         }
       },
       "heading": {
+        "display1": {
+          "name": {
+            "value": "Nunito Sans, sans-serif",
+            "type": "fontFamily"
+          },
+          "style": {
+            "value": "bold",
+            "type": "fontStyle"
+          },
+          "weight": {
+            "value": "700",
+            "type": "fontWeight"
+          },
+          "ttf": {
+            "value": "styleDictionary/tokens/typography/assets/NunitoSans-VariableFont_YTLC.ttf",
+            "type": "asset"
+          }
+        },
+        "display2": {
+          "name": {
+            "value": "Nunito Sans, sans-serif",
+            "type": "fontFamily"
+          },
+          "style": {
+            "value": "bold",
+            "type": "fontStyle"
+          },
+          "weight": {
+            "value": "700",
+            "type": "fontWeight"
+          },
+          "ttf": {
+            "value": "styleDictionary/tokens/typography/assets/NunitoSans-VariableFont_YTLC.ttf",
+            "type": "asset"
+          }
+        },
         "title1": {
           "name": {
             "value": "Nunito Sans, sans-serif",
@@ -69,6 +141,174 @@
           },
           "weight": {
             "value": "700",
+            "type": "fontWeight"
+          },
+          "ttf": {
+            "value": "styleDictionary/tokens/typography/assets/NunitoSans-VariableFont_YTLC.ttf",
+            "type": "asset"
+          }
+        },
+        "title4": {
+          "name": {
+            "value": "Nunito Sans, sans-serif",
+            "type": "fontFamily"
+          },
+          "style": {
+            "value": "bold",
+            "type": "fontStyle"
+          },
+          "weight": {
+            "value": "600",
+            "type": "fontWeight"
+          },
+          "ttf": {
+            "value": "styleDictionary/tokens/typography/assets/NunitoSans-VariableFont_YTLC.ttf",
+            "type": "asset"
+          }
+        },
+        "title5": {
+          "name": {
+            "value": "Nunito Sans, sans-serif",
+            "type": "fontFamily"
+          },
+          "style": {
+            "value": "bold",
+            "type": "fontStyle"
+          },
+          "weight": {
+            "value": "600",
+            "type": "fontWeight"
+          },
+          "ttf": {
+            "value": "styleDictionary/tokens/typography/assets/NunitoSans-VariableFont_YTLC.ttf",
+            "type": "asset"
+          }
+        },
+        "title6": {
+          "name": {
+            "value": "Nunito Sans, sans-serif",
+            "type": "fontFamily"
+          },
+          "style": {
+            "value": "bold",
+            "type": "fontStyle"
+          },
+          "weight": {
+            "value": "600",
+            "type": "fontWeight"
+          },
+          "ttf": {
+            "value": "styleDictionary/tokens/typography/assets/NunitoSans-VariableFont_YTLC.ttf",
+            "type": "asset"
+          }
+        }
+      },
+      "button": {
+        "default": {
+          "name": {
+            "value": "Nunito Sans, sans-serif",
+            "type": "fontFamily"
+          },
+          "style": {
+            "value": "normal",
+            "type": "fontStyle"
+          },
+          "weight": {
+            "value": "600",
+            "type": "fontWeight"
+          },
+          "ttf": {
+            "value": "styleDictionary/tokens/typography/assets/NunitoSans-VariableFont_YTLC.ttf",
+            "type": "asset"
+          }
+        },
+        "text": {
+          "name": {
+            "value": "Nunito Sans, sans-serif",
+            "type": "fontFamily"
+          },
+          "style": {
+            "value": "normal",
+            "type": "fontStyle"
+          },
+          "weight": {
+            "value": "500",
+            "type": "fontWeight"
+          },
+          "ttf": {
+            "value": "styleDictionary/tokens/typography/assets/NunitoSans-VariableFont_YTLC.ttf",
+            "type": "asset"
+          }
+        }
+      },
+      "label": {
+        "text": {
+          "name": {
+            "value": "Nunito Sans, sans-serif",
+            "type": "fontFamily"
+          },
+          "style": {
+            "value": "normal",
+            "type": "fontStyle"
+          },
+          "weight": {
+            "value": "500",
+            "type": "fontWeight"
+          },
+          "ttf": {
+            "value": "styleDictionary/tokens/typography/assets/NunitoSans-VariableFont_YTLC.ttf",
+            "type": "asset"
+          }
+        }
+      },
+      "paragraph": {
+        "body": {
+          "name": {
+            "value": "Nunito Sans, sans-serif",
+            "type": "fontFamily"
+          },
+          "style": {
+            "value": "normal",
+            "type": "fontStyle"
+          },
+          "weight": {
+            "value": "400",
+            "type": "fontWeight"
+          },
+          "ttf": {
+            "value": "styleDictionary/tokens/typography/assets/NunitoSans-VariableFont_YTLC.ttf",
+            "type": "asset"
+          }
+        },
+        "small": {
+          "name": {
+            "value": "Nunito Sans, sans-serif",
+            "type": "fontFamily"
+          },
+          "style": {
+            "value": "normal",
+            "type": "fontStyle"
+          },
+          "weight": {
+            "value": "400",
+            "type": "fontWeight"
+          },
+          "ttf": {
+            "value": "styleDictionary/tokens/typography/assets/NunitoSans-VariableFont_YTLC.ttf",
+            "type": "asset"
+          }
+        },
+        "preamble": {
+          "name": {
+            "value": "Nunito Sans, sans-serif",
+            "type": "fontFamily"
+          },
+          "style": {
+            "value": "normal",
+            "type": "fontStyle"
+          },
+          "weight": {
+            "value": "400",
             "type": "fontWeight"
           },
           "ttf": {
@@ -87,9 +327,33 @@
             "fontStretch": "100%"
           },
           "$type": "fontStretch"
+        },
+        "standalone": {
+          "$value": {
+            "fontStretch": "100%"
+          },
+          "$type": "fontStretch"
+        },
+        "inline": {
+          "$value": {
+            "fontStretch": "100%"
+          },
+          "$type": "fontStretch"
         }
       },
       "heading": {
+        "display1": {
+          "$value": {
+            "fontStretch": "100%"
+          },
+          "$type": "fontStretch"
+        },
+        "display2": {
+          "$value": {
+            "fontStretch": "100%"
+          },
+          "$type": "fontStretch"
+        },
         "title1": {
           "$value": {
             "fontStretch": "100%"
@@ -103,6 +367,66 @@
           "$type": "fontStretch"
         },
         "title3": {
+          "$value": {
+            "fontStretch": "100%"
+          },
+          "$type": "fontStretch"
+        },
+        "title4": {
+          "$value": {
+            "fontStretch": "100%"
+          },
+          "$type": "fontStretch"
+        },
+        "title5": {
+          "$value": {
+            "fontStretch": "100%"
+          },
+          "$type": "fontStretch"
+        },
+        "title6": {
+          "$value": {
+            "fontStretch": "100%"
+          },
+          "$type": "fontStretch"
+        }
+      },
+      "button": {
+        "default": {
+          "$value": {
+            "fontStretch": "100%"
+          },
+          "$type": "fontStretch"
+        },
+        "text": {
+          "$value": {
+            "fontStretch": "100%"
+          },
+          "$type": "fontStretch"
+        }
+      },
+      "label": {
+        "text": {
+          "$value": {
+            "fontStretch": "100%"
+          },
+          "$type": "fontStretch"
+        }
+      },
+      "paragraph": {
+        "body": {
+          "$value": {
+            "fontStretch": "100%"
+          },
+          "$type": "fontStretch"
+        },
+        "small": {
+          "$value": {
+            "fontStretch": "100%"
+          },
+          "$type": "fontStretch"
+        },
+        "preamble": {
           "$value": {
             "fontStretch": "100%"
           },
@@ -119,9 +443,33 @@
             "fontWeight": "500"
           },
           "$type": "fontWeight"
+        },
+        "standalone": {
+          "$value": {
+            "fontWeight": "600"
+          },
+          "$type": "fontWeight"
+        },
+        "inline": {
+          "$value": {
+            "fontWeight": "400"
+          },
+          "$type": "fontWeight"
         }
       },
       "heading": {
+        "display1": {
+          "$value": {
+            "fontWeight": "700"
+          },
+          "$type": "fontWeight"
+        },
+        "display2": {
+          "$value": {
+            "fontWeight": "700"
+          },
+          "$type": "fontWeight"
+        },
         "title1": {
           "$value": {
             "fontWeight": "700"
@@ -137,6 +485,66 @@
         "title3": {
           "$value": {
             "fontWeight": "700"
+          },
+          "$type": "fontWeight"
+        },
+        "title4": {
+          "$value": {
+            "fontWeight": "600"
+          },
+          "$type": "fontWeight"
+        },
+        "title5": {
+          "$value": {
+            "fontWeight": "600"
+          },
+          "$type": "fontWeight"
+        },
+        "title6": {
+          "$value": {
+            "fontWeight": "600"
+          },
+          "$type": "fontWeight"
+        }
+      },
+      "button": {
+        "default": {
+          "$value": {
+            "fontWeight": "600"
+          },
+          "$type": "fontWeight"
+        },
+        "text": {
+          "$value": {
+            "fontWeight": "500"
+          },
+          "$type": "fontWeight"
+        }
+      },
+      "label": {
+        "text": {
+          "$value": {
+            "fontWeight": "500"
+          },
+          "$type": "fontWeight"
+        }
+      },
+      "paragraph": {
+        "body": {
+          "$value": {
+            "fontWeight": "400"
+          },
+          "$type": "fontWeight"
+        },
+        "small": {
+          "$value": {
+            "fontWeight": "400"
+          },
+          "$type": "fontWeight"
+        },
+        "preamble": {
+          "$value": {
+            "fontWeight": "400"
           },
           "$type": "fontWeight"
         }
@@ -149,9 +557,25 @@
         "navigation": {
           "$value": { "fontSize": "1rem" },
           "$type": "fontSize"
+        },
+        "standalone": {
+          "$value": { "fontSize": "1rem" },
+          "$type": "fontSize"
+        },
+        "inline": {
+          "$value": { "fontSize": "1rem" },
+          "$type": "fontSize"
         }
       },
       "heading": {
+        "display1": {
+          "$value": { "fontSize": "3.75rem" },
+          "$type": "fontSize"
+        },
+        "display2": {
+          "$value": { "fontSize": "3rem" },
+          "$type": "fontSize"
+        },
         "title1": {
           "$value": { "fontSize": "2.25rem" },
           "$type": "fontSize"
@@ -162,6 +586,48 @@
         },
         "title3": {
           "$value": { "fontSize": "1.25rem" },
+          "$type": "fontSize"
+        },
+        "title4": {
+          "$value": { "fontSize": "1.125rem" },
+          "$type": "fontSize"
+        },
+        "title5": {
+          "$value": { "fontSize": "1rem" },
+          "$type": "fontSize"
+        },
+        "title6": {
+          "$value": { "fontSize": "0.875rem" },
+          "$type": "fontSize"
+        }
+      },
+      "button": {
+        "default": {
+          "$value": { "fontSize": "1rem" },
+          "$type": "fontSize"
+        },
+        "text": {
+          "$value": { "fontSize": "0.875rem" },
+          "$type": "fontSize"
+        }
+      },
+      "label": {
+        "text": {
+          "$value": { "fontSize": "0.875rem" },
+          "$type": "fontSize"
+        }
+      },
+      "paragraph": {
+        "body": {
+          "$value": { "fontSize": "1rem" },
+          "$type": "fontSize"
+        },
+        "small": {
+          "$value": { "fontSize": "0.875rem" },
+          "$type": "fontSize"
+        },
+        "preamble": {
+          "$value": { "fontSize": "1.125rem" },
           "$type": "fontSize"
         }
       }
@@ -175,9 +641,33 @@
             "lineHeight": "1.1875rem"
           },
           "$type": "lineHeight"
+        },
+        "standalone": {
+          "$value": {
+            "lineHeight": "1.5rem"
+          },
+          "$type": "lineHeight"
+        },
+        "inline": {
+          "$value": {
+            "lineHeight": "1.5rem"
+          },
+          "$type": "lineHeight"
         }
       },
       "heading": {
+        "display1": {
+          "$value": {
+            "lineHeight": "4.25rem"
+          },
+          "$type": "lineHeight"
+        },
+        "display2": {
+          "$value": {
+            "lineHeight": "3.5rem"
+          },
+          "$type": "lineHeight"
+        },
         "title1": {
           "$value": {
             "lineHeight": "2.625rem"
@@ -193,6 +683,66 @@
         "title3": {
           "$value": {
             "lineHeight": "1.5rem"
+          },
+          "$type": "lineHeight"
+        },
+        "title4": {
+          "$value": {
+            "lineHeight": "1.375rem"
+          },
+          "$type": "lineHeight"
+        },
+        "title5": {
+          "$value": {
+            "lineHeight": "1.25rem"
+          },
+          "$type": "lineHeight"
+        },
+        "title6": {
+          "$value": {
+            "lineHeight": "1.125rem"
+          },
+          "$type": "lineHeight"
+        }
+      },
+      "button": {
+        "default": {
+          "$value": {
+            "lineHeight": "1.25rem"
+          },
+          "$type": "lineHeight"
+        },
+        "text": {
+          "$value": {
+            "lineHeight": "1.125rem"
+          },
+          "$type": "lineHeight"
+        }
+      },
+      "label": {
+        "text": {
+          "$value": {
+            "lineHeight": "1.125rem"
+          },
+          "$type": "lineHeight"
+        }
+      },
+      "paragraph": {
+        "body": {
+          "$value": {
+            "lineHeight": "1.5rem"
+          },
+          "$type": "lineHeight"
+        },
+        "small": {
+          "$value": {
+            "lineHeight": "1.375rem"
+          },
+          "$type": "lineHeight"
+        },
+        "preamble": {
+          "$value": {
+            "lineHeight": "1.75rem"
           },
           "$type": "lineHeight"
         }
@@ -225,9 +775,109 @@
           }
         },
         "type": "typography"
+      },
+      "standalone": {
+        "$value": {
+          "fontStyle": {
+            "$value": "normal",
+            "$type": "style"
+          },
+          "fontWeight": {
+            "$value": "600",
+            "$type": "fontWeight"
+          },
+          "fontSize": {
+            "$value": "1rem",
+            "$type": "fontSize"
+          },
+          "lineHeight": {
+            "$value": "1.5rem",
+            "$type": "lineHeight"
+          },
+          "fontFamily": {
+            "$value": "Nunito Sans, sans-serif",
+            "$type": "fontFamily"
+          }
+        },
+        "type": "typography"
+      },
+      "inline": {
+        "$value": {
+          "fontStyle": {
+            "$value": "normal",
+            "$type": "style"
+          },
+          "fontWeight": {
+            "$value": "400",
+            "$type": "fontWeight"
+          },
+          "fontSize": {
+            "$value": "1rem",
+            "$type": "fontSize"
+          },
+          "lineHeight": {
+            "$value": "1.5rem",
+            "$type": "lineHeight"
+          },
+          "fontFamily": {
+            "$value": "Nunito Sans, sans-serif",
+            "$type": "fontFamily"
+          }
+        },
+        "type": "typography"
       }
     },
     "heading": {
+      "display1": {
+        "$value": {
+          "fontStyle": {
+            "$value": "normal",
+            "$type": "style"
+          },
+          "fontWeight": {
+            "$value": "700",
+            "$type": "fontWeight"
+          },
+          "fontSize": {
+            "$value": "3.75rem",
+            "$type": "fontSize"
+          },
+          "lineHeight": {
+            "$value": "4.25rem",
+            "$type": "lineHeight"
+          },
+          "fontFamily": {
+            "$value": "Nunito Sans, sans-serif",
+            "$type": "fontFamily"
+          }
+        },
+        "type": "typography"
+      },
+      "display2": {
+        "$value": {
+          "fontStyle": {
+            "$value": "normal",
+            "$type": "style"
+          },
+          "fontWeight": {
+            "$value": "700",
+            "$type": "fontWeight"
+          },
+          "fontSize": {
+            "$value": "3rem",
+            "$type": "fontSize"
+          },
+          "lineHeight": {
+            "$value": "3.5rem",
+            "$type": "lineHeight"
+          },
+          "fontFamily": {
+            "$value": "Nunito Sans, sans-serif",
+            "$type": "fontFamily"
+          }
+        },
+        "type": "typography"
+      },
       "title1": {
         "$value": {
           "fontStyle": {
@@ -300,9 +950,240 @@
             "$value": "Nunito Sans, sans-serif",
             "$type": "fontFamily"
           }
-        }
+        },
+        "type": "typography"
       },
-      "type": "typography"
+      "title4": {
+        "$value": {
+          "fontStyle": {
+            "$value": "normal",
+            "$type": "style"
+          },
+          "fontWeight": {
+            "$value": "600",
+            "$type": "fontWeight"
+          },
+          "fontSize": {
+            "$value": "1.125rem",
+            "$type": "fontSize"
+          },
+          "lineHeight": {
+            "$value": "1.375rem",
+            "$type": "lineHeight"
+          },
+          "fontFamily": {
+            "$value": "Nunito Sans, sans-serif",
+            "$type": "fontFamily"
+          }
+        },
+        "type": "typography"
+      },
+      "title5": {
+        "$value": {
+          "fontStyle": {
+            "$value": "normal",
+            "$type": "style"
+          },
+          "fontWeight": {
+            "$value": "600",
+            "$type": "fontWeight"
+          },
+          "fontSize": {
+            "$value": "1rem",
+            "$type": "fontSize"
+          },
+          "lineHeight": {
+            "$value": "1.25rem",
+            "$type": "lineHeight"
+          },
+          "fontFamily": {
+            "$value": "Nunito Sans, sans-serif",
+            "$type": "fontFamily"
+          }
+        },
+        "type": "typography"
+      },
+      "title6": {
+        "$value": {
+          "fontStyle": {
+            "$value": "normal",
+            "$type": "style"
+          },
+          "fontWeight": {
+            "$value": "600",
+            "$type": "fontWeight"
+          },
+          "fontSize": {
+            "$value": "0.875rem",
+            "$type": "fontSize"
+          },
+          "lineHeight": {
+            "$value": "1.125rem",
+            "$type": "lineHeight"
+          },
+          "fontFamily": {
+            "$value": "Nunito Sans, sans-serif",
+            "$type": "fontFamily"
+          }
+        },
+        "type": "typography"
+      }
+    },
+    "button": {
+      "default": {
+        "$value": {
+          "fontStyle": {
+            "$value": "normal",
+            "$type": "style"
+          },
+          "fontWeight": {
+            "$value": "600",
+            "$type": "fontWeight"
+          },
+          "fontSize": {
+            "$value": "1rem",
+            "$type": "fontSize"
+          },
+          "lineHeight": {
+            "$value": "1.25rem",
+            "$type": "lineHeight"
+          },
+          "fontFamily": {
+            "$value": "Nunito Sans, sans-serif",
+            "$type": "fontFamily"
+          }
+        },
+        "type": "typography"
+      },
+      "text": {
+        "$value": {
+          "fontStyle": {
+            "$value": "normal",
+            "$type": "style"
+          },
+          "fontWeight": {
+            "$value": "500",
+            "$type": "fontWeight"
+          },
+          "fontSize": {
+            "$value": "0.875rem",
+            "$type": "fontSize"
+          },
+          "lineHeight": {
+            "$value": "1.125rem",
+            "$type": "lineHeight"
+          },
+          "fontFamily": {
+            "$value": "Nunito Sans, sans-serif",
+            "$type": "fontFamily"
+          }
+        },
+        "type": "typography"
+      }
+    },
+    "label": {
+      "text": {
+        "$value": {
+          "fontStyle": {
+            "$value": "normal",
+            "$type": "style"
+          },
+          "fontWeight": {
+            "$value": "500",
+            "$type": "fontWeight"
+          },
+          "fontSize": {
+            "$value": "0.875rem",
+            "$type": "fontSize"
+          },
+          "lineHeight": {
+            "$value": "1.125rem",
+            "$type": "lineHeight"
+          },
+          "fontFamily": {
+            "$value": "Nunito Sans, sans-serif",
+            "$type": "fontFamily"
+          }
+        },
+        "type": "typography"
+      }
+    },
+    "paragraph": {
+      "body": {
+        "$value": {
+          "fontStyle": {
+            "$value": "normal",
+            "$type": "style"
+          },
+          "fontWeight": {
+            "$value": "400",
+            "$type": "fontWeight"
+          },
+          "fontSize": {
+            "$value": "1rem",
+            "$type": "fontSize"
+          },
+          "lineHeight": {
+            "$value": "1.5rem",
+            "$type": "lineHeight"
+          },
+          "fontFamily": {
+            "$value": "Nunito Sans, sans-serif",
+            "$type": "fontFamily"
+          }
+        },
+        "type": "typography"
+      },
+      "small": {
+        "$value": {
+          "fontStyle": {
+            "$value": "normal",
+            "$type": "style"
+          },
+          "fontWeight": {
+            "$value": "400",
+            "$type": "fontWeight"
+          },
+          "fontSize": {
+            "$value": "0.875rem",
+            "$type": "fontSize"
+          },
+          "lineHeight": {
+            "$value": "1.375rem",
+            "$type": "lineHeight"
+          },
+          "fontFamily": {
+            "$value": "Nunito Sans, sans-serif",
+            "$type": "fontFamily"
+          }
+        },
+        "type": "typography"
+      },
+      "preamble": {
+        "$value": {
+          "fontStyle": {
+            "$value": "normal",
+            "$type": "style"
+          },
+          "fontWeight": {
+            "$value": "400",
+            "$type": "fontWeight"
+          },
+          "fontSize": {
+            "$value": "1.125rem",
+            "$type": "fontSize"
+          },
+          "lineHeight": {
+            "$value": "1.75rem",
+            "$type": "lineHeight"
+          },
+          "fontFamily": {
+            "$value": "Nunito Sans, sans-serif",
+            "$type": "fontFamily"
+          }
+        },
+        "type": "typography"
+      }
     }
   }
 }
