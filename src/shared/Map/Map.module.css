@@ -1,21 +1,22 @@
 .map {
-  margin-top: var(--bh-size-dimension-spacing-6);
+    margin-top: var(--bh-size-dimension-spacing-6);
 }
+
 .map,
 .map * {
-  width: 100%;
-  height: 50vh;
-  max-width: 100%;
+    height: 50vh;
+    max-width: 100%;
+    width: 100%;
 }
 
-@media screen and (min-width: 768px) {
-  section > .box {
-    width: 60%;
-  }
+@media screen and (width >= 768px) {
+    section > .box {
+        width: 60%;
+    }
 
-  .map,
-  .map * {
-    width: 90%;
-    height: 70vh;
-  }
+    .map,
+    .map * {
+        height: 70vh;
+        width: 90%;
+    }
 }

@@ -1,3 +1,3 @@
-import { lazy } from "react";
+import { lazy } from 'react';
 
-export const PrimaryLayout = lazy(() => import("@/Layouts/PrimaryLayout"));
+export const PrimaryLayout = lazy(() => import('@/Layouts/PrimaryLayout'));

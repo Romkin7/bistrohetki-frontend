@@ -1,56 +1,56 @@
 .heading {
-  margin: var(--bh-size-spacing-zero);
-  padding: var(--bh-size-spacing-zero);
+    margin: var(--bh-size-spacing-zero);
+    padding: var(--bh-size-spacing-zero);
 }
 
-.heading-display-1 {
-  font: var(--bh-typography-display1);
-  line-height: var(--bh-size-line-height-display1);
+.heading--display-1 {
+    font: var(--bh-typography-display1);
+    line-height: var(--bh-size-line-height-display1);
 }
 
-.heading-display-2 {
-  font: var(--bh-typography-display2);
-  line-height: var(--bh-size-line-height-display2);
+.heading--display-2 {
+    font: var(--bh-typography-display2);
+    line-height: var(--bh-size-line-height-display2);
 }
 
-.heading-title-1 {
-  font: var(--bh-typography-heading-title1);
-  line-height: var(--bh-line-height-font-heading-title1);
+.heading--title-1 {
+    font: var(--bh-typography-heading-title1);
+    line-height: var(--bh-line-height-font-heading-title1);
 }
 
-.heading-title-2 {
-  font: var(--bh-typography-heading-title2);
-  line-height: var(--bh-line-height-font-heading-title2);
+.heading--title-2 {
+    font: var(--bh-typography-heading-title2);
+    line-height: var(--bh-line-height-font-heading-title2);
 }
 
-.heading-title-3 {
-  font: var(--bh-typography-heading-title3);
-  line-height: var(--bh-line-height-font-heading-title3);
+.heading--title-3 {
+    font: var(--bh-typography-heading-title3);
+    line-height: var(--bh-line-height-font-heading-title3);
 }
 
-.heading-title-4 {
-  font: var(--bh-typography-heading-title4);
-  line-height: var(--bh-line-height-font-heading-title4);
+.heading--title-4 {
+    font: var(--bh-typography-heading-title4);
+    line-height: var(--bh-line-height-font-heading-title4);
 }
 
-.heading-title-5 {
-  font: var(--bh-typography-heading-title5);
-  line-height: var(--bh-line-height-font-heading-title5);
+.heading--title-5 {
+    font: var(--bh-typography-heading-title5);
+    line-height: var(--bh-line-height-font-heading-title5);
 }
 
-.heading-title-6 {
-  font: var(--bh-typography-heading-title6);
-  line-height: var(--bh-line-height-font-heading-title6);
+.heading--title-6 {
+    font: var(--bh-typography-heading-title6);
+    line-height: var(--bh-line-height-font-heading-title6);
 }
 
-.heading-dark {
-  color: var(--bh-color-text-dark);
+.heading--dark {
+    color: var(--bh-color-text-dark);
 }
 
-.heading-light {
-  color: var(--bh-color-text-light);
+.heading--light {
+    color: var(--bh-color-text-light);
 }
 
-.heading-medium {
-  color: var(--bh-color-text-medium);
+.heading--medium {
+    color: var(--bh-color-text-medium);
 }

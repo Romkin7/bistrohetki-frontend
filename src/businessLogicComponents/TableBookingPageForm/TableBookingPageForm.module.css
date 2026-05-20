@@ -1,7 +1,7 @@
 .tableBookingPageForm {
-  height: calc(var(--bh-size-dimension-spacing-6) * 5);
-  justify-content: space-between;
-  align-items: center;
-  flex-direction: column;
-  background-color: var(--bh-color-brand-primary);
+    align-items: center;
+    background-color: var(--bh-color-brand-primary);
+    flex-direction: column;
+    height: calc(var(--bh-size-dimension-spacing-6) * 5);
+    justify-content: space-between;
 }

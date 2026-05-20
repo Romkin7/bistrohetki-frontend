@@ -1,0 +1,12 @@
+node_modules
+dist
+build
+coverage
+*.log
+*.lock
+README.md
+CHANGELOG.md
+LICENSE
+public/assets
+src/assets
+.github/workflows
