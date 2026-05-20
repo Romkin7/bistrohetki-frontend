@@ -28,11 +28,12 @@ a {
     font: var(--bh-typography-link-navigation);
     text-decoration: underline;
 }
+
 .contentWrapper {
-    display: flex;
     align-items: center;
-    justify-content: center;
+    display: flex;
     flex-direction: column;
+    justify-content: center;
     padding: var(--bh-size-dimension-spacing-5);
     text-align: center;
 }
@@ -65,7 +66,7 @@ footer {
     padding: var(--bh-size-dimension-spacing-8);
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (width >= 768px) {
     section,
     footer {
         padding: var(--bh-size-dimension-spacing-9)

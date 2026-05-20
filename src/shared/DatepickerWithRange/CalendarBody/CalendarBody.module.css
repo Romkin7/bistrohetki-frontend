@@ -1,0 +1,4 @@
+.calendarBody {
+    display: flex;
+    flex-direction: column;
+}

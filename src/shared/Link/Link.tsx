@@ -10,8 +10,8 @@ const Link: FC<TLinkProps> = ({ children, ...rest }) => {
     const { variant, color, href } = linkPropsSchema.parse(rest);
     const linkStyles = clsx(
         styles.link,
-        styles[`link-${variant}`],
-        styles[`link-${color}`],
+        styles[`link--${variant}`],
+        styles[`link--${color}`],
     );
 
     return (

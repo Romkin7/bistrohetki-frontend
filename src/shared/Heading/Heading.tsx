@@ -11,8 +11,8 @@ type Tag = HeadingProps['tag'];
 const Heading: FC<HeadingProps> = ({ tag, children, variant, color }) => {
     const headingStyles = clsx(
         styles.heading,
-        styles[`heading-${variant}`],
-        styles[`heading-${color}`],
+        styles[`heading--${variant}`],
+        styles[`heading--${color}`],
     );
     function getTag(tag: Tag) {
         switch (tag) {

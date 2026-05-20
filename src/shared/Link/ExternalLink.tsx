@@ -20,8 +20,8 @@ const variantClasses: Record<LinkVariant, string> = {
 const ExternalLink: FC<LinkProps> = ({ variant, href, children, color }) => {
     const linkStyles = clsx(
         styles.link,
-        styles[`link-${variantClasses[variant as LinkVariant]}`],
-        styles[`link-${color}`],
+        styles[`link--${variantClasses[variant as LinkVariant]}`],
+        styles[`link--${color}`],
     );
     return (
         <a

@@ -3,7 +3,7 @@
     padding: var(--bh-size-dimencion-spacing-0);
 }
 
-.link-standalone {
+.link--standalone {
     display: block;
     font: var(--bh-typography-link);
     line-height: var(--bh-size-line-height-link);
@@ -11,25 +11,25 @@
     text-decoration: underline;
 }
 
-.link-inline {
+.link--inline {
     font: var(--bh-typography-link);
     line-height: var(--bh-size-line-height-link);
     text-decoration: underline;
 }
 
-.link-navigation {
+.link--navigation {
     font: var(--bh-typography-link-navigation);
     font-stretch: var(--bh-stretch-font-link-navigation);
 }
 
-.link-dark {
+.link--dark {
     color: var(--bh-color-link-dark);
 }
 
-.link-light {
+.link--light {
     color: var(--bh-color-link-light);
 }
 
-.link-medium {
+.link--medium {
     color: var(--bh-color-link-medium);
 }

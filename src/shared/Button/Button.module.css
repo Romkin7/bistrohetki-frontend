@@ -1,12 +1,13 @@
 .button {
-    display: flex;
-    cursor: pointer;
     align-items: center;
-    justify-content: center;
-    transition: background-color 120ms;
     border-style: solid;
+    cursor: pointer;
+    display: flex;
+
     /* border-width: var(--bh-size-dimension-spacing-1); */
     font-size: var(--bh-typography-link-navigation);
+    justify-content: center;
+    transition: background-color 120ms;
 }
 
 .button--primary {

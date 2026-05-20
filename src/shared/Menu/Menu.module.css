@@ -1,11 +1,11 @@
 .menu {
-    display: flex;
+    align-items: var(--bh-layout-flex-align-space-between);
     background-color: var(--bh-color-brand-secondary);
     color: var(--bh-color-text-dark);
+    display: flex;
+    flex-flow: var(--bh-layout-flex-direction-row)
+        var(--bh-layout-flex-wrap-wrap);
     font: var(--bh-typography-link-navigation);
     gap: var(--bh-size-dimension-spacing-4);
     padding: var(--bh-size-dimension-spacing-4);
-    flex-direction: var(--bh-layout-flex-direction-row);
-    align-items: var(--bh-layout-flex-align-space-between);
-    flex-wrap: var(--bh-layout-flex-wrap-wrap);
 }

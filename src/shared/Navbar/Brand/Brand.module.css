@@ -1,18 +1,18 @@
 .brand {
-    display: flex;
     align-items: center;
-    justify-content: center;
-    width: calc(
-        var(--bh-size-dimension-spacing-3) +
-            var(--bh-size-dimension-spacing-4) +
-            var(--bh-size-dimension-spacing-8)
-    );
+    display: flex;
     height: calc(
         var(--bh-size-dimension-spacing-3) +
             var(--bh-size-dimension-spacing-4) +
             var(--bh-size-dimension-spacing-8)
     );
+    justify-content: center;
     text-decoration: none;
+    width: calc(
+        var(--bh-size-dimension-spacing-3) +
+            var(--bh-size-dimension-spacing-4) +
+            var(--bh-size-dimension-spacing-8)
+    );
 }
 
 .brand img {
