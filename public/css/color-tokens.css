@@ -17,7 +17,7 @@
   --bh-color-border-primary: rgb(4, 119, 113);
   --bh-color-border-secondary: rgb(246, 247, 249);
   --bh-color-button-primary: rgb(101, 67, 33);
-  --bh-color-button-primary-hover: rgba(120, 80, 40);
+  --bh-color-button-primary-hover: rgb(120, 80, 40);
   --bh-color-button-primary-outline: rgb(255, 255, 255);
   --bh-color-button-secondary: rgb(210, 180, 140);
   --bh-color-button-secondary-hover: rgba(210, 180, 140, 0.8);
