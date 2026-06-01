@@ -11,8 +11,7 @@ interface IDayProps extends DayProps, PropsWithChildren {
 }
 
 const Day: FC<IDayProps> = ({ children, ...rest }) => {
-    const { date, startDate, endDate, today, dayToDisplay } =
-        dayPropsSchema.parse(rest);
+    const { date, startDate, endDate, today } = dayPropsSchema.parse(rest);
 
     const dayStyles = clsx({
         [styles.day]: true,

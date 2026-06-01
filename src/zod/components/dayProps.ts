@@ -5,7 +5,6 @@ export const dayPropsSchema = z.object({
     startDate: z.date(),
     endDate: z.date(),
     today: z.date(),
-    dayToDisplay: z.number(),
 });
 
 export type DayProps = z.infer<typeof dayPropsSchema>;
