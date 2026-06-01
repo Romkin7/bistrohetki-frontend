@@ -13,15 +13,29 @@ interface IDayProps extends DayProps, PropsWithChildren {
 const Day: FC<IDayProps> = ({ children, ...rest }) => {
     const { date, startDate, endDate, today } = dayPropsSchema.parse(rest);
 
+    const isMuted = false;
+
     const dayStyles = clsx({
         [styles.day]: true,
         [styles.active]: isSameDay(date, today),
         [styles.start]: isSameDay(date, startDate),
         [styles.between]: isBetween(date, startDate, endDate),
-        [styles.end]: isSameDay(date.endDate),
+        [styles.end]: isSameDay(date, endDate),
         [styles.muted]: isMuted,
     });
-    return <span className={dayStyles}>{children}</span>;
+    return (
+        <>
+            {isMuted ? (
+                <span data-current-date={date} className={dayStyles}>
+                    {children}
+                </span>
+            ) : (
+                <span data-current-date={date} className={dayStyles}>
+                    {children}
+                </span>
+            )}
+        </>
+    );
 };
 
 export default Day;
