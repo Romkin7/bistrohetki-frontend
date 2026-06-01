@@ -1,1 +1,0 @@
-{"version":3,"file":"heroProps.js","sourceRoot":"","sources":["heroProps.ts"],"names":[],"mappings":"AAAA,OAAO,CAAC,MAAM,KAAK,CAAC;AAEpB,MAAM,CAAC,MAAM,eAAe,GAAG,CAAC,CAAC,MAAM,CAAC;IACpC,kBAAkB,EAAE,CAAC,CAAC,MAAM,EAAE;IAC9B,SAAS,EAAE,CAAC,CAAC,MAAM,EAAE,CAAC,QAAQ,EAAE;CACnC,CAAC,CAAC"}
