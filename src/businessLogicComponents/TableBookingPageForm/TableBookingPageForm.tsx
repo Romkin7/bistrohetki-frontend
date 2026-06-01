@@ -47,46 +47,46 @@ const TableBookingPageForm: React.FC<TableBookingPageFormProps> = ({
             >
                 <Button
                     type={
-                        tableBookingPageData.numberOfGuestsForm?.resetButton
+                        tableBookingPageData?.numberOfGuestsForm?.resetButton
                             ?.type as ButtonType
                     }
                     ariaLabel={
-                        tableBookingPageData.numberOfGuestsForm?.resetButton
+                        tableBookingPageData?.numberOfGuestsForm?.resetButton
                             ?.ariaLabel as string
                     }
                     shape="rounded"
                     size="l"
                     variant="secondary"
                     disabled={
-                        tableBookingPageData.numberOfGuestsForm?.resetButton
+                        tableBookingPageData?.numberOfGuestsForm?.resetButton
                             ?.disabled
                     }
                 >
                     {
-                        tableBookingPageData.numberOfGuestsForm?.resetButton
+                        tableBookingPageData?.numberOfGuestsForm?.resetButton
                             ?.buttonText
                     }
                 </Button>
 
                 <Button
                     type={
-                        tableBookingPageData.numberOfGuestsForm?.submitButton
+                        tableBookingPageData?.numberOfGuestsForm?.submitButton
                             ?.type as ButtonType
                     }
                     ariaLabel={
-                        tableBookingPageData.numberOfGuestsForm?.submitButton
+                        tableBookingPageData?.numberOfGuestsForm?.submitButton
                             ?.ariaLabel as string
                     }
                     shape="rounded"
                     size="l"
                     variant="primary"
                     disabled={
-                        tableBookingPageData.numberOfGuestsForm?.submitButton
+                        tableBookingPageData?.numberOfGuestsForm?.submitButton
                             ?.disabled
                     }
                 >
                     {
-                        tableBookingPageData.numberOfGuestsForm?.submitButton
+                        tableBookingPageData?.numberOfGuestsForm?.submitButton
                             ?.buttonText
                     }
                 </Button>

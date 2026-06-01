@@ -1,3 +1,39 @@
 .day {
     display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: var(--bh-size-dimension-border-radius-rounded-2);
+    cursor: pointer;
+}
+
+.active {
+    background-color: var(--bh-color-brand-secondary);
+    border-radius: var(--bh-size-dimension-border-radius-rounded-2);
+    color: var(--bh-color-text-light);
+}
+
+.start,
+.end,
+.between {
+    background-color: var(--bh-color-text-dark);
+    color: var(--bh-color-text-light);
+}
+
+.start {
+    border-bottom-left-radius: var(--bh-size-dimension-border-radius-rounded-2);
+    border-top-left-radius: var(--bh-size-dimension-border-radius-rounded-2);
+}
+
+.end {
+    border-bottom-right-radius: var(
+        --bh-size-dimension-border-radius-rounded-2
+    );
+    border-top-right-radius: var(--bh-size-dimension-border-radius-rounded-2);
+}
+
+.muted {
+    color: var(--bh-color-text-disabled);
+    cursor: not-allowed;
 }
