@@ -15,12 +15,16 @@ const datepickerWithRange: FC<IDatepickerWithRangeProps> = ({
     value,
     ...rest
 }) => {
-    const [isOpen, setIsOpen] = useState<boolean>(() => false);
+    const [isOpen, setIsOpen] = useState(false);
     const { dfrom, dto, date, locale, dateField, ariaLabel } =
         datepickerWithRangePropsSchema.parse(rest);
     const datepickerWithRangeStyles = clsx({
         [styles.datepickerWithRange]: true,
     });
+
+    const handleIsOpen = (isOpen: boolean) => {
+        setIsOpen(isOpen);
+    };
 
     const closeOnEsc = (event: KeyboardEvent<HTMLDivElement>) => {
         if (event.key === 'Escape') {

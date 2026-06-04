@@ -1,13 +1,19 @@
 import { Box, Card, Flex, Grid, Image } from '@chakra-ui/react';
 import { type FC } from 'react';
 import Markdown from 'react-markdown';
-import { useLoaderData } from 'react-router';
+import { useLoaderData, useLocation } from 'react-router';
 import rehypeRaw from 'rehype-raw';
 import Heading from '@/shared/Heading/Heading';
 import type { HomePageData } from '@/zod/pages/homePageData';
 
 const HomePage: FC = () => {
     const homePageData: HomePageData = useLoaderData();
+
+    const location = useLocation();
+    const host = window.location.host;
+    console.log('Current path:', location.pathname);
+    console.log('Current host:', host);
+
     return (
         <section>
             <Flex direction="column" align="center" justify="center" mb={8}>
