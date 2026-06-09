@@ -18,8 +18,11 @@ import WeekDay from '../WeekDay/WeekDay';
 import styles from './Days.module.css';
 import { daysPropsSchema, type DaysProps } from '@/zod/components/daysProps';
 
-const Days: FC<DaysProps> = (props) => {
-    const { date, startDate, endDate, locale } = daysPropsSchema.parse(props);
+interface IDaysProps extends DaysProps {
+    onClick: (date: Date) => void;
+}
+const Days: FC<IDaysProps> = ({ onClick, ...rest }) => {
+    const { date, startDate, endDate, locale } = daysPropsSchema.parse(rest);
     const today = new Date();
     const daysInMonth = getDaysInMonth(date);
     const firstDayDate = startOfMonth(date);
@@ -39,7 +42,7 @@ const Days: FC<DaysProps> = (props) => {
         days.push(
             <Day
                 key={format(newPreviousMonthDate, 'dd MM yyyy')}
-                onClick={() => {}}
+                onClick={() => onClick(today)}
                 date={newPreviousMonthDate}
                 today={today}
                 startDate={startDate}
@@ -59,7 +62,7 @@ const Days: FC<DaysProps> = (props) => {
                 today={today}
                 startDate={startDate}
                 endDate={endDate}
-                onClick={() => {}}
+                onClick={() => onClick(today)}
             >
                 {i}
             </Day>,
@@ -75,7 +78,7 @@ const Days: FC<DaysProps> = (props) => {
                 date={newNextmonthDate}
                 startDate={startDate}
                 endDate={endDate}
-                onClick={() => {}}
+                onClick={() => onClick(today)}
             >
                 {i}
             </Day>,

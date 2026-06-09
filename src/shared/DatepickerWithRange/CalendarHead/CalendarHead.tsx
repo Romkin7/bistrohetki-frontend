@@ -22,7 +22,8 @@ const CalendarHead: FC<ICalendarHeadProps> = ({
     ...rest
 }) => {
     const { date, locale } = calendarHeadPropsSchema.parse(rest);
-
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const chLocale = locale as any;
     const calendarHeadStyles = clsx({
         [styles.calendarHead]: true,
     });
@@ -33,8 +34,9 @@ const CalendarHead: FC<ICalendarHeadProps> = ({
                     <IconChevronLeft />
                 </Icon>
             </button>
+            {children}
             <h3 onClick={resetCalendar}>
-                {format(date, 'LLLL', { locale })}
+                {format(date, 'LLLL', { locale: chLocale })}
                 {''}
                 <small>{format(date, 'yyyy')}</small>
             </h3>

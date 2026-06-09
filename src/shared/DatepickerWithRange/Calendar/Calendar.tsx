@@ -1,9 +1,9 @@
 import clsx from 'clsx';
 import { addMonths, isAfter, isBefore, isSameDay, subMonths } from 'date-fns';
 import type { FC, PropsWithChildren } from 'react';
+import type { Operand } from '../../../zod/operand';
 import Days from '../CalendarBody/Days/Days';
 import CalendarHead from '../CalendarHead/CalendarHead';
-import type { Operand } from '../../../zod/operand';
 import styles from './Calendar.module.css';
 import {
     calendarPropsSchema,
