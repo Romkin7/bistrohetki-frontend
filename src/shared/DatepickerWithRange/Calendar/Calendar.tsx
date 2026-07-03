@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import { addMonths, isAfter, isBefore, isSameDay, subMonths } from 'date-fns';
-import type { FC, PropsWithChildren } from 'react';
+import type { ChangeEvent, FC, PropsWithChildren } from 'react';
 import type { Operand } from '../../../zod/operand';
 import Days from '../CalendarBody/Days/Days';
 import CalendarHead from '../CalendarHead/CalendarHead';
@@ -10,17 +10,11 @@ import {
     type calendarProps as CalendarProps,
 } from '@/zod/components/calendarProps';
 
-// interface ICalendarProps extends CalendarProps, PropsWithChildren {
-//     onClick: () => void;
-//     // handleChange: (event: ChangeEvent<HTMLInputElement>) => void;
-// }
+interface ICalendarProps extends CalendarProps, PropsWithChildren {
+    onChange: (event: ChangeEvent<HTMLInputElement>) => void;
+}
 
-const Calendar: FC<PropsWithChildren<CalendarProps>> = ({
-    children,
-    // onClick,
-    // handleChange,
-    ...rest
-}) => {
+const Calendar: FC<ICalendarProps> = ({ children, ...rest }) => {
     const { locale, date, dto, dfrom } = calendarPropsSchema.parse(rest);
 
     const calendarStyles = clsx({ [styles.calendar]: true });

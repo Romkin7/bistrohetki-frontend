@@ -3,7 +3,6 @@ import { localeSchema } from '../locale';
 
 export const datepickerWithRangePropsSchema = z.object({
     ariaLabel: z.string(),
-    dateField: z.object(),
     locale: localeSchema,
     date: z.date(),
     dfrom: z.date(),

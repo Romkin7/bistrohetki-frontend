@@ -24,6 +24,7 @@ const NumberOfGuestsSelect: FC<NumberOfGuestsSelectProps> = ({
         guests: guestsValue,
     });
     const guestsValueText = useGetGuestsValueText(guests);
+
     return (
         <Flex
             justifyContent="center"

@@ -8,6 +8,7 @@ import remarkGfm from 'remark-gfm';
 import styles from '../App.module.css';
 
 import TableBookingPageForm from '@/businessLogicComponents/TableBookingPageForm/TableBookingPageForm';
+import DatepickerWithRange from '@/shared/DatepickerWithRange/DatepickerWithRange';
 import Heading from '@/shared/Heading/Heading';
 import Link from '@/shared/Link/Link';
 
@@ -45,6 +46,24 @@ const TableBookingPage: FC = () => {
                             handleReset={handleReset}
                             guests={guests}
                             setGuests={setGuests}
+                        />
+
+                        <DatepickerWithRange
+                            value=""
+                            onChange={() => {}}
+                            ariaLabel="test"
+                            locale="fi"
+                            date={new Date()}
+                            dfrom={new Date()}
+                            dto={new Date()}
+                            htmlFor="htmlFor"
+                            label="label"
+                            name="name"
+                            type="text"
+                            autoFocus={true}
+                            readOnly={false}
+                            required={true}
+                            disabled={false}
                         />
 
                         <Flex

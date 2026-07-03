@@ -27,6 +27,7 @@ const TextField: FC<ITextFieldProps> = ({ onInput, value, ...rest }) => {
         errorMessage,
     } = textFieldPropsSchema.parse(rest);
     const textFieldStyles = clsx(styles.textfield, className);
+
     return (
         <HStack gap="10" width="full">
             <Field.Root required={required}>

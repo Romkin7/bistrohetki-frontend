@@ -14,6 +14,7 @@ export const textFieldPropsSchema = z.object({
     className: z.string().optional(),
     errorMessage: z.string().optional(),
     ariaLabel: z.string(),
+    autoFocus: z.boolean().optional(),
 });
 
 export type TextFieldProps = z.infer<typeof textFieldPropsSchema>;
