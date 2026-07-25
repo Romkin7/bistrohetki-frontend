@@ -1,3 +1,6 @@
 .month {
+    color: var(--bh-color-text-dark);
     font: var(--bh-typography-heading-title4);
+    line-height: 1;
+    text-transform: capitalize;
 }

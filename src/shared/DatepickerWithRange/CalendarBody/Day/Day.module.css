@@ -1,39 +1,62 @@
 .day {
     align-items: center;
-    border-radius: var(--bh-size-dimension-border-radius-rounded-2);
+    background: var(--bh-color-background-medium);
+    border: var(--bh-size-dimension-border-1) solid
+        var(--bh-color-border-secondary);
+    border-radius: var(--bh-size-dimension-border-radius-rounded-3);
     cursor: pointer;
     display: flex;
-    height: 2.5rem;
+    aspect-ratio: 1;
+    color: var(--bh-color-text-dark);
+    font: var(--bh-typography-button-text);
     justify-content: center;
-    width: 2.5rem;
+    width: 100%;
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.day:hover {
+    border-color: var(--bh-color-border-primary);
+    background: var(--bh-color-brand-quaternary);
+}
+
+.day:active {
+    transform: translateY(0.0625rem);
 }
 
 .active {
-    background-color: var(--bh-color-brand-secondary);
-    border-radius: var(--bh-size-dimension-border-radius-rounded-2);
-    color: var(--bh-color-text-light);
+    background: var(--bh-color-brand-primary);
+    border-color: var(--bh-color-border-primary);
+    color: var(--bh-color-text-dark);
 }
 
 .start,
 .end,
 .between {
     background-color: var(--bh-color-text-dark);
+    border-color: var(--bh-color-text-dark);
     color: var(--bh-color-text-light);
 }
 
 .start {
-    border-bottom-left-radius: var(--bh-size-dimension-border-radius-rounded-2);
-    border-top-left-radius: var(--bh-size-dimension-border-radius-rounded-2);
+    border-bottom-left-radius: var(--bh-size-dimension-border-radius-rounded-3);
+    border-top-left-radius: var(--bh-size-dimension-border-radius-rounded-3);
 }
 
 .end {
     border-bottom-right-radius: var(
-        --bh-size-dimension-border-radius-rounded-2
+        --bh-size-dimension-border-radius-rounded-3
     );
-    border-top-right-radius: var(--bh-size-dimension-border-radius-rounded-2);
+    border-top-right-radius: var(--bh-size-dimension-border-radius-rounded-3);
 }
 
 .muted {
+    background: transparent;
+    border-color: transparent;
     color: var(--bh-color-text-disabled);
     cursor: not-allowed;
+    pointer-events: none;
 }

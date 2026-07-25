@@ -1,25 +1,26 @@
-import { format, eachDayOfInterval } from 'date-fns';
-import { type Locale, startOfWeek } from 'date-fns';
+import { addDays, eachDayOfInterval, format, startOfWeek } from 'date-fns';
+import { type Locale } from 'date-fns';
+
+type WeekDayItem = {
+    key: number;
+    label: string;
+};
 
 /**
  * getWeekdays function
  * @param {Locale} locale
- * @returns {string[]}
+ * @returns {WeekDayItem[]}
  */
-function getWeekdays(locale: Locale): string[] {
+function getWeekdays(locale: Locale): WeekDayItem[] {
+    const weekStart = startOfWeek(new Date(), { locale, weekStartsOn: 1 });
     const daysOfWeek = eachDayOfInterval({
-        start: startOfWeek(new Date(), { locale, weekStartsOn: 1 }),
-        end: new Date(
-            new Date().setDate(
-                startOfWeek(new Date(), { locale, weekStartsOn: 1 }).getDate() +
-                    6,
-            ),
-        ),
+        start: weekStart,
+        end: addDays(weekStart, 6),
     });
-    // ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-    const weekdays = daysOfWeek.map((day) =>
-        format(day, 'eeeeee', { locale: locale }),
-    );
+    const weekdays = daysOfWeek.map((day) => ({
+        key: day.getTime(),
+        label: format(day, 'eeeeee', { locale: locale }),
+    }));
     return weekdays;
 }
 

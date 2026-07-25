@@ -1,5 +1,6 @@
 import clsx from 'clsx';
 import { addMonths, isAfter, isBefore, isSameDay, subMonths } from 'date-fns';
+import { useEffect, useState } from 'react';
 import type { ChangeEvent, FC, PropsWithChildren } from 'react';
 import type { Operand } from '../../../zod/operand';
 import Days from '../CalendarBody/Days/Days';
@@ -16,6 +17,11 @@ interface ICalendarProps extends CalendarProps, PropsWithChildren {
 
 const Calendar: FC<ICalendarProps> = ({ children, ...rest }) => {
     const { locale, date, dto, dfrom } = calendarPropsSchema.parse(rest);
+    const [currentDate, setCurrentDate] = useState(date);
+
+    useEffect(() => {
+        setCurrentDate(date);
+    }, [date]);
 
     const calendarStyles = clsx({ [styles.calendar]: true });
 
@@ -24,9 +30,10 @@ const Calendar: FC<ICalendarProps> = ({ children, ...rest }) => {
     const changeMonth = (operand: Operand) => {
         const newDate =
             operand === 'sub'
-                ? subMonths(date as Date, 1)
-                : addMonths(date as Date, 1);
-        return newDate;
+                ? subMonths(currentDate, 1)
+                : addMonths(currentDate, 1);
+
+        setCurrentDate(newDate);
     };
 
     const changeDate = (date: Date) => {
@@ -57,7 +64,7 @@ const Calendar: FC<ICalendarProps> = ({ children, ...rest }) => {
     return (
         <div className={calendarStyles}>
             <CalendarHead
-                date={date as Date}
+                date={currentDate}
                 changeMonth={changeMonth}
                 resetCalendar={() => resetCalendar()}
                 locale={locale}
@@ -65,7 +72,7 @@ const Calendar: FC<ICalendarProps> = ({ children, ...rest }) => {
             {children}
             <Days
                 locale={locale}
-                date={date as Date}
+                date={currentDate}
                 onClick={changeDate}
                 startDate={dfrom as Date}
                 endDate={dto as Date}

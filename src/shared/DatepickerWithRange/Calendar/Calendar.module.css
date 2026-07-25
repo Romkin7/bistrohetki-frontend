@@ -1,3 +1,12 @@
 .calendar {
     display: flex;
+    flex-direction: column;
+    gap: var(--bh-size-dimension-spacing-5);
+    width: min(100%, 22.5rem);
+    margin-inline: auto;
+    padding: var(--bh-size-dimension-spacing-5);
+    border: var(--bh-size-dimension-border-1) solid
+        var(--bh-color-border-primary);
+    border-radius: var(--bh-size-dimension-border-radius-rounded-4);
+    background: var(--bh-color-background-light);
 }

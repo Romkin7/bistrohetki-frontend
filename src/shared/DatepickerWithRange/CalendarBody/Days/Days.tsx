@@ -32,7 +32,7 @@ const Days: FC<IDaysProps> = ({ onClick, ...rest }) => {
     const weekDays = getWeekdays(getLocale(locale));
     const days: JSX.Element[] = [];
     const labels = weekDays.map((weekDay) => {
-        return <WeekDay key={weekDay}>{weekDay}</WeekDay>;
+        return <WeekDay key={weekDay.key}>{weekDay.label}</WeekDay>;
     });
 
     for (let i = getDay(firstDayDate); i > 1; i--) {
@@ -87,8 +87,12 @@ const Days: FC<IDaysProps> = ({ onClick, ...rest }) => {
 
     return (
         <CalendarBody>
-            <div className={daysStyles}>{labels.concat()}</div>
-            <div>{days.concat()}</div>
+            <div className={clsx(daysStyles, styles.weekdays)}>
+                {labels.concat()}
+            </div>
+            <div className={clsx(daysStyles, styles.dates)}>
+                {days.concat()}
+            </div>
         </CalendarBody>
     );
 };
