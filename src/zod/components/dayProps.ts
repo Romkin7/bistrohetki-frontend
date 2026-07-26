@@ -1,8 +1,6 @@
 import z from 'zod';
+import { calendarPropsSchema } from './calendarProps';
 
-export const dayPropsSchema = z.object({
-    date: z.date(),
-    today: z.date(),
-});
+export const dayPropsSchema = calendarPropsSchema;
 
 export type DayProps = z.infer<typeof dayPropsSchema>;

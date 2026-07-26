@@ -1,9 +1,7 @@
 import z from 'zod';
-import { localeSchema } from '../locale';
 
-export const monthPropsSchema = z.object({
-    date: z.date(),
-    locale: localeSchema,
-});
+import { calendarPropsSchema } from './calendarProps';
 
-export type monthProps = z.infer<typeof monthPropsSchema>;
+export const monthPropsSchema = calendarPropsSchema;
+
+export type MonthProps = z.infer<typeof monthPropsSchema>;

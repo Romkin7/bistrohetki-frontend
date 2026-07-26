@@ -84,7 +84,6 @@
 // export default Calendar;
 import clsx from 'clsx';
 import { addMonths, subMonths } from 'date-fns';
-import { useEffect, useState } from 'react';
 import type { FC, PropsWithChildren } from 'react';
 import type { Operand } from '../../../zod/operand';
 import Days from '../CalendarBody/Days/Days';
@@ -97,7 +96,7 @@ import {
 
 interface ICalendarProps extends CalendarProps, PropsWithChildren {
     // onChange: (event: ChangeEvent<HTMLInputElement>) => void;
-    onDateSelect: (date: Date) => void;
+    onDateSelect: (selectedDate: Date) => void;
 }
 
 const Calendar: FC<ICalendarProps> = ({
@@ -106,13 +105,7 @@ const Calendar: FC<ICalendarProps> = ({
     onDateSelect,
     ...rest
 }) => {
-    const { locale, date } = calendarPropsSchema.parse(rest);
-
-    const [currentDate, setCurrentDate] = useState(date);
-
-    useEffect(() => {
-        setCurrentDate(date);
-    }, [date]);
+    const { locale, selectedDate, today } = calendarPropsSchema.parse(rest);
 
     const calendarStyles = clsx({ [styles.calendar]: true });
 
@@ -120,21 +113,19 @@ const Calendar: FC<ICalendarProps> = ({
 
     const changeMonth = (operand: Operand) => {
         const newDate =
-            operand === 'sub'
-                ? subMonths(currentDate, 1)
-                : addMonths(currentDate, 1);
-
-        setCurrentDate(newDate);
+            operand === 'sub' ? subMonths(today, 1) : addMonths(today, 1);
+        return newDate;
     };
 
-    const changeDate = (date: Date) => {
-        onDateSelect(date);
+    const changeDate = (selectedDate: Date) => {
+        onDateSelect(selectedDate);
     };
 
     return (
         <div className={calendarStyles}>
             <CalendarHead
-                date={currentDate}
+                today={today}
+                selectedDate={selectedDate || today}
                 changeMonth={changeMonth}
                 resetCalendar={() => resetCalendar()}
                 locale={locale}
@@ -142,7 +133,12 @@ const Calendar: FC<ICalendarProps> = ({
 
             {children}
 
-            <Days locale={locale} date={currentDate} onClick={changeDate} />
+            <Days
+                today={today}
+                locale={locale}
+                selectedDate={selectedDate || today}
+                onClick={changeDate}
+            />
         </div>
     );
 };

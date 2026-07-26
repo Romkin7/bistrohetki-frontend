@@ -22,7 +22,7 @@ const CalendarHead: FC<ICalendarHeadProps> = ({
     resetCalendar,
     ...rest
 }) => {
-    const { date, locale } = calendarHeadPropsSchema.parse(rest);
+    const { selectedDate, locale, today } = calendarHeadPropsSchema.parse(rest);
     const calendarHeadStyles = clsx({
         [styles.calendarHead]: true,
     });
@@ -39,8 +39,16 @@ const CalendarHead: FC<ICalendarHeadProps> = ({
             </button>
             {children}
             <h3 className={styles.calendarTitle} onClick={resetCalendar}>
-                <Month date={date} locale={locale} />
-                <Year date={date} locale={locale} />
+                <Month
+                    today={today}
+                    selectedDate={selectedDate || today}
+                    locale={locale}
+                />
+                <Year
+                    today={today}
+                    selectedDate={selectedDate || today}
+                    locale={locale}
+                />
             </h3>
             <button
                 type="button"

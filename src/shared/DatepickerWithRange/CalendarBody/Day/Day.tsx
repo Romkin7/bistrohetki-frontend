@@ -10,20 +10,22 @@ interface IDayProps extends DayProps, PropsWithChildren {
 }
 
 const Day: FC<IDayProps> = ({ children, onClick, ...rest }) => {
-    const { date, today } = dayPropsSchema.parse(rest);
+    const { selectedDate, today } = dayPropsSchema.parse(rest);
 
     // дни преди днес са блокирани
-    const isPast = isBefore(date, today) && !isSameDay(date, today);
+    const isPast =
+        isBefore(selectedDate as Date, today) &&
+        !isSameDay(selectedDate as Date, today);
 
     const dayStyles = clsx({
         [styles.day]: true,
-        [styles.active]: isSameDay(date, today),
+        [styles.active]: isSameDay(selectedDate as Date, today),
         [styles.muted]: isPast,
     });
 
     return (
         <span
-            data-current-date={date}
+            data-current-date={selectedDate}
             className={dayStyles}
             onClick={!isPast ? onClick : undefined}
         >

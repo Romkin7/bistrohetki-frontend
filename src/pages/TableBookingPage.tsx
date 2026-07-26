@@ -147,7 +147,7 @@ import type { TableBookingPageData } from '@/zod/pages/tableBookingPageData';
 const TableBookingPage: FC = () => {
     const tableBookingPageData: TableBookingPageData = useLoaderData();
     const [guests, setGuests] = useState<number>(0);
-    const [dateValue, setDateValue] = useState<string>('');
+    const [selectedDate, setSelectedDate] = useState<string>('');
 
     const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -156,11 +156,11 @@ const TableBookingPage: FC = () => {
     const handleReset = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         setGuests(0);
-        setDateValue('');
+        setSelectedDate('');
     };
 
     const handleDateChange = (event: ChangeEvent<HTMLInputElement>) => {
-        setDateValue(event.target.value);
+        setSelectedDate(event.target.value);
     };
 
     return (
@@ -193,11 +193,12 @@ const TableBookingPage: FC = () => {
                             mb="6"
                         >
                             <DatepickerWithRange
-                                value={dateValue}
+                                selectedDate={null}
+                                value={selectedDate}
                                 onChange={handleDateChange}
                                 ariaLabel="test"
                                 locale="fi"
-                                date={new Date()}
+                                today={new Date()}
                                 htmlFor="htmlFor"
                                 label="label"
                                 name="date"

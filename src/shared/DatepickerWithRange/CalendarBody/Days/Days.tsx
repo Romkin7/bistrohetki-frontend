@@ -19,14 +19,14 @@ import styles from './Days.module.css';
 import { daysPropsSchema, type DaysProps } from '@/zod/components/daysProps';
 
 interface IDaysProps extends DaysProps {
-    onClick: (date: Date) => void;
+    onClick: (selectedDate: Date) => void;
 }
 const Days: FC<IDaysProps> = ({ onClick, ...rest }) => {
-    const { date, locale } = daysPropsSchema.parse(rest);
+    const { selectedDate, locale } = daysPropsSchema.parse(rest);
     const today = new Date();
-    const daysInMonth = getDaysInMonth(date);
-    const firstDayDate = startOfMonth(date);
-    const previousMonth = subMonths(date, 1);
+    const daysInMonth = getDaysInMonth(selectedDate as Date);
+    const firstDayDate = startOfMonth(selectedDate as Date);
+    const previousMonth = subMonths(selectedDate as Date, 1);
     const previousMonthDays = getDaysInMonth(previousMonth);
     const daysStyles = clsx({ [styles.days]: true });
     const weekDays = getWeekdays(getLocale(locale));
@@ -41,8 +41,9 @@ const Days: FC<IDaysProps> = ({ onClick, ...rest }) => {
 
         days.push(
             <Day
+                locale={locale}
                 key={format(newPreviousMonthDate, 'dd MM yyyy')}
-                date={newPreviousMonthDate}
+                selectedDate={newPreviousMonthDate}
                 today={today}
                 onClick={() => onClick(newPreviousMonthDate)}
             >
@@ -55,8 +56,9 @@ const Days: FC<IDaysProps> = ({ onClick, ...rest }) => {
         const newCurrentMonthDate = addDays(endOfMonth(previousMonth), i);
         days.push(
             <Day
+                locale={locale}
                 key={format(newCurrentMonthDate, 'dd MM yyyy')}
-                date={newCurrentMonthDate}
+                selectedDate={newCurrentMonthDate}
                 today={today}
                 onClick={() => onClick(newCurrentMonthDate)}
             >
@@ -67,12 +69,13 @@ const Days: FC<IDaysProps> = ({ onClick, ...rest }) => {
 
     const daysCount: number = days.length;
     for (let i = 1; i <= 42 - daysCount; i++) {
-        const newNextmonthDate = addDays(endOfMonth(date), i);
+        const newNextmonthDate = addDays(endOfMonth(selectedDate as Date), i);
         days.push(
             <Day
+                locale={locale}
                 key={format(newNextmonthDate, 'dd MM yyyy')}
                 today={today}
-                date={newNextmonthDate}
+                selectedDate={newNextmonthDate}
                 onClick={() => onClick(newNextmonthDate)}
             >
                 {i}
