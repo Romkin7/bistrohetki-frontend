@@ -42,11 +42,11 @@ const Days: FC<IDaysProps> = ({ onClick, ...rest }) => {
         days.push(
             <Day
                 key={format(newPreviousMonthDate, 'dd MM yyyy')}
-                onClick={() => onClick(today)}
                 date={newPreviousMonthDate}
                 today={today}
                 startDate={startDate}
                 endDate={endDate}
+                onClick={() => onClick(newPreviousMonthDate)}
             >
                 {previousMonthsDay}
             </Day>,
@@ -62,12 +62,13 @@ const Days: FC<IDaysProps> = ({ onClick, ...rest }) => {
                 today={today}
                 startDate={startDate}
                 endDate={endDate}
-                onClick={() => onClick(today)}
+                onClick={() => onClick(newCurrentMonthDate)}
             >
                 {i}
             </Day>,
         );
     }
+
     const daysCount: number = days.length;
     for (let i = 1; i <= 42 - daysCount; i++) {
         const newNextmonthDate = addDays(endOfMonth(date), i);
@@ -78,7 +79,7 @@ const Days: FC<IDaysProps> = ({ onClick, ...rest }) => {
                 date={newNextmonthDate}
                 startDate={startDate}
                 endDate={endDate}
-                onClick={() => onClick(today)}
+                onClick={() => onClick(newNextmonthDate)}
             >
                 {i}
             </Day>,

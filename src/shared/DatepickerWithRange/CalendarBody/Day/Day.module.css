@@ -1,6 +1,6 @@
 .day {
     align-items: center;
-    background: var(--bh-color-background-medium);
+    background: var(--bh-color-brand-primary);
     border: var(--bh-size-dimension-border-1) solid
         var(--bh-color-border-secondary);
     border-radius: var(--bh-size-dimension-border-radius-rounded-3);

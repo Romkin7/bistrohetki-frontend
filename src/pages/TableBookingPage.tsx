@@ -202,10 +202,10 @@ const TableBookingPage: FC = () => {
                                 dto={new Date()}
                                 htmlFor="htmlFor"
                                 label="label"
-                                name="name"
+                                name="date"
                                 type="text"
-                                autoFocus={true}
-                                readOnly={false}
+                                autoFocus={false}
+                                readOnly={true}
                                 required={true}
                                 disabled={false}
                             />
