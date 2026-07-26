@@ -198,8 +198,6 @@ const TableBookingPage: FC = () => {
                                 ariaLabel="test"
                                 locale="fi"
                                 date={new Date()}
-                                dfrom={new Date()}
-                                dto={new Date()}
                                 htmlFor="htmlFor"
                                 label="label"
                                 name="date"

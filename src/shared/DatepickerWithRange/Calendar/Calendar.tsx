@@ -83,7 +83,7 @@
 
 // export default Calendar;
 import clsx from 'clsx';
-import { addMonths, isAfter, isBefore, isSameDay, subMonths } from 'date-fns';
+import { addMonths, subMonths } from 'date-fns';
 import { useEffect, useState } from 'react';
 import type { FC, PropsWithChildren } from 'react';
 import type { Operand } from '../../../zod/operand';
@@ -106,7 +106,7 @@ const Calendar: FC<ICalendarProps> = ({
     onDateSelect,
     ...rest
 }) => {
-    const { locale, date, dto, dfrom } = calendarPropsSchema.parse(rest);
+    const { locale, date } = calendarPropsSchema.parse(rest);
 
     const [currentDate, setCurrentDate] = useState(date);
 
@@ -129,29 +129,6 @@ const Calendar: FC<ICalendarProps> = ({
 
     const changeDate = (date: Date) => {
         onDateSelect(date);
-
-        if (
-            dfrom === null ||
-            isBefore(date, dfrom as Date) ||
-            !isSameDay(dfrom as Date, dto as Date)
-        ) {
-            return {
-                dfrom: date,
-                dto: date,
-            };
-        } else if (
-            isSameDay(dfrom as Date, date) &&
-            isSameDay(dto as Date, date)
-        ) {
-            return {
-                dfrom: null,
-                dto: null,
-            };
-        } else if (isAfter(date, dfrom as Date)) {
-            return { dto: date };
-        } else {
-            return;
-        }
     };
 
     return (
@@ -165,13 +142,7 @@ const Calendar: FC<ICalendarProps> = ({
 
             {children}
 
-            <Days
-                locale={locale}
-                date={currentDate}
-                onClick={changeDate}
-                startDate={dfrom as Date}
-                endDate={dto as Date}
-            />
+            <Days locale={locale} date={currentDate} onClick={changeDate} />
         </div>
     );
 };

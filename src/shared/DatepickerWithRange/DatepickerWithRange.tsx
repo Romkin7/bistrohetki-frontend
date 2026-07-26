@@ -143,8 +143,7 @@ const DatepickerWithRange: FC<IDatepickerWithRangeProps> = ({
         autoFocus,
     } = textFieldPropsSchema.parse(rest);
 
-    const { dfrom, dto, date, locale } =
-        datepickerWithRangePropsSchema.parse(rest);
+    const { date, locale } = datepickerWithRangePropsSchema.parse(rest);
 
     const datepickerWithRangeStyles = clsx({
         [styles.datepickerWithRange]: true,
@@ -207,8 +206,6 @@ const DatepickerWithRange: FC<IDatepickerWithRangeProps> = ({
             {isOpen && (
                 <Calendar
                     locale={locale}
-                    dfrom={dfrom}
-                    dto={dto}
                     date={date}
                     // onChange={onChange}
                     onDateSelect={handleDateSelect}
