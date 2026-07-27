@@ -1,5 +1,5 @@
 import { Flex } from '@chakra-ui/react';
-import React, { type FormEvent } from 'react';
+import React, { type FormEvent, type PropsWithChildren } from 'react';
 import { useLoaderData } from 'react-router';
 import NumberOfGuestsSelect from '../NumberOfGuestsSelect/NumberOfGuestsSelect';
 import styles from './TableBookingPageForm.module.css';
@@ -9,7 +9,7 @@ import { tableBookingPageFormSchema } from '@/zod/businessLogic/tableBookingPage
 import type { ButtonType } from '@/zod/components/buttonProps';
 import type { TableBookingPageData } from '@/zod/pages/tableBookingPageData';
 
-interface TableBookingPageFormProps {
+interface TableBookingPageFormProps extends PropsWithChildren {
     guests: number;
     setGuests: React.Dispatch<React.SetStateAction<number>>;
     handleReset: (event: FormEvent<HTMLFormElement>) => void;
@@ -18,6 +18,7 @@ interface TableBookingPageFormProps {
 
 const TableBookingPageForm: React.FC<TableBookingPageFormProps> = ({
     guests: guestsValue,
+    children,
     handleReset,
     setGuests,
     handleSubmit,
@@ -38,7 +39,7 @@ const TableBookingPageForm: React.FC<TableBookingPageFormProps> = ({
             onReset={handleReset}
         >
             <NumberOfGuestsSelect guests={guests} setGuests={setGuests} />
-
+            {children}
             <Flex
                 justifyContent="center"
                 alignItems="center"

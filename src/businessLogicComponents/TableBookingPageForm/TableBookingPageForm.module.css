@@ -2,6 +2,6 @@
     align-items: center;
     background-color: var(--bh-color-brand-primary);
     flex-direction: column;
-    height: calc(var(--bh-size-dimension-spacing-6) * 5);
+    min-height: calc(var(--bh-size-dimension-spacing-6) * 5);
     justify-content: space-between;
 }
