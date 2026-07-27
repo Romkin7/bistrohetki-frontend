@@ -82,8 +82,73 @@
 // };
 
 // export default Calendar;
+//------------------------------------------------------
+// import clsx from 'clsx';
+// import { addMonths, subMonths } from 'date-fns';
+// import type { FC, PropsWithChildren } from 'react';
+// import type { Operand } from '../../../zod/operand';
+// import Days from '../CalendarBody/Days/Days';
+// import CalendarHead from '../CalendarHead/CalendarHead';
+// import styles from './Calendar.module.css';
+// import {
+//     calendarPropsSchema,
+//     type calendarProps as CalendarProps,
+// } from '@/zod/components/calendarProps';
+
+// interface ICalendarProps extends CalendarProps, PropsWithChildren {
+//     // onChange: (event: ChangeEvent<HTMLInputElement>) => void;
+//     onDateSelect: (selectedDate: Date) => void;
+// }
+
+// const Calendar: FC<ICalendarProps> = ({
+//     children,
+//     // onChange,
+//     onDateSelect,
+//     ...rest
+// }) => {
+//     const { locale, selectedDate, today } = calendarPropsSchema.parse(rest);
+
+//     const calendarStyles = clsx({ [styles.calendar]: true });
+
+//     const resetCalendar = () => {};
+
+//     const changeMonth = (operand: Operand) => {
+//         const newDate =
+//             operand === 'sub' ? subMonths(today, 1) : addMonths(today, 1);
+//         return newDate;
+//     };
+
+//     const changeDate = (selectedDate: Date) => {
+//         onDateSelect(selectedDate);
+//     };
+
+//     return (
+//         <div className={calendarStyles}>
+//             <CalendarHead
+//                 today={today}
+//                 selectedDate={selectedDate || today}
+//                 changeMonth={changeMonth}
+//                 resetCalendar={() => resetCalendar()}
+//                 locale={locale}
+//             />
+
+//             {children}
+
+//             <Days
+//                 today={today}
+//                 locale={locale}
+//                 selectedDate={selectedDate || today}
+//                 onClick={changeDate}
+//             />
+//         </div>
+//     );
+// };
+
+// export default Calendar;
+//----------------------------------
 import clsx from 'clsx';
 import { addMonths, subMonths } from 'date-fns';
+import { useState } from 'react';
 import type { FC, PropsWithChildren } from 'react';
 import type { Operand } from '../../../zod/operand';
 import Days from '../CalendarBody/Days/Days';
@@ -95,26 +160,26 @@ import {
 } from '@/zod/components/calendarProps';
 
 interface ICalendarProps extends CalendarProps, PropsWithChildren {
-    // onChange: (event: ChangeEvent<HTMLInputElement>) => void;
     onDateSelect: (selectedDate: Date) => void;
 }
 
-const Calendar: FC<ICalendarProps> = ({
-    children,
-    // onChange,
-    onDateSelect,
-    ...rest
-}) => {
+const Calendar: FC<ICalendarProps> = ({ children, onDateSelect, ...rest }) => {
     const { locale, selectedDate, today } = calendarPropsSchema.parse(rest);
 
-    const calendarStyles = clsx({ [styles.calendar]: true });
+    const [currentMonth, setCurrentMonth] = useState(selectedDate ?? today);
 
-    const resetCalendar = () => {};
+    const calendarStyles = clsx({
+        [styles.calendar]: true,
+    });
+
+    const resetCalendar = () => {
+        setCurrentMonth(selectedDate ?? today);
+    };
 
     const changeMonth = (operand: Operand) => {
-        const newDate =
-            operand === 'sub' ? subMonths(today, 1) : addMonths(today, 1);
-        return newDate;
+        setCurrentMonth((prev) =>
+            operand === 'sub' ? subMonths(prev, 1) : addMonths(prev, 1),
+        );
     };
 
     const changeDate = (selectedDate: Date) => {
@@ -125,10 +190,10 @@ const Calendar: FC<ICalendarProps> = ({
         <div className={calendarStyles}>
             <CalendarHead
                 today={today}
-                selectedDate={selectedDate || today}
-                changeMonth={changeMonth}
-                resetCalendar={() => resetCalendar()}
                 locale={locale}
+                selectedDate={currentMonth}
+                changeMonth={changeMonth}
+                resetCalendar={resetCalendar}
             />
 
             {children}
@@ -136,7 +201,7 @@ const Calendar: FC<ICalendarProps> = ({
             <Days
                 today={today}
                 locale={locale}
-                selectedDate={selectedDate || today}
+                selectedDate={currentMonth}
                 onClick={changeDate}
             />
         </div>

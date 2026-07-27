@@ -20,7 +20,7 @@
 
 .day:hover {
     border-color: var(--bh-color-border-primary);
-    background: var(--bh-color-brand-quaternary);
+    background: var(--bh-color-button-secondary);
 }
 
 .day:active {
@@ -28,9 +28,9 @@
 }
 
 .active {
-    background: var(--bh-color-brand-primary);
+    background: var(--bh-color-button-primary);
     border-color: var(--bh-color-border-primary);
-    color: var(--bh-color-text-dark);
+    color: var(--bh-color-text-light);
 }
 
 .start,
