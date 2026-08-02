@@ -27,10 +27,11 @@ const NumberOfGuestsSelect: FC<NumberOfGuestsSelectProps> = ({
 
     return (
         <Flex
-            justifyContent="center"
+            justifyContent="space-between"
             direction="row"
             alignItems="center"
             className={styles.numberOfGuestsSelect}
+            width="50%"
         >
             <Button
                 type={

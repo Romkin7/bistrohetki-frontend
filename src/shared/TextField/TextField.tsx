@@ -29,8 +29,8 @@ const TextField: FC<ITextFieldProps> = ({ onInput, value, ...rest }) => {
     const textFieldStyles = clsx(styles.textfield, className);
 
     return (
-        <HStack gap="10" width="full">
-            <Field.Root required={required}>
+        <HStack gap="10" width="50%">
+            <Field.Root required={required} width="100%">
                 <Field.Label className={styles.label} htmlFor={htmlFor}>
                     {label}
                     {required && <Field.RequiredIndicator />}

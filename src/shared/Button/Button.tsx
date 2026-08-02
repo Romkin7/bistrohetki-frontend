@@ -11,7 +11,7 @@ interface IButtonProps extends ButtonProps, PropsWithChildren {
 }
 
 const Button: FC<IButtonProps> = ({ children, onClick, ...rest }) => {
-    const { variant, size, shape, disabled, ariaLabel, type } =
+    const { variant, size, shape, disabled, ariaLabel, type, className } =
         buttonPropsSchema.parse(rest);
 
     const buttonStyles = clsx(
@@ -19,6 +19,7 @@ const Button: FC<IButtonProps> = ({ children, onClick, ...rest }) => {
         styles[`button--${variant}`],
         styles[`button--${shape}`],
         styles[`button--${size}`],
+        className,
     );
     return (
         <button

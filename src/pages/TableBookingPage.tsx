@@ -6,11 +6,12 @@ import { useLoaderData } from 'react-router';
 import rehypeRaw from 'rehype-raw';
 import remarkGfm from 'remark-gfm';
 import styles from '../App.module.css';
-
 import TableBookingPageForm from '@/businessLogicComponents/TableBookingPageForm/TableBookingPageForm';
 import DatepickerWithRange from '@/shared/DatepickerWithRange/DatepickerWithRange';
 import Heading from '@/shared/Heading/Heading';
 import Link from '@/shared/Link/Link';
+import TextArea from '@/shared/TextArea/TextArea';
+import TextField from '@/shared/TextField/TextField';
 
 import type { TableBookingPageData } from '@/zod/pages/tableBookingPageData';
 
@@ -18,6 +19,10 @@ const TableBookingPage: FC = () => {
     const tableBookingPageData: TableBookingPageData = useLoaderData();
     const [guests, setGuests] = useState<number>(0);
     const [selectedDate, setSelectedDate] = useState<string>('');
+    const [name, setName] = useState<string>('');
+    const [email, setEmail] = useState<string>('');
+    const [phone, setPhone] = useState<string>('');
+    const [message, setMessage] = useState<string>('');
 
     const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -27,10 +32,30 @@ const TableBookingPage: FC = () => {
         event.preventDefault();
         setGuests(0);
         setSelectedDate('');
+        setName('');
+        setEmail('');
+        setPhone('');
+        setMessage('');
     };
 
     const handleDateChange = (event: ChangeEvent<HTMLInputElement>) => {
         setSelectedDate(event.target.value);
+    };
+
+    const handleNameChange = (event: ChangeEvent<HTMLInputElement>) => {
+        setName(event.target.value);
+    };
+
+    const handleEmailChange = (event: ChangeEvent<HTMLInputElement>) => {
+        setEmail(event.target.value);
+    };
+
+    const handlePhoneChange = (event: ChangeEvent<HTMLInputElement>) => {
+        setPhone(event.target.value);
+    };
+
+    const handleMessageChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
+        setMessage(event.target.value);
     };
 
     return (
@@ -69,6 +94,50 @@ const TableBookingPage: FC = () => {
                                 readOnly={true}
                                 required={true}
                                 disabled={false}
+                            />
+                            <TextField
+                                type="text"
+                                value={name}
+                                onInput={handleNameChange}
+                                htmlFor="name"
+                                label=""
+                                name="name"
+                                placeholder="Enter your name"
+                                ariaLabel="Name"
+                            />
+
+                            <TextField
+                                value={email}
+                                onInput={handleEmailChange}
+                                htmlFor="email"
+                                label=""
+                                name="email"
+                                type="email"
+                                placeholder="Enter your email"
+                                ariaLabel="Email"
+                            />
+
+                            <TextField
+                                value={phone}
+                                onInput={handlePhoneChange}
+                                htmlFor="phone"
+                                label=""
+                                name="phone"
+                                type="tel"
+                                placeholder="Enter your phone number"
+                                ariaLabel="Phone"
+                            />
+                            <TextArea
+                                value={message}
+                                onInput={handleMessageChange}
+                                htmlFor="message"
+                                label=""
+                                name="message"
+                                placeholder="Write a message"
+                                ariaLabel="Message"
+                                required={false}
+                                disabled={false}
+                                readOnly={false}
                             />
                         </TableBookingPageForm>
 

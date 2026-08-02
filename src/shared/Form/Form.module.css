@@ -4,6 +4,7 @@
     font: var(--bh-typography-link-navigation);
     gap: var(--bh-size-dimension-spacing-4);
     padding: var(--bh-size-dimension-spacing-4);
+    width: 100%;
 }
 
 /* layout */

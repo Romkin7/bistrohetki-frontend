@@ -45,8 +45,10 @@ const TableBookingPageForm: React.FC<TableBookingPageFormProps> = ({
                 alignItems="center"
                 direction="row"
                 gap="3"
+                width="100%"
             >
                 <Button
+                    className={styles.resetButton}
                     type={
                         tableBookingPageData?.numberOfGuestsForm?.resetButton
                             ?.type as ButtonType
@@ -70,6 +72,7 @@ const TableBookingPageForm: React.FC<TableBookingPageFormProps> = ({
                 </Button>
 
                 <Button
+                    className={styles.submitButton}
                     type={
                         tableBookingPageData?.numberOfGuestsForm?.submitButton
                             ?.type as ButtonType
