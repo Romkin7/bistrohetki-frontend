@@ -2,6 +2,15 @@
     align-items: center;
     background-color: var(--bh-color-brand-primary);
     flex-direction: column;
-    height: calc(var(--bh-size-dimension-spacing-6) * 5);
     justify-content: space-between;
+    min-height: calc(var(--bh-size-dimension-spacing-6) * 5);
+    width: 100%;
+}
+
+.actionButton,
+.resetButton,
+.submitButton {
+    flex: 1 1 0;
+    max-width: 10rem;
+    min-width: 7rem;
 }

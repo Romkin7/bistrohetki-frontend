@@ -1,4 +1,17 @@
 .days {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    gap: var(--bh-size-dimension-spacing-1);
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+}
+
+.weekdays {
+    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    margin-bottom: var(--bh-size-dimension-spacing-2);
+    width: 100%;
+}
+
+.dates {
+    gap: var(--bh-size-dimension-spacing-1);
 }

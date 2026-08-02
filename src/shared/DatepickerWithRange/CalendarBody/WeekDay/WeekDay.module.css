@@ -1,0 +1,9 @@
+.weekDay {
+    color: var(--bh-color-text-medium);
+    font: var(--bh-typography-label-text);
+    letter-spacing: 0.04em;
+    line-height: 1;
+    text-align: center;
+    text-transform: uppercase;
+    white-space: nowrap;
+}

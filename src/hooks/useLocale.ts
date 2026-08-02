@@ -10,14 +10,14 @@ import {
  * Returns the locale from route params or defaults to 'fi-FI'
  */
 export const useLocale = () => {
-    const params = useParams<{ locale?: string }>();
+    const params = useParams<{ locale?: Locale }>();
 
     // Map URL locales to your app's locale format
     const localeMap = LocaleMap;
 
     // Get locale from params or default to Finnish
-    const urlLocale: Locale = (params.locale as Locale) || 'fi-FI';
-    const appLocale = localeMap[urlLocale] || 'fi-FI';
+    const urlLocale: Locale = params.locale || 'fi-FI';
+    const appLocale = localeMap[urlLocale];
 
     return {
         appLocale, // 'en-US', 'sv-SE', 'es-ES', 'fi-FI' - for your app

@@ -1,11 +1,16 @@
 import { Box, Flex, Grid, GridItem, Image } from '@chakra-ui/react';
 import { type FC } from 'react';
-import { useLoaderData } from 'react-router';
+import { useLoaderData, useLocation } from 'react-router';
 import Heading from '@/shared/Heading/Heading';
 import type { GalleryPageData } from '@/zod/pages/galleryPageData';
 
 const GalleryPage: FC = () => {
     const galleryPageData: GalleryPageData = useLoaderData();
+
+    const location = useLocation();
+    const host = window.location.host;
+    console.log('Current path:', location.pathname);
+    console.log('Current host:', host);
 
     return (
         <section>

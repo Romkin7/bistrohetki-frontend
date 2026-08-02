@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { datepickerWithRangePropsSchema } from '../components/datepickerWithRangeProps';
 import { mediaSchema } from '../media';
 import { strapiButtonSchema } from '../strapiComponents/button';
 // import { linkSchema } from "../strapiComponents/link";
@@ -39,6 +40,8 @@ export const tableBookingPageDataSchema = z.object({
         minusButton: strapiButtonSchema,
 
         numberOfGuestsInput: strapiTextFieldSchema,
+
+        datepickerWithRange: datepickerWithRangePropsSchema,
     }),
 
     Menu: menuSchema,

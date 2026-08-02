@@ -1,3 +1,62 @@
 .day {
+    align-items: center;
+    aspect-ratio: 1;
+    background: var(--bh-color-brand-primary);
+    border: var(--bh-size-dimension-border-1) solid
+        var(--bh-color-border-secondary);
+    border-radius: var(--bh-size-dimension-border-radius-rounded-3);
+    color: var(--bh-color-text-dark);
+    cursor: pointer;
     display: flex;
+    font: var(--bh-typography-button-text);
+    justify-content: center;
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
+    width: 100%;
+}
+
+.day:hover {
+    background: var(--bh-color-button-secondary);
+    border-color: var(--bh-color-border-primary);
+}
+
+.day:active {
+    transform: translateY(0.0625rem);
+}
+
+.active {
+    background: var(--bh-color-button-primary);
+    border-color: var(--bh-color-border-primary);
+    color: var(--bh-color-text-light);
+}
+
+.start,
+.end,
+.between {
+    background-color: var(--bh-color-text-dark);
+    border-color: var(--bh-color-text-dark);
+    color: var(--bh-color-text-light);
+}
+
+.start {
+    border-bottom-left-radius: var(--bh-size-dimension-border-radius-rounded-3);
+    border-top-left-radius: var(--bh-size-dimension-border-radius-rounded-3);
+}
+
+.end {
+    border-bottom-right-radius: var(
+        --bh-size-dimension-border-radius-rounded-3
+    );
+    border-top-right-radius: var(--bh-size-dimension-border-radius-rounded-3);
+}
+
+.muted {
+    background: transparent;
+    border-color: transparent;
+    color: var(--bh-color-text-disabled);
+    cursor: not-allowed;
+    pointer-events: none;
 }

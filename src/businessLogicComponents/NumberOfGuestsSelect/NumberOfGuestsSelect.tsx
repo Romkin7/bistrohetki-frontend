@@ -24,12 +24,14 @@ const NumberOfGuestsSelect: FC<NumberOfGuestsSelectProps> = ({
         guests: guestsValue,
     });
     const guestsValueText = useGetGuestsValueText(guests);
+
     return (
         <Flex
-            justifyContent="center"
+            justifyContent="space-between"
             direction="row"
             alignItems="center"
             className={styles.numberOfGuestsSelect}
+            width="50%"
         >
             <Button
                 type={

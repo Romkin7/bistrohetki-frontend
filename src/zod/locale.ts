@@ -16,7 +16,9 @@ export const supportedLocales = z.enum(SUPPORTED_LOCALES).default('fi-FI');
 export type SupportedLocale = z.infer<typeof supportedLocales>;
 export const SupportedLocalesArray = supportedLocales.array();
 
-export const localeSchema = z.enum(['fi-FI', 'en', 'es-ES']).default('fi-FI');
+export const localeSchema = z
+    .enum(['fi', 'fi-FI', 'en', 'es', 'es-ES'])
+    .default('fi-FI');
 
 export type Locale = z.infer<typeof localeSchema>;
 export const LocaleMap = {
