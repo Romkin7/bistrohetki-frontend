@@ -1,13 +1,13 @@
 .days {
     display: grid;
-    grid-template-columns: repeat(7, minmax(0, 1fr));
     gap: var(--bh-size-dimension-spacing-1);
+    grid-template-columns: repeat(7, minmax(0, 1fr));
 }
 
 .weekdays {
+    align-items: center;
     display: grid;
     grid-template-columns: repeat(7, minmax(0, 1fr));
-    align-items: center;
     margin-bottom: var(--bh-size-dimension-spacing-2);
     width: 100%;
 }

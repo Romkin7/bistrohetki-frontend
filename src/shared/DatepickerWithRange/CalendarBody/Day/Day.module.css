@@ -1,26 +1,26 @@
 .day {
     align-items: center;
+    aspect-ratio: 1;
     background: var(--bh-color-brand-primary);
     border: var(--bh-size-dimension-border-1) solid
         var(--bh-color-border-secondary);
     border-radius: var(--bh-size-dimension-border-radius-rounded-3);
+    color: var(--bh-color-text-dark);
     cursor: pointer;
     display: flex;
-    aspect-ratio: 1;
-    color: var(--bh-color-text-dark);
     font: var(--bh-typography-button-text);
     justify-content: center;
-    width: 100%;
     transition:
         background-color 0.2s ease,
         border-color 0.2s ease,
         color 0.2s ease,
         transform 0.2s ease;
+    width: 100%;
 }
 
 .day:hover {
-    border-color: var(--bh-color-border-primary);
     background: var(--bh-color-button-secondary);
+    border-color: var(--bh-color-border-primary);
 }
 
 .day:active {

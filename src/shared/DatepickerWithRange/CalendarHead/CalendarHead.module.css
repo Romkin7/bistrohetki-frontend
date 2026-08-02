@@ -1,13 +1,13 @@
 .calendarHead {
-    display: grid;
-    grid-template-columns: auto 1fr auto;
     align-items: center;
+    display: grid;
     gap: var(--bh-size-dimension-spacing-3);
+    grid-template-columns: auto 1fr auto;
 }
 
 .calendarButton {
-    appearance: none;
     align-items: center;
+    appearance: none;
     background: var(--bh-color-brand-primary);
     border: var(--bh-size-dimension-border-1) solid
         var(--bh-color-border-primary);

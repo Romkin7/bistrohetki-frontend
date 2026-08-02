@@ -7,10 +7,10 @@
     color: var(--bh-color-text-dark);
     font: var(--bh-typography-body);
     padding: var(--bh-size-dimension-spacing-2);
+    resize: vertical;
     text-align: var(--bh-layout-flex-align-center);
     transition: border-color 0.2s;
     width: 100%;
-    resize: vertical;
 }
 
 .textarea:disabled,
