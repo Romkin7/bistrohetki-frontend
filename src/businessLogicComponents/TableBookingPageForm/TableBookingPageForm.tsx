@@ -1,17 +1,21 @@
 import { Flex } from '@chakra-ui/react';
-import React, { type FormEvent, type PropsWithChildren } from 'react';
+import React, {
+    type ChangeEvent,
+    type FormEvent,
+    type PropsWithChildren,
+} from 'react';
 import { useLoaderData } from 'react-router';
 import NumberOfGuestsSelect from '../NumberOfGuestsSelect/NumberOfGuestsSelect';
 import styles from './TableBookingPageForm.module.css';
 import Button from '@/shared/Button/Button';
 import Form from '@/shared/Form/Form';
-import { tableBookingPageFormSchema } from '@/zod/businessLogic/tableBookingPageForm';
+import { tableBookingFormSchema } from '@/zod/businessLogic/tableBookingForm';
 import type { ButtonType } from '@/zod/components/buttonProps';
 import type { TableBookingPageData } from '@/zod/pages/tableBookingPageData';
 
 interface TableBookingPageFormProps extends PropsWithChildren {
     guests: number;
-    setGuests: React.Dispatch<React.SetStateAction<number>>;
+    handleChange: (event: ChangeEvent<HTMLInputElement>) => void;
     handleReset: (event: FormEvent<HTMLFormElement>) => void;
     handleSubmit: (event: FormEvent<HTMLFormElement>) => void;
 }
@@ -20,11 +24,11 @@ const TableBookingPageForm: React.FC<TableBookingPageFormProps> = ({
     guests: guestsValue,
     children,
     handleReset,
-    setGuests,
+    handleChange,
     handleSubmit,
 }) => {
     const tableBookingPageData: TableBookingPageData = useLoaderData();
-    const { guests } = tableBookingPageFormSchema.parse({
+    const { guests } = tableBookingFormSchema.parse({
         guests: guestsValue,
     });
 
@@ -38,7 +42,7 @@ const TableBookingPageForm: React.FC<TableBookingPageFormProps> = ({
             className={styles.tableBookingPageForm}
             onReset={handleReset}
         >
-            <NumberOfGuestsSelect guests={guests} setGuests={setGuests} />
+            <NumberOfGuestsSelect guests={guests} handleChange={handleChange} />
             {children}
             <Flex
                 justifyContent="center"

@@ -1,5 +1,5 @@
 import { Flex } from '@chakra-ui/react';
-import type { FC } from 'react';
+import type { ChangeEvent, FC } from 'react';
 import { useLoaderData } from 'react-router';
 import styles from './NumberOfGuestsSelect.module.css';
 
@@ -11,12 +11,12 @@ import type { TableBookingPageData } from '@/zod/pages/tableBookingPageData';
 
 interface NumberOfGuestsSelectProps {
     guests: number;
-    setGuests: React.Dispatch<React.SetStateAction<number>>;
+    handleChange: (event: ChangeEvent<HTMLInputElement>) => void;
 }
 
 const NumberOfGuestsSelect: FC<NumberOfGuestsSelectProps> = ({
     guests: guestsValue,
-    setGuests,
+    handleChange,
 }) => {
     const tableBookingPageData: TableBookingPageData = useLoaderData();
 
@@ -45,7 +45,7 @@ const NumberOfGuestsSelect: FC<NumberOfGuestsSelectProps> = ({
                 }
                 disabled={guests < 1}
                 variant="secondary"
-                onClick={() => setGuests((g) => Math.max(0, g - 1))}
+                onClick={() => handleChange((g) => Math.max(0, g - 1))}
             >
                 {
                     tableBookingPageData?.numberOfGuestsForm?.minusButton

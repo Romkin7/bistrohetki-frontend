@@ -13,50 +13,47 @@ import Link from '@/shared/Link/Link';
 import TextArea from '@/shared/TextArea/TextArea';
 import TextField from '@/shared/TextField/TextField';
 
+import type { TableBookingForm } from '@/zod/businessLogic/tableBookingForm';
 import type { TableBookingPageData } from '@/zod/pages/tableBookingPageData';
+
+function resetTableBookingForm(): TableBookingForm {
+    return {
+        guests: 0,
+        name: '',
+        email: '',
+        phone: '',
+        date: '',
+        message: '',
+    };
+}
 
 const TableBookingPage: FC = () => {
     const tableBookingPageData: TableBookingPageData = useLoaderData();
-    const [guests, setGuests] = useState<number>(0);
-    const [selectedDate, setSelectedDate] = useState<string>('');
-    const [name, setName] = useState<string>('');
-    const [email, setEmail] = useState<string>('');
-    const [phone, setPhone] = useState<string>('');
-    const [message, setMessage] = useState<string>('');
+    const [tableBookingForm, setTableBookingForm] = useState<TableBookingForm>(
+        () => resetTableBookingForm(),
+    );
 
     const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
+        const formData = Object.fromEntries(
+            new FormData(event.target as HTMLFormElement),
+        );
+        console.log('handleSubmit form ', formData);
     };
 
     const handleReset = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        setGuests(0);
-        setSelectedDate('');
-        setName('');
-        setEmail('');
-        setPhone('');
-        setMessage('');
+        setTableBookingForm(() => resetTableBookingForm());
     };
 
-    const handleDateChange = (event: ChangeEvent<HTMLInputElement>) => {
-        setSelectedDate(event.target.value);
+    const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+        setTableBookingForm({
+            [event.target.name]: event.target.value,
+            ...tableBookingForm,
+        });
     };
 
-    const handleNameChange = (event: ChangeEvent<HTMLInputElement>) => {
-        setName(event.target.value);
-    };
-
-    const handleEmailChange = (event: ChangeEvent<HTMLInputElement>) => {
-        setEmail(event.target.value);
-    };
-
-    const handlePhoneChange = (event: ChangeEvent<HTMLInputElement>) => {
-        setPhone(event.target.value);
-    };
-
-    const handleMessageChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
-        setMessage(event.target.value);
-    };
+    const { guests, date, name, email, phone, message } = tableBookingForm;
 
     return (
         <section>
@@ -77,12 +74,12 @@ const TableBookingPage: FC = () => {
                             handleSubmit={handleSubmit}
                             handleReset={handleReset}
                             guests={guests}
-                            setGuests={setGuests}
+                            setGuests={handleChange}
                         >
                             <DatepickerWithRange
                                 selectedDate={null}
-                                value={selectedDate}
-                                onChange={handleDateChange}
+                                value={date}
+                                onChange={handleChange}
                                 ariaLabel="test"
                                 locale="fi"
                                 today={new Date()}
@@ -98,7 +95,7 @@ const TableBookingPage: FC = () => {
                             <TextField
                                 type="text"
                                 value={name}
-                                onInput={handleNameChange}
+                                onInput={handleChange}
                                 htmlFor="name"
                                 label=""
                                 name="name"
@@ -108,7 +105,7 @@ const TableBookingPage: FC = () => {
 
                             <TextField
                                 value={email}
-                                onInput={handleEmailChange}
+                                onInput={handleChange}
                                 htmlFor="email"
                                 label=""
                                 name="email"
@@ -119,7 +116,7 @@ const TableBookingPage: FC = () => {
 
                             <TextField
                                 value={phone}
-                                onInput={handlePhoneChange}
+                                onInput={handleChange}
                                 htmlFor="phone"
                                 label=""
                                 name="phone"
@@ -128,8 +125,8 @@ const TableBookingPage: FC = () => {
                                 ariaLabel="Phone"
                             />
                             <TextArea
-                                value={message}
-                                onInput={handleMessageChange}
+                                value={message as string}
+                                onInput={handleChange}
                                 htmlFor="message"
                                 label=""
                                 name="message"
