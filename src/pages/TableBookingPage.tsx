@@ -10,7 +10,6 @@ import TableBookingPageForm from '@/businessLogicComponents/TableBookingPageForm
 import DatepickerWithRange from '@/shared/DatepickerWithRange/DatepickerWithRange';
 import Heading from '@/shared/Heading/Heading';
 import Link from '@/shared/Link/Link';
-import TextArea from '@/shared/TextArea/TextArea';
 import TextField from '@/shared/TextField/TextField';
 
 import type { TableBookingForm } from '@/zod/businessLogic/tableBookingForm';
@@ -32,6 +31,7 @@ const TableBookingPage: FC = () => {
     const [tableBookingForm, setTableBookingForm] = useState<TableBookingForm>(
         () => resetTableBookingForm(),
     );
+    console.log('Table Booking Form data are: ', tableBookingForm);
 
     const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -48,9 +48,17 @@ const TableBookingPage: FC = () => {
 
     const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
         setTableBookingForm({
-            [event.target.name]: event.target.value,
             ...tableBookingForm,
+            [event.target.name]: event.target.value,
         });
+    };
+
+    const handleGuestsChange = (updatedGuests: number) => {
+        setTableBookingForm({
+            ...tableBookingForm,
+            guests: updatedGuests,
+        });
+        return updatedGuests;
     };
 
     const { guests, date, name, email, phone, message } = tableBookingForm;
@@ -74,7 +82,7 @@ const TableBookingPage: FC = () => {
                             handleSubmit={handleSubmit}
                             handleReset={handleReset}
                             guests={guests}
-                            setGuests={handleChange}
+                            handleGuestsChange={handleGuestsChange}
                         >
                             <DatepickerWithRange
                                 selectedDate={null}
@@ -97,47 +105,42 @@ const TableBookingPage: FC = () => {
                                 value={name}
                                 onInput={handleChange}
                                 htmlFor="name"
-                                label=""
+                                label="Nimi"
                                 name="name"
                                 placeholder="Enter your name"
                                 ariaLabel="Name"
                             />
-
                             <TextField
                                 value={email}
                                 onInput={handleChange}
                                 htmlFor="email"
-                                label=""
+                                label="Sähköposti"
                                 name="email"
                                 type="email"
                                 placeholder="Enter your email"
                                 ariaLabel="Email"
                             />
-
                             <TextField
                                 value={phone}
                                 onInput={handleChange}
                                 htmlFor="phone"
-                                label=""
+                                label="Puhelinnumero"
                                 name="phone"
                                 type="tel"
                                 placeholder="Enter your phone number"
                                 ariaLabel="Phone"
                             />
-                            <TextArea
+                            <TextField
+                                type="text"
                                 value={message as string}
                                 onInput={handleChange}
                                 htmlFor="message"
-                                label=""
+                                label="Viesti"
                                 name="message"
-                                placeholder="Write a message"
-                                ariaLabel="Message"
-                                required={false}
-                                disabled={false}
-                                readOnly={false}
+                                placeholder="Enter message"
+                                ariaLabel="Viestikenttä"
                             />
                         </TableBookingPageForm>
-
                         <Flex
                             direction="column"
                             align="center"

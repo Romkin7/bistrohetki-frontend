@@ -1,5 +1,5 @@
 import { Flex } from '@chakra-ui/react';
-import type { ChangeEvent, FC } from 'react';
+import type { FC } from 'react';
 import { useLoaderData } from 'react-router';
 import styles from './NumberOfGuestsSelect.module.css';
 
@@ -11,18 +11,19 @@ import type { TableBookingPageData } from '@/zod/pages/tableBookingPageData';
 
 interface NumberOfGuestsSelectProps {
     guests: number;
-    handleChange: (event: ChangeEvent<HTMLInputElement>) => void;
+    handleGuestsChange: (updatedGuests: number) => number;
 }
 
 const NumberOfGuestsSelect: FC<NumberOfGuestsSelectProps> = ({
     guests: guestsValue,
-    handleChange,
+    handleGuestsChange,
 }) => {
     const tableBookingPageData: TableBookingPageData = useLoaderData();
 
     const { guests } = numberOfGuestsSelectSchema.parse({
         guests: guestsValue,
     });
+
     const guestsValueText = useGetGuestsValueText(guests);
 
     return (
@@ -45,7 +46,7 @@ const NumberOfGuestsSelect: FC<NumberOfGuestsSelectProps> = ({
                 }
                 disabled={guests < 1}
                 variant="secondary"
-                onClick={() => handleChange((g) => Math.max(0, g - 1))}
+                onClick={() => handleGuestsChange(Math.min(0, guests - 1))}
             >
                 {
                     tableBookingPageData?.numberOfGuestsForm?.minusButton
@@ -91,7 +92,7 @@ const NumberOfGuestsSelect: FC<NumberOfGuestsSelectProps> = ({
                 disabled={guests === 12}
                 shape="circle"
                 variant="primary"
-                onClick={() => setGuests((g) => Math.min(12, g + 1))}
+                onClick={() => handleGuestsChange(Math.max(12, guests + 1))}
             >
                 {
                     tableBookingPageData?.numberOfGuestsForm?.plusButton
