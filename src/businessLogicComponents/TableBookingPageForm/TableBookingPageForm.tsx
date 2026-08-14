@@ -5,7 +5,7 @@ import NumberOfGuestsSelect from '../NumberOfGuestsSelect/NumberOfGuestsSelect';
 import styles from './TableBookingPageForm.module.css';
 import Button from '@/shared/Button/Button';
 import Form from '@/shared/Form/Form';
-import { tableBookingFormSchema } from '@/zod/businessLogic/tableBookingForm';
+import { numberOfGuestsSelectSchema } from '@/zod/businessLogic/numberOfGuestsSelec';
 import type { ButtonType } from '@/zod/components/buttonProps';
 import type { TableBookingPageData } from '@/zod/pages/tableBookingPageData';
 
@@ -24,7 +24,7 @@ const TableBookingPageForm: React.FC<TableBookingPageFormProps> = ({
     handleSubmit,
 }) => {
     const tableBookingPageData: TableBookingPageData = useLoaderData();
-    const { guests } = tableBookingFormSchema.parse({
+    const { guests } = numberOfGuestsSelectSchema.parse({
         guests: guestsValue,
     });
 

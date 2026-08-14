@@ -46,7 +46,7 @@ const NumberOfGuestsSelect: FC<NumberOfGuestsSelectProps> = ({
                 }
                 disabled={guests < 1}
                 variant="secondary"
-                onClick={() => handleGuestsChange(Math.min(0, guests - 1))}
+                onClick={() => handleGuestsChange(Math.max(0, guests - 1))}
             >
                 {
                     tableBookingPageData?.numberOfGuestsForm?.minusButton
@@ -92,7 +92,7 @@ const NumberOfGuestsSelect: FC<NumberOfGuestsSelectProps> = ({
                 disabled={guests === 12}
                 shape="circle"
                 variant="primary"
-                onClick={() => handleGuestsChange(Math.max(12, guests + 1))}
+                onClick={() => handleGuestsChange(Math.min(12, guests + 1))}
             >
                 {
                     tableBookingPageData?.numberOfGuestsForm?.plusButton

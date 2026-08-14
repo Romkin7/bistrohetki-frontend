@@ -86,13 +86,13 @@ const TableBookingPage: FC = () => {
                         >
                             <DatepickerWithRange
                                 selectedDate={null}
-                                value={date}
+                                value={date ?? ''}
                                 onChange={handleChange}
                                 ariaLabel="test"
                                 locale="fi"
                                 today={new Date()}
                                 htmlFor="htmlFor"
-                                label="label"
+                                label="Päivä"
                                 name="date"
                                 type="text"
                                 autoFocus={false}
@@ -102,16 +102,17 @@ const TableBookingPage: FC = () => {
                             />
                             <TextField
                                 type="text"
-                                value={name}
+                                value={name ?? ''}
                                 onInput={handleChange}
                                 htmlFor="name"
                                 label="Nimi"
                                 name="name"
                                 placeholder="Enter your name"
                                 ariaLabel="Name"
+                                required
                             />
                             <TextField
-                                value={email}
+                                value={email ?? ''}
                                 onInput={handleChange}
                                 htmlFor="email"
                                 label="Sähköposti"
@@ -119,9 +120,10 @@ const TableBookingPage: FC = () => {
                                 type="email"
                                 placeholder="Enter your email"
                                 ariaLabel="Email"
+                                required
                             />
                             <TextField
-                                value={phone}
+                                value={phone ?? ''}
                                 onInput={handleChange}
                                 htmlFor="phone"
                                 label="Puhelinnumero"
@@ -129,10 +131,11 @@ const TableBookingPage: FC = () => {
                                 type="tel"
                                 placeholder="Enter your phone number"
                                 ariaLabel="Phone"
+                                required
                             />
                             <TextField
                                 type="text"
-                                value={message as string}
+                                value={message ?? ''}
                                 onInput={handleChange}
                                 htmlFor="message"
                                 label="Viesti"

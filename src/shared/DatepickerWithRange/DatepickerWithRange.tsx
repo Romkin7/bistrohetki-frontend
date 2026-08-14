@@ -80,7 +80,10 @@ const DatepickerWithRange: FC<IDatepickerWithRangeProps> = ({
             aria-label={ariaLabel}
             onKeyDown={(event) => closeOnEsc(event)}
         >
-            <label htmlFor={htmlFor}>{label}</label>
+            <label htmlFor={htmlFor}>
+                {label}
+                {required && <span aria-hidden="true"> *</span>}
+            </label>
 
             <div
                 className={datepickerWithRangeStyles}
