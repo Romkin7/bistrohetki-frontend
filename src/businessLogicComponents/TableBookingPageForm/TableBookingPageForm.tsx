@@ -53,8 +53,8 @@ const TableBookingPageForm: React.FC<TableBookingPageFormProps> = ({
                 <Button
                     className={styles.resetButton}
                     type={
-                        tableBookingPageData?.numberOfGuestsForm?.resetButton
-                            ?.type as ButtonType
+                        (tableBookingPageData?.numberOfGuestsForm?.resetButton
+                            ?.type as ButtonType) ?? 'reset'
                     }
                     ariaLabel={
                         tableBookingPageData?.numberOfGuestsForm?.resetButton
@@ -77,8 +77,8 @@ const TableBookingPageForm: React.FC<TableBookingPageFormProps> = ({
                 <Button
                     className={styles.submitButton}
                     type={
-                        tableBookingPageData?.numberOfGuestsForm?.submitButton
-                            ?.type as ButtonType
+                        (tableBookingPageData?.numberOfGuestsForm?.submitButton
+                            ?.type as ButtonType) ?? 'submit'
                     }
                     ariaLabel={
                         tableBookingPageData?.numberOfGuestsForm?.submitButton

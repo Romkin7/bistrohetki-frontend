@@ -7,6 +7,8 @@ import rehypeRaw from 'rehype-raw';
 import remarkGfm from 'remark-gfm';
 import styles from '../App.module.css';
 import TableBookingPageForm from '@/businessLogicComponents/TableBookingPageForm/TableBookingPageForm';
+import { useLocale } from '@/hooks/useLocale';
+import { useTranslator } from '@/hooks/useTranslator';
 import DatepickerWithRange from '@/shared/DatepickerWithRange/DatepickerWithRange';
 import Heading from '@/shared/Heading/Heading';
 import Link from '@/shared/Link/Link';
@@ -26,19 +28,85 @@ function resetTableBookingForm(): TableBookingForm {
     };
 }
 
+function buildStrapiTableBookingPayload(
+    form: TableBookingForm,
+    language: string,
+) {
+    return {
+        data: {
+            language,
+            guests: String(form.guests ?? ''),
+            name: form.name?.trim() ?? '',
+            email: form.email?.trim() ?? '',
+            phone: form.phone?.trim() ?? '',
+            reservationDate: form.date?.trim() ?? '',
+            message: form.message?.trim() ?? '',
+        },
+    };
+}
+
+const strapiBookingEndpoint = import.meta.env.VITE_STRAPI_BOOKING_ENDPOINT;
+
 const TableBookingPage: FC = () => {
     const tableBookingPageData: TableBookingPageData = useLoaderData();
+    const { appLocale } = useLocale();
+    const translate = useTranslator();
     const [tableBookingForm, setTableBookingForm] = useState<TableBookingForm>(
         () => resetTableBookingForm(),
     );
-    console.log('Table Booking Form data are: ', tableBookingForm);
+    const [submissionMessage, setSubmissionMessage] = useState('');
+    const [submissionError, setSubmissionError] = useState('');
 
     const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
+        setSubmissionMessage('');
+        setSubmissionError('');
+
         const formData = Object.fromEntries(
             new FormData(event.target as HTMLFormElement),
         );
         console.log('handleSubmit form ', formData);
+
+        const payload = buildStrapiTableBookingPayload(
+            tableBookingForm,
+            appLocale,
+        );
+        console.log('Strapi payload:', payload);
+
+        try {
+            if (!strapiBookingEndpoint) {
+                throw new Error(
+                    'VITE_STRAPI_BOOKING_ENDPOINT is not configured',
+                );
+            }
+
+            const response = await fetch(strapiBookingEndpoint, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(payload),
+            });
+
+            if (!response.ok) {
+                const errorDetails = await response.text();
+                throw new Error(
+                    `Strapi request failed: ${response.status} ${errorDetails}`,
+                );
+            }
+
+            const result = await response.json();
+            console.log('Saved to Strapi:', result);
+            setTableBookingForm(() => resetTableBookingForm());
+            setSubmissionMessage(
+                translate('tableBooking', 'submission_success', {}),
+            );
+        } catch (error) {
+            console.error('Failed to send booking to Strapi:', error);
+            setSubmissionError(
+                translate('tableBooking', 'submission_error', {}),
+            );
+        }
     };
 
     const handleReset = (event: FormEvent<HTMLFormElement>) => {
@@ -144,6 +212,12 @@ const TableBookingPage: FC = () => {
                                 ariaLabel="Viestikenttä"
                             />
                         </TableBookingPageForm>
+                        {submissionMessage && (
+                            <p role="status">{submissionMessage}</p>
+                        )}
+                        {submissionError && (
+                            <p role="alert">{submissionError}</p>
+                        )}
                         <Flex
                             direction="column"
                             align="center"
