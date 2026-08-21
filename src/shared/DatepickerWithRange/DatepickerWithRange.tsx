@@ -82,16 +82,24 @@ const DatepickerWithRange: FC<IDatepickerWithRangeProps> = ({
         >
             <label htmlFor={htmlFor}>
                 {label}
-                {required && <span aria-hidden="true"> *</span>}
+                {required && (
+                    <span
+                        className={styles.requiredIndicator}
+                        aria-hidden="true"
+                    >
+                        {' *'}
+                    </span>
+                )}
             </label>
 
             <div
-                className={datepickerWithRangeStyles}
+                className={styles.inputWrapper}
                 aria-label={ariaLabel}
                 tabIndex={0}
                 onClick={() => handleIsOpen(!isOpen)}
             >
                 <input
+                    className={styles.input}
                     type="text"
                     name={name}
                     value={value}
@@ -103,7 +111,11 @@ const DatepickerWithRange: FC<IDatepickerWithRangeProps> = ({
                     id={htmlFor}
                 />
 
-                <Icon size="sm" aria-label="Select date">
+                <Icon
+                    className={styles.calendarIcon}
+                    size="sm"
+                    aria-label="Select date"
+                >
                     <IconCalendarAddDate />
                 </Icon>
             </div>

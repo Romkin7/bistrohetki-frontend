@@ -4,3 +4,29 @@
     gap: 1rem;
     width: 50%;
 }
+
+.inputWrapper {
+    position: relative;
+    width: 100%;
+}
+
+.input {
+    border: var(--bh-size-dimension-border-1) solid
+        var(--bh-color-border-primary);
+    border-radius: var(--bh-size-dimension-border-radius-rounded-4);
+    box-sizing: border-box;
+    padding-left: 2.5rem;
+    width: 100%;
+}
+
+.calendarIcon {
+    left: 0.75rem;
+    pointer-events: none;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.requiredIndicator {
+    color: var(--bh-color-semantic-error);
+}
