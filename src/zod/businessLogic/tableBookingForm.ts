@@ -6,6 +6,7 @@ export const tableBookingFormSchema = z.object({
     name: z.string().optional(),
     phone: z.string().optional(),
     date: z.string().optional(),
+    time: z.string().optional(),
     message: z.string().optional(),
 });
 

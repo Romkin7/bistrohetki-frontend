@@ -25,6 +25,7 @@ function resetTableBookingForm(): TableBookingForm {
         phone: '',
         date: '',
         message: '',
+        time: '',
     };
 }
 
@@ -40,6 +41,7 @@ function buildStrapiTableBookingPayload(
             email: form.email?.trim() ?? '',
             phone: form.phone?.trim() ?? '',
             reservationDate: form.date?.trim() ?? '',
+            reservationTime: form.time ? `${form.time}:00` : '',
             message: form.message?.trim() ?? '',
         },
     };
@@ -129,7 +131,8 @@ const TableBookingPage: FC = () => {
         return updatedGuests;
     };
 
-    const { guests, date, name, email, phone, message } = tableBookingForm;
+    const { guests, date, time, name, email, phone, message } =
+        tableBookingForm;
 
     return (
         <section>
@@ -156,6 +159,13 @@ const TableBookingPage: FC = () => {
                                 selectedDate={null}
                                 value={date ?? ''}
                                 onChange={handleChange}
+                                time={time ?? ''}
+                                onTimeChange={(updatedTime) =>
+                                    setTableBookingForm((currentForm) => ({
+                                        ...currentForm,
+                                        time: updatedTime,
+                                    }))
+                                }
                                 ariaLabel="test"
                                 locale="fi"
                                 today={new Date()}
