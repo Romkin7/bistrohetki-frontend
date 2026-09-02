@@ -1,4 +1,6 @@
 {
     "number_of_guests_input_value": "{{guests}} invitado",
-    "number_of_guests_input_value_plural": "{{guests}} invitados"
+    "number_of_guests_input_value_plural": "{{guests}} invitados",
+    "submission_success": "La reserva se ha enviado correctamente.",
+    "submission_error": "Ha ocurrido un error. Inténtalo de nuevo más tarde."
 }

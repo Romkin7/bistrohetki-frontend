@@ -7,56 +7,140 @@ import rehypeRaw from 'rehype-raw';
 import remarkGfm from 'remark-gfm';
 import styles from '../App.module.css';
 import TableBookingPageForm from '@/businessLogicComponents/TableBookingPageForm/TableBookingPageForm';
+import { useLocale } from '@/hooks/useLocale';
+import { useTranslator } from '@/hooks/useTranslator';
 import DatepickerWithRange from '@/shared/DatepickerWithRange/DatepickerWithRange';
 import Heading from '@/shared/Heading/Heading';
 import Link from '@/shared/Link/Link';
-import TextArea from '@/shared/TextArea/TextArea';
 import TextField from '@/shared/TextField/TextField';
 
+import Time from '@/shared/Time/Time';
+import type { TableBookingForm } from '@/zod/businessLogic/tableBookingForm';
 import type { TableBookingPageData } from '@/zod/pages/tableBookingPageData';
+
+function resetTableBookingForm(): TableBookingForm {
+    return {
+        guests: 0,
+        name: '',
+        email: '',
+        phone: '',
+        date: '',
+        message: '',
+        time: '',
+    };
+}
+
+function buildStrapiTableBookingPayload(
+    form: TableBookingForm,
+    language: string,
+) {
+    return {
+        data: {
+            language,
+            guests: String(form.guests ?? ''),
+            name: form.name?.trim() ?? '',
+            email: form.email?.trim() ?? '',
+            phone: form.phone?.trim() ?? '',
+            reservationDate: form.date?.trim() ?? '',
+            reservationTime: form.time ? `${form.time}:00` : '',
+            message: form.message?.trim() ?? '',
+        },
+    };
+}
+
+const strapiBookingEndpoint = import.meta.env.VITE_STRAPI_BOOKING_ENDPOINT;
 
 const TableBookingPage: FC = () => {
     const tableBookingPageData: TableBookingPageData = useLoaderData();
-    const [guests, setGuests] = useState<number>(0);
-    const [selectedDate, setSelectedDate] = useState<string>('');
-    const [name, setName] = useState<string>('');
-    const [email, setEmail] = useState<string>('');
-    const [phone, setPhone] = useState<string>('');
-    const [message, setMessage] = useState<string>('');
+    const { appLocale } = useLocale();
+    const translate = useTranslator();
+    const [tableBookingForm, setTableBookingForm] = useState<TableBookingForm>(
+        () => resetTableBookingForm(),
+    );
+    const [submissionMessage, setSubmissionMessage] = useState('');
+    const [submissionError, setSubmissionError] = useState('');
 
     const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
+        setSubmissionMessage('');
+        setSubmissionError('');
+
+        const formData = Object.fromEntries(
+            new FormData(event.target as HTMLFormElement),
+        );
+        console.log('handleSubmit form ', formData);
+
+        const payload = buildStrapiTableBookingPayload(
+            tableBookingForm,
+            appLocale,
+        );
+        console.log('Strapi payload:', payload);
+
+        try {
+            if (!strapiBookingEndpoint) {
+                throw new Error(
+                    'VITE_STRAPI_BOOKING_ENDPOINT is not configured',
+                );
+            }
+
+            const response = await fetch(strapiBookingEndpoint, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(payload),
+            });
+
+            if (!response.ok) {
+                const errorDetails = await response.text();
+                throw new Error(
+                    `Strapi request failed: ${response.status} ${errorDetails}`,
+                );
+            }
+
+            const result = await response.json();
+            console.log('Saved to Strapi:', result);
+            setTableBookingForm(() => resetTableBookingForm());
+            setSubmissionMessage(
+                translate('tableBooking', 'submission_success', {}),
+            );
+        } catch (error) {
+            console.error('Failed to send booking to Strapi:', error);
+            setSubmissionError(
+                translate('tableBooking', 'submission_error', {}),
+            );
+        }
     };
 
     const handleReset = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        setGuests(0);
-        setSelectedDate('');
-        setName('');
-        setEmail('');
-        setPhone('');
-        setMessage('');
+        setTableBookingForm(() => resetTableBookingForm());
     };
 
-    const handleDateChange = (event: ChangeEvent<HTMLInputElement>) => {
-        setSelectedDate(event.target.value);
+    const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+        setTableBookingForm({
+            ...tableBookingForm,
+            [event.target.name]: event.target.value,
+        });
     };
 
-    const handleNameChange = (event: ChangeEvent<HTMLInputElement>) => {
-        setName(event.target.value);
+    const handleTimeChange = (time: string) => {
+        setTableBookingForm({
+            ...tableBookingForm,
+            time,
+        });
     };
 
-    const handleEmailChange = (event: ChangeEvent<HTMLInputElement>) => {
-        setEmail(event.target.value);
+    const handleGuestsChange = (updatedGuests: number) => {
+        setTableBookingForm({
+            ...tableBookingForm,
+            guests: updatedGuests,
+        });
+        return updatedGuests;
     };
 
-    const handlePhoneChange = (event: ChangeEvent<HTMLInputElement>) => {
-        setPhone(event.target.value);
-    };
-
-    const handleMessageChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
-        setMessage(event.target.value);
-    };
+    const { guests, date, time, name, email, phone, message } =
+        tableBookingForm;
 
     return (
         <section>
@@ -77,17 +161,24 @@ const TableBookingPage: FC = () => {
                             handleSubmit={handleSubmit}
                             handleReset={handleReset}
                             guests={guests}
-                            setGuests={setGuests}
+                            handleGuestsChange={handleGuestsChange}
                         >
                             <DatepickerWithRange
                                 selectedDate={null}
-                                value={selectedDate}
-                                onChange={handleDateChange}
+                                value={date ?? ''}
+                                onChange={handleChange}
+                                time={time ?? ''}
+                                onTimeChange={(updatedTime) =>
+                                    setTableBookingForm((currentForm) => ({
+                                        ...currentForm,
+                                        time: updatedTime,
+                                    }))
+                                }
                                 ariaLabel="test"
                                 locale="fi"
                                 today={new Date()}
                                 htmlFor="htmlFor"
-                                label="label"
+                                label="Päivä"
                                 name="date"
                                 type="text"
                                 autoFocus={false}
@@ -95,52 +186,73 @@ const TableBookingPage: FC = () => {
                                 required={true}
                                 disabled={false}
                             />
+                            {date && (
+                                <Time
+                                    ariaLabel="Select reservation time"
+                                    label="Valitse aika"
+                                    name="time"
+                                    onChange={handleTimeChange}
+                                    required
+                                    value={time || ''}
+                                    options={[
+                                        '15:00',
+                                        '15:30',
+                                        '16:00',
+                                        '21:00',
+                                        '21:30',
+                                    ]}
+                                />
+                            )}
                             <TextField
                                 type="text"
-                                value={name}
-                                onInput={handleNameChange}
+                                value={name ?? ''}
+                                onInput={handleChange}
                                 htmlFor="name"
-                                label=""
+                                label="Nimi"
                                 name="name"
                                 placeholder="Enter your name"
                                 ariaLabel="Name"
+                                required
                             />
-
                             <TextField
-                                value={email}
-                                onInput={handleEmailChange}
+                                value={email ?? ''}
+                                onInput={handleChange}
                                 htmlFor="email"
-                                label=""
+                                label="Sähköposti"
                                 name="email"
                                 type="email"
                                 placeholder="Enter your email"
                                 ariaLabel="Email"
+                                required
                             />
-
                             <TextField
-                                value={phone}
-                                onInput={handlePhoneChange}
+                                value={phone ?? ''}
+                                onInput={handleChange}
                                 htmlFor="phone"
-                                label=""
+                                label="Puhelinnumero"
                                 name="phone"
                                 type="tel"
                                 placeholder="Enter your phone number"
                                 ariaLabel="Phone"
+                                required
                             />
-                            <TextArea
-                                value={message}
-                                onInput={handleMessageChange}
+                            <TextField
+                                type="text"
+                                value={message ?? ''}
+                                onInput={handleChange}
                                 htmlFor="message"
-                                label=""
+                                label="Viesti"
                                 name="message"
-                                placeholder="Write a message"
-                                ariaLabel="Message"
-                                required={false}
-                                disabled={false}
-                                readOnly={false}
+                                placeholder="Enter message"
+                                ariaLabel="Viestikenttä"
                             />
                         </TableBookingPageForm>
-
+                        {submissionMessage && (
+                            <p role="status">{submissionMessage}</p>
+                        )}
+                        {submissionError && (
+                            <p role="alert">{submissionError}</p>
+                        )}
                         <Flex
                             direction="column"
                             align="center"

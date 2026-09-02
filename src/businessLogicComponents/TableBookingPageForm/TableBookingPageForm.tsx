@@ -5,13 +5,13 @@ import NumberOfGuestsSelect from '../NumberOfGuestsSelect/NumberOfGuestsSelect';
 import styles from './TableBookingPageForm.module.css';
 import Button from '@/shared/Button/Button';
 import Form from '@/shared/Form/Form';
-import { tableBookingPageFormSchema } from '@/zod/businessLogic/tableBookingPageForm';
+import { numberOfGuestsSelectSchema } from '@/zod/businessLogic/numberOfGuestsSelec';
 import type { ButtonType } from '@/zod/components/buttonProps';
 import type { TableBookingPageData } from '@/zod/pages/tableBookingPageData';
 
 interface TableBookingPageFormProps extends PropsWithChildren {
     guests: number;
-    setGuests: React.Dispatch<React.SetStateAction<number>>;
+    handleGuestsChange: (updatedGuests: number) => number;
     handleReset: (event: FormEvent<HTMLFormElement>) => void;
     handleSubmit: (event: FormEvent<HTMLFormElement>) => void;
 }
@@ -20,11 +20,11 @@ const TableBookingPageForm: React.FC<TableBookingPageFormProps> = ({
     guests: guestsValue,
     children,
     handleReset,
-    setGuests,
+    handleGuestsChange,
     handleSubmit,
 }) => {
     const tableBookingPageData: TableBookingPageData = useLoaderData();
-    const { guests } = tableBookingPageFormSchema.parse({
+    const { guests } = numberOfGuestsSelectSchema.parse({
         guests: guestsValue,
     });
 
@@ -38,7 +38,10 @@ const TableBookingPageForm: React.FC<TableBookingPageFormProps> = ({
             className={styles.tableBookingPageForm}
             onReset={handleReset}
         >
-            <NumberOfGuestsSelect guests={guests} setGuests={setGuests} />
+            <NumberOfGuestsSelect
+                guests={guests}
+                handleGuestsChange={handleGuestsChange}
+            />
             {children}
             <Flex
                 justifyContent="center"
@@ -50,8 +53,8 @@ const TableBookingPageForm: React.FC<TableBookingPageFormProps> = ({
                 <Button
                     className={styles.resetButton}
                     type={
-                        tableBookingPageData?.numberOfGuestsForm?.resetButton
-                            ?.type as ButtonType
+                        (tableBookingPageData?.numberOfGuestsForm?.resetButton
+                            ?.type as ButtonType) ?? 'reset'
                     }
                     ariaLabel={
                         tableBookingPageData?.numberOfGuestsForm?.resetButton
@@ -74,8 +77,8 @@ const TableBookingPageForm: React.FC<TableBookingPageFormProps> = ({
                 <Button
                     className={styles.submitButton}
                     type={
-                        tableBookingPageData?.numberOfGuestsForm?.submitButton
-                            ?.type as ButtonType
+                        (tableBookingPageData?.numberOfGuestsForm?.submitButton
+                            ?.type as ButtonType) ?? 'submit'
                     }
                     ariaLabel={
                         tableBookingPageData?.numberOfGuestsForm?.submitButton

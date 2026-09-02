@@ -22,6 +22,8 @@ import {
 
 interface IDatepickerWithRangeProps
     extends DatepickerWithRangeProps, TextFieldProps {
+    onTimeChange: (value: string) => void;
+    time: string;
     value: string;
     onChange: (event: ChangeEvent<HTMLInputElement>) => void;
 }
@@ -60,8 +62,6 @@ const DatepickerWithRange: FC<IDatepickerWithRangeProps> = ({
                 value: formattedDate,
             },
         } as ChangeEvent<HTMLInputElement>);
-
-        setIsOpen(false);
     };
 
     const handleIsOpen = (isOpen: boolean) => {
@@ -80,15 +80,26 @@ const DatepickerWithRange: FC<IDatepickerWithRangeProps> = ({
             aria-label={ariaLabel}
             onKeyDown={(event) => closeOnEsc(event)}
         >
-            <label htmlFor={htmlFor}>{label}</label>
+            <label htmlFor={htmlFor}>
+                {label}
+                {required && (
+                    <span
+                        className={styles.requiredIndicator}
+                        aria-hidden="true"
+                    >
+                        {' *'}
+                    </span>
+                )}
+            </label>
 
             <div
-                className={datepickerWithRangeStyles}
+                className={styles.inputWrapper}
                 aria-label={ariaLabel}
                 tabIndex={0}
                 onClick={() => handleIsOpen(!isOpen)}
             >
                 <input
+                    className={styles.input}
                     type="text"
                     name={name}
                     value={value}
@@ -100,7 +111,11 @@ const DatepickerWithRange: FC<IDatepickerWithRangeProps> = ({
                     id={htmlFor}
                 />
 
-                <Icon size="sm" aria-label="Select date">
+                <Icon
+                    className={styles.calendarIcon}
+                    size="sm"
+                    aria-label="Select date"
+                >
                     <IconCalendarAddDate />
                 </Icon>
             </div>
