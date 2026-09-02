@@ -14,6 +14,7 @@ import Heading from '@/shared/Heading/Heading';
 import Link from '@/shared/Link/Link';
 import TextField from '@/shared/TextField/TextField';
 
+import Time from '@/shared/Time/Time';
 import type { TableBookingForm } from '@/zod/businessLogic/tableBookingForm';
 import type { TableBookingPageData } from '@/zod/pages/tableBookingPageData';
 
@@ -123,6 +124,13 @@ const TableBookingPage: FC = () => {
         });
     };
 
+    const handleTimeChange = (time: string) => {
+        setTableBookingForm({
+            ...tableBookingForm,
+            time,
+        });
+    };
+
     const handleGuestsChange = (updatedGuests: number) => {
         setTableBookingForm({
             ...tableBookingForm,
@@ -178,6 +186,23 @@ const TableBookingPage: FC = () => {
                                 required={true}
                                 disabled={false}
                             />
+                            {date && (
+                                <Time
+                                    ariaLabel="Select reservation time"
+                                    label="Valitse aika"
+                                    name="time"
+                                    onChange={handleTimeChange}
+                                    required
+                                    value={time || ''}
+                                    options={[
+                                        '15:00',
+                                        '15:30',
+                                        '16:00',
+                                        '21:00',
+                                        '21:30',
+                                    ]}
+                                />
+                            )}
                             <TextField
                                 type="text"
                                 value={name ?? ''}

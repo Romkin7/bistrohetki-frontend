@@ -10,7 +10,6 @@ import Calendar from './Calendar/Calendar';
 
 import styles from './DatepickerWithRange.module.css';
 
-import Time from '@/shared/Time/Time';
 import {
     datepickerWithRangePropsSchema,
     type DatepickerWithRangeProps,
@@ -32,8 +31,6 @@ interface IDatepickerWithRangeProps
 const DatepickerWithRange: FC<IDatepickerWithRangeProps> = ({
     value,
     onChange,
-    onTimeChange,
-    time,
     ...rest
 }) => {
     const [isOpen, setIsOpen] = useState(false);
@@ -130,17 +127,6 @@ const DatepickerWithRange: FC<IDatepickerWithRangeProps> = ({
                     selectedDate={selectedDate}
                     // onChange={onChange}
                     onDateSelect={handleDateSelect}
-                />
-            )}
-            {isOpen && (
-                <Time
-                    ariaLabel="Select reservation time"
-                    label="Valitse aika"
-                    name="time"
-                    onChange={onTimeChange}
-                    required
-                    value={time}
-                    options={['15:00', '15:30', '16:00', '21:00', '21:30']}
                 />
             )}
         </div>

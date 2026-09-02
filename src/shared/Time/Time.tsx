@@ -6,7 +6,7 @@ import styles from './Time.module.css';
 import { timePropsSchema, type TimeProps } from '@/zod/components/timeProps';
 
 interface TimeComponentProps extends TimeProps {
-    onChange: (value: string) => void;
+    onChange: (time: string) => void;
 }
 
 const Time: FC<TimeComponentProps> = (props) => {
