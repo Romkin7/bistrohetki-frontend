@@ -1,3 +1,4 @@
+import { Field, HStack, Input } from '@chakra-ui/react';
 import { Icon } from '@chakra-ui/react/icon';
 import clsx from 'clsx';
 import { format } from 'date-fns';
@@ -64,72 +65,64 @@ const DatepickerWithRange: FC<IDatepickerWithRangeProps> = ({
         } as ChangeEvent<HTMLInputElement>);
     };
 
-    const handleIsOpen = (isOpen: boolean) => {
-        setIsOpen(isOpen);
-    };
+    // const handleIsOpen = (isOpen: boolean) => {
+    //     setIsOpen(isOpen);
+    // };
 
-    const closeOnEsc = (event: KeyboardEvent<HTMLDivElement>) => {
+    const closeOnEsc = (event: KeyboardEvent<HTMLElement>) => {
         if (event.key === 'Escape') {
             setIsOpen(false);
         }
     };
 
     return (
-        <div
-            className={datepickerWithRangeStyles}
-            aria-label={ariaLabel}
-            onKeyDown={(event) => closeOnEsc(event)}
-        >
-            <label htmlFor={htmlFor}>
-                {label}
-                {required && (
-                    <span
-                        className={styles.requiredIndicator}
-                        aria-hidden="true"
-                    >
-                        {' *'}
-                    </span>
-                )}
-            </label>
-
-            <div
-                className={styles.inputWrapper}
-                aria-label={ariaLabel}
-                tabIndex={0}
-                onClick={() => handleIsOpen(!isOpen)}
+        <HStack gap="10" width="50%">
+            <Field.Root
+                required={required}
+                width="100%"
+                className={datepickerWithRangeStyles}
+                onKeyDown={closeOnEsc}
             >
-                <input
-                    className={styles.input}
-                    type="text"
-                    name={name}
-                    value={value}
-                    onChange={onChange}
-                    required={required}
-                    readOnly={readOnly}
-                    disabled={disabled}
-                    autoFocus={autoFocus}
-                    id={htmlFor}
-                />
+                <Field.Label className={styles.label} htmlFor={htmlFor}>
+                    {label}
 
-                <Icon
-                    className={styles.calendarIcon}
-                    size="sm"
-                    aria-label="Select date"
+                    {required && <Field.RequiredIndicator />}
+                </Field.Label>
+
+                <div
+                    className={styles.inputWrapper}
+                    tabIndex={0}
+                    onClick={() => setIsOpen(!isOpen)}
                 >
-                    <IconCalendarAddDate />
-                </Icon>
-            </div>
+                    <Input
+                        id={htmlFor}
+                        aria-label={ariaLabel}
+                        readOnly={readOnly}
+                        required={required}
+                        disabled={disabled}
+                        autoFocus={autoFocus}
+                        type="text"
+                        name={name}
+                        value={value}
+                        onChange={onChange}
+                        className={styles.textfield}
+                    />
 
-            {isOpen && (
-                <Calendar
-                    today={today}
-                    locale={locale}
-                    selectedDate={selectedDate}
-                    // onChange={onChange}
-                    onDateSelect={handleDateSelect}
-                />
-            )}
-        </div>
+                    <Icon className={styles.calendarIcon} size="sm">
+                        <IconCalendarAddDate />
+                    </Icon>
+                </div>
+
+                {isOpen && (
+                    <Calendar
+                        today={today}
+                        locale={locale}
+                        selectedDate={selectedDate}
+                        onDateSelect={handleDateSelect}
+                    />
+                )}
+            </Field.Root>
+        </HStack>
     );
 };
 
