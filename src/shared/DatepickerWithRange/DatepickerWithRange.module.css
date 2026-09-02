@@ -1,4 +1,4 @@
-.datepickerWithRange {
+datepickerWithRange {
     display: flex;
     flex-direction: column;
     gap: 1rem;
@@ -9,16 +9,18 @@
     position: relative;
     width: 100%;
 }
-
-.input {
+.textfield {
+    background-color: var(--bh-color-background-light);
     border: var(--bh-size-dimension-border-1) solid
         var(--bh-color-border-primary);
-    border-radius: var(--bh-size-dimension-border-radius-rounded-4);
+    border-radius: var(--bh-size-dimension-border-radius-rounded-3);
     box-sizing: border-box;
+    color: var(--bh-color-text-dark);
+    font: var(--bh-typography-body);
+    padding: var(--bh-size-dimension-spacing-2);
     padding-left: 2.5rem;
     width: 100%;
 }
-
 .calendarIcon {
     left: 0.75rem;
     pointer-events: none;
@@ -26,7 +28,14 @@
     top: 50%;
     transform: translateY(-50%);
 }
-
 .requiredIndicator {
     color: var(--bh-color-semantic-error);
+}
+.label {
+    color: var(--bh-color-text-dark);
+    display: flex;
+    font: var(--bh-typography-body);
+    justify-content: var(--bh-layout-flex-justify-left);
+    margin-top: var(--bh-size-dimension-spacing-1);
+    width: 100%;
 }
