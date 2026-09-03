@@ -5,6 +5,7 @@ import { calendarPropsSchema } from './calendarProps';
 export const datepickerWithRangePropsSchema = z
     .object({
         ariaLabel: z.string(),
+        label: z.string(),
         locale: localeSchema,
     })
     .merge(calendarPropsSchema);
