@@ -1,6 +1,21 @@
 {
     "number_of_guests_input_value": "{{guests}} invitado",
     "number_of_guests_input_value_plural": "{{guests}} invitados",
+    "date_label": "Fecha",
+    "time_label": "Selecciona una hora",
+    "date_aria_label": "Selecciona la fecha de la reserva",
+    "name_label": "Nombre",
+    "name_placeholder": "Escribe tu nombre",
+    "name_aria_label": "Nombre",
+    "email_label": "Correo electrónico",
+    "email_placeholder": "Escribe tu correo electrónico",
+    "email_aria_label": "Correo electrónico",
+    "phone_label": "Número de teléfono",
+    "phone_placeholder": "Escribe tu número de teléfono",
+    "phone_aria_label": "Número de teléfono",
+    "message_label": "Mensaje",
+    "message_placeholder": "Escribe tu mensaje",
+    "message_aria_label": "Campo de mensaje",
     "submission_success": "La reserva se ha enviado correctamente.",
     "submission_error": "Ha ocurrido un error. Inténtalo de nuevo más tarde."
 }

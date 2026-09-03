@@ -1,6 +1,21 @@
 {
     "number_of_guests_input_value": "{{guests}} guest",
     "number_of_guests_input_value_plural": "{{guests}} guests",
+    "date_label": "Date",
+    "time_label": "Select a time",
+    "date_aria_label": "Select reservation date",
+    "name_label": "Name",
+    "name_placeholder": "Enter your name",
+    "name_aria_label": "Name",
+    "email_label": "Email",
+    "email_placeholder": "Enter your email",
+    "email_aria_label": "Email",
+    "phone_label": "Phone number",
+    "phone_placeholder": "Enter your phone number",
+    "phone_aria_label": "Phone number",
+    "message_label": "Message",
+    "message_placeholder": "Enter your message",
+    "message_aria_label": "Message field",
     "submission_success": "Your booking was sent successfully.",
     "submission_error": "Something went wrong. Please try again later."
 }
