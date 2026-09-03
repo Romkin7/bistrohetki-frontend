@@ -13,4 +13,5 @@
     flex: 1 1 0;
     max-width: 10rem;
     min-width: 7rem;
+    font-size: var(--bh-line-height-font-button-text);
 }
