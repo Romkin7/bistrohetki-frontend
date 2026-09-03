@@ -1,6 +1,21 @@
 {
     "number_of_guests_input_value": "{{guests}} vieras",
     "number_of_guests_input_value_plural": "{{guests}} vierasta",
+    "date_label": "Päivä",
+    "time_label": "Valitse aika",
+    "date_aria_label": "Valitse varauspäivä",
+    "name_label": "Nimi",
+    "name_placeholder": "Kirjoita nimesi",
+    "name_aria_label": "Nimi",
+    "email_label": "Sähköposti",
+    "email_placeholder": "Kirjoita sähköpostiosoitteesi",
+    "email_aria_label": "Sähköposti",
+    "phone_label": "Puhelinnumero",
+    "phone_placeholder": "Kirjoita puhelinnumerosi",
+    "phone_aria_label": "Puhelinnumero",
+    "message_label": "Viesti",
+    "message_placeholder": "Kirjoita viestisi",
+    "message_aria_label": "Viestikenttä",
     "submission_success": "Varaus lähetettiin onnistuneesti.",
     "submission_error": "Tapahtui virhe. Yritä myöhemmin uudelleen."
 }

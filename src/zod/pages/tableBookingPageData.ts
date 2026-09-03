@@ -19,6 +19,7 @@ export const tableBookingPageDataSchema = z.object({
     ContactLink: contactLinkSchema,
     tableBookingInfo: z.string(),
     logo: mediaSchema,
+    datePickerWithRange: datepickerWithRangePropsSchema,
     // keep: form components only inside numberOfGuestsForm
 
     // keep: add numberOfGuestsForm as nested object
@@ -41,7 +42,10 @@ export const tableBookingPageDataSchema = z.object({
 
         numberOfGuestsInput: strapiTextFieldSchema,
 
-        datepickerWithRange: datepickerWithRangePropsSchema,
+        nameLabel: z.string(),
+        emailLabel: z.string(),
+        phoneLabel: z.string(),
+        messageLabel: z.string(),
     }),
 
     Menu: menuSchema,

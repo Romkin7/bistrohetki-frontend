@@ -37,6 +37,7 @@
     justify-content: var(--bh-layout-flex-justify-center);
     margin-top: var(--bh-size-dimension-spacing-1);
     text-align: var(--bh-layout-flex-align-center);
+    justify-content: var(--bh-layout-flex-justify-left);
     width: 100%;
 }
 

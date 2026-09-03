@@ -174,11 +174,18 @@ const TableBookingPage: FC = () => {
                                         time: updatedTime,
                                     }))
                                 }
-                                ariaLabel="test"
-                                locale="fi"
+                                ariaLabel={translate(
+                                    'tableBooking',
+                                    'date_aria_label',
+                                    {},
+                                )}
+                                locale={appLocale}
                                 today={new Date()}
                                 htmlFor="htmlFor"
-                                label="Päivä"
+                                label={
+                                    tableBookingPageData.datePickerWithRange
+                                        .label
+                                }
                                 name="date"
                                 type="text"
                                 autoFocus={false}
@@ -188,8 +195,16 @@ const TableBookingPage: FC = () => {
                             />
                             {date && (
                                 <Time
-                                    ariaLabel="Select reservation time"
-                                    label="Valitse aika"
+                                    ariaLabel={translate(
+                                        'tableBooking',
+                                        'time_label',
+                                        {},
+                                    )}
+                                    label={translate(
+                                        'tableBooking',
+                                        'time_label',
+                                        {},
+                                    )}
                                     name="time"
                                     onChange={handleTimeChange}
                                     required
@@ -208,32 +223,65 @@ const TableBookingPage: FC = () => {
                                 value={name ?? ''}
                                 onInput={handleChange}
                                 htmlFor="name"
-                                label="Nimi"
+                                label={
+                                    tableBookingPageData.numberOfGuestsForm
+                                        .nameLabel
+                                }
                                 name="name"
-                                placeholder="Enter your name"
-                                ariaLabel="Name"
+                                placeholder={translate(
+                                    'tableBooking',
+                                    'name_placeholder',
+                                    {},
+                                )}
+                                ariaLabel={translate(
+                                    'tableBooking',
+                                    'name_aria_label',
+                                    {},
+                                )}
                                 required
                             />
                             <TextField
                                 value={email ?? ''}
                                 onInput={handleChange}
                                 htmlFor="email"
-                                label="Sähköposti"
+                                label={
+                                    tableBookingPageData.numberOfGuestsForm
+                                        .emailLabel
+                                }
                                 name="email"
                                 type="email"
-                                placeholder="Enter your email"
-                                ariaLabel="Email"
+                                placeholder={translate(
+                                    'tableBooking',
+                                    'email_placeholder',
+                                    {},
+                                )}
+                                ariaLabel={translate(
+                                    'tableBooking',
+                                    'email_aria_label',
+                                    {},
+                                )}
                                 required
                             />
                             <TextField
                                 value={phone ?? ''}
                                 onInput={handleChange}
                                 htmlFor="phone"
-                                label="Puhelinnumero"
+                                label={
+                                    tableBookingPageData.numberOfGuestsForm
+                                        .phoneLabel
+                                }
                                 name="phone"
                                 type="tel"
-                                placeholder="Enter your phone number"
-                                ariaLabel="Phone"
+                                placeholder={translate(
+                                    'tableBooking',
+                                    'phone_placeholder',
+                                    {},
+                                )}
+                                ariaLabel={translate(
+                                    'tableBooking',
+                                    'phone_aria_label',
+                                    {},
+                                )}
                                 required
                             />
                             <TextField
@@ -241,10 +289,21 @@ const TableBookingPage: FC = () => {
                                 value={message ?? ''}
                                 onInput={handleChange}
                                 htmlFor="message"
-                                label="Viesti"
+                                label={
+                                    tableBookingPageData.numberOfGuestsForm
+                                        .messageLabel
+                                }
                                 name="message"
-                                placeholder="Enter message"
-                                ariaLabel="Viestikenttä"
+                                placeholder={translate(
+                                    'tableBooking',
+                                    'message_placeholder',
+                                    {},
+                                )}
+                                ariaLabel={translate(
+                                    'tableBooking',
+                                    'message_aria_label',
+                                    {},
+                                )}
                             />
                         </TableBookingPageForm>
                         {submissionMessage && (
