@@ -47,7 +47,7 @@ const TableBookingPageForm: React.FC<TableBookingPageFormProps> = ({
                 justifyContent="center"
                 alignItems="center"
                 direction="row"
-                gap="3"
+                gap="12"
                 width="100%"
             >
                 <Button

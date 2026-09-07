@@ -44,6 +44,7 @@
 
 .button--l {
     padding: var(--bh-size-dimension-spacing-5, --bh-size-dimension-spacing-5);
+    font-size: var(--bh-line-height-font-heading-title3);
 }
 
 .button--square {
