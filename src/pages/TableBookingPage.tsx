@@ -141,6 +141,8 @@ const TableBookingPage: FC = () => {
 
     const { guests, date, time, name, email, phone, message } =
         tableBookingForm;
+    // keep: Strapi supplies one localized TextField entry for each booking input
+    const inputValues = { name, email, phone, message };
 
     return (
         <section>
@@ -218,93 +220,26 @@ const TableBookingPage: FC = () => {
                                     ]}
                                 />
                             )}
-                            <TextField
-                                type="text"
-                                value={name ?? ''}
-                                onInput={handleChange}
-                                htmlFor="name"
-                                label={
-                                    tableBookingPageData.numberOfGuestsForm
-                                        .nameLabel
-                                }
-                                name="name"
-                                placeholder={translate(
-                                    'tableBooking',
-                                    'name_placeholder',
-                                    {},
-                                )}
-                                ariaLabel={translate(
-                                    'tableBooking',
-                                    'name_aria_label',
-                                    {},
-                                )}
-                                required
-                            />
-                            <TextField
-                                value={email ?? ''}
-                                onInput={handleChange}
-                                htmlFor="email"
-                                label={
-                                    tableBookingPageData.numberOfGuestsForm
-                                        .emailLabel
-                                }
-                                name="email"
-                                type="email"
-                                placeholder={translate(
-                                    'tableBooking',
-                                    'email_placeholder',
-                                    {},
-                                )}
-                                ariaLabel={translate(
-                                    'tableBooking',
-                                    'email_aria_label',
-                                    {},
-                                )}
-                                required
-                            />
-                            <TextField
-                                value={phone ?? ''}
-                                onInput={handleChange}
-                                htmlFor="phone"
-                                label={
-                                    tableBookingPageData.numberOfGuestsForm
-                                        .phoneLabel
-                                }
-                                name="phone"
-                                type="tel"
-                                placeholder={translate(
-                                    'tableBooking',
-                                    'phone_placeholder',
-                                    {},
-                                )}
-                                ariaLabel={translate(
-                                    'tableBooking',
-                                    'phone_aria_label',
-                                    {},
-                                )}
-                                required
-                            />
-                            <TextField
-                                type="text"
-                                value={message ?? ''}
-                                onInput={handleChange}
-                                htmlFor="message"
-                                label={
-                                    tableBookingPageData.numberOfGuestsForm
-                                        .messageLabel
-                                }
-                                name="message"
-                                placeholder={translate(
-                                    'tableBooking',
-                                    'message_placeholder',
-                                    {},
-                                )}
-                                ariaLabel={translate(
-                                    'tableBooking',
-                                    'message_aria_label',
-                                    {},
-                                )}
-                            />
+                            {tableBookingPageData.numberOfGuestsForm.Input.map(
+                                (input) => (
+                                    <TextField
+                                        key={input.id}
+                                        value={
+                                            inputValues[
+                                                input.name as keyof typeof inputValues
+                                            ] ?? ''
+                                        }
+                                        onInput={handleChange}
+                                        htmlFor={input.htmlFor}
+                                        label={input.label}
+                                        name={input.name}
+                                        placeholder={input.placeholder}
+                                        type={input.type}
+                                        ariaLabel={input.ariaLabel}
+                                        required={input.required}
+                                    />
+                                ),
+                            )}
                         </TableBookingPageForm>
                         {submissionMessage && (
                             <p role="status">{submissionMessage}</p>
