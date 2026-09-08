@@ -30,8 +30,8 @@ const TextField: FC<ITextFieldProps> = ({ onInput, value, ...rest }) => {
 
     return (
         // keep: the input must fill the available width at every screen size
-        <HStack gap="10" width="100%">
-            <Field.Root required={required} width="100%">
+        <HStack className={styles.textFieldWrapper}>
+            <Field.Root required={required} className={styles.textfieldRoot}>
                 <Field.Label className={styles.label} htmlFor={htmlFor}>
                     {label}
                     {required && <Field.RequiredIndicator />}

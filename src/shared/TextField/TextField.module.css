@@ -1,3 +1,12 @@
+.textFieldWrapper {
+    gap: 10px;
+    width: 100%;
+}
+
+.fieldRoot {
+    width: 100%;
+}
+
 .textfield {
     background-color: var(--bh-color-background-light);
     border: var(--bh-size-dimension-border-1) solid
