@@ -164,7 +164,8 @@ interface ICalendarProps extends CalendarProps, PropsWithChildren {
 }
 
 const Calendar: FC<ICalendarProps> = ({ children, onDateSelect, ...rest }) => {
-    const { locale, selectedDate, today } = calendarPropsSchema.parse(rest);
+    const { locale, selectedDate, activeDate, today } =
+        calendarPropsSchema.parse(rest);
 
     const [currentMonth, setCurrentMonth] = useState(selectedDate ?? today);
 
@@ -183,6 +184,8 @@ const Calendar: FC<ICalendarProps> = ({ children, onDateSelect, ...rest }) => {
     };
 
     const changeDate = (selectedDate: Date) => {
+        // keep: the clicked date stays active while the calendar remains open
+        setCurrentMonth(selectedDate);
         onDateSelect(selectedDate);
     };
 
@@ -202,6 +205,7 @@ const Calendar: FC<ICalendarProps> = ({ children, onDateSelect, ...rest }) => {
                 today={today}
                 locale={locale}
                 selectedDate={currentMonth}
+                activeDate={activeDate}
                 onClick={changeDate}
             />
         </div>

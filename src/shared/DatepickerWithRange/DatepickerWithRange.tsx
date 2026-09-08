@@ -1,7 +1,7 @@
 import { Field, HStack, Input } from '@chakra-ui/react';
 import { Icon } from '@chakra-ui/react/icon';
 import clsx from 'clsx';
-import { format } from 'date-fns';
+import { format, isValid, parseISO } from 'date-fns';
 import { useState } from 'react';
 import type { ChangeEvent, FC, KeyboardEvent } from 'react';
 
@@ -49,6 +49,9 @@ const DatepickerWithRange: FC<IDatepickerWithRangeProps> = ({
 
     const { selectedDate, locale, today } =
         datepickerWithRangePropsSchema.parse(rest);
+    const valueDate = value ? parseISO(value) : null;
+    const activeDate =
+        valueDate && isValid(valueDate) ? valueDate : selectedDate;
 
     const datepickerWithRangeStyles = clsx({
         [styles.datepickerWithRange]: true,
@@ -118,6 +121,7 @@ const DatepickerWithRange: FC<IDatepickerWithRangeProps> = ({
                         today={today}
                         locale={locale}
                         selectedDate={selectedDate}
+                        activeDate={activeDate}
                         onDateSelect={handleDateSelect}
                     />
                 )}
