@@ -79,7 +79,8 @@ const DatepickerWithRange: FC<IDatepickerWithRangeProps> = ({
     };
 
     return (
-        <HStack gap="10" width="50%">
+        // keep: the date input must fill the available width at every screen size
+        <HStack gap="10" width="100%">
             <Field.Root
                 required={required}
                 width="100%"
