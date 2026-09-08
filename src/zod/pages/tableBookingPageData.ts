@@ -35,17 +35,13 @@ export const tableBookingPageDataSchema = z.object({
 
         resetButton: strapiButtonSchema,
 
-        // keep: add buttonText to plusButton and minusButton, max to numberOfGuestsInput
+        // keep: form input components are localized entries from Strapi
         plusButton: strapiButtonSchema,
 
         minusButton: strapiButtonSchema,
 
         numberOfGuestsInput: strapiTextFieldSchema,
-
-        nameLabel: z.string(),
-        emailLabel: z.string(),
-        phoneLabel: z.string(),
-        messageLabel: z.string(),
+        Input: z.array(strapiTextFieldSchema),
     }),
 
     Menu: menuSchema,
