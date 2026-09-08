@@ -122,7 +122,8 @@ interface IDaysProps extends DaysProps {
 }
 
 const Days: FC<IDaysProps> = ({ onClick, ...rest }) => {
-    const { selectedDate, locale, today } = daysPropsSchema.parse(rest);
+    const { selectedDate, activeDate, locale, today } =
+        daysPropsSchema.parse(rest);
 
     const daysInMonth = getDaysInMonth(selectedDate as Date);
     const firstDayDate = startOfMonth(selectedDate as Date);
@@ -150,6 +151,7 @@ const Days: FC<IDaysProps> = ({ onClick, ...rest }) => {
                 locale={locale}
                 key={format(newPreviousMonthDate, 'dd MM yyyy')}
                 selectedDate={newPreviousMonthDate}
+                activeDate={activeDate}
                 today={today}
                 onClick={() => onClick(newPreviousMonthDate)}
             >
@@ -167,6 +169,7 @@ const Days: FC<IDaysProps> = ({ onClick, ...rest }) => {
                 locale={locale}
                 key={format(newCurrentMonthDate, 'dd MM yyyy')}
                 selectedDate={newCurrentMonthDate}
+                activeDate={activeDate}
                 today={today}
                 onClick={() => onClick(newCurrentMonthDate)}
             >
@@ -186,6 +189,7 @@ const Days: FC<IDaysProps> = ({ onClick, ...rest }) => {
                 locale={locale}
                 key={format(newNextMonthDate, 'dd MM yyyy')}
                 selectedDate={newNextMonthDate}
+                activeDate={activeDate}
                 today={today}
                 onClick={() => onClick(newNextMonthDate)}
             >
