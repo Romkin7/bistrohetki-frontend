@@ -7,6 +7,15 @@
     width: 100%;
 }
 
+.actionButtons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: var(--bh-size-dimension-spacing-3);
+    width: 100%;
+}
+
 .actionButton,
 .resetButton,
 .submitButton {
@@ -14,4 +23,16 @@
     max-width: 10rem;
     min-width: 7rem;
     font-size: var(--bh-line-height-font-button-text);
+}
+
+@media (max-width: 768px) {
+    .actionButtons {
+        flex-direction: column;
+    }
+
+    .resetButton,
+    .submitButton {
+        width: 100%;
+        max-width: none;
+    }
 }

@@ -1,4 +1,3 @@
-import { Flex } from '@chakra-ui/react';
 import React, { type FormEvent, type PropsWithChildren } from 'react';
 import { useLoaderData } from 'react-router';
 import NumberOfGuestsSelect from '../NumberOfGuestsSelect/NumberOfGuestsSelect';
@@ -43,13 +42,7 @@ const TableBookingPageForm: React.FC<TableBookingPageFormProps> = ({
                 handleGuestsChange={handleGuestsChange}
             />
             {children}
-            <Flex
-                justifyContent="center"
-                alignItems="center"
-                direction="row"
-                gap="12"
-                width="100%"
-            >
+            <div className={styles.actionButtons}>
                 <Button
                     className={styles.resetButton}
                     type={
@@ -97,7 +90,7 @@ const TableBookingPageForm: React.FC<TableBookingPageFormProps> = ({
                             ?.buttonText
                     }
                 </Button>
-            </Flex>
+            </div>
         </Form>
     );
 };
