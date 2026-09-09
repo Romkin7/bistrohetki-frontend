@@ -159,88 +159,90 @@ const TableBookingPage: FC = () => {
             <Flex direction="column" align="center" justify="center" mb={6}>
                 <Grid templateColumns={{ base: '1fr', md: '2fr 1fr' }} gap={4}>
                     <GridItem h="100%" className={styles.yellowBackground}>
-                        <TableBookingPageForm
-                            handleSubmit={handleSubmit}
-                            handleReset={handleReset}
-                            guests={guests}
-                            handleGuestsChange={handleGuestsChange}
-                        >
-                            <DatepickerWithRange
-                                selectedDate={null}
-                                value={date ?? ''}
-                                onChange={handleChange}
-                                time={time ?? ''}
-                                onTimeChange={(updatedTime) =>
-                                    setTableBookingForm((currentForm) => ({
-                                        ...currentForm,
-                                        time: updatedTime,
-                                    }))
-                                }
-                                ariaLabel={translate(
-                                    'tableBooking',
-                                    'date_aria_label',
-                                    {},
-                                )}
-                                locale={appLocale}
-                                today={new Date()}
-                                htmlFor="htmlFor"
-                                label={
-                                    tableBookingPageData.datePickerWithRange
-                                        .label
-                                }
-                                name="date"
-                                type="text"
-                                autoFocus={false}
-                                readOnly={true}
-                                required={true}
-                                disabled={false}
-                            />
-                            {date && (
-                                <Time
+                        <div className={styles.tableBookingFormContainer}>
+                            <TableBookingPageForm
+                                handleSubmit={handleSubmit}
+                                handleReset={handleReset}
+                                guests={guests}
+                                handleGuestsChange={handleGuestsChange}
+                            >
+                                <DatepickerWithRange
+                                    selectedDate={null}
+                                    value={date ?? ''}
+                                    onChange={handleChange}
+                                    time={time ?? ''}
+                                    onTimeChange={(updatedTime) =>
+                                        setTableBookingForm((currentForm) => ({
+                                            ...currentForm,
+                                            time: updatedTime,
+                                        }))
+                                    }
                                     ariaLabel={translate(
                                         'tableBooking',
-                                        'time_label',
+                                        'date_aria_label',
                                         {},
                                     )}
-                                    label={translate(
-                                        'tableBooking',
-                                        'time_label',
-                                        {},
-                                    )}
-                                    name="time"
-                                    onChange={handleTimeChange}
-                                    required
-                                    value={time || ''}
-                                    options={[
-                                        '15:00',
-                                        '15:30',
-                                        '16:00',
-                                        '21:00',
-                                        '21:30',
-                                    ]}
+                                    locale={appLocale}
+                                    today={new Date()}
+                                    htmlFor="htmlFor"
+                                    label={
+                                        tableBookingPageData.datePickerWithRange
+                                            .label
+                                    }
+                                    name="date"
+                                    type="text"
+                                    autoFocus={false}
+                                    readOnly={true}
+                                    required={true}
+                                    disabled={false}
                                 />
-                            )}
-                            {tableBookingPageData.numberOfGuestsForm.Input.map(
-                                (input) => (
-                                    <TextField
-                                        key={input.id}
-                                        value={
-                                            inputValues[
-                                                input.name as keyof typeof inputValues
-                                            ] ?? ''
-                                        }
-                                        onInput={handleChange}
-                                        htmlFor={input.htmlFor}
-                                        label={input.label}
-                                        name={input.name}
-                                        placeholder={input.placeholder}
-                                        type={input.type}
-                                        ariaLabel={input.ariaLabel}
-                                        required={input.required}
+                                {date && (
+                                    <Time
+                                        ariaLabel={translate(
+                                            'tableBooking',
+                                            'time_label',
+                                            {},
+                                        )}
+                                        label={translate(
+                                            'tableBooking',
+                                            'time_label',
+                                            {},
+                                        )}
+                                        name="time"
+                                        onChange={handleTimeChange}
+                                        required
+                                        value={time || ''}
+                                        options={[
+                                            '15:00',
+                                            '15:30',
+                                            '16:00',
+                                            '21:00',
+                                            '21:30',
+                                        ]}
                                     />
-                                ),
-                            )}
-                        </TableBookingPageForm>
+                                )}
+                                {tableBookingPageData.numberOfGuestsForm.Input.map(
+                                    (input) => (
+                                        <TextField
+                                            key={input.id}
+                                            value={
+                                                inputValues[
+                                                    input.name as keyof typeof inputValues
+                                                ] ?? ''
+                                            }
+                                            onInput={handleChange}
+                                            htmlFor={input.htmlFor}
+                                            label={input.label}
+                                            name={input.name}
+                                            placeholder={input.placeholder}
+                                            type={input.type}
+                                            ariaLabel={input.ariaLabel}
+                                            required={input.required}
+                                        />
+                                    ),
+                                )}
+                            </TableBookingPageForm>
+                        </div>
                         {submissionMessage && (
                             <p role="status">{submissionMessage}</p>
                         )}
