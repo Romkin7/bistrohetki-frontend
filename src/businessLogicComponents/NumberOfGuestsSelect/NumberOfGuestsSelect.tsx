@@ -32,7 +32,7 @@ const NumberOfGuestsSelect: FC<NumberOfGuestsSelectProps> = ({
             direction="row"
             alignItems="center"
             className={styles.numberOfGuestsSelect}
-            width="50%"
+            width="100%"
         >
             <Button
                 type={
