@@ -2,3 +2,7 @@
     background-color: var(--bh-color-brand-quaternary);
     border-radius: var(--bh-size-dimension-border-radius-rounded-5);
 }
+
+.numberOfGuestsSelect :global(label) {
+    justify-content: center;
+}
