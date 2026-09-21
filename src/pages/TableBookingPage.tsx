@@ -48,7 +48,7 @@ function buildStrapiTableBookingPayload(
     };
 }
 
-const strapiBookingEndpoint = import.meta.env.VITE_STRAPI_BOOKING_ENDPOINT;
+const STRAPI_BOOKING_ENDPOINT = import.meta.env.VITE_STRAPI_BOOKING_ENDPOINT;
 
 const TableBookingPage: FC = () => {
     const tableBookingPageData: TableBookingPageData = useLoaderData();
@@ -77,13 +77,13 @@ const TableBookingPage: FC = () => {
         console.log('Strapi payload:', payload);
 
         try {
-            if (!strapiBookingEndpoint) {
+            if (!STRAPI_BOOKING_ENDPOINT) {
                 throw new Error(
                     'VITE_STRAPI_BOOKING_ENDPOINT is not configured',
                 );
             }
 
-            const response = await fetch(strapiBookingEndpoint, {
+            const response = await fetch(STRAPI_BOOKING_ENDPOINT, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
