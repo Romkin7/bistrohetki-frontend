@@ -5,7 +5,7 @@ import type { LoaderProps } from './loaderProps';
 const tableBookingPageLoader = async ({ locale }: LoaderProps) => {
     try {
         const { data } = await fetchStrapiData(
-            `api/table-booking-page?populate[image]=true&populate[logo]=true&populate[datePickerWithRange]=*&populate[numberOfGuestsForm][populate]=*&populate[ContactLink]=*&locale=${locale}`,
+            `api/table-booking-page?populate[image]=true&populate[logo]=true&populate[datePickerWithRange]=*&populate[availableTimes]=*&populate[numberOfGuestsForm][populate]=*&populate[ContactLink]=*&locale=${locale}`,
         );
         return data;
     } catch (error) {

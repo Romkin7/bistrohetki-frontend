@@ -1,11 +1,14 @@
 import { Flex, Grid, GridItem, Image } from '@chakra-ui/react';
-import { useState } from 'react';
+import { addDays, format } from 'date-fns';
+import { useEffect, useState } from 'react';
 import type { ChangeEvent, FC, FormEvent } from 'react';
 import Markdown from 'react-markdown';
+import { useDispatch, useSelector } from 'react-redux';
 import { useLoaderData } from 'react-router';
 import rehypeRaw from 'rehype-raw';
 import remarkGfm from 'remark-gfm';
 import styles from '../App.module.css';
+import { fetchStrapiData } from '@/api/fetchStrapiData';
 import TableBookingPageForm from '@/businessLogicComponents/TableBookingPageForm/TableBookingPageForm';
 import { useLocale } from '@/hooks/useLocale';
 import { useTranslator } from '@/hooks/useTranslator';
@@ -14,9 +17,77 @@ import Heading from '@/shared/Heading/Heading';
 import Link from '@/shared/Link/Link';
 import TextField from '@/shared/TextField/TextField';
 
-import Time from '@/shared/Time/Time';
+import { setBookableDays } from '@/store/slices/bookableDaysSlice';
+import type { RootState } from '@/store/store';
 import type { TableBookingForm } from '@/zod/businessLogic/tableBookingForm';
+import type { BookableDay } from '@/zod/collections/bookableDay';
 import type { TableBookingPageData } from '@/zod/pages/tableBookingPageData';
+
+const BOOKABLE_DAYS_COUNT = 42;
+const BOOKABLE_TIMES_ENDPOINT = import.meta.env
+    .VITE_STRAPI_BOOKABLE_TIMES_ENDPOINT;
+
+type BookableTimeResponse = {
+    date: string;
+    startTime: string;
+    capacity: number;
+    isBooked: boolean;
+    bookable_day?: {
+        weekday?: string;
+        opensAt?: string;
+        closesAt?: string;
+        isClosed?: boolean;
+    } | null;
+};
+
+// keep: the page owns the fetch for 42 consecutive bookable days
+async function fetchBookableDays(
+    startDate: Date,
+    numberOfDays: number,
+): Promise<BookableDay[]> {
+    if (!BOOKABLE_TIMES_ENDPOINT) {
+        throw new Error(
+            'VITE_STRAPI_BOOKABLE_TIMES_ENDPOINT is not configured',
+        );
+    }
+
+    const endDate = addDays(startDate, numberOfDays - 1);
+    const params = new URLSearchParams({
+        'filters[date][$gte]': format(startDate, 'yyyy-MM-dd'),
+        'filters[date][$lte]': format(endDate, 'yyyy-MM-dd'),
+        'populate[bookable_day]': 'true',
+        'pagination[pageSize]': String(numberOfDays),
+        'sort[0]': 'date:asc',
+        'sort[1]': 'startTime:asc',
+    });
+    const response = await fetchStrapiData(
+        `${BOOKABLE_TIMES_ENDPOINT}?${params.toString()}`,
+    );
+    const days = new Map<string, BookableDay>();
+
+    (response.data as BookableTimeResponse[]).forEach((bookableTime) => {
+        if (bookableTime.isBooked || bookableTime.capacity <= 0) {
+            return;
+        }
+
+        const existingDay = days.get(bookableTime.date);
+        if (existingDay) {
+            existingDay.times.push(bookableTime.startTime.slice(0, 5));
+            return;
+        }
+
+        days.set(bookableTime.date, {
+            date: bookableTime.date,
+            times: [bookableTime.startTime.slice(0, 5)],
+            weekday: bookableTime.bookable_day?.weekday,
+            opensAt: bookableTime.bookable_day?.opensAt,
+            closesAt: bookableTime.bookable_day?.closesAt,
+            isClosed: bookableTime.bookable_day?.isClosed,
+        });
+    });
+
+    return [...days.values()];
+}
 
 function resetTableBookingForm(): TableBookingForm {
     return {
@@ -54,11 +125,30 @@ const TableBookingPage: FC = () => {
     const tableBookingPageData: TableBookingPageData = useLoaderData();
     const { appLocale } = useLocale();
     const translate = useTranslator();
+    const dispatch = useDispatch();
+    const bookableDays = useSelector((state: RootState) => state.bookableDays);
     const [tableBookingForm, setTableBookingForm] = useState<TableBookingForm>(
         () => resetTableBookingForm(),
     );
     const [submissionMessage, setSubmissionMessage] = useState('');
     const [submissionError, setSubmissionError] = useState('');
+
+    // keep: fetch availability in the page and store it in Redux for the calendar
+    useEffect(() => {
+        const loadBookableDays = async () => {
+            try {
+                const days = await fetchBookableDays(
+                    new Date(),
+                    BOOKABLE_DAYS_COUNT,
+                );
+                dispatch(setBookableDays(days));
+            } catch (error) {
+                console.error('Failed to fetch bookable days:', error);
+            }
+        };
+
+        void loadBookableDays();
+    }, [dispatch]);
 
     const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -124,13 +214,6 @@ const TableBookingPage: FC = () => {
         });
     };
 
-    const handleTimeChange = (time: string) => {
-        setTableBookingForm({
-            ...tableBookingForm,
-            time,
-        });
-    };
-
     const handleGuestsChange = (updatedGuests: number) => {
         setTableBookingForm({
             ...tableBookingForm,
@@ -141,6 +224,9 @@ const TableBookingPage: FC = () => {
 
     const { guests, date, time, name, email, phone, message } =
         tableBookingForm;
+    const availableTimes = tableBookingPageData.availableTimes.map((item) =>
+        item.time.slice(0, 5),
+    );
     // keep: Strapi supplies one localized TextField entry for each booking input
     const inputValues = { name, email, phone, message };
 
@@ -168,9 +254,21 @@ const TableBookingPage: FC = () => {
                             >
                                 <DatepickerWithRange
                                     selectedDate={null}
+                                    bookableDays={bookableDays}
+                                    availableTimes={availableTimes}
                                     value={date ?? ''}
                                     onChange={handleChange}
                                     time={time ?? ''}
+                                    timeLabel={translate(
+                                        'tableBooking',
+                                        'time_label',
+                                        {},
+                                    )}
+                                    timeAriaLabel={translate(
+                                        'tableBooking',
+                                        'time_label',
+                                        {},
+                                    )}
                                     onTimeChange={(updatedTime) =>
                                         setTableBookingForm((currentForm) => ({
                                             ...currentForm,
@@ -196,31 +294,6 @@ const TableBookingPage: FC = () => {
                                     required={true}
                                     disabled={false}
                                 />
-                                {date && (
-                                    <Time
-                                        ariaLabel={translate(
-                                            'tableBooking',
-                                            'time_label',
-                                            {},
-                                        )}
-                                        label={translate(
-                                            'tableBooking',
-                                            'time_label',
-                                            {},
-                                        )}
-                                        name="time"
-                                        onChange={handleTimeChange}
-                                        required
-                                        value={time || ''}
-                                        options={[
-                                            '15:00',
-                                            '15:30',
-                                            '16:00',
-                                            '21:00',
-                                            '21:30',
-                                        ]}
-                                    />
-                                )}
                                 {tableBookingPageData.numberOfGuestsForm.Input.map(
                                     (input) => (
                                         <TextField
