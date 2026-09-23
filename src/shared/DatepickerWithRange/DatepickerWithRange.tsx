@@ -24,7 +24,6 @@ import {
 interface IDatepickerWithRangeProps
     extends DatepickerWithRangeProps, TextFieldProps {
     onTimeChange: (value: string) => void;
-    availableTimes: string[];
     timeLabel: string;
     timeAriaLabel: string;
     time: string;
@@ -35,7 +34,6 @@ interface IDatepickerWithRangeProps
 const DatepickerWithRange: FC<IDatepickerWithRangeProps> = ({
     value,
     onChange,
-    availableTimes,
     onTimeChange,
     timeAriaLabel,
     timeLabel,
@@ -57,20 +55,30 @@ const DatepickerWithRange: FC<IDatepickerWithRangeProps> = ({
 
     const { selectedDate, locale, today, bookableDays } =
         datepickerWithRangePropsSchema.parse(rest);
+
     const [calendarDate, setCalendarDate] = useState<Date>(
         selectedDate ?? today,
     );
+
     const valueDate = value ? parseISO(value) : null;
+
     const activeDate =
         valueDate && isValid(valueDate) ? valueDate : calendarDate;
+
+    const selectedBookableDay = bookableDays.find(
+        (day) => day.date === format(activeDate, 'yyyy-MM-dd'),
+    );
+
+    const bookableTimes = selectedBookableDay?.times ?? [];
 
     const datepickerWithRangeStyles = clsx({
         [styles.datepickerWithRange]: true,
     });
 
-    const handleDateSelect = (selectedDate: Date) => {
-        const formattedDate = format(selectedDate, 'yyyy-MM-dd');
-        setCalendarDate(selectedDate);
+    const handleDateSelect = (newSelectedDate: Date) => {
+        const formattedDate = format(newSelectedDate, 'yyyy-MM-dd');
+
+        setCalendarDate(newSelectedDate);
 
         onChange({
             target: {
@@ -80,10 +88,6 @@ const DatepickerWithRange: FC<IDatepickerWithRangeProps> = ({
         } as ChangeEvent<HTMLInputElement>);
     };
 
-    // const handleIsOpen = (isOpen: boolean) => {
-    //     setIsOpen(isOpen);
-    // };
-
     const closeOnEsc = (event: KeyboardEvent<HTMLElement>) => {
         if (event.key === 'Escape') {
             setIsOpen(false);
@@ -91,7 +95,6 @@ const DatepickerWithRange: FC<IDatepickerWithRangeProps> = ({
     };
 
     return (
-        // keep: the date input must fill the available width at every screen size
         <HStack className={styles.datepickerWithRangeWrapper}>
             <Field.Root
                 required={required}
@@ -138,6 +141,7 @@ const DatepickerWithRange: FC<IDatepickerWithRangeProps> = ({
                             bookableDays={bookableDays}
                             onDateSelect={handleDateSelect}
                         />
+
                         <Time
                             ariaLabel={timeAriaLabel}
                             label={timeLabel}
@@ -145,7 +149,7 @@ const DatepickerWithRange: FC<IDatepickerWithRangeProps> = ({
                             onChange={onTimeChange}
                             required
                             value={time}
-                            options={availableTimes}
+                            options={bookableTimes}
                         />
                     </>
                 )}

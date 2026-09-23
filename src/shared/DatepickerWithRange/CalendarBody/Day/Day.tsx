@@ -1,50 +1,3 @@
-// import clsx from 'clsx';
-// import { format, isBefore, isSameDay } from 'date-fns';
-// import type { FC, PropsWithChildren } from 'react';
-
-// import styles from './Day.module.css';
-// import { dayPropsSchema, type DayProps } from '@/zod/components/dayProps';
-
-// interface IDayProps extends DayProps, PropsWithChildren {
-//     onClick: () => void;
-// }
-
-// const Day: FC<IDayProps> = ({ children, onClick, ...rest }) => {
-//     const { selectedDate, activeDate, today, bookableDays } =
-//         dayPropsSchema.parse(rest);
-//     const bookableDay = bookableDays.find(
-//         (day) => day.date === format(selectedDate as Date, 'yyyy-MM-dd'),
-//     );
-
-//     // дни преди днес са блокирани
-//     const isPast =
-//         isBefore(selectedDate as Date, today) &&
-//         !isSameDay(selectedDate as Date, today);
-
-//     const dayStyles = clsx({
-//         [styles.day]: true,
-//         [styles.active]: activeDate
-//             ? isSameDay(selectedDate as Date, activeDate)
-//             : isSameDay(selectedDate as Date, today),
-//         [styles.muted]: isPast,
-//     });
-
-//     return (
-//         <span
-//             data-current-date={selectedDate}
-//             className={dayStyles}
-//             onClick={!isPast ? onClick : undefined}
-//         >
-//             <span>{children}</span>
-//             {bookableDay && <small>{bookableDay.times.join(', ')}</small>}
-//         </span>
-//     );
-// };
-
-// export default Day;
-
-//________________________________
-
 import clsx from 'clsx';
 import { isBefore, isSameDay } from 'date-fns';
 import type { FC, PropsWithChildren } from 'react';
@@ -57,7 +10,7 @@ interface IDayProps extends DayProps, PropsWithChildren {
     times: string[];
 }
 
-const Day: FC<IDayProps> = ({ children, onClick, times, ...rest }) => {
+const Day: FC<IDayProps> = ({ children, onClick, ...rest }) => {
     const { selectedDate, activeDate, today } = dayPropsSchema.parse(rest);
 
     // дни преди днес са блокирани
@@ -80,7 +33,6 @@ const Day: FC<IDayProps> = ({ children, onClick, times, ...rest }) => {
             onClick={!isPast ? onClick : undefined}
         >
             <span>{children}</span>
-            {times.length > 0 && <small>{times.join(', ')}</small>}
         </span>
     );
 };
