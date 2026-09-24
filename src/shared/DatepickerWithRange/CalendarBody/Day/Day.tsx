@@ -7,6 +7,7 @@ import { dayPropsSchema, type DayProps } from '@/zod/components/dayProps';
 
 interface IDayProps extends DayProps, PropsWithChildren {
     onClick: () => void;
+    times: string[];
 }
 
 const Day: FC<IDayProps> = ({ children, onClick, ...rest }) => {
@@ -31,7 +32,7 @@ const Day: FC<IDayProps> = ({ children, onClick, ...rest }) => {
             className={dayStyles}
             onClick={!isPast ? onClick : undefined}
         >
-            {children}
+            <span>{children}</span>
         </span>
     );
 };

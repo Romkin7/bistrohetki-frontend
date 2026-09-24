@@ -23,7 +23,7 @@ interface IDaysProps extends DaysProps {
 }
 
 const Days: FC<IDaysProps> = ({ onClick, ...rest }) => {
-    const { selectedDate, activeDate, locale, today } =
+    const { selectedDate, activeDate, locale, today, bookableDays } =
         daysPropsSchema.parse(rest);
 
     const daysInMonth = getDaysInMonth(selectedDate as Date);
@@ -42,6 +42,18 @@ const Days: FC<IDaysProps> = ({ onClick, ...rest }) => {
         return <WeekDay key={weekDay.key}>{weekDay.label}</WeekDay>;
     });
 
+    const getBookableTimes = (date: Date) => {
+        const formattedDate = format(date, 'yyyy-MM-dd');
+
+        for (const bookableDay of bookableDays) {
+            if (bookableDay.date === formattedDate) {
+                return bookableDay.times;
+            }
+        }
+
+        return [];
+    };
+
     // Дни от предишния месец
     for (let i = getDay(firstDayDate); i > 1; i--) {
         const previousMonthsDay = previousMonthDays - i + 2;
@@ -54,6 +66,8 @@ const Days: FC<IDaysProps> = ({ onClick, ...rest }) => {
                 selectedDate={newPreviousMonthDate}
                 activeDate={activeDate}
                 today={today}
+                bookableDays={bookableDays}
+                times={getBookableTimes(newPreviousMonthDate)}
                 onClick={() => onClick(newPreviousMonthDate)}
             >
                 {previousMonthsDay}
@@ -72,6 +86,8 @@ const Days: FC<IDaysProps> = ({ onClick, ...rest }) => {
                 selectedDate={newCurrentMonthDate}
                 activeDate={activeDate}
                 today={today}
+                bookableDays={bookableDays}
+                times={getBookableTimes(newCurrentMonthDate)}
                 onClick={() => onClick(newCurrentMonthDate)}
             >
                 {i}
@@ -92,6 +108,8 @@ const Days: FC<IDaysProps> = ({ onClick, ...rest }) => {
                 selectedDate={newNextMonthDate}
                 activeDate={activeDate}
                 today={today}
+                bookableDays={bookableDays}
+                times={getBookableTimes(newNextMonthDate)}
                 onClick={() => onClick(newNextMonthDate)}
             >
                 {i}

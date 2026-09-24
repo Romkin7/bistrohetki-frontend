@@ -1,11 +1,345 @@
+// import { Flex, Grid, GridItem, Image } from '@chakra-ui/react';
+// import { useState } from 'react';
+// import type { ChangeEvent, FC, FormEvent } from 'react';
+// import Markdown from 'react-markdown';
+// import { useSelector } from 'react-redux';
+// import { useLoaderData } from 'react-router';
+// import rehypeRaw from 'rehype-raw';
+// import remarkGfm from 'remark-gfm';
+
+// import styles from '../App.module.css';
+
+// import TableBookingPageForm from '@/businessLogicComponents/TableBookingPageForm/TableBookingPageForm';
+// import { useLocale } from '@/hooks/useLocale';
+// import { useTranslator } from '@/hooks/useTranslator';
+// import DatepickerWithRange from '@/shared/DatepickerWithRange/DatepickerWithRange';
+// import Heading from '@/shared/Heading/Heading';
+// import Link from '@/shared/Link/Link';
+// import TextField from '@/shared/TextField/TextField';
+
+// import type { RootState } from '@/store/store';
+// import type { TableBookingForm } from '@/zod/businessLogic/tableBookingForm';
+// import type { TableBookingPageData } from '@/zod/pages/tableBookingPageData';
+
+// function resetTableBookingForm(): TableBookingForm {
+//     return {
+//         guests: 0,
+//         name: '',
+//         email: '',
+//         phone: '',
+//         date: '',
+//         message: '',
+//         time: '',
+//     };
+// }
+
+// function buildStrapiTableBookingPayload(
+//     form: TableBookingForm,
+//     language: string,
+// ) {
+//     return {
+//         data: {
+//             language,
+//             guests: String(form.guests ?? ''),
+//             name: form.name?.trim() ?? '',
+//             email: form.email?.trim() ?? '',
+//             phone: form.phone?.trim() ?? '',
+//             reservationDate: form.date?.trim() ?? '',
+//             reservationTime: form.time ? `${form.time}:00` : '',
+//             message: form.message?.trim() ?? '',
+//         },
+//     };
+// }
+
+// const STRAPI_BOOKING_ENDPOINT = `${import.meta.env.VITE_STRAPI_API_URL}${import.meta.env.VITE_STRAPI_BOOKING_ENDPOINT}`;
+
+// console.log(STRAPI_BOOKING_ENDPOINT);
+
+// const TableBookingPage: FC = () => {
+//     const tableBookingPageData: TableBookingPageData = useLoaderData();
+
+//     const { appLocale } = useLocale();
+//     const translate = useTranslator();
+
+//     const bookableDays = useSelector((state: RootState) => state.bookableDays);
+
+//     const [tableBookingForm, setTableBookingForm] = useState<TableBookingForm>(
+//         () => resetTableBookingForm(),
+//     );
+
+//     const [submissionMessage, setSubmissionMessage] = useState('');
+
+//     const [submissionError, setSubmissionError] = useState('');
+
+//     const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+//         event.preventDefault();
+
+//         setSubmissionMessage('');
+//         setSubmissionError('');
+
+//         const formData = Object.fromEntries(
+//             new FormData(event.target as HTMLFormElement),
+//         );
+
+//         console.log('handleSubmit form ', formData);
+
+//         const payload = buildStrapiTableBookingPayload(
+//             tableBookingForm,
+//             appLocale,
+//         );
+
+//         console.log('Strapi payload:', payload);
+
+//         try {
+//             if (!STRAPI_BOOKING_ENDPOINT) {
+//                 throw new Error(
+//                     'VITE_STRAPI_BOOKING_ENDPOINT is not configured',
+//                 );
+//             }
+
+//             const response = await fetch(STRAPI_BOOKING_ENDPOINT, {
+//                 method: 'POST',
+//                 headers: {
+//                     'Content-Type': 'application/json',
+//                 },
+//                 body: JSON.stringify(payload),
+//             });
+
+//             if (!response.ok) {
+//                 const errorDetails = await response.text();
+
+//                 throw new Error(
+//                     `Strapi request failed: ${response.status} ${errorDetails}`,
+//                 );
+//             }
+
+//             const result = await response.json();
+
+//             console.log('Saved to Strapi:', result);
+
+//             setTableBookingForm(() => resetTableBookingForm());
+
+//             setSubmissionMessage(
+//                 translate('tableBooking', 'submission_success', {}),
+//             );
+//         } catch (error) {
+//             console.error('Failed to send booking to Strapi:', error);
+
+//             setSubmissionError(
+//                 translate('tableBooking', 'submission_error', {}),
+//             );
+//         }
+//     };
+
+//     const handleReset = (event: FormEvent<HTMLFormElement>) => {
+//         event.preventDefault();
+
+//         setTableBookingForm(() => resetTableBookingForm());
+//     };
+
+//     const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+//         setTableBookingForm({
+//             ...tableBookingForm,
+//             [event.target.name]: event.target.value,
+//         });
+//     };
+
+//     const handleGuestsChange = (updatedGuests: number) => {
+//         setTableBookingForm({
+//             ...tableBookingForm,
+//             guests: updatedGuests,
+//         });
+
+//         return updatedGuests;
+//     };
+
+//     const { guests, date, time, name, email, phone, message } =
+//         tableBookingForm;
+
+//     const inputValues = {
+//         name,
+//         email,
+//         phone,
+//         message,
+//     };
+
+//     return (
+//         <section>
+//             <Flex direction="column" align="center" justify="center" mb={8}>
+//                 <Heading
+//                     tag="h1"
+//                     variant="title-1"
+//                     color="dark"
+//                     ariaLabel={tableBookingPageData?.mainTitle}
+//                 >
+//                     {tableBookingPageData?.mainTitle}
+//                 </Heading>
+//             </Flex>
+
+//             <Flex direction="column" align="center" justify="center" mb={6}>
+//                 <Grid
+//                     templateColumns={{
+//                         base: '1fr',
+//                         md: '2fr 1fr',
+//                     }}
+//                     gap={4}
+//                 >
+//                     <GridItem h="100%" className={styles.yellowBackground}>
+//                         <div className={styles.tableBookingFormContainer}>
+//                             <TableBookingPageForm
+//                                 handleSubmit={handleSubmit}
+//                                 handleReset={handleReset}
+//                                 guests={guests}
+//                                 handleGuestsChange={handleGuestsChange}
+//                             >
+//                                 <DatepickerWithRange
+//                                     selectedDate={null}
+//                                     bookableDays={bookableDays}
+//                                     value={date ?? ''}
+//                                     onChange={handleChange}
+//                                     time={time ?? ''}
+//                                     timeLabel={translate(
+//                                         'tableBooking',
+//                                         'time_label',
+//                                         {},
+//                                     )}
+//                                     timeAriaLabel={translate(
+//                                         'tableBooking',
+//                                         'time_label',
+//                                         {},
+//                                     )}
+//                                     onTimeChange={(updatedTime) =>
+//                                         setTableBookingForm((currentForm) => ({
+//                                             ...currentForm,
+//                                             time: updatedTime,
+//                                         }))
+//                                     }
+//                                     ariaLabel={translate(
+//                                         'tableBooking',
+//                                         'date_aria_label',
+//                                         {},
+//                                     )}
+//                                     locale={appLocale}
+//                                     today={new Date()}
+//                                     htmlFor="htmlFor"
+//                                     label={
+//                                         tableBookingPageData.datePickerWithRange
+//                                             .label
+//                                     }
+//                                     name="date"
+//                                     type="text"
+//                                     autoFocus={false}
+//                                     readOnly={true}
+//                                     required={true}
+//                                     disabled={false}
+//                                 />
+
+//                                 {tableBookingPageData.numberOfGuestsForm.Input.map(
+//                                     (input) => (
+//                                         <TextField
+//                                             key={input.id}
+//                                             value={
+//                                                 inputValues[
+//                                                     input.name as keyof typeof inputValues
+//                                                 ] ?? ''
+//                                             }
+//                                             onInput={handleChange}
+//                                             htmlFor={input.htmlFor}
+//                                             label={input.label}
+//                                             name={input.name}
+//                                             placeholder={input.placeholder}
+//                                             type={input.type}
+//                                             ariaLabel={input.ariaLabel}
+//                                             required={input.required}
+//                                         />
+//                                     ),
+//                                 )}
+//                             </TableBookingPageForm>
+//                         </div>
+
+//                         {submissionMessage && (
+//                             <p role="status">{submissionMessage}</p>
+//                         )}
+
+//                         {submissionError && (
+//                             <p role="alert">{submissionError}</p>
+//                         )}
+
+//                         <Flex
+//                             direction="column"
+//                             align="center"
+//                             justify="center"
+//                             mt="10"
+//                             mb="6"
+//                         >
+//                             <Markdown
+//                                 rehypePlugins={[rehypeRaw]}
+//                                 remarkPlugins={[remarkGfm]}
+//                             >
+//                                 {tableBookingPageData?.tableBookingInfo}
+//                             </Markdown>
+
+//                             {tableBookingPageData?.ContactLink && (
+//                                 <Link
+//                                     href={tableBookingPageData.ContactLink.href}
+//                                     variant={
+//                                         tableBookingPageData.ContactLink.variant
+//                                     }
+//                                     color="medium"
+//                                 >
+//                                     {tableBookingPageData.ContactLink.content}
+//                                 </Link>
+//                             )}
+//                         </Flex>
+
+//                         <Flex justify="center" mb="8" align="center">
+//                             <Image
+//                                 width="30%"
+//                                 src={tableBookingPageData?.logo?.url}
+//                                 alt={
+//                                     tableBookingPageData?.logo
+//                                         ?.alternativeText || 'Hetki logo'
+//                                 }
+//                                 fit="contain"
+//                                 aria-label={
+//                                     tableBookingPageData?.logo
+//                                         ?.alternativeText || 'Hetki logo'
+//                                 }
+//                             />
+//                         </Flex>
+//                     </GridItem>
+
+//                     <GridItem h="100%">
+//                         <Image
+//                             objectFit="cover"
+//                             src={tableBookingPageData?.image?.url}
+//                             alt={
+//                                 tableBookingPageData?.image?.alternativeText ||
+//                                 'Table booking image'
+//                             }
+//                         />
+//                     </GridItem>
+//                 </Grid>
+//             </Flex>
+//         </section>
+//     );
+// };
+
+// export default TableBookingPage;
+
+//------------------------------------------------
+
 import { Flex, Grid, GridItem, Image } from '@chakra-ui/react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import type { ChangeEvent, FC, FormEvent } from 'react';
 import Markdown from 'react-markdown';
+import { useDispatch, useSelector } from 'react-redux';
 import { useLoaderData } from 'react-router';
 import rehypeRaw from 'rehype-raw';
 import remarkGfm from 'remark-gfm';
+
 import styles from '../App.module.css';
+
 import TableBookingPageForm from '@/businessLogicComponents/TableBookingPageForm/TableBookingPageForm';
 import { useLocale } from '@/hooks/useLocale';
 import { useTranslator } from '@/hooks/useTranslator';
@@ -14,8 +348,10 @@ import Heading from '@/shared/Heading/Heading';
 import Link from '@/shared/Link/Link';
 import TextField from '@/shared/TextField/TextField';
 
-import Time from '@/shared/Time/Time';
+import { setBookableDays } from '@/store/slices/bookableDaysSlice';
+import type { RootState } from '@/store/store';
 import type { TableBookingForm } from '@/zod/businessLogic/tableBookingForm';
+import type { BookableDay } from '@/zod/collections/bookableDay';
 import type { TableBookingPageData } from '@/zod/pages/tableBookingPageData';
 
 function resetTableBookingForm(): TableBookingForm {
@@ -48,32 +384,56 @@ function buildStrapiTableBookingPayload(
     };
 }
 
-const STRAPI_BOOKING_ENDPOINT = import.meta.env.VITE_STRAPI_BOOKING_ENDPOINT;
+const STRAPI_BOOKING_ENDPOINT = `${import.meta.env.VITE_STRAPI_API_URL}${import.meta.env.VITE_STRAPI_BOOKING_ENDPOINT}`;
+
+console.log(STRAPI_BOOKING_ENDPOINT);
 
 const TableBookingPage: FC = () => {
-    const tableBookingPageData: TableBookingPageData = useLoaderData();
+    const tableBookingPageData = useLoaderData() as TableBookingPageData & {
+        bookableDays: BookableDay[];
+    };
+
     const { appLocale } = useLocale();
     const translate = useTranslator();
+
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(setBookableDays(tableBookingPageData.bookableDays));
+    }, [dispatch, tableBookingPageData.bookableDays]);
+
+    console.log(
+        'BOOKABLE DAYS FROM LOADER:',
+        tableBookingPageData.bookableDays,
+    );
+
+    const bookableDays = useSelector((state: RootState) => state.bookableDays);
+
     const [tableBookingForm, setTableBookingForm] = useState<TableBookingForm>(
         () => resetTableBookingForm(),
     );
+
     const [submissionMessage, setSubmissionMessage] = useState('');
+
     const [submissionError, setSubmissionError] = useState('');
 
     const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
+
         setSubmissionMessage('');
         setSubmissionError('');
 
         const formData = Object.fromEntries(
             new FormData(event.target as HTMLFormElement),
         );
+
         console.log('handleSubmit form ', formData);
 
         const payload = buildStrapiTableBookingPayload(
             tableBookingForm,
             appLocale,
         );
+
         console.log('Strapi payload:', payload);
 
         try {
@@ -93,19 +453,24 @@ const TableBookingPage: FC = () => {
 
             if (!response.ok) {
                 const errorDetails = await response.text();
+
                 throw new Error(
                     `Strapi request failed: ${response.status} ${errorDetails}`,
                 );
             }
 
             const result = await response.json();
+
             console.log('Saved to Strapi:', result);
+
             setTableBookingForm(() => resetTableBookingForm());
+
             setSubmissionMessage(
                 translate('tableBooking', 'submission_success', {}),
             );
         } catch (error) {
             console.error('Failed to send booking to Strapi:', error);
+
             setSubmissionError(
                 translate('tableBooking', 'submission_error', {}),
             );
@@ -114,6 +479,7 @@ const TableBookingPage: FC = () => {
 
     const handleReset = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
+
         setTableBookingForm(() => resetTableBookingForm());
     };
 
@@ -124,25 +490,24 @@ const TableBookingPage: FC = () => {
         });
     };
 
-    const handleTimeChange = (time: string) => {
-        setTableBookingForm({
-            ...tableBookingForm,
-            time,
-        });
-    };
-
     const handleGuestsChange = (updatedGuests: number) => {
         setTableBookingForm({
             ...tableBookingForm,
             guests: updatedGuests,
         });
+
         return updatedGuests;
     };
 
     const { guests, date, time, name, email, phone, message } =
         tableBookingForm;
-    // keep: Strapi supplies one localized TextField entry for each booking input
-    const inputValues = { name, email, phone, message };
+
+    const inputValues = {
+        name,
+        email,
+        phone,
+        message,
+    };
 
     return (
         <section>
@@ -156,8 +521,15 @@ const TableBookingPage: FC = () => {
                     {tableBookingPageData?.mainTitle}
                 </Heading>
             </Flex>
+
             <Flex direction="column" align="center" justify="center" mb={6}>
-                <Grid templateColumns={{ base: '1fr', md: '2fr 1fr' }} gap={4}>
+                <Grid
+                    templateColumns={{
+                        base: '1fr',
+                        md: '2fr 1fr',
+                    }}
+                    gap={4}
+                >
                     <GridItem h="100%" className={styles.yellowBackground}>
                         <div className={styles.tableBookingFormContainer}>
                             <TableBookingPageForm
@@ -168,9 +540,20 @@ const TableBookingPage: FC = () => {
                             >
                                 <DatepickerWithRange
                                     selectedDate={null}
+                                    bookableDays={bookableDays}
                                     value={date ?? ''}
                                     onChange={handleChange}
                                     time={time ?? ''}
+                                    timeLabel={translate(
+                                        'tableBooking',
+                                        'time_label',
+                                        {},
+                                    )}
+                                    timeAriaLabel={translate(
+                                        'tableBooking',
+                                        'time_label',
+                                        {},
+                                    )}
                                     onTimeChange={(updatedTime) =>
                                         setTableBookingForm((currentForm) => ({
                                             ...currentForm,
@@ -196,31 +579,7 @@ const TableBookingPage: FC = () => {
                                     required={true}
                                     disabled={false}
                                 />
-                                {date && (
-                                    <Time
-                                        ariaLabel={translate(
-                                            'tableBooking',
-                                            'time_label',
-                                            {},
-                                        )}
-                                        label={translate(
-                                            'tableBooking',
-                                            'time_label',
-                                            {},
-                                        )}
-                                        name="time"
-                                        onChange={handleTimeChange}
-                                        required
-                                        value={time || ''}
-                                        options={[
-                                            '15:00',
-                                            '15:30',
-                                            '16:00',
-                                            '21:00',
-                                            '21:30',
-                                        ]}
-                                    />
-                                )}
+
                                 {tableBookingPageData.numberOfGuestsForm.Input.map(
                                     (input) => (
                                         <TextField
@@ -243,12 +602,15 @@ const TableBookingPage: FC = () => {
                                 )}
                             </TableBookingPageForm>
                         </div>
+
                         {submissionMessage && (
                             <p role="status">{submissionMessage}</p>
                         )}
+
                         {submissionError && (
                             <p role="alert">{submissionError}</p>
                         )}
+
                         <Flex
                             direction="column"
                             align="center"
