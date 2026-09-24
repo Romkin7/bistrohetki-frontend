@@ -43,12 +43,24 @@ const Days: FC<IDaysProps> = ({ onClick, ...rest }) => {
     });
 
     // Find the BookableDay that belongs to the calendar date
+    // const getBookableTimes = (date: Date) => {
+    //     const formattedDate = format(date, 'yyyy-MM-dd');
+    //     const bookableDay = bookableDays.find(
+    //         (day) => day.date === formattedDate,
+    //     );
+    //     return bookableDay?.times ?? [];
+    // };
+
     const getBookableTimes = (date: Date) => {
         const formattedDate = format(date, 'yyyy-MM-dd');
-        const bookableDay = bookableDays.find(
-            (day) => day.date === formattedDate,
-        );
-        return bookableDay?.times ?? [];
+
+        for (const bookableDay of bookableDays) {
+            if (bookableDay.date === formattedDate) {
+                return bookableDay.times;
+            }
+        }
+
+        return [];
     };
 
     // Дни от предишния месец
