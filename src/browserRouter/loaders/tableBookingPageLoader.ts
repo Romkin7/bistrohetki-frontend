@@ -1,34 +1,20 @@
 import { addDays, format } from 'date-fns';
-
+import z from 'zod';
 import { fetchStrapiData } from '../../api/fetchStrapiData';
 import type { LoaderProps } from './loaderProps';
-
 import type { BookableDay } from '@/zod/collections/bookableDay';
+import { bookableTimeSchema } from '@/zod/collections/bookableTime';
 import type { TableBookingPageData } from '@/zod/pages/tableBookingPageData';
 
 const BOOKABLE_DAYS_COUNT = 42;
 
-const BOOKABLE_TIMES_ENDPOINT = import.meta.env
-    .VITE_STRAPI_BOOKABLE_TIMES_ENDPOINT;
-
-type BookableTimeResponse = {
-    date: string;
-    startTime: string;
-    capacity: number;
-    isBooked: boolean;
-    bookable_day?: {
-        weekday?: string;
-        opensAt?: string;
-        closesAt?: string;
-        isClosed?: boolean;
-    } | null;
-};
+const BOOKABLE_TIMES_ENDPOINT = `${import.meta.env.VITE_STRAPI_API_URL}${import.meta.env.VITE_STRAPI_BOOKABLE_TIMES_ENDPOINT}`;
 
 const fetchBookableDays = async (
     startDate: Date,
     numberOfDays: number,
 ): Promise<BookableDay[]> => {
-    if (!BOOKABLE_TIMES_ENDPOINT) {
+    if (!import.meta.env.VITE_STRAPI_BOOKABLE_TIMES_ENDPOINT) {
         throw new Error(
             'VITE_STRAPI_BOOKABLE_TIMES_ENDPOINT is not configured',
         );
@@ -45,13 +31,21 @@ const fetchBookableDays = async (
         'sort[1]': 'startTime:asc',
     });
 
-    const response = await fetchStrapiData(
+    const response = await fetch(
         `${BOOKABLE_TIMES_ENDPOINT}?${params.toString()}`,
     );
 
+    if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const responseData = await response.json();
+
+    const bookableTimes = z.array(bookableTimeSchema).parse(responseData.data);
+
     const days = new Map<string, BookableDay>();
 
-    (response.data as BookableTimeResponse[]).forEach((bookableTime) => {
+    bookableTimes.forEach((bookableTime) => {
         if (bookableTime.isBooked || bookableTime.capacity <= 0) {
             return;
         }
