@@ -186,8 +186,8 @@ const TableBookingPage: FC = () => {
                                     today={new Date()}
                                     htmlFor="htmlFor"
                                     label={
-                                        tableBookingPageData.datePickerWithRange
-                                            .label
+                                        tableBookingPageData
+                                            ?.datePickerWithRange?.label
                                     }
                                     name="date"
                                     type="text"
@@ -221,7 +221,7 @@ const TableBookingPage: FC = () => {
                                         ]}
                                     />
                                 )}
-                                {tableBookingPageData.numberOfGuestsForm.Input.map(
+                                {tableBookingPageData?.numberOfGuestsForm?.Input?.map(
                                     (input) => (
                                         <TextField
                                             key={input.id}
