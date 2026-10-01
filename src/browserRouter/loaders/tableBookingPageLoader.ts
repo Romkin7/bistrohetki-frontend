@@ -1,6 +1,7 @@
 import { addDays, format } from 'date-fns';
 import { fetchStrapiData } from '../../api/fetchStrapiData';
 import type { LoaderProps } from './loaderProps';
+import { getCalendarDays } from '@/shared/utils/numberOfDays';
 
 // keep: fetch image, logo, date picker, and all nested form components
 const tableBookingPageLoader = async ({ locale }: LoaderProps) => {
@@ -10,8 +11,9 @@ const tableBookingPageLoader = async ({ locale }: LoaderProps) => {
         );
 
         const today = new Date();
+        const { activeDays } = getCalendarDays(today);
         const startDate = format(today, 'yyyy-MM-dd');
-        const endDate = format(addDays(today, 41), 'yyyy-MM-dd');
+        const endDate = format(addDays(today, activeDays - 1), 'yyyy-MM-dd');
 
         const bookableDays = await fetchStrapiData(
             `${import.meta.env.VITE_STRAPI_BOOKABLE_DAYS_ENDPOINT}?filters[date][$gte]=${startDate}&filters[date][$lte]=${endDate}&populate[bookable_times]=true`,

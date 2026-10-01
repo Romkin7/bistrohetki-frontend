@@ -16,7 +16,6 @@ import Link from '@/shared/Link/Link';
 import TextField from '@/shared/TextField/TextField';
 
 import Time from '@/shared/Time/Time';
-import { getNumberOfDaysInCurrentMonth } from '@/shared/utils/numberOfDays';
 import { setBookableDays } from '@/store/slices/bookableDaySlice';
 import type { TableBookingForm } from '@/zod/businessLogic/tableBookingForm';
 import type { TableBookingPageData } from '@/zod/pages/tableBookingPageData';
@@ -68,8 +67,6 @@ const TableBookingPage: FC = () => {
     useEffect(() => {
         dispatch(setBookableDays(bookableDays));
     }, [bookableDays, dispatch]);
-
-    getNumberOfDaysInCurrentMonth();
 
     const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
