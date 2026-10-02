@@ -1,13 +1,13 @@
 import { Flex, Grid, GridItem, Image } from '@chakra-ui/react';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import type { ChangeEvent, FC, FormEvent } from 'react';
 import Markdown from 'react-markdown';
-import { useDispatch } from 'react-redux';
 import { useLoaderData } from 'react-router';
 import rehypeRaw from 'rehype-raw';
 import remarkGfm from 'remark-gfm';
 import styles from '../App.module.css';
 import TableBookingPageForm from '@/businessLogicComponents/TableBookingPageForm/TableBookingPageForm';
+import { useBookableDays } from '@/hooks/useBookableDays';
 import { useLocale } from '@/hooks/useLocale';
 import { useTranslator } from '@/hooks/useTranslator';
 import DatepickerWithRange from '@/shared/DatepickerWithRange/DatepickerWithRange';
@@ -16,7 +16,6 @@ import Link from '@/shared/Link/Link';
 import TextField from '@/shared/TextField/TextField';
 
 import Time from '@/shared/Time/Time';
-import { setBookableDays } from '@/store/slices/bookableDaySlice';
 import type { TableBookingForm } from '@/zod/businessLogic/tableBookingForm';
 import type { TableBookingPageData } from '@/zod/pages/tableBookingPageData';
 
@@ -54,8 +53,6 @@ const STRAPI_BOOKING_ENDPOINT = import.meta.env.VITE_STRAPI_BOOKING_ENDPOINT;
 
 const TableBookingPage: FC = () => {
     const tableBookingPageData: TableBookingPageData = useLoaderData();
-    const { bookableDays } = tableBookingPageData;
-    const dispatch = useDispatch();
     const { appLocale } = useLocale();
     const translate = useTranslator();
     const [tableBookingForm, setTableBookingForm] = useState<TableBookingForm>(
@@ -64,9 +61,7 @@ const TableBookingPage: FC = () => {
     const [submissionMessage, setSubmissionMessage] = useState('');
     const [submissionError, setSubmissionError] = useState('');
 
-    useEffect(() => {
-        dispatch(setBookableDays(bookableDays));
-    }, [bookableDays, dispatch]);
+    useBookableDays();
 
     const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
