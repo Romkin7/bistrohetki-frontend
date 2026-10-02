@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { bookableDaySchema } from '../collections/bookableDay';
 import { datepickerWithRangePropsSchema } from '../components/datepickerWithRangeProps';
 import { mediaSchema } from '../media';
 import { strapiButtonSchema } from '../strapiComponents/button';
@@ -20,6 +21,8 @@ export const tableBookingPageDataSchema = z.object({
     tableBookingInfo: z.string(),
     logo: mediaSchema,
     datePickerWithRange: datepickerWithRangePropsSchema,
+
+    bookableDays: z.array(bookableDaySchema),
     // keep: form components only inside numberOfGuestsForm
 
     // keep: add numberOfGuestsForm as nested object

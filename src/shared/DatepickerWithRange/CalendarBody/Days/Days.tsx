@@ -3,7 +3,6 @@ import {
     addDays,
     endOfMonth,
     format,
-    getDay,
     getDaysInMonth,
     startOfMonth,
     subDays,
@@ -16,6 +15,10 @@ import CalendarBody from '../CalendarBody';
 import Day from '../Day/Day';
 import WeekDay from '../WeekDay/WeekDay';
 import styles from './Days.module.css';
+import {
+    getNumberOfDaysInNextMonth,
+    getNumberOfDaysInPreviousMonth,
+} from '@/shared/utils/numberOfDays';
 import { daysPropsSchema, type DaysProps } from '@/zod/components/daysProps';
 
 interface IDaysProps extends DaysProps {
@@ -30,6 +33,10 @@ const Days: FC<IDaysProps> = ({ onClick, ...rest }) => {
     const firstDayDate = startOfMonth(selectedDate as Date);
     const previousMonth = subMonths(selectedDate as Date, 1);
     const previousMonthDays = getDaysInMonth(previousMonth);
+    const previousDaysCount = getNumberOfDaysInPreviousMonth(
+        selectedDate as Date,
+    );
+    const nextDaysCount = getNumberOfDaysInNextMonth(selectedDate as Date);
 
     const daysStyles = clsx({
         [styles.days]: true,
@@ -43,9 +50,9 @@ const Days: FC<IDaysProps> = ({ onClick, ...rest }) => {
     });
 
     // Дни от предишния месец
-    for (let i = getDay(firstDayDate); i > 1; i--) {
-        const previousMonthsDay = previousMonthDays - i + 2;
-        const newPreviousMonthDate = subDays(firstDayDate, i - 1);
+    for (let i = previousDaysCount; i > 0; i--) {
+        const previousMonthsDay = previousMonthDays - i + 1;
+        const newPreviousMonthDate = subDays(firstDayDate, i);
 
         days.push(
             <Day
@@ -80,9 +87,7 @@ const Days: FC<IDaysProps> = ({ onClick, ...rest }) => {
     }
 
     // Дни от следващия месец
-    const daysCount = days.length;
-
-    for (let i = 1; i <= 42 - daysCount; i++) {
+    for (let i = 1; i <= nextDaysCount; i++) {
         const newNextMonthDate = addDays(endOfMonth(selectedDate as Date), i);
 
         days.push(
