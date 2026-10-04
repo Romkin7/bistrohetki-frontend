@@ -5,7 +5,6 @@ const CALENDAR_DAYS = 42;
 export function getNumberOfDaysInCurrentMonth(date = new Date()) {
     const today = date;
     const daysInMonth = getDaysInMonth(today as Date);
-    console.log(daysInMonth);
     return daysInMonth;
 }
 
@@ -13,7 +12,6 @@ export function getNumberOfDaysInPreviousMonth(date = new Date()): number {
     const today = date;
     const firstDayOfMonth = startOfMonth(today as Date);
     const previousMonthDays = (getDay(firstDayOfMonth) + 6) % 7;
-    console.log(previousMonthDays);
     return previousMonthDays;
 }
 
@@ -29,7 +27,7 @@ export function getNumberOfActiveDays(date = new Date()) {
     return CALENDAR_DAYS - inactiveDays;
 }
 
-export function getCalendarDays(date = new Date()): Record<string, number> {
+export function getCalendarDays(date = new Date()) {
     return {
         previousMonthDays: getNumberOfDaysInPreviousMonth(date), // visible days from the previous month
         currentMonthDays: getNumberOfDaysInCurrentMonth(date), // 28-31
