@@ -1,4 +1,11 @@
-import { getDay, getDaysInMonth, startOfMonth } from 'date-fns';
+import {
+    endOfMonth,
+    getDay,
+    getDaysInMonth,
+    startOfMonth,
+    subDays,
+    subMonths,
+} from 'date-fns';
 
 const CALENDAR_DAYS = 42;
 
@@ -34,4 +41,20 @@ export function getCalendarDays(date = new Date()) {
         nextMonthDays: getNumberOfDaysInNextMonth(date), // remainder up to 42
         activeDays: getNumberOfActiveDays(date), // today through end of month + nextMonthDays
     };
+}
+
+export function getPreviousDays() {
+    let queryString = '';
+    const today = new Date();
+    const previousMonth = subMonths(today, 1);
+    const prevousMonthLastDay = endOfMonth(previousMonth);
+    const previousDaysCount = getNumberOfDaysInPreviousMonth(today);
+    const previousMonthDays = getDaysInMonth(previousMonth);
+    const firstDayDate = startOfMonth(today);
+    const newPreviousMonthDate = subDays(
+        prevousMonthLastDay,
+        previousDaysCount,
+    );
+
+    return `filters[date][$between][0]=2026-09-29&filters[date][$between][1]=${prevousMonthLastDay}`;
 }

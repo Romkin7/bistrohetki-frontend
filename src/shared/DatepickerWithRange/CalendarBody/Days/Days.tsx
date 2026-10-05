@@ -53,6 +53,9 @@ const Days: FC<IDaysProps> = ({ onClick, ...rest }) => {
     for (let i = previousDaysCount; i > 0; i--) {
         const previousMonthsDay = previousMonthDays - i + 1;
         const newPreviousMonthDate = subDays(firstDayDate, i);
+        console.log('Previous days count value is: ', previousDaysCount);
+        console.log('Previous month days value is: ', previousMonthDays);
+        console.log('New previous month date value is: ', newPreviousMonthDate);
 
         days.push(
             <Day
