@@ -1,24 +1,14 @@
 import clsx from 'clsx';
-import {
-    addDays,
-    endOfMonth,
-    format,
-    getDaysInMonth,
-    startOfMonth,
-    subDays,
-    subMonths,
-} from 'date-fns';
-import type { FC, JSX } from 'react';
+import { format } from 'date-fns';
+import type { FC } from 'react';
+import { useSelector } from 'react-redux';
 import getLocale from '../../getLocale';
 import getWeekdays from '../../getWeekDays';
 import CalendarBody from '../CalendarBody';
 import Day from '../Day/Day';
 import WeekDay from '../WeekDay/WeekDay';
 import styles from './Days.module.css';
-import {
-    getNumberOfDaysInNextMonth,
-    getNumberOfDaysInPreviousMonth,
-} from '@/shared/utils/numberOfDays';
+import type { RootState } from '@/store/store';
 import { daysPropsSchema, type DaysProps } from '@/zod/components/daysProps';
 
 interface IDaysProps extends DaysProps {
@@ -26,86 +16,33 @@ interface IDaysProps extends DaysProps {
 }
 
 const Days: FC<IDaysProps> = ({ onClick, ...rest }) => {
+    const bookableDays = useSelector((state: RootState) => state.bookableDays);
     const { selectedDate, activeDate, locale, today } =
         daysPropsSchema.parse(rest);
-
-    const daysInMonth = getDaysInMonth(selectedDate as Date);
-    const firstDayDate = startOfMonth(selectedDate as Date);
-    const previousMonth = subMonths(selectedDate as Date, 1);
-    const previousMonthDays = getDaysInMonth(previousMonth);
-    const previousDaysCount = getNumberOfDaysInPreviousMonth(
-        selectedDate as Date,
-    );
-    const nextDaysCount = getNumberOfDaysInNextMonth(selectedDate as Date);
 
     const daysStyles = clsx({
         [styles.days]: true,
     });
 
     const weekDays = getWeekdays(getLocale(locale));
-    const days: JSX.Element[] = [];
-
     const labels = weekDays.map((weekDay) => {
         return <WeekDay key={weekDay.key}>{weekDay.label}</WeekDay>;
     });
 
-    // Дни от предишния месец
-    for (let i = previousDaysCount; i > 0; i--) {
-        const previousMonthsDay = previousMonthDays - i + 1;
-        const newPreviousMonthDate = subDays(firstDayDate, i);
-        console.log('Previous days count value is: ', previousDaysCount);
-        console.log('Previous month days value is: ', previousMonthDays);
-        console.log('New previous month date value is: ', newPreviousMonthDate);
-
-        days.push(
+    const days = bookableDays.map((bookableDay) => {
+        return (
             <Day
                 locale={locale}
-                key={format(newPreviousMonthDate, 'dd MM yyyy')}
-                selectedDate={newPreviousMonthDate}
+                key={bookableDay.id}
+                selectedDate={selectedDate}
                 activeDate={activeDate}
                 today={today}
-                onClick={() => onClick(newPreviousMonthDate)}
+                onClick={() => onClick(new Date(bookableDay.date))}
             >
-                {previousMonthsDay}
-            </Day>,
+                {format(bookableDay.date, 'dd')}
+            </Day>
         );
-    }
-
-    // Дни от текущия месец
-    for (let i = 1; i <= daysInMonth; i++) {
-        const newCurrentMonthDate = addDays(endOfMonth(previousMonth), i);
-
-        days.push(
-            <Day
-                locale={locale}
-                key={format(newCurrentMonthDate, 'dd MM yyyy')}
-                selectedDate={newCurrentMonthDate}
-                activeDate={activeDate}
-                today={today}
-                onClick={() => onClick(newCurrentMonthDate)}
-            >
-                {i}
-            </Day>,
-        );
-    }
-
-    // Дни от следващия месец
-    for (let i = 1; i <= nextDaysCount; i++) {
-        const newNextMonthDate = addDays(endOfMonth(selectedDate as Date), i);
-
-        days.push(
-            <Day
-                locale={locale}
-                key={format(newNextMonthDate, 'dd MM yyyy')}
-                selectedDate={newNextMonthDate}
-                activeDate={activeDate}
-                today={today}
-                onClick={() => onClick(newNextMonthDate)}
-            >
-                {i}
-            </Day>,
-        );
-    }
+    });
 
     return (
         <CalendarBody>

@@ -1,8 +1,7 @@
-import { addDays, format } from 'date-fns';
 import { useCallback, useEffect, useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import { fetchStrapiData } from '@/api/fetchStrapiData';
-import { getCalendarDays } from '@/shared/utils/numberOfDays';
+import { getCalendarRange } from '@/shared/utils/numberOfDays';
 import {
     resetBookableDays,
     setBookableDays,
@@ -18,16 +17,10 @@ export const useBookableDays = () => {
 
     const fetchBookableDays = useCallback(async () => {
         try {
-            const today = new Date();
-            const { activeDays } = getCalendarDays(today);
-            const startDate = format(today, 'yyyy-MM-dd');
-            const endDate = format(
-                addDays(today, activeDays - 1),
-                'yyyy-MM-dd',
-            );
+            const { start, end } = getCalendarRange();
 
             const { data } = await fetchStrapiData(
-                `${import.meta.env.VITE_STRAPI_BOOKABLE_DAYS_ENDPOINT}?filters[date][$gte]=${startDate}&filters[date][$lte]=${endDate}&pagination[pageSize]=${CALENDAR_DAYS}&sort=date:asc&populate[bookable_times]=true`,
+                `${import.meta.env.VITE_STRAPI_BOOKABLE_DAYS_ENDPOINT}?filters[date][$gte]=${start}&filters[date][$lte]=${end}&pagination[pageSize]=${CALENDAR_DAYS}&sort=date:asc&populate[bookable_times]=true`,
             );
 
             // a late response must not refill the store after the page is left

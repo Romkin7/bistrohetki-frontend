@@ -1,10 +1,11 @@
 import {
-    endOfMonth,
+    addDays,
+    format,
     getDay,
     getDaysInMonth,
+    isPast,
     startOfMonth,
     subDays,
-    subMonths,
 } from 'date-fns';
 
 const CALENDAR_DAYS = 42;
@@ -43,18 +44,19 @@ export function getCalendarDays(date = new Date()) {
     };
 }
 
-export function getPreviousDays() {
-    let queryString = '';
-    const today = new Date();
-    const previousMonth = subMonths(today, 1);
-    const prevousMonthLastDay = endOfMonth(previousMonth);
-    const previousDaysCount = getNumberOfDaysInPreviousMonth(today);
-    const previousMonthDays = getDaysInMonth(previousMonth);
-    const firstDayDate = startOfMonth(today);
-    const newPreviousMonthDate = subDays(
-        prevousMonthLastDay,
-        previousDaysCount,
-    );
+export function isDateInThePast(incomingDate: Date): boolean {
+    return isPast(incomingDate);
+}
 
-    return `filters[date][$between][0]=2026-09-29&filters[date][$between][1]=${prevousMonthLastDay}`;
+export function getCalendarRange() {
+    const today = new Date();
+    const start = subDays(
+        startOfMonth(today),
+        getNumberOfDaysInPreviousMonth(today),
+    );
+    const end = addDays(start, CALENDAR_DAYS - 1); // 28.09 до 08.11
+    return {
+        start: format(start, 'yyyy-MM-dd'),
+        end: format(end, 'yyyy-MM-dd'),
+    };
 }
