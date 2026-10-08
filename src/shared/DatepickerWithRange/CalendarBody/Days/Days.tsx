@@ -37,6 +37,7 @@ const Days: FC<IDaysProps> = ({ onClick, ...rest }) => {
                 selectedDate={selectedDate}
                 activeDate={activeDate}
                 today={today}
+                bookableDay={bookableDay}
                 onClick={() => onClick(new Date(bookableDay.date))}
             >
                 {format(bookableDay.date, 'dd')}
