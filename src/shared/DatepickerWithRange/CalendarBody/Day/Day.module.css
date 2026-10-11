@@ -60,3 +60,13 @@
     cursor: not-allowed;
     pointer-events: none;
 }
+
+.inactive {
+    cursor: not-allowed;
+}
+
+.inactive:hover {
+    background: var(--bh-color-semantic-error-hover);
+    border-color: var(--bh-color-semantic-error);
+    color: var(--bh-color-text-light);
+}

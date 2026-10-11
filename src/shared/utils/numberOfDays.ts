@@ -3,7 +3,8 @@ import {
     format,
     getDay,
     getDaysInMonth,
-    isPast,
+    isBefore,
+    startOfDay,
     startOfMonth,
     subDays,
 } from 'date-fns';
@@ -45,7 +46,7 @@ export function getCalendarDays(date = new Date()) {
 }
 
 export function isDateInThePast(incomingDate: Date): boolean {
-    return isPast(incomingDate);
+    return isBefore(startOfDay(incomingDate), startOfDay(new Date()));
 }
 
 export function getCalendarRange() {

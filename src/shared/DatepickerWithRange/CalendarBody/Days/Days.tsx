@@ -13,9 +13,10 @@ import { daysPropsSchema, type DaysProps } from '@/zod/components/daysProps';
 
 interface IDaysProps extends DaysProps {
     onClick: (selectedDate: Date) => void;
+    onBlockedClick: () => void;
 }
 
-const Days: FC<IDaysProps> = ({ onClick, ...rest }) => {
+const Days: FC<IDaysProps> = ({ onClick, onBlockedClick, ...rest }) => {
     const bookableDays = useSelector((state: RootState) => state.bookableDays);
     const { selectedDate, activeDate, locale, today } =
         daysPropsSchema.parse(rest);
@@ -38,6 +39,7 @@ const Days: FC<IDaysProps> = ({ onClick, ...rest }) => {
                 activeDate={activeDate}
                 today={today}
                 bookableDay={bookableDay}
+                onBlockedClick={onBlockedClick}
                 onClick={() => onClick(new Date(bookableDay.date))}
             >
                 {format(bookableDay.date, 'dd')}
