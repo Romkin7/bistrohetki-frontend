@@ -6,7 +6,6 @@ import type { Operand } from '../../../zod/operand';
 import Days from '../CalendarBody/Days/Days';
 import CalendarHead from '../CalendarHead/CalendarHead';
 import styles from './Calendar.module.css';
-import { useTranslator } from '@/hooks/useTranslator';
 import {
     calendarPropsSchema,
     type calendarProps as CalendarProps,
@@ -20,10 +19,7 @@ const Calendar: FC<ICalendarProps> = ({ children, onDateSelect, ...rest }) => {
     const { locale, selectedDate, activeDate, today } =
         calendarPropsSchema.parse(rest);
 
-    const translate = useTranslator();
     const [currentMonth, setCurrentMonth] = useState(selectedDate ?? today);
-    const [isClosingMessageVisible, setIsClosingMessageVisible] =
-        useState(false);
 
     const calendarStyles = clsx({
         [styles.calendar]: true,
@@ -41,19 +37,13 @@ const Calendar: FC<ICalendarProps> = ({ children, onDateSelect, ...rest }) => {
 
     const changeDate = (selectedDate: Date) => {
         // keep: the clicked date stays active while the calendar remains open
-        setIsClosingMessageVisible(false);
+
         setCurrentMonth(selectedDate);
         onDateSelect(selectedDate);
     };
 
     return (
         <div className={calendarStyles}>
-            {isClosingMessageVisible && (
-                <p role="alert" className={styles.closingMessage}>
-                    {translate('tableBooking', 'closing_soon_message', {})}
-                </p>
-            )}
-
             <CalendarHead
                 today={today}
                 locale={locale}
@@ -70,7 +60,7 @@ const Calendar: FC<ICalendarProps> = ({ children, onDateSelect, ...rest }) => {
                 selectedDate={currentMonth}
                 activeDate={activeDate}
                 onClick={changeDate}
-                onBlockedClick={() => setIsClosingMessageVisible(true)}
+                onBlockedClick={() => true}
             />
         </div>
     );

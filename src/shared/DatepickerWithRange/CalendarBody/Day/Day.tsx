@@ -2,6 +2,8 @@ import clsx from 'clsx';
 import { isAfter, isSameDay, setHours, setMinutes, subHours } from 'date-fns';
 import type { FC, PropsWithChildren } from 'react';
 import styles from './Day.module.css';
+import { Tooltip } from '@/chakraUI/ui/tooltip';
+import { useTranslator } from '@/hooks/useTranslator';
 import { isDateInThePast } from '@/shared/utils/numberOfDays';
 import type { BookableDay } from '@/zod/collections/bookableDay';
 import { dayPropsSchema, type DayProps } from '@/zod/components/dayProps';
@@ -19,6 +21,7 @@ const Day: FC<IDayProps> = ({
     bookableDay,
     ...rest
 }) => {
+    const t = useTranslator();
     const { selectedDate, today } = dayPropsSchema.parse(rest);
     const currentDate = new Date(bookableDay.date);
     // дни преди днес са блокирани
@@ -47,19 +50,42 @@ const Day: FC<IDayProps> = ({
     });
 
     return (
-        <span
-            data-current-date={selectedDate}
-            className={dayStyles}
-            onClick={
-                isActive
-                    ? undefined
-                    : isBookingClosed
-                      ? onBlockedClick
-                      : onClick
-            }
-        >
-            {children}
-        </span>
+        <>
+            {isBookingClosed ? (
+                <Tooltip
+                    content={t('tableBooking', 'closing_soon_message')}
+                    positioning={{ placement: 'top' }}
+                >
+                    <span
+                        data-current-date={selectedDate}
+                        className={dayStyles}
+                        onClick={
+                            isActive
+                                ? undefined
+                                : isBookingClosed
+                                  ? onBlockedClick
+                                  : onClick
+                        }
+                    >
+                        {children}
+                    </span>
+                </Tooltip>
+            ) : (
+                <span
+                    data-current-date={selectedDate}
+                    className={dayStyles}
+                    onClick={
+                        isActive
+                            ? undefined
+                            : isBookingClosed
+                              ? onBlockedClick
+                              : onClick
+                    }
+                >
+                    {children}
+                </span>
+            )}
+        </>
     );
 };
 
