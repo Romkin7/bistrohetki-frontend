@@ -6,7 +6,7 @@ export function useTranslator() {
     return (
         namespace: string,
         key: string,
-        params: Record<string, string | number>,
+        params?: Record<string, string | number>,
     ) => {
         return i18next.t(`${namespace}:${key}`, { lng: appLocale, ...params });
     };

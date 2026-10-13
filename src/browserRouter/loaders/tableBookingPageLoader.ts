@@ -7,7 +7,10 @@ const tableBookingPageLoader = async ({ locale }: LoaderProps) => {
         const { data } = await fetchStrapiData(
             `api/table-booking-page?populate[image]=true&populate[logo]=true&populate[datePickerWithRange]=*&populate[numberOfGuestsForm][populate]=*&populate[ContactLink]=*&locale=${locale}`,
         );
-        return data;
+
+        return {
+            ...data,
+        };
     } catch (error) {
         console.error('Error fetching menu page data:', error);
         return null; // or handle the error as needed
