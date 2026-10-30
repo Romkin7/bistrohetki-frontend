@@ -12,3 +12,7 @@
     min-width: 0;
     width: 100%;
 }
+
+.closingMessage {
+    color: var(--bh-color-semantic-error);
+}

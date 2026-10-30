@@ -7,6 +7,7 @@ import rehypeRaw from 'rehype-raw';
 import remarkGfm from 'remark-gfm';
 import styles from '../App.module.css';
 import TableBookingPageForm from '@/businessLogicComponents/TableBookingPageForm/TableBookingPageForm';
+import { useBookableDays } from '@/hooks/useBookableDays';
 import { useLocale } from '@/hooks/useLocale';
 import { useTranslator } from '@/hooks/useTranslator';
 import DatepickerWithRange from '@/shared/DatepickerWithRange/DatepickerWithRange';
@@ -59,6 +60,8 @@ const TableBookingPage: FC = () => {
     );
     const [submissionMessage, setSubmissionMessage] = useState('');
     const [submissionError, setSubmissionError] = useState('');
+
+    useBookableDays();
 
     const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -186,8 +189,8 @@ const TableBookingPage: FC = () => {
                                     today={new Date()}
                                     htmlFor="htmlFor"
                                     label={
-                                        tableBookingPageData.datePickerWithRange
-                                            .label
+                                        tableBookingPageData
+                                            ?.datePickerWithRange?.label
                                     }
                                     name="date"
                                     type="text"
@@ -221,7 +224,7 @@ const TableBookingPage: FC = () => {
                                         ]}
                                     />
                                 )}
-                                {tableBookingPageData.numberOfGuestsForm.Input.map(
+                                {tableBookingPageData?.numberOfGuestsForm?.Input?.map(
                                     (input) => (
                                         <TextField
                                             key={input.id}

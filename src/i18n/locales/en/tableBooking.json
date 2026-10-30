@@ -5,5 +5,6 @@
     "time_label": "Select a time",
     "date_aria_label": "Select reservation date",
     "submission_success": "Your booking was sent successfully.",
-    "submission_error": "Something went wrong. Please try again later."
+    "submission_error": "Something went wrong. Please try again later.",
+    "closing_soon_message": "Reservations cannot be made within two hours of closing time."
 }

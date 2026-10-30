@@ -20,7 +20,6 @@ export const tableBookingPageDataSchema = z.object({
     tableBookingInfo: z.string(),
     logo: mediaSchema,
     datePickerWithRange: datepickerWithRangePropsSchema,
-    // keep: form components only inside numberOfGuestsForm
 
     // keep: add numberOfGuestsForm as nested object
     numberOfGuestsForm: z.object({
