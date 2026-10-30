@@ -22,7 +22,7 @@ const Day: FC<IDayProps> = ({
     ...rest
 }) => {
     const t = useTranslator();
-    const { selectedDate, today } = dayPropsSchema.parse(rest);
+    const { selectedDate, activeDate, today } = dayPropsSchema.parse(rest);
     const currentDate = new Date(bookableDay.date);
     // дни преди днес са блокирани
     const isInThePast = isDateInThePast(currentDate);
@@ -42,9 +42,7 @@ const Day: FC<IDayProps> = ({
 
     const dayStyles = clsx({
         [styles.day]: true,
-        [styles.active]: currentDate
-            ? isSameDay(selectedDate as Date, currentDate)
-            : isSameDay(selectedDate as Date, today),
+        [styles.active]: isSameDay(activeDate ?? today, currentDate),
         [styles.muted]: isActive,
         [styles.inactive]: isBookingClosed,
     });

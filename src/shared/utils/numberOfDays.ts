@@ -49,11 +49,13 @@ export function isDateInThePast(incomingDate: Date): boolean {
     return isBefore(startOfDay(incomingDate), startOfDay(new Date()));
 }
 
-export function getCalendarRange() {
-    const today = new Date();
+const year = new Date(Date.now()).getFullYear();
+const month = new Date(Date.now()).getMonth() + 1;
+
+export function getCalendarRange(date = new Date(year, month, 0)) {
     const start = subDays(
-        startOfMonth(today),
-        getNumberOfDaysInPreviousMonth(today),
+        startOfMonth(date),
+        getNumberOfDaysInPreviousMonth(date),
     );
     const end = addDays(start, CALENDAR_DAYS - 1); // 28.09 до 08.11
     return {
